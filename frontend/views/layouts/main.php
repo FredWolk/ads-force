@@ -23,32 +23,6 @@ AppAsset::register($this);
 <body class="d-flex flex-column h-100">
     <?php $this->beginBody() ?>
 
-<<<<<<< HEAD
-<header>
-    <?php
-   
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-    }
-    ?>
-</header>
-
-<main role="main" class="flex-shrink-0">
-    <div>
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-        <div>
-            
-=======
     <header>
 
     </header>
@@ -56,7 +30,6 @@ AppAsset::register($this);
     <main role="main" class="flex-shrink-0">
         <div class="container">
             <?= $content ?>
->>>>>>> 8b03c523856ff777e78b5633272da3a34f71f8ca
         </div>
     </main>
 

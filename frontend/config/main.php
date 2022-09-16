@@ -38,14 +38,6 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-<<<<<<< HEAD
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-                //['class' => 'frontend\components\ClassUrlRule'],
-                '' => 'site/index',
-=======
 
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -55,7 +47,6 @@ return [
                 //['class' => 'frontend\components\ClassUrlRule'],
                 '' => 'site/index',
 
->>>>>>> 8b03c523856ff777e78b5633272da3a34f71f8ca
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
         ],
