@@ -1,103 +1,118 @@
-main > .container, main > .container-fluid
-{
-    padding: 70px 15px 20px;
+@import url('../fonts/Rubik-Regular.ttf');
+
+*,
+*::before,
+*::after {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    box-sizing: border-box;
 }
 
-.footer {
-    background-color: #f5f5f5;
-    font-size: .9em;
-    height: 60px;
+.Font-size50 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 3.307vw;
+    font-weight: 700;
+    letter-spacing: 0px;
+    color: #1F1F1F;
 }
 
-.footer > .container, .footer > .container-fluid {
-    padding-right: 15px;
-    padding-left: 15px;
+.Font-size36 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 2.381vw;
+    font-weight: 600;
+    letter-spacing: 0px;
+    color: #1F1F1F;
 }
 
-.not-set {
-    color: #c55;
-    font-style: italic;
+.Font-size28 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.852vw;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color: #1F1F1F;
 }
 
-/* add sorting icons to gridview sort links */
-a.asc:after, a.desc:after {
-    content: '';
-    left: 3px;
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border: solid 5px transparent;
-    margin: 4px 4px 2px 4px;
-    background: transparent;
+.Font-size24 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.587vw;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color: #1F1F1F;
 }
 
-a.asc:after {
-    border-bottom: solid 7px #212529;
-    border-top-width: 0;
+.Font-size20 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    font-size: 1.323vw;
+    letter-spacing: 0px;
+    color: #1F1F1F;
 }
 
-a.desc:after {
-    border-top: solid 7px #212529;
-    border-bottom-width: 0;
-}
+@media(min-width:1512px) {
+    .Font-size50 {
+        font-family: 'Rubik', sans-serif;
+        font-size: 50px;
+        font-weight: 700;
+        letter-spacing: 0px;
+        color: #1F1F1F;
+    }
 
-.grid-view th,
-.grid-view td:last-child {
-    white-space: nowrap;
-}
+    .Font-size36 {
+        font-family: 'Rubik', sans-serif;
+        font-size: 36px;
+        font-weight: 600;
+        letter-spacing: 0px;
+        color: #1F1F1F;
+    }
 
-.grid-view .filters input,
-.grid-view .filters select {
-    min-width: 50px;
-}
+    .Font-size28 {
+        font-family: 'Rubik', sans-serif;
+        font-size: 28px;
+        font-weight: 400;
+        letter-spacing: 0px;
+        color: #1F1F1F;
+    }
 
-.hint-block {
-    display: block;
-    margin-top: 5px;
-    color: #999;
-}
+    .Font-size24 {
+        font-family: 'Rubik', sans-serif;
+        font-size: 24px;
+        font-weight: 400;
+        letter-spacing: 0px;
+        color: #1F1F1F;
+    }
 
-.error-summary {
-    color: #a94442;
-    background: #fdf7f7;
-    border-left: 3px solid #eed3d7;
-    padding: 10px 20px;
-    margin: 0 0 15px 0;
-}
-
-/* align the logout "link" (button in form) of the navbar */
-.navbar form > button.logout {
-    padding-top: 7px;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-@media(max-width:767px) {
-    .navbar form > button.logout {
-        display:block;
-        text-align: left;
-        width: 100%;
-        padding: 10px 0;
+    .Font-size20 {
+        font-family: 'Rubik', sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        letter-spacing: 0px;
+        color: #1F1F1F;
     }
 }
 
-.navbar form > button.logout:focus,
-.navbar form > button.logout:hover {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.75);
-}
+@media(max-width:580px) {
+    .Font-size50 {
+        font-size: 6.400vw;
+    }
 
-.navbar form > button.logout:focus {
-    outline: none;
-}
+    .Font-size36 {
+        font-family: 'Rubik', sans-serif;
+        font-size: 6.400vw;
+        font-weight: 600;
+        letter-spacing: 0px;
+        color: #1F1F1F;
+    }
 
-/* style breadcrumb widget as in previous bootstrap versions */
-.breadcrumb {
-    background-color: var(--bs-gray-200);
-    border-radius: .25rem;
-    padding: .75rem 1rem;
-}
+    .Font-size28 {
+        font-size: 4.800vw;
+    }
 
-.breadcrumb-item > a
-{
-    text-decoration: none;
+    .Font-size24 {
+        font-family: 'Rubik', sans-serif;
+        font-size: 4.800vw;
+        font-weight: 400;
+        letter-spacing: 0px;
+        color: #1F1F1F;
+    }
 }
