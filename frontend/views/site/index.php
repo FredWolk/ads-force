@@ -43,7 +43,7 @@ $this->registerCssFile(Url::to(['css/index.css']), ['depends' => ['frontend\asse
         <img src="<?= Url::to(['img/index/Meneger.png']) ?>" alt="">
     </div>
 </section>
-<section class="Main-info">
+<section class="Main-info container-index">
     <div class="Main-info-bg">
         <div class="Main-info-items">
             <div class="Main-info-item">
@@ -64,7 +64,9 @@ $this->registerCssFile(Url::to(['css/index.css']), ['depends' => ['frontend\asse
 <section class="performers-container">
     <div class="performers-title">
         <h1 class="Font-size36">ТОП-исполнители</h1>
-        <button>Хочу в ТОП</button>
+        <a href="">
+            <button>Хочу в ТОП</button>
+        </a>
     </div>
     <div class="performers-cards">
         <div class="performers-card">
@@ -98,85 +100,132 @@ $this->registerCssFile(Url::to(['css/index.css']), ['depends' => ['frontend\asse
                 <p class="text-italic">веб-разработчик</p>
                 <p class="liked-message">1810 положительных отзывов</p>
                 <ul>
-                    <li><p>Проф.владение Phyton, JS</p></li>
-                    <li><p>Верстка моб.приложений</p></li>
-                    <li><p>Backend-разработка</p></li>
+                    <li>
+                        <p>Проф.владение Phyton, JS</p>
+                    </li>
+                    <li>
+                        <p>Верстка моб.приложений</p>
+                    </li>
+                    <li>
+                        <p>Backend-разработка</p>
+                    </li>
                 </ul>
+
             </div>
-        </div>
-        <div class="performers-card">
-            <div class="performers-card-left">
-                <img src="<?= Url::to(['img/index/performerAva.png']) ?>" alt="">
-                <div class="performers-card-stars">
+            <div class="performers-card-mobile">
+                <div class="performers-card-mobile-top">
+                    <img src="<?= Url::to(['img/index/performerAva.png']) ?>" alt="">
+                    <div>
+                        <div class="performers-card-right-title">
+                            <h1>Александр Иванов</h1>
+                            <p>PRO</p>
+                        </div>
+                        <p class="text-italic">веб-разработчик</p>
+                        <div class="performers-card-stars">
+                            <ul>
+                                <li>
+                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                </li>
+                                <li>
+                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                </li>
+                                <li>
+                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                </li>
+                                <li>
+                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                </li>
+                                <li>
+                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="performers-card-mobile-bottom">
+                    <p class="liked-message">1810 положительных отзывов</p>
                     <ul>
                         <li>
-                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                            <p>Проф.владение Phyton, JS</p>
                         </li>
                         <li>
-                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                            <p>Верстка моб.приложений</p>
                         </li>
                         <li>
-                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                        </li>
-                        <li>
-                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                        </li>
-                        <li>
-                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                            <p>Backend-разработка</p>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="performers-card-right">
-                <div class="performers-card-right-title">
-                    <h1>Александр Иванов</h1>
-                    <p>PRO</p>
-                </div>
-                <p class="text-italic">веб-разработчик</p>
-                <p class="liked-message">1810 положительных отзывов</p>
-                <ul>
-                    <li><p>Проф.владение Phyton, JS</p></li>
-                    <li><p>Верстка моб.приложений</p></li>
-                    <li><p>Backend-разработка</p></li>
-                </ul>
-            </div>
         </div>
-        <div class="performers-card">
-            <div class="performers-card-left">
-                <img src="<?= Url::to(['img/index/performerAva.png']) ?>" alt="">
-                <div class="performers-card-stars">
-                    <ul>
-                        <li>
-                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                        </li>
-                        <li>
-                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                        </li>
-                        <li>
-                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                        </li>
-                        <li>
-                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                        </li>
-                        <li>
-                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                        </li>
-                    </ul>
-                </div>
+    </div>
+</section>
+<section class="container-index specialization-full">
+    <div class="performers-title-specialization">
+        <h1 class="Font-size36">Специализация</h1>
+    </div>
+    <div class="specialization-items">
+        <a href="">
+            <div class="specialization-item">
+                <p class="Font-size24">Дизайн</p>
             </div>
-            <div class="performers-card-right">
-                <div class="performers-card-right-title">
-                    <h1>Александр Иванов</h1>
-                    <p>PRO</p>
-                </div>
-                <p class="text-italic">веб-разработчик</p>
-                <p class="liked-message">1810 положительных отзывов</p>
-                <ul>
-                    <li><p>Проф.владение Phyton, JS</p></li>
-                    <li><p>Верстка моб.приложений</p></li>
-                    <li><p>Backend-разработка</p></li>
-                </ul>
+        </a>
+        <a href="">
+            <div class="specialization-item">
+                <p class="Font-size24">Дизайн</p>
             </div>
+        </a>
+        <a href="">
+            <div class="specialization-item">
+                <p class="Font-size24">Дизайн</p>
+            </div>
+        </a>
+        <a href="">
+            <div class="specialization-item">
+                <p class="Font-size24">Дизайн</p>
+            </div>
+        </a>
+    </div>
+</section>
+<section class="progressBar">
+    <div class="progressBarTitle">
+        <h2 class="Font-size36">Как начать работу с ADSFORCE</h2>
+        <button class="progressBarButton">
+            <img src="<?= Url::to(['img/index/iconFreelanceButton.svg']) ?>" alt="">
+            <p>Исполнителю</p>
+        </button>
+    </div>
+    <div class="progress-bar-content">
+        <div class="progress-bar-img">
+            <img src="<?= Url::to(['img/index/imgProgressBar.png']) ?>" alt="">
+        </div>
+        <div>
+            <ul>
+                <li>
+                    <div>
+                        <h1 class="Font-size24">Опубликуйте заказ</h1>
+                        <p>Расскажите о задаче и опубликуйте в каталоге</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h1 class="Font-size24">Опубликуйте заказ</h1>
+                        <p>Расскажите о задаче и опубликуйте в каталоге</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h1 class="Font-size24">Опубликуйте заказ</h1>
+                        <p>Расскажите о задаче и опубликуйте в каталоге</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h1 class="Font-size24">Опубликуйте заказ</h1>
+                        <p>Расскажите о задаче и опубликуйте в каталоге</p>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </section>
