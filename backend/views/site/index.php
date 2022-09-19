@@ -10,7 +10,7 @@ $this->title = 'My Yii Application';
 
     <div class="body-content">
 
-        <div class="row">
+        <div style="row-gap: 25px;" class="row">
             <div class="col-sm-4">
                 <div class="card">
                     <div class="card-body">
@@ -34,7 +34,16 @@ $this->title = 'My Yii Application';
                     <div class="card-body">
                         <h5 class="card-title">Подкатегории</h5>
                         <p class="card-text">Тут вы можете изменить информацию о подкатегориях</p>
-                        <a href="<?= Url::to(['']) ?>" class="btn btn-primary">Перейти</a>
+                        <a href="<?= Url::to(['/sub-categories']) ?>" class="btn btn-primary">Перейти</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Отзывы</h5>
+                        <p class="card-text">Тут вы можете изменить информацию об отзывах</p>
+                        <a href="<?= Url::to(['/reviews']) ?>" class="btn btn-primary">Перейти</a>
                     </div>
                 </div>
             </div>

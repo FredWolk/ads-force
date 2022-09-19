@@ -18,7 +18,7 @@ class ReviewsSearch extends Reviews
     {
         return [
             [['id', 'user_id'], 'integer'],
-            [['text', 'user_name'], 'safe'],
+            [['text'], 'safe'],
         ];
     }
 
@@ -62,8 +62,7 @@ class ReviewsSearch extends Reviews
             'user_id' => $this->user_id,
         ]);
 
-        $query->andFilterWhere(['like', 'text', $this->text])
-            ->andFilterWhere(['like', 'user_name', $this->user_name]);
+        $query->andFilterWhere(['like', 'text', $this->text]);
 
         return $dataProvider;
     }

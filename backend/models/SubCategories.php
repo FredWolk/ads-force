@@ -29,6 +29,7 @@ class SubCategories extends \yii\db\ActiveRecord
         return [
             [['categories_id'], 'integer'],
             [['title'], 'string', 'max' => 255],
+            [['categories_id', 'title'], 'required', 'message' => 'Обязательно к заполнению'],
         ];
     }
 
@@ -39,8 +40,8 @@ class SubCategories extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'categories_id' => 'Categories ID',
-            'title' => 'Title',
+            'categories_id' => 'Категория',
+            'title' => 'Название',
         ];
     }
 }

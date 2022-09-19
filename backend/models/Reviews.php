@@ -10,7 +10,6 @@ use Yii;
  * @property int $id
  * @property int|null $user_id
  * @property string $text
- * @property string|null $user_name
  */
 class Reviews extends \yii\db\ActiveRecord
 {
@@ -31,7 +30,6 @@ class Reviews extends \yii\db\ActiveRecord
             [['user_id'], 'integer'],
             [['text'], 'required'],
             [['text'], 'string'],
-            [['user_name'], 'string', 'max' => 255],
         ];
     }
 
@@ -42,9 +40,13 @@ class Reviews extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
-            'text' => 'Text',
-            'user_name' => 'User Name',
+            'user_id' => 'Пользователь',
+            'text' => 'Текст отзыва',
         ];
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => $this->user_id]);
     }
 }
