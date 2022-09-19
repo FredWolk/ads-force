@@ -1,10 +1,19 @@
 <?php
 
+use app\models\Categories;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
 /** @var app\models\Performers $model */
+
+$catNames = [];
+$categories = Categories::find()->asArray()->select('title, id')->all();
+if (!empty($categories)) {
+    foreach ($categories as $cat) {
+        $catNames[$cat['id']] = $cat['title'];
+    }
+}
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Исполнители', 'url' => ['index']];
@@ -34,7 +43,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'position',
             'rating',
-            'specialization_id',
+            [
+                'attribute' => 'specialization_id',
+                'value' => function ($model) use ($catNames) {
+                    return $catNames[$model->specialization_id];
+                }
+            ],
             'photo',
             'skills:ntext',
         ],

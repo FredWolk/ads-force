@@ -78,7 +78,7 @@ $this->registerJs($js);
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Вася Васечкин Пупкин']) ?>
 
-    <?= $form->field($model, 'position')->dropDownList(['Базовый', 'Продвинутый', 'Профи']) ?>
+    <?= $form->field($model, 'position')->dropDownList(['Базовый' => 'Базовый', 'Продвинутый' => 'Продвинутый', 'Профи' => 'Профи']) ?>
 
     <?= $form->field($model, 'rating')->input('number') ?>
 

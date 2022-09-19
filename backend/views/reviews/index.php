@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var backend\models\ReviewsSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Reviews';
+$this->title = 'Отзывы';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="reviews-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Reviews', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить отзыв', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -32,7 +32,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'user_id',
             'text:ntext',
-            'user_name',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Reviews $model, $key, $index, $column) {
