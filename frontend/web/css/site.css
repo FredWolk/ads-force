@@ -8,9 +8,6 @@
     border: 0px;
     box-sizing: border-box;
 }
-a{
-    text-decoration: none;
-}
 .Font-size50 {
     font-family: 'Rubik', sans-serif;
     font-size: min(max(3.307vw, 24px), 50px);

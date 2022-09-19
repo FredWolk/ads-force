@@ -1,13 +1,14 @@
 <?php
 
 use yii\helpers\Url;
+use yii\web\JqueryAsset;
 
 /** @var yii\web\View $this */
 
 $this->title = 'My Yii Application';
 $this->registerCssFile(Url::to(['css/index.css']), ['depends' => ['frontend\assets\AppAsset']]);
 
-$this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => \yii\web\JqueryAsset::class]);
+$this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::class]);
 ?>
 <section class="Freelancer-Full">
     <div class="Freelancer-content-center">
@@ -45,8 +46,8 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => \yii\web\Jquer
         <img src="<?= Url::to(['img/index/Meneger.png']) ?>" alt="">
     </div>
 </section>
-<section class="Main-info">
-    <div class="Main-info-bg container-index">
+<section class="Main-info container-index">
+    <div class="Main-info-bg">
         <div class="Main-info-items">
             <div class="Main-info-item">
                 <h3 class="Font-size36">500+</h3>
@@ -63,7 +64,7 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => \yii\web\Jquer
         </div>
     </div>
 </section>
-<section class="performers-container container-index">
+<section class="performers-container">
     <div class="performers-title">
         <h1 class="Font-size36">ТОП-исполнители</h1>
         <a href="">
@@ -188,20 +189,16 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => \yii\web\Jquer
             </div>
         </a>
     </div>
-    <div class="arrows-slider-specialization">
-        <img src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
-        <img class="arrows-slider-right" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
-    </div>
 </section>
 <section class="progressBar">
-    <div class="progressBarTitle container-index">
+    <div class="progressBarTitle">
         <h2 class="Font-size36">Как начать работу с ADSFORCE</h2>
         <button class="progressBarButton">
             <img src="<?= Url::to(['img/index/iconFreelanceButton.svg']) ?>" alt="">
             <p>Исполнителю</p>
         </button>
     </div>
-    <div class="progress-bar-content container-index">
+    <div class="progress-bar-content">
         <div class="progress-bar-img">
             <img src="<?= Url::to(['img/index/imgProgressBar.png']) ?>" alt="">
         </div>
