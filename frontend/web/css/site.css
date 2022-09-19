@@ -13,7 +13,7 @@ a{
 }
 .Font-size50 {
     font-family: 'Rubik', sans-serif;
-    font-size: 3.307vw;
+    font-size: min(max(3.307vw, 24px), 50px);
     font-weight: 700;
     letter-spacing: 0px;
     color: #1F1F1F;
@@ -21,7 +21,7 @@ a{
 
 .Font-size36 {
     font-family: 'Rubik', sans-serif;
-    font-size: 2.381vw;
+    font-size: min(max(2.381vw, 24px), 36px);
     font-weight: 600;
     letter-spacing: 0px;
     color: #1F1F1F;
@@ -29,7 +29,7 @@ a{
 
 .Font-size28 {
     font-family: 'Rubik', sans-serif;
-    font-size: 1.852vw;
+    font-size: min(max(1.852vw, 18px), 28px);
     font-weight: 400;
     letter-spacing: 0px;
     color: #1F1F1F;
@@ -37,7 +37,7 @@ a{
 
 .Font-size24 {
     font-family: 'Rubik', sans-serif;
-    font-size: 1.587vw;
+    font-size: min(max(1.852vw, 18px), 24px);
     font-weight: 400;
     letter-spacing: 0px;
     color: #1F1F1F;
@@ -47,6 +47,7 @@ a{
     font-family: 'Rubik', sans-serif;
     font-weight: 600;
     font-size: 1.323vw;
+    font-size: min(max(1.323vw, 18px), 20px);
     letter-spacing: 0px;
     color: #1F1F1F;
 }

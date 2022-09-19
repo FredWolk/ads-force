@@ -282,4 +282,3 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => \yii\web\Jquer
         <img class="arrows-slider-right" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
     </div>
 </section>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
