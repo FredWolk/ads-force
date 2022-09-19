@@ -43,8 +43,8 @@ $this->registerCssFile(Url::to(['css/index.css']), ['depends' => ['frontend\asse
         <img src="<?= Url::to(['img/index/Meneger.png']) ?>" alt="">
     </div>
 </section>
-<section class="Main-info container-index">
-    <div class="Main-info-bg">
+<section class="Main-info">
+    <div class="Main-info-bg container-index">
         <div class="Main-info-items">
             <div class="Main-info-item">
                 <h3 class="Font-size36">500+</h3>
@@ -61,7 +61,7 @@ $this->registerCssFile(Url::to(['css/index.css']), ['depends' => ['frontend\asse
         </div>
     </div>
 </section>
-<section class="performers-container">
+<section class="performers-container container-index">
     <div class="performers-title">
         <h1 class="Font-size36">ТОП-исполнители</h1>
         <a href="">
@@ -186,16 +186,20 @@ $this->registerCssFile(Url::to(['css/index.css']), ['depends' => ['frontend\asse
             </div>
         </a>
     </div>
+    <div class="arrows-slider-specialization">
+        <img src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+        <img class="arrows-slider-right" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+    </div>
 </section>
 <section class="progressBar">
-    <div class="progressBarTitle">
+    <div class="progressBarTitle container-index">
         <h2 class="Font-size36">Как начать работу с ADSFORCE</h2>
         <button class="progressBarButton">
             <img src="<?= Url::to(['img/index/iconFreelanceButton.svg']) ?>" alt="">
             <p>Исполнителю</p>
         </button>
     </div>
-    <div class="progress-bar-content">
+    <div class="progress-bar-content container-index">
         <div class="progress-bar-img">
             <img src="<?= Url::to(['img/index/imgProgressBar.png']) ?>" alt="">
         </div>
@@ -227,5 +231,52 @@ $this->registerCssFile(Url::to(['css/index.css']), ['depends' => ['frontend\asse
                 </li>
             </ul>
         </div>
+    </div>
+</section>
+<section class="rewiev-full container-index">
+    <div class="rewiew-title">
+        <h2 class="Font-size36">Отзывы</h2>
+    </div>
+    <div class="rewiev-items">
+        <div class="rewiev-card">
+            <div class="rewiev-card-top">
+                <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
+                <div class="rewiev-card-title">
+                    <h2>Дарья Агапова</h2>
+                    <p>Заказчик</p>
+                </div>
+            </div>
+            <div class="rewiev-card-content">
+                <p>ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+            </div>
+        </div>
+        <div class="rewiev-card">
+            <div class="rewiev-card-top">
+                <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
+                <div class="rewiev-card-title">
+                    <h2>Дарья Агапова</h2>
+                    <p>Заказчик</p>
+                </div>
+            </div>
+            <div class="rewiev-card-content">
+                <p>ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+            </div>
+        </div>
+        <div class="rewiev-card">
+            <div class="rewiev-card-top">
+                <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
+                <div class="rewiev-card-title">
+                    <h2>Дарья Агапова</h2>
+                    <p>Заказчик</p>
+                </div>
+            </div>
+            <div class="rewiev-card-content">
+                <p>ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+            </div>
+        </div>
+    </div>
+    <div class="arrows-slider">
+        <img src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+        <img class="arrows-slider-right" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
     </div>
 </section>
