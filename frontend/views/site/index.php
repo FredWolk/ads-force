@@ -1,52 +1,231 @@
 <?php
 
+use yii\helpers\Url;
+
 /** @var yii\web\View $this */
 
 $this->title = 'My Yii Application';
+$this->registerCssFile(Url::to(['css/index.css']), ['depends' => ['frontend\assets\AppAsset']]);
 ?>
-<div class="site-index">
-    <div class="p-5 mb-4 bg-transparent rounded-3">
-        <div class="container-fluid py-5 text-center">
-            <h1 class="display-4">Congratulations!</h1>
-            <p class="fs-5 fw-light">You have successfully created your Yii-powered application.</p>
-            <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+<section class="Freelancer-Full">
+    <div class="Freelancer-content-center">
+        <div class="Freelancer-content-text">
+            <h1 class="Font-size50">Маркетологи, дизайнеры, разработчики для вашего бизнеса!</h1>
+            <p class="Font-size28">Работайте с исполнителями и заказчиками по всему миру!</p>
+        </div>
+        <div class="Freelancer-content-buttons">
+            <div class="Freelancer-content-buttons-main">
+                <a href="">
+                    <button>
+                        <img class="Freelancer-content-buttons-main-img" src="<?= Url::to(['img/index/iconFreelanceButton.svg']) ?>" alt="">
+                        <p>Исполнителю</p>
+                    </button>
+                </a>
+            </div>
+            <div class="Freelancer-content-buttons-prev">
+                <a href="">
+                    <button class="button-active">
+                        <p>Найти заказ</p>
+                    </button>
+                </a>
+                <a href="">
+                    <button>
+                        <p>Разместить портфолио</p>
+                    </button>
+                </a>
+            </div>
         </div>
     </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+    <div class="Freelancer-absolute-img">
+        <img src="<?= Url::to(['img/index/Freelancer.png']) ?>" alt="">
+    </div>
+    <div class="Meneger-absolute-img">
+        <img src="<?= Url::to(['img/index/Meneger.png']) ?>" alt="">
+    </div>
+</section>
+<section class="Main-info container-index">
+    <div class="Main-info-bg">
+        <div class="Main-info-items">
+            <div class="Main-info-item">
+                <h3 class="Font-size36">500+</h3>
+                <p class="Font-size24">Специалистов на бирже</p>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+            <div class="Main-info-item">
+                <h3 class="Font-size36">1900+</h3>
+                <p class="Font-size24">Заказов уже выполнено</p>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+            <div class="Main-info-item">
+                <h3 class="Font-size36">1710+</h3>
+                <p class="Font-size24">Положительных отзывов</p>
             </div>
         </div>
-
     </div>
-</div>
+</section>
+<section class="performers-container">
+    <div class="performers-title">
+        <h1 class="Font-size36">ТОП-исполнители</h1>
+        <a href="">
+            <button>Хочу в ТОП</button>
+        </a>
+    </div>
+    <div class="performers-cards">
+        <div class="performers-card">
+            <div class="performers-card-left">
+                <img src="<?= Url::to(['img/index/performerAva.png']) ?>" alt="">
+                <div class="performers-card-stars">
+                    <ul>
+                        <li>
+                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                        </li>
+                        <li>
+                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                        </li>
+                        <li>
+                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                        </li>
+                        <li>
+                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                        </li>
+                        <li>
+                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="performers-card-right">
+                <div class="performers-card-right-title">
+                    <h1>Александр Иванов</h1>
+                    <p>PRO</p>
+                </div>
+                <p class="text-italic">веб-разработчик</p>
+                <p class="liked-message">1810 положительных отзывов</p>
+                <ul>
+                    <li>
+                        <p>Проф.владение Phyton, JS</p>
+                    </li>
+                    <li>
+                        <p>Верстка моб.приложений</p>
+                    </li>
+                    <li>
+                        <p>Backend-разработка</p>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="performers-card-mobile">
+                <div class="performers-card-mobile-top">
+                    <img src="<?= Url::to(['img/index/performerAva.png']) ?>" alt="">
+                    <div>
+                        <div class="performers-card-right-title">
+                            <h1>Александр Иванов</h1>
+                            <p>PRO</p>
+                        </div>
+                        <p class="text-italic">веб-разработчик</p>
+                        <div class="performers-card-stars">
+                            <ul>
+                                <li>
+                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                </li>
+                                <li>
+                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                </li>
+                                <li>
+                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                </li>
+                                <li>
+                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                </li>
+                                <li>
+                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="performers-card-mobile-bottom">
+                    <p class="liked-message">1810 положительных отзывов</p>
+                    <ul>
+                        <li>
+                            <p>Проф.владение Phyton, JS</p>
+                        </li>
+                        <li>
+                            <p>Верстка моб.приложений</p>
+                        </li>
+                        <li>
+                            <p>Backend-разработка</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container-index specialization-full">
+    <div class="performers-title-specialization">
+        <h1 class="Font-size36">Специализация</h1>
+    </div>
+    <div class="specialization-items">
+        <a href="">
+            <div class="specialization-item">
+                <p class="Font-size24">Дизайн</p>
+            </div>
+        </a>
+        <a href="">
+            <div class="specialization-item">
+                <p class="Font-size24">Дизайн</p>
+            </div>
+        </a>
+        <a href="">
+            <div class="specialization-item">
+                <p class="Font-size24">Дизайн</p>
+            </div>
+        </a>
+        <a href="">
+            <div class="specialization-item">
+                <p class="Font-size24">Дизайн</p>
+            </div>
+        </a>
+    </div>
+</section>
+<section class="progressBar">
+    <div class="progressBarTitle">
+        <h2 class="Font-size36">Как начать работу с ADSFORCE</h2>
+        <button class="progressBarButton">
+            <img src="<?= Url::to(['img/index/iconFreelanceButton.svg']) ?>" alt="">
+            <p>Исполнителю</p>
+        </button>
+    </div>
+    <div class="progress-bar-content">
+        <div class="progress-bar-img">
+            <img src="<?= Url::to(['img/index/imgProgressBar.png']) ?>" alt="">
+        </div>
+        <div>
+            <ul>
+                <li>
+                    <div>
+                        <h1 class="Font-size24">Опубликуйте заказ</h1>
+                        <p>Расскажите о задаче и опубликуйте в каталоге</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h1 class="Font-size24">Опубликуйте заказ</h1>
+                        <p>Расскажите о задаче и опубликуйте в каталоге</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h1 class="Font-size24">Опубликуйте заказ</h1>
+                        <p>Расскажите о задаче и опубликуйте в каталоге</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h1 class="Font-size24">Опубликуйте заказ</h1>
+                        <p>Расскажите о задаче и опубликуйте в каталоге</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
