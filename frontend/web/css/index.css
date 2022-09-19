@@ -389,6 +389,7 @@
 .progress-bar-content ul li {
     position: relative;
     font-family: 'Rubik';
+    z-index: 10;
 }
 
 .progress-bar-content ul li div {
@@ -422,6 +423,18 @@ p {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 30px 30px;
+}
+
+.progress-bar-content ul li:last-child::after {
+    content: "";
+    position: absolute;
+    left: -70px;
+    bottom: 0px;
+    width: 4px;
+    height: calc(100% - 69px);
+    z-index: 10;
+    border: 2px #A9F7FF73;
+    ;
 }
 
 .progressBarTitle h2 {
