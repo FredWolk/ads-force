@@ -14,6 +14,7 @@ return [
     'modules' => [],
     'components' => [
         'request' => [
+            'baseUrl' => '/admin',
             'csrfParam' => '_csrf-backend',
             'baseUrl' => '/admin',
         ],
@@ -41,11 +42,27 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
+            'rules' =>
+            [
                 '' => 'site/index',
+
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
         ],
+    ],
+    'controllerMap' => [
+        'elfinder' => [
+            'class' => 'mihaildev\elfinder\Controller',
+            'access' => ['@'], //глобальный доступ к фаил менеджеру @ - для авторизорованных , ? - для гостей , чтоб открыть всем ['@', '?']
+            'roots' => [
+                [
+                    'baseUrl' => '@web',
+                    'basePath' => '@webroot',
+                    'path' => 'files',
+                    'name' => 'Global'
+                ],
+            ],
+        ]
     ],
     'params' => $params,
 ];
