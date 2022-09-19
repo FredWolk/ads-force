@@ -54,6 +54,8 @@ if (!empty($categories)) {
 
     <?= $form->field($model, 'skills')->textarea(['rows' => 6, 'readonly' => true]) ?>
 
+    
+
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>

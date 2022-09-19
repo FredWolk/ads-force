@@ -1,13 +1,14 @@
 <?php
 
 use yii\helpers\Url;
+use yii\web\JqueryAsset;
 
 /** @var yii\web\View $this */
 
 $this->title = 'My Yii Application';
 $this->registerCssFile(Url::to(['css/index.css']), ['depends' => ['frontend\assets\AppAsset']]);
 
-$this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => \yii\web\JqueryAsset::class]);
+$this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::class]);
 ?>
 <section class="Freelancer-Full">
     <div class="Freelancer-content-center">
@@ -282,4 +283,3 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => \yii\web\Jquer
         <img class="arrows-slider-right" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
     </div>
 </section>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
