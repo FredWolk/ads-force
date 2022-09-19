@@ -212,6 +212,7 @@
     background: linear-gradient(90deg, #CE06D0 0%, #00DBDE 100%);
     border-radius: 42px;
     padding: 15px;
+    font-family: 'Rubik', sans-serif;
     cursor: pointer;
     color: #FFFFFF;
     font-weight: 500;
@@ -258,10 +259,11 @@
 }
 
 .performers-card-right ul li {
-    font-size: 18px;
     position: relative;
 }
-
+.performers-card-right ul li p{
+    font-weight: 400;
+}
 .performers-card-right ul li::before {
     content: "";
     width: 9px;
@@ -279,9 +281,10 @@
     gap: 10px;
     font-family: 'Rubik', sans-serif;
     align-items: center;
-    font-size: 18px;
 }
-
+.performers-card-mobile-bottom ul li p{
+    font-weight: 400;
+}
 .performers-card-right-title p {
     color: #F535DA;
 }
@@ -319,23 +322,17 @@
     gap: 40px;
     width: 100%;
 }
-
-.specialization-items a {
-    max-width: 319px;
-    width: 100%;
-    min-height: 223px;
-}
-
 .specialization-item {
     background-image: linear-gradient(0deg, rgba(63, 63, 63, 0.5), rgba(63, 63, 63, 0.5)), url(../img/index/specializationFon.png);
     max-width: 319px;
     width: 100%;
-    height: 100%;
+    min-height: 223px;
+    margin: 0px auto;
     position: relative;
     transition: 0.5s;
     border-radius: 17px;
 }
-
+.specialization-items .slick-slide {padding: 15px 0px;}
 .specialization-item:hover {
     transform: scale(1.1);
 }
@@ -461,6 +458,74 @@ p {
     margin-top: auto;
 }
 
+.rewiew-title {
+    margin-top: 85px;
+    margin-bottom: 91px;
+}
+
+.rewiew-title h2 {
+    color: #F535DA;
+}
+
+
+.rewiev-card {
+    width: 100%;
+    position: relative;
+    padding: 14px;
+    border: 1px solid;
+    border-image-source: linear-gradient(90deg, #CE06D0 0%, #00DBDE 100%);
+    border-radius: 15px;
+    background-color: #FFFFFF;
+    padding-top: 9px;
+    margin-top: 40px;
+}
+
+.rewiev-card-title {
+    font-family: 'Rubik', sans-serif;
+}
+
+.rewiev-card-top {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 16px;
+}
+
+.rewiev-card-top img {
+    margin-top: -50px;
+    width: 78px;
+    height: 78px;
+}
+
+.rewiev-items {
+    display: flex;
+    gap: 20px;
+    min-height: 250px;
+}
+
+.rewiev-full {
+    max-width: 1082px;
+    margin: 0px auto;
+    padding: 0px 20px;
+}
+
+.arrows-slider {
+    display: flex;
+    column-gap: 11px;
+    margin-top: 30px;
+    margin-bottom: 120px;
+}
+
+.arrows-slider-specialization {
+    display: none;
+    column-gap: 11px;
+    margin-top: 30px;
+    margin-bottom: 120px;
+}
+
+.arrows-slider-right {
+    transform: rotate(-180deg);
+}
+
 @media(min-width:1512px) {
     .progress-bar-content ul li div p {
         font-size: 18px;
@@ -474,13 +539,15 @@ p {
 }
 
 @media(max-width:900px) {
-    .progress-bar-img{
+    .progress-bar-img {
         max-width: 400px;
     }
+
     .progress-bar-img img {
         width: 100%;
     }
 }
+
 @media(max-width:768px) {
     .progress-bar-content {
         display: flex;
@@ -488,27 +555,32 @@ p {
         align-items: center;
         row-gap: 70px;
     }
+
     .progress-bar-content ul li div h1 {
         font-size: 24px;
     }
+
     .progress-bar-content ul li div p {
         font-size: 18px;
     }
 }
 
-@media (max-width:735px) {
+@media (max-width:734px) {
     .specialization-items {
         justify-content: center;
     }
+
     .progressBarTitle {
         padding: 0px;
         flex-direction: column;
         align-items: flex-start;
         row-gap: 40px;
     }
-    .progressBarTitle button{
+
+    .progressBarTitle button {
         margin: 0px auto;
     }
+
     .arrows-slider-specialization {
         justify-content: center;
         display: flex;
@@ -610,23 +682,17 @@ p {
         width: 100%;
     }
 
-    .performers-card-right-title {
-        font-size: 2.759vw;
+    .performers-title {
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 30px;
     }
 
-    .text-italic {
-        font-size: 2.069vw;
+    .performers-container {
+        margin: 59px auto;
     }
 
-    .liked-message {
-        font-size: 2.759vw;
-    }
-
-    .performers-card-right ul li {
-        font-size: 2.759vw;
-    }
-
-    .performers-card-mobile ul li {
-        font-size: 2.759vw;
+    .performers-title a {
+        margin: 0px auto;
     }
 }

@@ -1,14 +1,55 @@
 <?php
 
 use yii\helpers\Url;
+use frontend\assets\AppAsset;
 use yii\web\JqueryAsset;
 
 /** @var yii\web\View $this */
 
-$this->title = 'ADS.FORCE';
+$this->title = 'My.Force';
 $this->registerCssFile(Url::to(['css/index.css']), ['depends' => ['frontend\assets\AppAsset']]);
-
+$this->registerCssFile(Url::to(['css/slick-theme.css']), ['depends' => ['frontend\assets\AppAsset']]);
+$this->registerCssFile(Url::to(['css/slick.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::class]);
+$js = <<< JS
+const availableScreenWidth = window.screen.availWidth;
+if(availableScreenWidth <=735){
+    $('.specialization-items').addClass('specialization-slider')
+}
+  $('.rewiev-items').slick({
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  prevArrow: $('.prev'),
+nextArrow: $('.next'),
+responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        vertical: true,
+        verticalSwiping: true,
+        slidesToShow: 2
+      }
+    }
+  ]
+});
+$('.specialization-slider').slick({
+  slidesToShow: 3,
+  slidesToScroll: 1,
+        slidesToShow: 3,
+        vertical: true,
+        verticalSwiping: true,
+        prevArrow: $('.prev-spec'),
+        nextArrow: $('.next-spec')
+})
+JS;
+$this->registerJs($js);
+AppAsset::register($this);
 ?>
 <section class="Freelancer-Full">
     <div class="Freelancer-content-center">
@@ -97,20 +138,20 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::c
             </div>
             <div class="performers-card-right">
                 <div class="performers-card-right-title">
-                    <h1>Александр Иванов</h1>
+                    <h2 class="Font-size20">Александр Иванов</h2>
                     <p>PRO</p>
                 </div>
                 <p class="text-italic">веб-разработчик</p>
                 <p class="liked-message">1810 положительных отзывов</p>
                 <ul>
                     <li>
-                        <p>Проф.владение Phyton, JS</p>
+                        <p class="Font-size20">Проф.владение Phyton, JS</p>
                     </li>
                     <li>
-                        <p>Верстка моб.приложений</p>
+                        <p class="Font-size20">Верстка моб.приложений</p>
                     </li>
                     <li>
-                        <p>Backend-разработка</p>
+                        <p class="Font-size20">Backend-разработка</p>
                     </li>
                 </ul>
 
@@ -120,7 +161,7 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::c
                     <img src="<?= Url::to(['img/index/performerAva.png']) ?>" alt="">
                     <div>
                         <div class="performers-card-right-title">
-                            <h1>Александр Иванов</h1>
+                            <h2 class="Font-size20">Александр Иванов</h2>
                             <p>PRO</p>
                         </div>
                         <p class="text-italic">веб-разработчик</p>
@@ -149,13 +190,13 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::c
                     <p class="liked-message">1810 положительных отзывов</p>
                     <ul>
                         <li>
-                            <p>Проф.владение Phyton, JS</p>
+                            <p class="Font-size20">Проф.владение Phyton, JS</p>
                         </li>
                         <li>
-                            <p>Верстка моб.приложений</p>
+                            <p class="Font-size20">Верстка моб.приложений</p>
                         </li>
                         <li>
-                            <p>Backend-разработка</p>
+                            <p class="Font-size20">Backend-разработка</p>
                         </li>
                     </ul>
                 </div>
@@ -188,6 +229,10 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::c
                 <p class="Font-size24">Дизайн</p>
             </div>
         </a>
+    </div>
+    <div class="arrows-slider-specialization">
+        <img class="prev-spec" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+        <img class="arrows-slider-right next-spec" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
     </div>
 </section>
 <section class="progressBar">
@@ -275,7 +320,7 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::c
         </div>
     </div>
     <div class="arrows-slider">
-        <img src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
-        <img class="arrows-slider-right" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+        <img class="prev" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+        <img class="arrows-slider-right next" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
     </div>
 </section>
