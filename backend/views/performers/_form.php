@@ -1,7 +1,5 @@
 <?php
 
-use app\models\Categories;
-use common\models\User;
 use mihaildev\elfinder\InputFile;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -9,43 +7,27 @@ use yii\widgets\ActiveForm;
 /** @var yii\web\View $this */
 /** @var app\models\Performers $model */
 /** @var yii\widgets\ActiveForm $form */
-
-$users = User::find()->asArray()->select('username, id')->all();
-$userArr = [];
-if (!empty($users)) {
-    foreach ($users as $user) {
-        $userArr[$user['id']] = $user['username'];
-    }
-}
-$categories = Categories::find()->asArray()->select('title, id')->all();
-$catArr = [];
-if (!empty($categories)) {
-    foreach ($categories as $cat) {
-        $catArr[$cat['id']] = $cat['title'];
-    }
-}
-
 ?>
 
 <div class="performers-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'user_id')->dropDownList($userArr) ?>
+    <?= $form->field($model, 'user_id')->textInput() ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Пупкин Иван Петрович']) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'position')->dropDownList(['1' => 'Базовый', '2' => 'Продвинутый', '3' => 'Профи']) ?>
+    <?= $form->field($model, 'position')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'rating')->input('number') ?>
+    <?= $form->field($model, 'rating')->textInput() ?>
 
-    <?= $form->field($model, 'specialization_id')->dropDownList($catArr) ?>
+    <?= $form->field($model, 'specialization_id')->textInput() ?>
 
     <?= $form->field($model, 'photo')->widget(InputFile::className(), [
         'language'      => 'ru',
-        'controller'    => 'elfinder',
-        'path'          => 'image',
-        'filter'        => 'image',
+        'controller'    => 'elfinder', // вставляем название контроллера, по умолчанию равен elfinder
+        'path'          => 'image', // будет открыта папка из настроек контроллера с добавлением указанной под деритории 
+        'filter'        => 'image',    // фильтр файлов, можно задать массив фильтров https://github.com/Studio-42/elFinder/wiki/Client-configuration-options#wiki-onlyMimes
         'template'      => '<div class="input-group">{input}<span class="input-group-btn">{button}</span></div>',
         'options'       => ['class' => 'form-control'],
         'buttonOptions' => ['class' => 'btn btn-warning'],
