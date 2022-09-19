@@ -15,7 +15,7 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'css/header.css',
         'css/footer.css',
-        'css/reset.css',
+        'css/reset.css'
     ];
     public $js = [];
     public $depends = [
