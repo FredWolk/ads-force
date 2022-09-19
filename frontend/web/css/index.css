@@ -35,6 +35,7 @@
     display: flex;
     align-items: center;
     min-height: 815px;
+    padding: 0px 20px;
     height: 100%;
     width: 100%;
 }
@@ -494,10 +495,46 @@ p {
         font-size: 18px;
     }
 }
+
+@media (max-width:735px) {
+    .specialization-items {
+        justify-content: center;
+    }
+    .progressBarTitle {
+        padding: 0px;
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 40px;
+    }
+    .progressBarTitle button{
+        margin: 0px auto;
+    }
+    .arrows-slider-specialization {
+        justify-content: center;
+        display: flex;
+    }
+}
+
 @media(max-width:580px) {
     .Freelancer-content-buttons-prev {
         flex-direction: column;
         align-items: center;
+    }
+
+    .arrows-slider {
+        justify-content: center;
+    }
+
+    .progressBarTitle button {
+        font-size: 20px;
+    }
+
+    .Freelancer-content-buttons-main button p {
+        font-size: 20px;
+    }
+
+    .progressBarTitle h2 {
+        font-size: 5vw;
     }
 
     .performers-card-left {

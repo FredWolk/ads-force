@@ -162,6 +162,12 @@ footer {
     gap: 17px;
     margin-top: 10px;
 }
+.contacts-icons a img {
+    transition: 0.5s;
+}
+.contacts-icons a img:hover {
+    filter: drop-shadow(1px 1px 5px #00DBDE);
+}
 
 .contacts-icons a img {
     width: 32px;

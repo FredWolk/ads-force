@@ -5,7 +5,7 @@ use yii\web\JqueryAsset;
 
 /** @var yii\web\View $this */
 
-$this->title = 'My Yii Application';
+$this->title = 'ADS.FORCE';
 $this->registerCssFile(Url::to(['css/index.css']), ['depends' => ['frontend\assets\AppAsset']]);
 
 $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::class]);
