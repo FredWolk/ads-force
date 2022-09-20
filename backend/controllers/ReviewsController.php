@@ -2,8 +2,8 @@
 
 namespace backend\controllers;
 
-use app\models\Reviews;
-use backend\models\ReviewsSearch;
+use console\models\Reviews;
+use console\models\ReviewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

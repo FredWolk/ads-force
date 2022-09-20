@@ -1,7 +1,7 @@
 <?php
 
-use app\models\Categories;
-use common\models\User;
+use console\models\Categories;
+use console\models\User;
 use mihaildev\elfinder\InputFile;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;

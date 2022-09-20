@@ -1,10 +1,10 @@
 <?php
 
-namespace backend\models;
+namespace console\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\SubCategories;
+use console\models\SubCategories;
 
 /**
  * SubCategoriesSearch represents the model behind the search form of `app\models\SubCategories`.

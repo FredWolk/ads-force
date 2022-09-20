@@ -1,15 +1,15 @@
 <?php
 
-namespace backend\models;
+namespace console\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Reviews;
+use console\models\Performers;
 
 /**
- * ReviewsSearch represents the model behind the search form of `app\models\Reviews`.
+ * PerformersSearch represents the model behind the search form of `app\models\Performers`.
  */
-class ReviewsSearch extends Reviews
+class PerformersSearch extends Performers
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class ReviewsSearch extends Reviews
     public function rules()
     {
         return [
-            [['id', 'user_id'], 'integer'],
-            [['text'], 'safe'],
+            [['id', 'user_id', 'rating', 'specialization_id'], 'integer'],
+            [['name', 'position', 'photo', 'skills'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class ReviewsSearch extends Reviews
      */
     public function search($params)
     {
-        $query = Reviews::find();
+        $query = Performers::find();
 
         // add conditions that should always apply here
 
@@ -60,9 +60,14 @@ class ReviewsSearch extends Reviews
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
+            'rating' => $this->rating,
+            'specialization_id' => $this->specialization_id,
         ]);
 
-        $query->andFilterWhere(['like', 'text', $this->text]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'position', $this->position])
+            ->andFilterWhere(['like', 'photo', $this->photo])
+            ->andFilterWhere(['like', 'skills', $this->skills]);
 
         return $dataProvider;
     }

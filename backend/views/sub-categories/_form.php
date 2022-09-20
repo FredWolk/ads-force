@@ -1,6 +1,6 @@
 <?php
 
-use app\models\Categories;
+use console\models\Categories;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 

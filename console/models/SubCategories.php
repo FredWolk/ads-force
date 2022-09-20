@@ -1,24 +1,24 @@
 <?php
 
-namespace app\models;
+namespace console\models;
 
 use Yii;
 
 /**
- * This is the model class for table "categories".
+ * This is the model class for table "sub_categories".
  *
  * @property int $id
+ * @property int|null $categories_id
  * @property string|null $title
- * @property string|null $image
  */
-class Categories extends \yii\db\ActiveRecord
+class SubCategories extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'categories';
+        return 'sub_categories';
     }
 
     /**
@@ -27,9 +27,9 @@ class Categories extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'image'], 'required', 'message' => 'Обязательно к заполнению'],
+            [['categories_id'], 'integer'],
             [['title'], 'string', 'max' => 255],
-            [['image'], 'string', 'max' => 1023],
+            [['categories_id', 'title'], 'required', 'message' => 'Обязательно к заполнению'],
         ];
     }
 
@@ -40,8 +40,8 @@ class Categories extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'categories_id' => 'Категория',
             'title' => 'Название',
-            'image' => 'Изображение',
         ];
     }
 }

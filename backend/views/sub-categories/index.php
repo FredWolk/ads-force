@@ -1,7 +1,7 @@
 <?php
 
-use app\models\Categories;
-use app\models\SubCategories;
+use console\models\Categories;
+use console\models\SubCategories;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;

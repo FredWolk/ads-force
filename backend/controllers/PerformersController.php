@@ -2,8 +2,8 @@
 
 namespace backend\controllers;
 
-use app\models\Performers;
-use backend\models\PerformersSearch;
+use console\models\Performers;
+use console\models\PerformersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

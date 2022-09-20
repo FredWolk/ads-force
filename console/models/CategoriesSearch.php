@@ -1,10 +1,10 @@
 <?php
 
-namespace backend\models;
+namespace console\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Categories;
+use console\models\Categories;
 
 /**
  * CategoriesSearch represents the model behind the search form of `app\models\Categories`.

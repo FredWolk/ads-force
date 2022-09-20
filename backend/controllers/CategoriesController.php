@@ -2,8 +2,8 @@
 
 namespace backend\controllers;
 
-use app\models\Categories;
-use backend\models\CategoriesSearch;
+use console\models\Categories;
+use console\models\CategoriesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
