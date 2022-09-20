@@ -9,6 +9,7 @@ use yii\web\JqueryAsset;
 
 $this->title = 'My.Force';
 $this->registerCssFile(Url::to(['css/index.css']), ['depends' => ['frontend\assets\AppAsset']]);
+$this->registerCssFile(Url::to(['css/component-css/performers-card.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerCssFile(Url::to(['css/slick-theme.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerCssFile(Url::to(['css/slick.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::class]);
@@ -47,30 +48,7 @@ responsive: [
     }
   ]
 });
-function starRating(){
-    let star = document.querySelectorAll('.yellowStar')
-let numberRating = 70;
-let steps = 0;
-let procentRating
-    for (let i = 0; i < 5; i++) {
-        if(numberRating > 20){
-            numberRating = numberRating - 20;
-            steps++;
-        }
-        else{
-            procentRating = (numberRating / 20) * 100;
-        }
-    }
-    for(let i = 0; i < steps; i++){
-        console.log(star[i] );
-        star[i].style.backgroundColor = "yellow";
-        star[i].style.width = "100%";
-        star[i].style.height = "20px";
-    }
-    star[steps].style.backgroundColor = "yellow";
-    star[steps].style.width = procentRating + "%";
-    star[steps].style.height = "20px";
-}
+
 JS;
 $this->registerJs($js);
 AppAsset::register($this);
@@ -106,15 +84,13 @@ AppAsset::register($this);
     </div>
     <div class="Freelancer-absolute-img">
         <img src="<?= Url::to(['img/index/Freelancer.png']) ?>" alt="">
+    </div><div class="Meneger-absolute-img">
+        <img src="<?= Url::to(['img/index/Meneger-mask.png']) ?>" alt="">
     </div>
-
-    <!--<div class="Meneger-absolute-img">
-        <img src="<?= Url::to(['img/index/Meneger.png']) ?>" alt="">
-    </div>-->
 </section>
-<section class="Main-info container-index">
+<section class="Main-info">
     <div class="Main-info-bg">
-        <div class="Main-info-items">
+        <div class="Main-info-items container-index">
             <div class="Main-info-item">
                 <h3 class="Font-size36">500+</h3>
                 <p class="Font-size24">Специалистов на бирже</p>
@@ -131,13 +107,13 @@ AppAsset::register($this);
     </div>
 </section>
 <section class="performers-container">
-    <div class="performers-title">
+    <div class="performers-title container-index">
         <h1 class="Font-size36">ТОП-исполнители</h1>
         <a href="">
             <button>Хочу в ТОП</button>
         </a>
     </div>
-    <div class="performers-cards">
+    <div class="performers-cards container-index">
         <?php if (!empty($performers)) : ?>
             <?php foreach ($performers as $performer) : ?>
                 <div class="performers-card">
@@ -233,11 +209,11 @@ AppAsset::register($this);
         <?php endif; ?>
     </div>
 </section>
-<section class="container-index specialization-full">
-    <div class="performers-title-specialization">
+<section class="specialization-full">
+    <div class="performers-title-specialization container-index">
         <h1 class="Font-size36">Специализация</h1>
     </div>
-    <div class="specialization-items ">
+    <div class="specialization-items container-index">
         <?php if (!empty($categories)) : ?>
             <?php foreach ($categories as $v) : ?>
                 <a href="">
@@ -254,7 +230,7 @@ AppAsset::register($this);
     </div>
 </section>
 <section class="progressBar">
-    <div class="progressBarTitle">
+    <div class="progressBarTitle container-index">
         <h2 class="Font-size36">Как начать работу с ADSFORCE</h2>
         <button class="progressBlackButton">
             <!--progressBarButton-->
@@ -296,11 +272,11 @@ AppAsset::register($this);
         </div>
     </div>
 </section>
-<section class="rewiev-full container-index">
-    <div class="rewiew-title">
+<section class="rewiev-full">
+    <div class="rewiew-title container-index">
         <h2 class="Font-size36">Отзывы</h2>
     </div>
-    <div class="rewiev-items">
+    <div class="rewiev-items container-index">
         <div class="rewiev-card">
             <div class="rewiev-card-top">
                 <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
@@ -338,7 +314,7 @@ AppAsset::register($this);
             </div>
         </div>
     </div>
-    <div class="arrows-slider">
+    <div class="arrows-slider container-index">
         <img class="prev" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
         <img class="arrows-slider-right next" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
     </div>
