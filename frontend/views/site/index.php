@@ -144,7 +144,7 @@ AppAsset::register($this);
                     <div class="performers-card-left">
                         <img src="<?= Url::to([$performer['photo']]) ?>" alt="">
                         <div class="performers-card-stars">
-                            <ul>
+                            <ul >
                                 <li>
                                     <div class="yellowStar"></div>
                                 </li>
@@ -270,25 +270,25 @@ AppAsset::register($this);
             <ul>
                 <li>
                     <div>
-                        <h1 class="Font-size24">Опубликуйте заказ</h1>
+                        <h2 class="Font-size24">Опубликуйте заказ</h2>
                         <p>Расскажите о задаче и опубликуйте в каталоге</p>
                     </div>
                 </li>
                 <li>
                     <div>
-                        <h1 class="Font-size24">Опубликуйте заказ</h1>
+                        <h2 class="Font-size24">Опубликуйте заказ</h2>
                         <p>Расскажите о задаче и опубликуйте в каталоге</p>
                     </div>
                 </li>
                 <li>
                     <div>
-                        <h1 class="Font-size24">Опубликуйте заказ</h1>
+                        <h2 class="Font-size24">Опубликуйте заказ</h2>
                         <p>Расскажите о задаче и опубликуйте в каталоге</p>
                     </div>
                 </li>
                 <li>
                     <div>
-                        <h1 class="Font-size24">Опубликуйте заказ</h1>
+                        <h2 class="Font-size24">Опубликуйте заказ</h2>
                         <p>Расскажите о задаче и опубликуйте в каталоге</p>
                     </div>
                 </li>
