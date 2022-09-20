@@ -1,118 +1,105 @@
-@import url('../fonts/Rubik-Regular.ttf');
-
 *,
 *::before,
 *::after {
-    margin: 0px;
-    padding: 0px;
-    border: 0px;
-    text-decoration: none;
-    box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
 }
 .Font-size50 {
-    font-family: 'Rubik', sans-serif;
-    font-size: min(max(3.307vw, 24px), 50px);
-    font-weight: 700;
-    letter-spacing: 0px;
-    color: #1F1F1F;
+  font-size: min(max(3.307vw, 24px), 50px);
+  font-weight: 700;
+  letter-spacing: 0px;
+  color: #1f1f1f;
 }
 
 .Font-size36 {
-    font-family: 'Rubik', sans-serif;
-    font-size: min(max(2.381vw, 24px), 36px);
-    font-weight: 600;
-    letter-spacing: 0px;
-    color: #1F1F1F;
+  font-size: min(max(2.381vw, 24px), 36px);
+  font-weight: 600;
+  letter-spacing: 0px;
+  color: #1f1f1f;
 }
 
 .Font-size28 {
-    font-family: 'Rubik', sans-serif;
-    font-size: min(max(1.852vw, 18px), 28px);
-    font-weight: 400;
-    letter-spacing: 0px;
-    color: #1F1F1F;
+  font-size: min(max(1.852vw, 18px), 28px);
+  font-weight: 400;
+  letter-spacing: 0px;
+  color: #1f1f1f;
 }
 
 .Font-size24 {
-    font-family: 'Rubik', sans-serif;
-    font-size: min(max(1.587vw, 18px), 24px);
-    font-weight: 400;
-    letter-spacing: 0px;
-    color: #1F1F1F;
+  font-size: min(max(1.587vw, 18px), 24px);
+  font-weight: 400;
+  letter-spacing: 0px;
+  color: #1f1f1f;
 }
 
 .Font-size20 {
-    font-family: 'Rubik', sans-serif;
-    font-weight: 600;
-    font-size: min(max(1.323vw, 18px), 20px);
+  font-weight: 600;
+  font-size: min(max(1.323vw, 18px), 20px);
+  letter-spacing: 0px;
+  color: #1f1f1f;
+}
+
+@media (min-width: 1512px) {
+  .Font-size50 {
+    font-size: 50px;
+    font-weight: 700;
     letter-spacing: 0px;
-    color: #1F1F1F;
+    color: #1f1f1f;
+  }
+
+  .Font-size36 {
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    color: #1f1f1f;
+  }
+
+  .Font-size28 {
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color: #1f1f1f;
+  }
+
+  .Font-size24 {
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color: #1f1f1f;
+  }
+
+  .Font-size20 {
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0px;
+    color: #1f1f1f;
+  }
 }
 
-@media(min-width:1512px) {
-    .Font-size50 {
-        font-family: 'Rubik', sans-serif;
-        font-size: 50px;
-        font-weight: 700;
-        letter-spacing: 0px;
-        color: #1F1F1F;
-    }
+@media (max-width: 580px) {
+  .Font-size50 {
+    font-size: 6.4vw;
+  }
 
-    .Font-size36 {
-        font-family: 'Rubik', sans-serif;
-        font-size: 36px;
-        font-weight: 600;
-        letter-spacing: 0px;
-        color: #1F1F1F;
-    }
+  .Font-size36 {
+    font-size: 6.4vw;
+    font-weight: 600;
+    letter-spacing: 0px;
+    color: #1f1f1f;
+  }
 
-    .Font-size28 {
-        font-family: 'Rubik', sans-serif;
-        font-size: 28px;
-        font-weight: 400;
-        letter-spacing: 0px;
-        color: #1F1F1F;
-    }
+  .Font-size28 {
+    font-size: 4.8vw;
+  }
 
-    .Font-size24 {
-        font-family: 'Rubik', sans-serif;
-        font-size: 24px;
-        font-weight: 400;
-        letter-spacing: 0px;
-        color: #1F1F1F;
-    }
-
-    .Font-size20 {
-        font-family: 'Rubik', sans-serif;
-        font-weight: 600;
-        font-size: 20px;
-        letter-spacing: 0px;
-        color: #1F1F1F;
-    }
-}
-
-@media(max-width:580px) {
-    .Font-size50 {
-        font-size: 6.400vw;
-    }
-
-    .Font-size36 {
-        font-family: 'Rubik', sans-serif;
-        font-size: 6.400vw;
-        font-weight: 600;
-        letter-spacing: 0px;
-        color: #1F1F1F;
-    }
-
-    .Font-size28 {
-        font-size: 4.800vw;
-    }
-
-    .Font-size24 {
-        font-family: 'Rubik', sans-serif;
-        font-size: 4.800vw;
-        font-weight: 400;
-        letter-spacing: 0px;
-        color: #1F1F1F;
-    }
+  .Font-size24 {
+    font-size: 4.8vw;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color: #1f1f1f;
+  }
 }
