@@ -190,6 +190,8 @@
 
 .performers-card-left img {
     width: 100%;
+    border-radius: 50%;
+    height: 145px;
 }
 
 .performers-title {
@@ -226,6 +228,18 @@
     justify-content: space-between;
 }
 
+.performers-card-stars ul li {
+    background-image: url('../img/index/starEmpty.svg');
+    position: relative;
+    width: 21px;
+    height: 20px;
+}
+
+.yellowStar {
+    position: absolute;
+    z-index: -1;
+}
+
 .performers-container {
     padding: 0px 15px;
 }
@@ -241,6 +255,8 @@
     display: flex;
     font-family: 'Rubik', sans-serif;
     flex-direction: column;
+    max-width: 317px;
+    width: 100%;
     gap: 5px;
 }
 
@@ -261,8 +277,15 @@
     font-size: min(max(1.058vw, 14px), 16px);
 }
 
-.performers-card-right ul {
+.performers-card {
+    cursor: pointer;
+}
+
+.performers-card:hover .performers-card-right ul {
     list-style: none;
+}
+
+.performers-card-right ul {
     margin-left: 10px;
 }
 
@@ -274,7 +297,13 @@
     font-weight: 400;
 }
 
-.performers-card-right ul li::before {
+.performers-card:hover .performers-card-right h2 {
+    background: linear-gradient(90deg, #CE06D0 0%, #00DBDE 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.performers-card:hover .performers-card-right ul li::before {
     content: "";
     width: 9px;
     height: 9px;
@@ -344,6 +373,8 @@
     background-image: linear-gradient(0deg, rgba(63, 63, 63, 0.5), rgba(63, 63, 63, 0.5)), url(../img/index/specializationFon.png);
     max-width: 319px;
     width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
     min-height: 223px;
     margin: 0px auto;
     position: relative;
@@ -481,6 +512,7 @@ p {
     border-radius: 42px;
     min-height: 62px;
 }
+
 .progressBarTitle .progressBlackButton img {
     width: 50px;
     right: 6px;
@@ -488,6 +520,7 @@ p {
     transform: translate(0%, -50%);
     position: absolute;
 }
+
 .progressBarTitle .progressBarButton img {
     width: 50px;
     left: 11px;
@@ -495,6 +528,7 @@ p {
     transform: translate(0%, -50%);
     position: absolute;
 }
+
 .progressBarTitle .progressBarButton img {
     width: 50px;
     left: 11px;
@@ -552,6 +586,7 @@ p {
 .rewiev-card-top img {
     margin-top: -50px;
     width: 78px;
+    border-radius: 50%;
     height: 78px;
 }
 
@@ -736,7 +771,10 @@ p {
     }
 
     .performers-card-mobile-top img {
-        width: 86px;
+        width: 100%;
+        max-width: 145px;
+        border-radius: 50%;
+        height: 145px;
     }
 
     .performers-card-mobile-bottom {
