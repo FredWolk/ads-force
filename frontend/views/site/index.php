@@ -14,7 +14,15 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::c
 $js = <<< JS
 const availableScreenWidth = window.screen.availWidth;
 if(availableScreenWidth <=735){
-    $('.specialization-items').addClass('specialization-slider')
+$('.specialization-items').slick({
+  slidesToShow: 3,
+  slidesToScroll: 1,
+        slidesToShow: 3,
+        vertical: true,
+        verticalSwiping: true,
+        prevArrow: $('.prev-spec'),
+        nextArrow: $('.next-spec')
+})
 }
   $('.rewiev-items').slick({
   slidesToShow: 3,
@@ -29,7 +37,7 @@ responsive: [
       }
     },
     {
-      breakpoint: 480,
+      breakpoint: 580,
       settings: {
         vertical: true,
         verticalSwiping: true,
@@ -38,15 +46,6 @@ responsive: [
     }
   ]
 });
-$('.specialization-slider').slick({
-  slidesToShow: 3,
-  slidesToScroll: 1,
-        slidesToShow: 3,
-        vertical: true,
-        verticalSwiping: true,
-        prevArrow: $('.prev-spec'),
-        nextArrow: $('.next-spec')
-})
 JS;
 $this->registerJs($js);
 AppAsset::register($this);
@@ -83,9 +82,10 @@ AppAsset::register($this);
     <div class="Freelancer-absolute-img">
         <img src="<?= Url::to(['img/index/Freelancer.png']) ?>" alt="">
     </div>
-    <div class="Meneger-absolute-img">
+
+    <!--<div class="Meneger-absolute-img">
         <img src="<?= Url::to(['img/index/Meneger.png']) ?>" alt="">
-    </div>
+    </div>-->
 </section>
 <section class="Main-info container-index">
     <div class="Main-info-bg">
@@ -154,7 +154,6 @@ AppAsset::register($this);
                         <p class="Font-size20">Backend-разработка</p>
                     </li>
                 </ul>
-
             </div>
             <div class="performers-card-mobile">
                 <div class="performers-card-mobile-top">
@@ -208,27 +207,16 @@ AppAsset::register($this);
     <div class="performers-title-specialization">
         <h1 class="Font-size36">Специализация</h1>
     </div>
-    <div class="specialization-items">
-        <a href="">
-            <div class="specialization-item">
-                <p class="Font-size24">Дизайн</p>
-            </div>
-        </a>
-        <a href="">
-            <div class="specialization-item">
-                <p class="Font-size24">Дизайн</p>
-            </div>
-        </a>
-        <a href="">
-            <div class="specialization-item">
-                <p class="Font-size24">Дизайн</p>
-            </div>
-        </a>
-        <a href="">
-            <div class="specialization-item">
-                <p class="Font-size24">Дизайн</p>
-            </div>
-        </a>
+    <div class="specialization-items ">
+        <?php if (!empty($categories)) : ?>
+            <?php foreach ($categories as $v) : ?>
+                <a href="">
+                    <div class="specialization-item">
+                        <p class="Font-size24"><?= $v['title'] ?></p>
+                    </div>
+                </a>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
     <div class="arrows-slider-specialization">
         <img class="prev-spec" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
@@ -238,8 +226,8 @@ AppAsset::register($this);
 <section class="progressBar">
     <div class="progressBarTitle">
         <h2 class="Font-size36">Как начать работу с ADSFORCE</h2>
-        <button class="progressBarButton">
-            <img src="<?= Url::to(['img/index/iconFreelanceButton.svg']) ?>" alt="">
+        <button class="progressBlackButton"><!--progressBarButton-->
+            <img src="<?= Url::to(['img/index/iconMenegerButton.svg']) ?>" alt="">
             <p>Исполнителю</p>
         </button>
     </div>
@@ -286,7 +274,7 @@ AppAsset::register($this);
             <div class="rewiev-card-top">
                 <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
                 <div class="rewiev-card-title">
-                    <h2>Дарья Агапова</h2>
+                    <h2 class="Font_size24">Дарья Агапова</h2>
                     <p>Заказчик</p>
                 </div>
             </div>
@@ -298,7 +286,7 @@ AppAsset::register($this);
             <div class="rewiev-card-top">
                 <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
                 <div class="rewiev-card-title">
-                    <h2>Дарья Агапова</h2>
+                    <h2 class="Font_size24">Дарья Агапова</h2>
                     <p>Заказчик</p>
                 </div>
             </div>
@@ -310,7 +298,7 @@ AppAsset::register($this);
             <div class="rewiev-card-top">
                 <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
                 <div class="rewiev-card-title">
-                    <h2>Дарья Агапова</h2>
+                    <h2 class="Font_size24">Дарья Агапова</h2>
                     <p>Заказчик</p>
                 </div>
             </div>
