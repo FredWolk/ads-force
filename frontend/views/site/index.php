@@ -1,5 +1,6 @@
 <?php
 
+use console\models\Categories;
 use yii\helpers\Url;
 use frontend\assets\AppAsset;
 use yii\web\JqueryAsset;
@@ -113,57 +114,11 @@ AppAsset::register($this);
         </a>
     </div>
     <div class="performers-cards">
-        <div class="performers-card">
-            <div class="performers-card-left">
-                <img src="<?= Url::to(['img/index/performerAva.png']) ?>" alt="">
-                <div class="performers-card-stars">
-                    <ul>
-                        <li>
-                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                        </li>
-                        <li>
-                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                        </li>
-                        <li>
-                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                        </li>
-                        <li>
-                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                        </li>
-                        <li>
-                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="performers-card-right">
-                <div class="performers-card-right-title">
-                    <h2 class="Font-size20">Александр Иванов</h2>
-                    <p>PRO</p>
-                </div>
-                <p class="text-italic">веб-разработчик</p>
-                <p class="liked-message">1810 положительных отзывов</p>
-                <ul>
-                    <li>
-                        <p class="Font-size20">Проф.владение Phyton, JS</p>
-                    </li>
-                    <li>
-                        <p class="Font-size20">Верстка моб.приложений</p>
-                    </li>
-                    <li>
-                        <p class="Font-size20">Backend-разработка</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="performers-card-mobile">
-                <div class="performers-card-mobile-top">
-                    <img src="<?= Url::to(['img/index/performerAva.png']) ?>" alt="">
-                    <div>
-                        <div class="performers-card-right-title">
-                            <h2 class="Font-size20">Александр Иванов</h2>
-                            <p>PRO</p>
-                        </div>
-                        <p class="text-italic">веб-разработчик</p>
+        <?php if (!empty($performers)) : ?>
+            <?php foreach ($performers as $performer) : ?>
+                <div class="performers-card">
+                    <div class="performers-card-left">
+                        <img src="<?= Url::to([$performer['photo']]) ?>" alt="">
                         <div class="performers-card-stars">
                             <ul>
                                 <li>
@@ -184,23 +139,74 @@ AppAsset::register($this);
                             </ul>
                         </div>
                     </div>
+                    <div class="performers-card-right">
+                        <div class="performers-card-right-title">
+                            <h2 class="Font-size20"><?= $performer['name'] ?></h2>
+                            <p><?= $performer['position'] ?></p>
+                        </div>
+                        <?php
+                        $category = Categories::find()->asArray()->where(['id' => $performer['specialization_id']])->select('title')->one();
+                        $skils = json_decode($performer['skills'], 1);
+                        ?>
+                        <p class="text-italic"><?= $category['title'] ?></p>
+                        <p class="liked-message">1810 положительных отзывов</p>
+                        <ul>
+                            <?php if ($skils) : ?>
+                                <?php foreach ($skils as $skill) : ?>
+                                    <li>
+                                        <p class="Font-size20"><?= $skill ?></p>
+                                    </li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+
+                    <div class="performers-card-mobile">
+                        <div class="performers-card-mobile-top">
+                            <img src="<?= Url::to([$performer['photo']]) ?>" alt="">
+                            <div>
+                                <div class="performers-card-right-title">
+                                    <h2 class="Font-size20"><?= $performer['name'] ?></h2>
+                                    <p><?= $performer['position'] ?></p>
+                                </div>
+                                <p class="text-italic"><?= $category['title'] ?></p>
+                                <div class="performers-card-stars">
+                                    <ul>
+                                        <li>
+                                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="performers-card-mobile-bottom">
+                            <p class="liked-message">1810 положительных отзывов</p>
+                            <ul>
+                                <?php if ($skils) : ?>
+                                    <?php foreach ($skils as $skill) : ?>
+                                        <li>
+                                            <p class="Font-size20"><?= $skill ?></p>
+                                        </li>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="performers-card-mobile-bottom">
-                    <p class="liked-message">1810 положительных отзывов</p>
-                    <ul>
-                        <li>
-                            <p class="Font-size20">Проф.владение Phyton, JS</p>
-                        </li>
-                        <li>
-                            <p class="Font-size20">Верстка моб.приложений</p>
-                        </li>
-                        <li>
-                            <p class="Font-size20">Backend-разработка</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 </section>
 <section class="container-index specialization-full">
@@ -211,7 +217,7 @@ AppAsset::register($this);
         <?php if (!empty($categories)) : ?>
             <?php foreach ($categories as $v) : ?>
                 <a href="">
-                    <div class="specialization-item">
+                    <div class="specialization-item" style="background-image: linear-gradient(0deg, rgba(63, 63, 63, 0.5), rgba(63, 63, 63, 0.5)), url(<?= Url::to([$v['image']]) ?>);">
                         <p class="Font-size24"><?= $v['title'] ?></p>
                     </div>
                 </a>
@@ -226,7 +232,8 @@ AppAsset::register($this);
 <section class="progressBar">
     <div class="progressBarTitle">
         <h2 class="Font-size36">Как начать работу с ADSFORCE</h2>
-        <button class="progressBlackButton"><!--progressBarButton-->
+        <button class="progressBlackButton">
+            <!--progressBarButton-->
             <img src="<?= Url::to(['img/index/iconMenegerButton.svg']) ?>" alt="">
             <p>Исполнителю</p>
         </button>

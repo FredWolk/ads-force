@@ -12,6 +12,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
 use console\models\Categories;
+use console\models\Performers;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -77,7 +78,8 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $categories = Categories::find()->asArray()->all();
-        return $this->render('index', compact("categories"));
+        $performers = Performers::find()->asArray()->limit(6)->all();
+        return $this->render('index', compact('categories', 'performers'));
     }
 
     /**
