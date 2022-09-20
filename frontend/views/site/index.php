@@ -47,6 +47,30 @@ responsive: [
     }
   ]
 });
+function starRating(){
+    let star = document.querySelectorAll('.yellowStar')
+let numberRating = 70;
+let steps = 0;
+let procentRating
+    for (let i = 0; i < 5; i++) {
+        if(numberRating > 20){
+            numberRating = numberRating - 20;
+            steps++;
+        }
+        else{
+            procentRating = (numberRating / 20) * 100;
+        }
+    }
+    for(let i = 0; i < steps; i++){
+        console.log(star[i] );
+        star[i].style.backgroundColor = "yellow";
+        star[i].style.width = "100%";
+        star[i].style.height = "20px";
+    }
+    star[steps].style.backgroundColor = "yellow";
+    star[steps].style.width = procentRating + "%";
+    star[steps].style.height = "20px";
+}
 JS;
 $this->registerJs($js);
 AppAsset::register($this);
@@ -122,19 +146,19 @@ AppAsset::register($this);
                         <div class="performers-card-stars">
                             <ul>
                                 <li>
-                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                    <div class="yellowStar"></div>
                                 </li>
                                 <li>
-                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                    <div class="yellowStar"></div>
                                 </li>
                                 <li>
-                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                    <div class="yellowStar"></div>
                                 </li>
                                 <li>
-                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                    <div class="yellowStar"></div>
                                 </li>
                                 <li>
-                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                    <div class="yellowStar"></div>
                                 </li>
                             </ul>
                         </div>
@@ -171,21 +195,21 @@ AppAsset::register($this);
                                 </div>
                                 <p class="text-italic"><?= $category['title'] ?></p>
                                 <div class="performers-card-stars">
-                                    <ul>
+                                    <ul >
                                         <li>
-                                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                            <div class="yellowStar"></div>
                                         </li>
                                         <li>
-                                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                            <div class="yellowStar"></div>
                                         </li>
                                         <li>
-                                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                            <div class="yellowStar"></div>
                                         </li>
                                         <li>
-                                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                            <div class="yellowStar"></div>
                                         </li>
                                         <li>
-                                            <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
+                                            <div class="yellowStar"></div>
                                         </li>
                                     </ul>
                                 </div>

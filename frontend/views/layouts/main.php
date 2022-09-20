@@ -97,9 +97,7 @@ AppAsset::register($this);
     </header>
 
     <main role="main" class="flex-shrink-0">
-        <div class="container">
             <?= $content ?>
-        </div>
     </main>
 
     <footer class="mt-auto">
