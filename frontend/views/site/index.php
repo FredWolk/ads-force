@@ -120,23 +120,9 @@ AppAsset::register($this);
                     <div class="performers-card-left">
                         <img src="<?= Url::to([$performer['photo']]) ?>" alt="">
                         <div class="performers-card-stars">
-                            <ul>
-                                <li>
-                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                                </li>
-                                <li>
-                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                                </li>
-                                <li>
-                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                                </li>
-                                <li>
-                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                                </li>
-                                <li>
-                                    <img src="<?= Url::to(['img/index/star.svg']) ?>" alt="">
-                                </li>
-                            </ul>
+                            <div style="background-image: url(<?= Url::to('/img/index/star.png') ?>); width: 100px" class="stars">
+                                <div class="yellow_stars"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="performers-card-right">
