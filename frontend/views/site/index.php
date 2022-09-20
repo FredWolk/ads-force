@@ -1,14 +1,54 @@
 <?php
 
 use yii\helpers\Url;
+use frontend\assets\AppAsset;
 use yii\web\JqueryAsset;
 
 /** @var yii\web\View $this */
 
-$this->title = 'ADS.FORCE';
+$this->title = 'My.Force';
 $this->registerCssFile(Url::to(['css/index.css']), ['depends' => ['frontend\assets\AppAsset']]);
-
+$this->registerCssFile(Url::to(['css/slick-theme.css']), ['depends' => ['frontend\assets\AppAsset']]);
+$this->registerCssFile(Url::to(['css/slick.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::class]);
+$js = <<< JS
+const availableScreenWidth = window.screen.availWidth;
+if(availableScreenWidth <=735){
+$('.specialization-items').slick({
+  slidesToShow: 3,
+  slidesToScroll: 1,
+        slidesToShow: 3,
+        vertical: true,
+        verticalSwiping: true,
+        prevArrow: $('.prev-spec'),
+        nextArrow: $('.next-spec')
+})
+}
+  $('.rewiev-items').slick({
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  prevArrow: $('.prev'),
+nextArrow: $('.next'),
+responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 580,
+      settings: {
+        vertical: true,
+        verticalSwiping: true,
+        slidesToShow: 2
+      }
+    }
+  ]
+});
+JS;
+$this->registerJs($js);
+AppAsset::register($this);
 ?>
 <section class="Freelancer-Full">
     <div class="Freelancer-content-center">
@@ -42,9 +82,10 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::c
     <div class="Freelancer-absolute-img">
         <img src="<?= Url::to(['img/index/Freelancer.png']) ?>" alt="">
     </div>
-    <div class="Meneger-absolute-img">
+
+    <!--<div class="Meneger-absolute-img">
         <img src="<?= Url::to(['img/index/Meneger.png']) ?>" alt="">
-    </div>
+    </div>-->
 </section>
 <section class="Main-info container-index">
     <div class="Main-info-bg">
@@ -97,30 +138,29 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::c
             </div>
             <div class="performers-card-right">
                 <div class="performers-card-right-title">
-                    <h1>Александр Иванов</h1>
+                    <h2 class="Font-size20">Александр Иванов</h2>
                     <p>PRO</p>
                 </div>
                 <p class="text-italic">веб-разработчик</p>
                 <p class="liked-message">1810 положительных отзывов</p>
                 <ul>
                     <li>
-                        <p>Проф.владение Phyton, JS</p>
+                        <p class="Font-size20">Проф.владение Phyton, JS</p>
                     </li>
                     <li>
-                        <p>Верстка моб.приложений</p>
+                        <p class="Font-size20">Верстка моб.приложений</p>
                     </li>
                     <li>
-                        <p>Backend-разработка</p>
+                        <p class="Font-size20">Backend-разработка</p>
                     </li>
                 </ul>
-
             </div>
             <div class="performers-card-mobile">
                 <div class="performers-card-mobile-top">
                     <img src="<?= Url::to(['img/index/performerAva.png']) ?>" alt="">
                     <div>
                         <div class="performers-card-right-title">
-                            <h1>Александр Иванов</h1>
+                            <h2 class="Font-size20">Александр Иванов</h2>
                             <p>PRO</p>
                         </div>
                         <p class="text-italic">веб-разработчик</p>
@@ -149,13 +189,13 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::c
                     <p class="liked-message">1810 положительных отзывов</p>
                     <ul>
                         <li>
-                            <p>Проф.владение Phyton, JS</p>
+                            <p class="Font-size20">Проф.владение Phyton, JS</p>
                         </li>
                         <li>
-                            <p>Верстка моб.приложений</p>
+                            <p class="Font-size20">Верстка моб.приложений</p>
                         </li>
                         <li>
-                            <p>Backend-разработка</p>
+                            <p class="Font-size20">Backend-разработка</p>
                         </li>
                     </ul>
                 </div>
@@ -167,34 +207,27 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::c
     <div class="performers-title-specialization">
         <h1 class="Font-size36">Специализация</h1>
     </div>
-    <div class="specialization-items">
-        <a href="">
-            <div class="specialization-item">
-                <p class="Font-size24">Дизайн</p>
-            </div>
-        </a>
-        <a href="">
-            <div class="specialization-item">
-                <p class="Font-size24">Дизайн</p>
-            </div>
-        </a>
-        <a href="">
-            <div class="specialization-item">
-                <p class="Font-size24">Дизайн</p>
-            </div>
-        </a>
-        <a href="">
-            <div class="specialization-item">
-                <p class="Font-size24">Дизайн</p>
-            </div>
-        </a>
+    <div class="specialization-items ">
+        <?php if (!empty($categories)) : ?>
+            <?php foreach ($categories as $v) : ?>
+                <a href="">
+                    <div class="specialization-item">
+                        <p class="Font-size24"><?= $v['title'] ?></p>
+                    </div>
+                </a>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+    <div class="arrows-slider-specialization">
+        <img class="prev-spec" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+        <img class="arrows-slider-right next-spec" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
     </div>
 </section>
 <section class="progressBar">
     <div class="progressBarTitle">
         <h2 class="Font-size36">Как начать работу с ADSFORCE</h2>
-        <button class="progressBarButton">
-            <img src="<?= Url::to(['img/index/iconFreelanceButton.svg']) ?>" alt="">
+        <button class="progressBlackButton"><!--progressBarButton-->
+            <img src="<?= Url::to(['img/index/iconMenegerButton.svg']) ?>" alt="">
             <p>Исполнителю</p>
         </button>
     </div>
@@ -241,7 +274,7 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::c
             <div class="rewiev-card-top">
                 <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
                 <div class="rewiev-card-title">
-                    <h2>Дарья Агапова</h2>
+                    <h2 class="Font_size24">Дарья Агапова</h2>
                     <p>Заказчик</p>
                 </div>
             </div>
@@ -253,7 +286,7 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::c
             <div class="rewiev-card-top">
                 <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
                 <div class="rewiev-card-title">
-                    <h2>Дарья Агапова</h2>
+                    <h2 class="Font_size24">Дарья Агапова</h2>
                     <p>Заказчик</p>
                 </div>
             </div>
@@ -265,7 +298,7 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::c
             <div class="rewiev-card-top">
                 <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
                 <div class="rewiev-card-title">
-                    <h2>Дарья Агапова</h2>
+                    <h2 class="Font_size24">Дарья Агапова</h2>
                     <p>Заказчик</p>
                 </div>
             </div>
@@ -275,7 +308,7 @@ $this->registerJsFile(Url::to(['js/slick.min.js']), ['depends' => JqueryAsset::c
         </div>
     </div>
     <div class="arrows-slider">
-        <img src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
-        <img class="arrows-slider-right" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+        <img class="prev" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+        <img class="arrows-slider-right next" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
     </div>
 </section>

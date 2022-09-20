@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use backend\models\Categories;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -76,7 +77,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $categories = Categories::find()->asArray()->all();
+        return $this->render('index', compact("categories"));
     }
 
     /**

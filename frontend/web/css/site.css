@@ -6,6 +6,7 @@
     margin: 0px;
     padding: 0px;
     border: 0px;
+    text-decoration: none;
     box-sizing: border-box;
 }
 .Font-size50 {
@@ -34,7 +35,7 @@
 
 .Font-size24 {
     font-family: 'Rubik', sans-serif;
-    font-size: min(max(1.852vw, 18px), 24px);
+    font-size: min(max(1.587vw, 18px), 24px);
     font-weight: 400;
     letter-spacing: 0px;
     color: #1F1F1F;
@@ -43,7 +44,6 @@
 .Font-size20 {
     font-family: 'Rubik', sans-serif;
     font-weight: 600;
-    font-size: 1.323vw;
     font-size: min(max(1.323vw, 18px), 20px);
     letter-spacing: 0px;
     color: #1F1F1F;
