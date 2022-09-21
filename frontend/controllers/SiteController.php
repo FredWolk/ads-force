@@ -88,7 +88,10 @@ class SiteController extends Controller
         $performers = Performers::find()->asArray()->limit(6)->all();
         return $this->render('for-customer', compact('categories', 'performers'));
     }
-
+    public function actionTasks()
+    {
+        return $this->render('tasks');
+    }
     /**
      * Logs in a user.
      *

@@ -47,6 +47,7 @@ return [
                 //['class' => 'frontend\components\ClassUrlRule'],
                 '' => 'site/index',
                 'for-customer' => 'site/for-customer',
+                'tasks' => 'site/tasks',
 
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],

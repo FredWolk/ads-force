@@ -38,9 +38,7 @@
     display: flex;
     background-image: url('../img/index/fonMain.png');
     align-items: center;
-    min-height: 815px;
-    padding: 0px 20px;
-    height: 100%;
+    padding: 150px 20px;
     width: 100%;
 }
 
@@ -140,6 +138,7 @@
     padding: 10px;
     background: #FFFFFF;
     border: 1px solid #F535DA;
+    padding: 10px;
     width: 100%;
     cursor: pointer;
     height: 100%;
@@ -148,7 +147,7 @@
 
 .Freelancer-content-buttons-prev a {
     max-width: 305px;
-    height: 90px;
+    min-height: 90px;
     width: 100%;
 }
 
@@ -161,7 +160,9 @@
 .button-active {
     background: #F535DA !important;
 }
-
+.button-active p {
+    color: #FFFFFF;
+}
 .button-white p {
     color: #FFFFFF;
 }

@@ -16,6 +16,8 @@ class AppAsset extends AssetBundle
         'css/header.css',
         'css/footer.css',
         'css/reset.css',
+        'css/component-css/performers-card.css',
+        'css/component-css/filter.css'
     ];
     public $js = [];
     public $depends = [
