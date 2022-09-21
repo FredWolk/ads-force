@@ -120,9 +120,23 @@ AppAsset::register($this);
                     <div class="performers-card-left">
                         <img src="<?= Url::to([$performer['photo']]) ?>" alt="">
                         <div class="performers-card-stars">
-                            <div style="background-image: url(<?= Url::to(['img/index/stars.png']) ?>); height: 20px; background-repeat: no-repeat;" class="stars">
-                                <div style="background-image: url(<?= Url::to(['img/index/yellowStars.png']) ?>); height: 20px; background-repeat: no-repeat; width: <?= $performer['rating'] ?>%" class="yellow_stars"></div>
-                            </div>
+                            <ul >
+                                <li>
+                                    <div class="yellowStar"></div>
+                                </li>
+                                <li>
+                                    <div class="yellowStar"></div>
+                                </li>
+                                <li>
+                                    <div class="yellowStar"></div>
+                                </li>
+                                <li>
+                                    <div class="yellowStar"></div>
+                                </li>
+                                <li>
+                                    <div class="yellowStar"></div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="performers-card-right">
@@ -157,7 +171,7 @@ AppAsset::register($this);
                                 </div>
                                 <p class="text-italic"><?= $category['title'] ?></p>
                                 <div class="performers-card-stars">
-                                    <ul>
+                                    <ul >
                                         <li>
                                             <div class="yellowStar"></div>
                                         </li>

@@ -3,12 +3,15 @@
     width: 448px;
     height: 681px;
     left: 0px;
-    z-index: -1;
+    z-index: 1;
     bottom: 0px;
 }
 
 .container-index {
     padding: 0px 20px;
+    max-width: 1082px;
+    width: 100%;
+    margin: 0px auto;
 }
 
 .Freelancer-absolute-img img {
@@ -21,7 +24,7 @@
     width: 355px;
     height: 696px;
     right: 0px;
-    z-index: -1;
+    z-index: 1;
     bottom: 0px;
 }
 
@@ -33,6 +36,7 @@
 .Freelancer-Full {
     position: relative;
     display: flex;
+    background-image: url('../img/index/fonMain.png');
     align-items: center;
     min-height: 815px;
     padding: 0px 20px;
@@ -178,26 +182,14 @@
 }
 
 .performers-container {
-    max-width: 1082px;
-    width: 100%;
-    margin: 100px auto;
-}
-
-.performers-card-left {
-    max-width: 145px;
-    width: 100%;
-}
-
-.performers-card-left img {
-    width: 100%;
-    border-radius: 50%;
-    height: 145px;
+    background-image: url('../img/index/fonMain.png');
+    background-size: cover;
 }
 
 .performers-title {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 83px;
+    margin-bottom: 83px !important;
     align-items: center;
 }
 
@@ -221,52 +213,9 @@
     width: 100%;
 }
 
-.performers-card-stars ul {
-    display: flex;
-    margin-top: 17px;
-    list-style: none;
-    justify-content: space-between;
-}
-
-.performers-card-stars ul li {
-    background-image: url('../img/index/starEmpty.svg');
-    position: relative;
-    width: 21px;
-    height: 20px;
-}
-
-.yellowStar {
-    position: absolute;
-    z-index: -1;
-}
 
 .performers-container {
-    padding: 0px 15px;
-}
-
-.performers-cards {
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 52px;
-    column-gap: 80px;
-}
-
-.performers-card-right {
-    display: flex;
-    font-family: 'Rubik', sans-serif;
-    flex-direction: column;
-    max-width: 317px;
-    width: 100%;
-    gap: 5px;
-}
-
-.performers-card-mobile {
-    display: none;
-}
-
-.liked-message {
-    font-size: min(max(1.323vw, 18px), 20px);
-    text-transform: uppercase;
+    padding: 100px 15px;
 }
 
 .rewiev-card-title p {
@@ -277,25 +226,13 @@
     font-size: min(max(1.058vw, 14px), 16px);
 }
 
-.performers-card {
-    cursor: pointer;
-}
 
 .performers-card:hover .performers-card-right ul {
     list-style: none;
 }
 
-.performers-card-right ul {
-    margin-left: 10px;
-}
 
-.performers-card-right ul li {
-    position: relative;
-}
 
-.performers-card-right ul li p {
-    font-weight: 400;
-}
 
 .performers-card:hover .performers-card-right h2 {
     background: linear-gradient(90deg, #CE06D0 0%, #00DBDE 100%);
@@ -315,27 +252,6 @@
     border-radius: 50%;
 }
 
-.performers-card-right-title {
-    display: flex;
-    gap: 10px;
-    font-family: 'Rubik', sans-serif;
-    align-items: center;
-}
-
-.performers-card-mobile-bottom ul li p {
-    font-weight: 400;
-}
-
-.performers-card-right-title p {
-    color: #F535DA;
-}
-
-.text-italic {
-    font-family: 'Rubik';
-    font-size: 15px;
-    font-style: italic;
-}
-
 .performers-card-stars ul li img {
     width: 18px;
     height: 18px;
@@ -346,16 +262,11 @@
     max-width: 320px;
 }
 
-.performers-card {
-    display: flex;
-    gap: 30px;
-}
-
 .performers-title-specialization {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 40px !important;
 }
 
 .performers-title-specialization h1 {
@@ -388,12 +299,6 @@
 
 .specialization-item:hover {
     transform: scale(1.1);
-}
-
-.specialization-full {
-    max-width: 1082px;
-    margin: 0px auto;
-    margin-bottom: 100px;
 }
 
 .specialization-item p {
@@ -448,12 +353,7 @@
     row-gap: 12px;
 }
 
-.progress-bar-content ul li div h1,
-p {
-    font-family: 'Rubik', sans-serif;
-}
-
-.progress-bar-content ul li div h1 {
+.progress-bar-content ul li div h2 {
     font-weight: 600;
 }
 
@@ -481,11 +381,9 @@ p {
 
 .progressBarTitle {
     display: flex;
-    max-width: 1082px;
-    margin: 0px auto;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 30px !important;
 }
 
 .progressBarTitle .progressBarButton {
@@ -542,8 +440,7 @@ p {
 }
 
 .rewiew-title {
-    margin-top: 85px;
-    margin-bottom: 91px;
+    margin-bottom: 91px !important;
 }
 
 .rewiew-title h2 {
@@ -597,23 +494,28 @@ p {
 }
 
 .rewiev-full {
-    max-width: 1082px;
-    margin: 0px auto;
-    padding: 0px 20px;
+    padding-top: 85px;
+    padding-bottom: 120px;
+    background-image: url('../img/index/fonMain.png');
+    background-size: cover;
+}
+
+.specialization-full {
+    padding-bottom: 120px;
+    background-image: url('../img/index/fonMain.png');
+    background-size: cover;
 }
 
 .arrows-slider {
     display: flex;
     column-gap: 11px;
     margin-top: 30px;
-    margin-bottom: 120px;
 }
 
 .arrows-slider-specialization {
     display: none;
     column-gap: 11px;
     margin-top: 30px;
-    margin-bottom: 120px;
 }
 
 .arrows-slider-right {
@@ -623,6 +525,15 @@ p {
 @media(min-width:1512px) {
     .progress-bar-content ul li div p {
         font-size: 18px;
+    }
+}
+
+@media(max-width:1082px) {
+    .container-index {
+        padding: 0px 20px;
+        max-width: none;
+        width: 100%;
+        margin: 0px auto;
     }
 }
 
@@ -745,43 +656,8 @@ p {
         font-size: 5vw;
     }
 
-    .performers-card-left {
-        display: none;
-    }
 
-    .performers-card-right {
-        display: none;
-    }
 
-    .performers-card-mobile {
-        display: block;
-    }
-
-    .performers-card-mobile-top {
-        display: flex;
-        gap: 20px;
-    }
-
-    .performers-card-mobile-top .performers-card-stars {
-        max-width: 134px;
-    }
-
-    .performers-card-mobile-top .performers-card-stars ul {
-        margin-top: 10px;
-    }
-
-    .performers-card-mobile-top img {
-        width: 100%;
-        max-width: 145px;
-        border-radius: 50%;
-        height: 145px;
-    }
-
-    .performers-card-mobile-bottom {
-        margin-top: 15px;
-        margin-left: 15px;
-        font-family: 'Rubik', sans-serif;
-    }
 
     .Freelancer-content-buttons-prev a {
         max-width: none;
