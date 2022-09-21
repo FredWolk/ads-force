@@ -1,4 +1,115 @@
-.title-categories{
+.filter-full {
+    padding-top: 10px;
+    max-width: 320px;
+    width: 100%;
+    padding-bottom: 10px;
+    border-top: 1px solid #E0E0E0;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.title-categories {
     display: flex;
     flex-direction: column;
+    row-gap: 10px;
 }
+
+.title-categories h2 {
+    font-weight: 400;
+    color: #828282;
+}
+
+.title-categories p {
+    text-decoration-line: underline;
+    color: #1EBBED;
+}
+
+.categories-select {
+    margin-top: 10px;
+}
+
+.categories-select-top {
+    display: flex;
+    position: relative;
+    width: 100%;
+    align-items: center;
+}
+
+.categories-select-top img {
+    right: -20px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+}
+
+.categories-select-bottom {
+    margin-top: 15px;
+}
+
+.categories-select-bottom ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 21px;
+}
+
+.categories-select-bottom ul li {
+    display: flex;
+    align-items: center;
+}
+
+
+.custom-checkbox>input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+  
+  .custom-checkbox>span {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+  }
+  
+  .custom-checkbox>span::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1.5px solid #1EBBED;
+    border-radius: 0.25em;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+  }
+  
+  .custom-checkbox>input:not(:disabled):not(:checked)+span:hover::before {
+    border-color: #b3d7ff;
+  }
+  
+  .custom-checkbox>input:not(:disabled):active+span::before {
+    background-color: #b3d7ff;
+    border-color: #b3d7ff;
+  }
+  
+  .custom-checkbox>input:focus+span::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .custom-checkbox>input:focus:not(:checked)+span::before {
+    border-color: #80bdff;
+  }
+  
+  .custom-checkbox>input:checked+span::before {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+  }
+  .custom-checkbox>input:checked+span{
+    background: linear-gradient(90deg, #CE06D0 0%, #00DBDE 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .custom-checkbox>input:disabled+span::before {
+    background-color: #e9ecef;
+  }
