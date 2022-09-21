@@ -4,7 +4,7 @@ $js = <<< JS
 $('form').on('submit', function (e) {
   e.preventDefault();
   $.ajax({
-    url: '/register/check-email',
+    url: '/register/signup',
     data: $(this).serialize(),
     type: 'POST',
     dataType: 'JSON',

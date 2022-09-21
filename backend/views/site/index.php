@@ -42,8 +42,26 @@ $this->title = 'My Yii Application';
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Отзывы</h5>
-                        <p class="card-text">Тут вы можете изменить информацию об отзывах</p>
+                        <p class="card-text">Тут вы можете добавить или изменить информацию об отзывах</p>
                         <a href="<?= Url::to(['/reviews']) ?>" class="btn btn-primary">Перейти</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Роли</h5>
+                        <p class="card-text">Тут вы можете создать или изменить роли пользователей</p>
+                        <a href="<?= Url::to(['/role']) ?>" class="btn btn-primary">Перейти</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Истории успеха</h5>
+                        <p class="card-text">Тут вы можете изменить добавить или отредактировать истории успеха AdsForce</p>
+                        <a href="<?= Url::to(['/success-stories']) ?>" class="btn btn-primary">Перейти</a>
                     </div>
                 </div>
             </div>
