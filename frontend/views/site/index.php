@@ -82,7 +82,7 @@ AppAsset::register($this);
             </div>
         </div>
     </div>
-    <div class="Freelancer-absolute-img">
+    <div class="Freelancer-absolute-img" style="display: block;">
         <img src="<?= Url::to(['img/index/Freelancer.png']) ?>" alt="">
     </div><div class="Meneger-absolute-img">
         <img src="<?= Url::to(['img/index/Meneger-mask.png']) ?>" alt="">
@@ -218,9 +218,8 @@ AppAsset::register($this);
 <section class="progressBar">
     <div class="progressBarTitle container-index">
         <h2 class="Font-size36">Как начать работу с ADSFORCE</h2>
-        <button class="progressBlackButton">
-            <!--progressBarButton-->
-            <img src="<?= Url::to(['img/index/iconMenegerButton.svg']) ?>" alt="">
+        <button class="progressBarButton">
+            <img src="<?= Url::to(['img/index/iconFreelanceButton.svg']) ?>" alt="">
             <p>Исполнителю</p>
         </button>
     </div>
