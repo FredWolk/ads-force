@@ -1,15 +1,15 @@
 <?php
 
-namespace console\models;
+namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use console\models\Categories;
+use console\models\SuccessStories;
 
 /**
- * CategoriesSearch represents the model behind the search form of `app\models\Categories`.
+ * SuccessStoriesSearch represents the model behind the search form of `console\models\SuccessStories`.
  */
-class CategoriesSearch extends Categories
+class SuccessStoriesSearch extends SuccessStories
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class CategoriesSearch extends Categories
     {
         return [
             [['id'], 'integer'],
-            [['title', 'image'], 'safe'],
+            [['title', 'image', 'content', 'what_do'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class CategoriesSearch extends Categories
      */
     public function search($params)
     {
-        $query = Categories::find();
+        $query = SuccessStories::find();
 
         // add conditions that should always apply here
 
@@ -62,7 +62,9 @@ class CategoriesSearch extends Categories
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'image', $this->image]);
+            ->andFilterWhere(['like', 'image', $this->image])
+            ->andFilterWhere(['like', 'content', $this->content])
+            ->andFilterWhere(['like', 'what_do', $this->what_do]);
 
         return $dataProvider;
     }

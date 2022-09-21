@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use console\models\Reviews;
-use console\models\ReviewsSearch;
+use backend\models\ReviewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
