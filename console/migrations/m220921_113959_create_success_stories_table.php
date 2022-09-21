@@ -18,6 +18,7 @@ class m220921_113959_create_success_stories_table extends Migration
             'image'         => $this->string(1023)->notNull(),
             'content'       => $this->text()->notNull(),
             'what_do'       => $this->text(),
+            'term'          => $this->string(255),
         ]);
     }
 
