@@ -86,7 +86,7 @@ class SiteController extends Controller
     {
         $categories = Categories::find()->asArray()->all();
         $performers = Performers::find()->asArray()->limit(6)->all();
-        return $this->render('for-сustomer', compact('categories', 'performers'));
+        return $this->render('for-customer', compact('categories', 'performers'));
     }
 
     /**
