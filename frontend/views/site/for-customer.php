@@ -60,11 +60,11 @@ AppAsset::register($this);
             <p class="Font-size28">Работайте с исполнителями и заказчиками по всему миру!</p>
         </div>
         <div class="Freelancer-content-buttons">
-            <div class="Freelancer-content-buttons-main">
+            <div class="Freelancer-content-buttons-black">
                 <a href="">
                     <button>
-                        <img class="Freelancer-content-buttons-main-img" src="<?= Url::to(['img/index/iconFreelanceButton.svg']) ?>" alt="">
-                        <p>Исполнителю</p>
+                        <img class="Freelancer-content-buttons-black-img" src="<?= Url::to(['img/index/iconMenegerButton.svg']) ?>" alt="">
+                        <p>Заказчику</p>
                     </button>
                 </a>
             </div>
@@ -83,9 +83,10 @@ AppAsset::register($this);
         </div>
     </div>
     <div class="Freelancer-absolute-img">
-        <img src="<?= Url::to(['img/index/Freelancer.png']) ?>" alt="">
-    </div><div class="Meneger-absolute-img">
-        <img src="<?= Url::to(['img/index/Meneger-mask.png']) ?>" alt="">
+        <img src="<?= Url::to(['img/index/Freelancer-mask.png']) ?>" alt="">
+    </div>
+    <div class="Meneger-absolute-img" style="display: block;">
+        <img src="<?= Url::to(['img/index/Meneger.png']) ?>" alt="">
     </div>
 </section>
 <section class="Main-info">
@@ -120,23 +121,9 @@ AppAsset::register($this);
                     <div class="performers-card-left">
                         <img src="<?= Url::to([$performer['photo']]) ?>" alt="">
                         <div class="performers-card-stars">
-                            <ul >
-                                <li>
-                                    <div class="yellowStar"></div>
-                                </li>
-                                <li>
-                                    <div class="yellowStar"></div>
-                                </li>
-                                <li>
-                                    <div class="yellowStar"></div>
-                                </li>
-                                <li>
-                                    <div class="yellowStar"></div>
-                                </li>
-                                <li>
-                                    <div class="yellowStar"></div>
-                                </li>
-                            </ul>
+                            <div style="background-image: url(<?= Url::to(['img/index/stars.png']) ?>); height: 20px; background-repeat: no-repeat;" class="stars">
+                                <div style="background-image: url(<?= Url::to(['img/index/yellowStars.png']) ?>); height: 20px; background-repeat: no-repeat; width: <?= $performer['rating'] ?>%" class="yellow_stars"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="performers-card-right">
@@ -171,23 +158,9 @@ AppAsset::register($this);
                                 </div>
                                 <p class="text-italic"><?= $category['title'] ?></p>
                                 <div class="performers-card-stars">
-                                    <ul >
-                                        <li>
-                                            <div class="yellowStar"></div>
-                                        </li>
-                                        <li>
-                                            <div class="yellowStar"></div>
-                                        </li>
-                                        <li>
-                                            <div class="yellowStar"></div>
-                                        </li>
-                                        <li>
-                                            <div class="yellowStar"></div>
-                                        </li>
-                                        <li>
-                                            <div class="yellowStar"></div>
-                                        </li>
-                                    </ul>
+                                    <div style="background-image: url(<?= Url::to(['img/index/stars.png']) ?>); height: 20px; background-repeat: no-repeat;" class="stars">
+                                        <div style="background-image: url(<?= Url::to(['img/index/yellowStars.png']) ?>); height: 20px; background-repeat: no-repeat; width: <?= $performer['rating'] ?>%" class="yellow_stars"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -235,12 +208,12 @@ AppAsset::register($this);
         <button class="progressBlackButton">
             <!--progressBarButton-->
             <img src="<?= Url::to(['img/index/iconMenegerButton.svg']) ?>" alt="">
-            <p>Исполнителю</p>
+            <p>Заказчику</p>
         </button>
     </div>
     <div class="progress-bar-content">
         <div class="progress-bar-img">
-            <img src="<?= Url::to(['img/index/imgProgressBar.png']) ?>" alt="">
+            <img src="<?= Url::to(['img/index/ImgManagerBar.png']) ?>" alt="">
         </div>
         <div>
             <ul>
@@ -250,19 +223,19 @@ AppAsset::register($this);
                         <p>Расскажите о задаче и опубликуйте в каталоге</p>
                     </div>
                 </li>
-                <li>
+                <li class="client">
                     <div>
                         <h2 class="Font-size24">Опубликуйте заказ</h2>
                         <p>Расскажите о задаче и опубликуйте в каталоге</p>
                     </div>
                 </li>
-                <li>
+                <li class="success">
                     <div>
                         <h2 class="Font-size24">Опубликуйте заказ</h2>
                         <p>Расскажите о задаче и опубликуйте в каталоге</p>
                     </div>
                 </li>
-                <li>
+                <li class="chat">
                     <div>
                         <h2 class="Font-size24">Опубликуйте заказ</h2>
                         <p>Расскажите о задаче и опубликуйте в каталоге</p>
