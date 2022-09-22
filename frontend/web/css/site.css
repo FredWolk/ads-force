@@ -52,7 +52,7 @@
 }
 
 .Font-size18 {
-  font-size: min(max(1.190vw, 18px), 20px);
+  font-size: min(max(1.190vw, 16px), 18px);
 }
 
 .Font-size13 {

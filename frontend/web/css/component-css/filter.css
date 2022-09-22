@@ -33,7 +33,9 @@
     width: 100%;
     align-items: center;
 }
-
+.categories-select-bottom{
+  display: none;
+}
 .categories-select-top img {
     right: -20px;
     position: absolute;
