@@ -12,6 +12,7 @@
 .task-item {
     max-width: 632px;
     width: 100%;
+    margin-left: auto;
     display: flex;
     flex-direction: column;
     row-gap: 20px;
@@ -53,6 +54,8 @@
 
 .task-tag-list {
     display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
     column-gap: 6px;
 }
 

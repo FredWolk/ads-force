@@ -33,6 +33,7 @@
 .filter-inputs{
     display: flex;
     padding-bottom: 45px;
+    column-gap: 20px;
     justify-content: space-between;
 }
 .filter-inputs-plus{
@@ -79,4 +80,10 @@
 }
 .tasks-content-main{
     display: flex;
+    column-gap: 50px;
+    margin-bottom: 50px;
+}
+.filter-show-more{
+    margin-top: 10px;
+    color: #F535DA;
 }
