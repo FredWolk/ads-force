@@ -86,5 +86,8 @@ AppAsset::register($this);
                 </div>
             </div>
         </div>
+        <div class="task-button">
+            <button class="Font-size28">Откликнуться</button>
+        </div>
     </div>
 </div>

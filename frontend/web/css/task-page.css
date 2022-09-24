@@ -22,19 +22,40 @@
     border-radius: 10px;
 }
 
-.file-block{
+.file-block {
     display: flex;
     column-gap: 10px;
     align-items: flex-start;
 }
 
-.file-list ul{
+.file-list ul {
     display: flex;
     list-style: none;
     row-gap: 5px;
     flex-direction: column;
 }
-.file-list ul li a{
+
+.file-list ul li a {
     color: #F535DA;
     text-decoration: underline;
+}
+
+.task-button {
+    display: flex;
+    margin-top: 55px;
+    justify-content: center;
+}
+
+.task-button button {
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+    font-weight: 600;
+    color: #ffffff;
+    filter: drop-shadow(2px 3px 7px rgba(158, 158, 158, 0.25));
+    background: #F535DA;
+    border: 1px solid #F535DA;
+    border-radius: 40px;
+    max-width: 468px;
+    width: 100%;
 }
