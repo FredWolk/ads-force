@@ -15,7 +15,6 @@ class RegisterController extends Controller
   {
     return $this->render('reg');
   }
-
   public function actionCheckEmail()
   {
     Yii::$app->response->format = Response::FORMAT_JSON;

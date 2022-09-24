@@ -159,6 +159,10 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+    public function actionTaskPage()
+    {
+        return $this->render('task-page');
+    }
 
     /**
      * Signs user up.

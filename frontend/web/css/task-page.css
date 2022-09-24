@@ -1,0 +1,40 @@
+.task-page-full {
+    padding: 100px 0px;
+}
+
+.link-back a {
+    display: inline-flex;
+    align-items: center;
+    column-gap: 10px;
+    color: #F535DA;
+    margin-bottom: 10px;
+}
+
+.task-card {
+    padding: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    background: #FFFEFE;
+    border: 2px solid #F2F2F2;
+    box-shadow: 0px 2px 15px rgba(225, 225, 225, 0.25);
+    border-radius: 10px;
+}
+
+.file-block{
+    display: flex;
+    column-gap: 10px;
+    align-items: flex-start;
+}
+
+.file-list ul{
+    display: flex;
+    list-style: none;
+    row-gap: 5px;
+    flex-direction: column;
+}
+.file-list ul li a{
+    color: #F535DA;
+    text-decoration: underline;
+}

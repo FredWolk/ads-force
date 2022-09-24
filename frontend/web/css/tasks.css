@@ -49,11 +49,6 @@
     align-items: flex-end;
 }
 
-.filters-list {
-    display: flex;
-    column-gap: 20px;
-}
-
 .filter-inputs-plus p {
     align-self: flex-start;
     display: flex;

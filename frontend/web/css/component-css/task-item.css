@@ -11,6 +11,11 @@
     width: 100%;
 }
 
+.filters-list {
+    display: flex;
+    column-gap: 20px;
+}
+
 .task-item {
     position: relative;
     width: 100%;
@@ -24,7 +29,6 @@
 
 .filter-task-item {
     display: flex;
-
     column-gap: 20px;
 }
 
@@ -86,7 +90,8 @@
     .filter-task-item-main {
         flex-direction: column;
     }
-    .right-item-filter{
+
+    .right-item-filter {
         position: absolute;
         right: 20px;
         top: 20px;
