@@ -163,7 +163,10 @@ class SiteController extends Controller
     {
         return $this->render('task-page');
     }
-
+    public function actionWhyWe()
+    {
+        return $this->render('why-we');
+    }
     /**
      * Signs user up.
      *

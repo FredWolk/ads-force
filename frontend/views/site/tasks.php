@@ -6,7 +6,7 @@ use yii\web\JqueryAsset;
 
 /** @var yii\web\View $this */
 
-$this->title = 'My.Force';
+$this->title = 'ADS.Force';
 $this->registerCssFile(Url::to(['css/tasks.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerCssFile(Url::to(['css/component-css/filter.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' => ['frontend\assets\AppAsset']]);
