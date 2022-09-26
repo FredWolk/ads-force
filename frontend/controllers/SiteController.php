@@ -18,6 +18,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yii\helpers\Url;
 
 /**
  * Site controller
@@ -91,8 +92,16 @@ class SiteController extends Controller
     }
     public function actionTasks()
     {
-        $tasks = Tasks::find()->asArray()->all();
-        $category = Categories::find()->with('subCategories')->asArray()->all();
+        $tasks = Tasks::find()
+            ->asArray()
+            ->where(['OR', ['status' => 'Свободен'], ['status' => 'Повышенный спрос']])
+            ->andWhere(['active' => true])
+            ->all();
+        $category = Categories::find()
+            ->with('subCategories')
+            ->asArray()
+            ->all();
+
         return $this->render('tasks', compact('category', 'tasks'));
     }
     /**
@@ -164,7 +173,15 @@ class SiteController extends Controller
     }
     public function actionTaskPage($id)
     {
-        $task = Tasks::findOne($id);
+        $task = Tasks::find()
+            ->asArray()
+            ->where(['active' => 1])
+            ->andWhere(['OR', ['status' => 'Свободен'], ['status' => 'Повышенный спрос']])
+            ->andWhere(['id' => $id])
+            ->one();
+        if (empty($task)) {
+            return $this->redirect(Url::to(['/tasks']));
+        }
         return $this->render('task-page', compact('task'));
     }
     public function actionWhyWe()

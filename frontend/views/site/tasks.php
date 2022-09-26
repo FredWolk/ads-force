@@ -218,8 +218,8 @@ AppAsset::register($this);
                 </div>
             </div>
             <div class="tasks">
+                <?php dump($tasks) ?>
                 <?php foreach ($tasks as $task) : ?>
-                    <?php dump($task) ?>
                     <a href="<?= Url::to(['/task-page/' . $task['id']]) ?>">
                         <div class="task-item">
                             <div class="filter-task-item">
@@ -230,7 +230,7 @@ AppAsset::register($this);
                                         </div>
                                     <?php else : ?>
                                         <div class="hi-order">
-                                            <p>Повышенный спрос</p>
+                                            <p><?= $task['status'] ?></p>
                                             <img src="<?= Url::to(['img/tasks/smite.svg']) ?>" alt="">
                                         </div>
                                     <?php endif; ?>
