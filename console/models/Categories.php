@@ -44,4 +44,9 @@ class Categories extends \yii\db\ActiveRecord
             'image' => 'Изображение',
         ];
     }
+
+    public function getSubCategories()
+    {
+        return $this->hasMany(SubCategories::className(), ['categories_id' => 'id']);
+    }
 }

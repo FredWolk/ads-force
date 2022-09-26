@@ -49,7 +49,7 @@ return [
                 '' => 'site/index',
                 'for-customer' => 'site/for-customer',
                 'tasks' => 'site/tasks',
-                'task-page' => 'site/task-page',
+                'task-page/<id:>' => 'site/task-page',
                 'why-we' => 'site/why-we',
                 'performers-catalog' => 'site/performers-catalog',
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',

@@ -6,6 +6,21 @@ use yii\web\JqueryAsset;
 
 /** @var yii\web\View $this */
 
+$arrMonth = [
+    1 => 'января',
+    2 => 'февраля',
+    3 => 'марта',
+    4 => 'апреля',
+    5 => 'мая',
+    6 => 'июня',
+    7 => 'июля',
+    8 => 'августа',
+    9 => 'сентября',
+    10 => 'октября',
+    11 => 'ноября',
+    12 => 'декабря',
+];
+
 $this->title = 'ADS.Force';
 $this->registerCssFile(Url::to(['css/tasks.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerCssFile(Url::to(['css/component-css/filter.css']), ['depends' => ['frontend\assets\AppAsset']]);
@@ -127,58 +142,30 @@ AppAsset::register($this);
                     <h2 class="Font-size18">Категория</h2>
                     <a href="" class="Font-size18">Сбросить</a>
                 </div>
-                <div class="categories-select">
-                    <div class="filter-item">
-                        <div class="categories-select-top">
-                            <b class="Font-size18">Интернет продвижение и реклама</b>
-                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L7 7L13 1" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <div class="categories-select-bottom">
-                            <ul>
-                                <li>
-                                    <label class="custom-checkbox">
-                                        <input type="checkbox" value="value-1">
-                                        <span class="Font-size18">Таргетированная реклама</span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="custom-checkbox">
-                                        <input type="checkbox" value="value-1">
-                                        <span class="Font-size18">Интернет-маркетинг</span>
-                                    </label>
-                                </li>
-                            </ul>
+                <?php foreach ($category as $val) : ?>
+                    <div class="categories-select">
+                        <div class="filter-item">
+                            <div class="categories-select-top">
+                                <b class="Font-size18"><?= $val['title'] ?></b>
+                                <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1L7 7L13 1" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="categories-select-bottom">
+                                <ul>
+                                    <?php foreach ($val['subCategories'] as $i) : ?>
+                                        <li>
+                                            <label class="custom-checkbox">
+                                                <input type="checkbox" value="value-1">
+                                                <span class="Font-size18"><?= $i['title'] ?></span>
+                                            </label>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="categories-select">
-                    <div class="filter-item">
-                        <div class="categories-select-top">
-                            <b class="Font-size18">Интернет продвижение и реклама</b>
-                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L7 7L13 1" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <div class="categories-select-bottom">
-                            <ul>
-                                <li>
-                                    <label class="custom-checkbox">
-                                        <input type="checkbox" name="filter-cat" value="">
-                                        <span class="Font-size18">Таргетированная реклама</span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="custom-checkbox">
-                                        <input type="checkbox" name="filter-cat" value="">
-                                        <span class="Font-size18">Интернет-маркетинг</span>
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
                 <div class="filter-show-more">
                     <a href="" class="Font-size18">Ещё +</a>
                 </div>
@@ -231,97 +218,58 @@ AppAsset::register($this);
                 </div>
             </div>
             <div class="tasks">
-                <a href="">
-                    <div class="task-item">
-                        <div class="filter-task-item">
-                            <div class="filter-task-item-main">
-                                <div class="hi-order">
-                                    <p>Повышенный спрос</p>
-                                    <img src="<?= Url::to(['img/tasks/smite.svg']) ?>" alt="">
-                                </div>
-                                <div class="filters-list">
-                                    <div class="filter-view filter-task-items">
-                                        <img src="<?= Url::to(['img/tasks/view.svg']) ?>" alt="">
-                                        <p>22</p>
-                                    </div>
-                                    <div class="filter-view filter-task-items">
-                                        <img src="<?= Url::to(['img/tasks/human-icon.svg']) ?>" alt="">
-                                        <p>12</p>
-                                    </div>
-                                    <div class="filter-view filter-task-items">
-                                        <img src="<?= Url::to(['img/tasks/summ.svg']) ?>" alt="">
-                                        <p>Договорная</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="right-item-filter">
-                                <p>21 сентября</p>
-                            </div>
-                        </div>
-                        <div class="task-title">
-                            <h2 class="Font-size24">Настройка рекламы ВКонтакте</h2>
-                        </div>
-                        <div class="task-text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Nunc vulputate libero et velit interdum, ac aliq... Подробнее</p>
-                        </div>
-                        <div class="task-tag-list">
-                            <div class="task-tag-item">
-                                <p>#тег</p>
-                            </div>
-                            <div class="task-tag-item">
-                                <p>#тег</p>
-                            </div>
-                            <div class="task-tag-item">
-                                <p>#тег</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="task-item">
-                        <div class="filter-task-item">
-                            <div class="filter-task-item-main">
-                                <div class="status-task">
-                                    <p>Свободен</p>
-                                </div>
-                                <div class="filters-list">
-                                    <div class="filter-view filter-task-items">
-                                        <img src="<?= Url::to(['img/tasks/view.svg']) ?>" alt="">
-                                        <p>22</p>
-                                    </div>
-                                    <div class="filter-view filter-task-items">
-                                        <img src="<?= Url::to(['img/tasks/human-icon.svg']) ?>" alt="">
-                                        <p>12</p>
-                                    </div>
-                                    <div class="filter-view filter-task-items">
-                                        <img src="<?= Url::to(['img/tasks/summ.svg']) ?>" alt="">
-                                        <p>Договорная</p>
+                <?php dump($tasks) ?>
+                <?php foreach ($tasks as $task) : ?>
+                    <a href="<?= Url::to(['/task-page/' . $task['id']]) ?>">
+                        <div class="task-item">
+                            <div class="filter-task-item">
+                                <div class="filter-task-item-main">
+                                    <?php if ($task['status'] == 'Свободен') : ?>
+                                        <div class="status-task">
+                                            <p><?= $task['status'] ?></p>
+                                        </div>
+                                    <?php else : ?>
+                                        <div class="hi-order">
+                                            <p><?= $task['status'] ?></p>
+                                            <img src="<?= Url::to(['img/tasks/smite.svg']) ?>" alt="">
+                                        </div>
+                                    <?php endif; ?>
+                                    <div class="filters-list">
+                                        <div class="filter-view filter-task-items">
+                                            <img src="<?= Url::to(['img/tasks/view.svg']) ?>" alt="">
+                                            <p><?= $task['views'] ?></p>
+                                        </div>
+                                        <div class="filter-view filter-task-items">
+                                            <img src="<?= Url::to(['img/tasks/human-icon.svg']) ?>" alt="">
+                                            <p><?= $task['responded'] ?></p>
+                                        </div>
+                                        <div class="filter-view filter-task-items">
+                                            <img src="<?= Url::to(['img/tasks/summ.svg']) ?>" alt="">
+                                            <p><?= $task['price'] > 0 ? $task['price'] : 'Договорная' ?></p>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="right-item-filter">
+                                    <p><?= date('d', strtotime($task['date_public'])) . ' ' . $arrMonth[date('n', strtotime($task['date_public']))] ?></p>
+                                </div>
                             </div>
-                            <div class="right-item-filter">
-                                <p>21 сентября</p>
+                            <div class="task-title">
+                                <h2 class="Font-size24"><?= $task['title'] ?></h2>
                             </div>
-                        </div>
-                        <div class="task-title">
-                            <h2 class="Font-size24">Настройка рекламы ВКонтакте</h2>
-                        </div>
-                        <div class="task-text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Nunc vulputate libero et velit interdum, ac aliq... Подробнее</p>
-                        </div>
-                        <div class="task-tag-list">
-                            <div class="task-tag-item">
-                                <p>#тег</p>
+                            <div class="task-text">
+                                <?= mb_substr($task['about_project'], 0, 180) ?> <span style="color: #F535DA">... Подробнее</span>
                             </div>
-                            <div class="task-tag-item">
-                                <p>#тег</p>
-                            </div>
-                            <div class="task-tag-item">
-                                <p>#тег</p>
+                            <div class="task-tag-list">
+                                <?php $tags = !empty($task['tags']) ? json_decode($task['tags'], 1) : [] ?>
+                                <?php foreach ($tags as $tag) : ?>
+                                    <div class="task-tag-item">
+                                        <p>#<?= $tag ?></p>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                <?php endforeach; ?>
             </div>
             <div class="pagination-tasks">
                 <div class="view-tasks">

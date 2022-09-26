@@ -73,6 +73,8 @@ $this->registerJs($js);
         <button class="btn btn-outline-primary" type="button" id="addWhat">Добавить</button>
     </div>
 
+    <?= $form->field($model, 'term')->textInput(['maxlength' => true, 'placeholder' => '2 месяца']) ?>
+
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
