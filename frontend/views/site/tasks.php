@@ -224,9 +224,16 @@ AppAsset::register($this);
                         <div class="task-item">
                             <div class="filter-task-item">
                                 <div class="filter-task-item-main">
-                                    <div class="status-task">
-                                        <p><?= $task['status'] ?></p>
-                                    </div>
+                                    <?php if ($task['status'] == 'Свободен') : ?>
+                                        <div class="status-task">
+                                            <p><?= $task['status'] ?></p>
+                                        </div>
+                                    <?php else : ?>
+                                        <div class="hi-order">
+                                            <p>Повышенный спрос</p>
+                                            <img src="<?= Url::to(['img/tasks/smite.svg']) ?>" alt="">
+                                        </div>
+                                    <?php endif; ?>
                                     <div class="filters-list">
                                         <div class="filter-view filter-task-items">
                                             <img src="<?= Url::to(['img/tasks/view.svg']) ?>" alt="">
