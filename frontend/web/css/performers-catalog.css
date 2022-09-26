@@ -51,6 +51,7 @@
 
 .tasks-content-main {
     display: flex;
+    margin-bottom: 100px;
 }
 
 .category-item {
@@ -152,8 +153,27 @@
         top: 13px;
     }
 
+    .message-title {
+        position: static;
+    }
+
+    .title-tasks {
+        position: relative;
+        margin-bottom: 54px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        row-gap: 10px;
+        padding-top: 30px;
+    }
+    .title-text{
+        align-self: flex-start;
+    }
     .category-list {
         margin-left: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .view-tasks-mobile .view-tasks {
@@ -164,5 +184,24 @@
 
     .pagination-tasks .view-tasks {
         display: none;
+    }
+}
+
+@media(max-width:580px) {
+    .filter-view-full {
+        display: none;
+    }
+
+    .category-item {
+        max-width: none;
+        width: 100%;
+    }
+
+    .category-items {
+        flex-wrap: wrap;
+    }
+
+    .view-tasks-mobile .view-tasks {
+        margin-top: 13px;
     }
 }

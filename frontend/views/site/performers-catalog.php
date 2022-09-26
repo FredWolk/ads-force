@@ -7,6 +7,8 @@ use yii\web\JqueryAsset;
 $this->registerCssFile(Url::to(['css/performers-catalog.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerCssFile(Url::to(['css/component-css/filter.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $js = <<< JS
+    $('.2-row').find('rect').css({'fill':'#1EBBED'});
+    $('.1-row').find('rect').css({'fill':'#D9D9D9'});
 let statusFilter = false
     $('.filter-item .categories-select-top').click(function (e) {
     if($(this).parent().find('.categories-select-bottom').css('display') == "block"){
@@ -218,6 +220,13 @@ AppAsset::register($this);
             </div>
         </section>
         <section class="category-list">
+        <div class="mobile-filter">
+            <div class="mobile-filter-open">
+                <img src="<?= Url::to(['img/tasks/filter-icon.svg']) ?>" alt="">
+                <p>Фильтры</p>
+            </div>
+            <p>Найдено 545 заданий</p>
+        </div>
         <div class="view-tasks-mobile">
                 <div class="view-tasks">
                     <p class="Font-size18">Отображать по:</p>
