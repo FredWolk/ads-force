@@ -23,7 +23,6 @@ $material = !empty($model->materials) ? $model->materials : '[]';
 $js = <<< JS
 
 // TAGS ADD
-$('#tasks-tags').val('$tags');
 var tags = JSON.parse('$tags');
 function renderTags() {
     $('#tasks-tags').val(JSON.stringify(tags));
@@ -50,14 +49,34 @@ renderTags();
 // TAGS ADD END
 
 // MATERIAL ADD
-$('#tasks-materials').val('$material');
 var material = JSON.parse('$material');
 function renderMaterials() {
-    
+    $('#tasks-materials').val(JSON.stringify(material));
+    $('#materialInputName').val('');
+    $('#materialInputImage').val('');
+    $('.material_block').text('');
+    material.map((e, key) => {
+        $('.material_block').append(`
+            <div class="alert alert-dark alert-dismissible fade show material_item" style="max-width: fit-content;">
+                <b>Название:</b> `+ e.name +` <b>Путь:</b> `+ e.image +`
+                <button data-id="`+ key +`" type="button" class="btn-close remove_material"></button>
+            </div>
+        `)
+    })
 }
 $('#addMaterial').on('click', function () {
-    
+    let obj = {
+        name: $('#materialInputName').val(),
+        image: $('#materialInputImage').val()
+    };
+    material.push(obj);
+    renderMaterials();
 })
+$('.material_block').on('click', '.remove_material', function () {
+    material.splice($(this).attr('data-id'), 1);
+    renderMaterials();
+})
+renderMaterials();
 // MATERIAL ADD END
 JS;
 $this->registerJs($js);
@@ -105,12 +124,7 @@ $this->registerJs($js);
 
     <?= $form->field($model, 'materials')->textarea(['rows' => 3, 'readonly' => true]) ?>
 
-    <div class="d-flex gap-3 flex-wrap material_block">
-        <div class="alert alert-dark alert-dismissible fade show material_item" style="max-width: fit-content;">
-            <b>Название:</b> Скрипт прожаж. <b>Путь:</b> даофыдлваофджылоафжыдлаофдлывоадфлжыоваф
-            <button data-id="2" type="button" class="btn-close remove_material"></button>
-        </div>
-    </div>
+    <div class="d-flex gap-3 flex-wrap material_block"></div>
 
     <label class="input-group">
         Укажите название файла
@@ -126,7 +140,7 @@ $this->registerJs($js);
         'buttonOptions' => ['class' => 'btn btn-primary'],
         'buttonName'    => 'Выбрать'
     ]); ?>
-    <button id="addMaterial" class="btn btn-primary mb-3">Добавить материал</button>
+    <button id="addMaterial" type="button" class="btn btn-primary mb-3">Добавить материал</button>
 
     <?= $form->field($model, 'active')->dropDownList([0 => 'Не активен', 1 => 'Активен']) ?>
 
