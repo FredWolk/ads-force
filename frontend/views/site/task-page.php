@@ -11,7 +11,7 @@ AppAsset::register($this);
 <div class="container-index">
     <div class="task-page-full">
         <div class="link-back">
-            <a href=""><img src="<?= Url::to(['img/task-page/arrow-task.svg']) ?>" /> Вернуться назад</a>
+            <a style="cursor: pointer;" onclick="history.back()"><img src="<?= Url::to(['img/task-page/arrow-task.svg']) ?>" /> Вернуться назад</a>
         </div>
         <div class="task-card">
             <div class="filter-task-item">

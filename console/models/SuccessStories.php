@@ -29,9 +29,9 @@ class SuccessStories extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'image', 'content'], 'required'],
-            [['content', 'what_do'], 'string'],
-            [['title'], 'string', 'max' => 255],
+            [['title', 'image', 'content', 'term'], 'required'],
+            [['content', 'what_do', 'term'], 'string'],
+            [['title', 'term'], 'string', 'max' => 255],
             [['image'], 'string', 'max' => 1023],
         ];
     }
@@ -47,6 +47,7 @@ class SuccessStories extends \yii\db\ActiveRecord
             'image' => 'Изображение',
             'content' => 'Контент',
             'what_do' => 'Что сделано',
+            'term'    => 'Срок'
         ];
     }
 }
