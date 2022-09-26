@@ -95,11 +95,6 @@
     margin-bottom: 50px;
 }
 
-.filter-show-more {
-    margin-top: 10px;
-    color: #F535DA;
-    padding-bottom: 20px;
-}
 
 .view-tasks-mobile .view-tasks {
     display: none;
@@ -163,6 +158,9 @@
 @media(max-width:867px) {
     .filter-inputs {
         display: none;
+    }
+    .tasks{
+        margin-left: 0px!important;
     }
     .view-tasks-mobile {
         max-width: 632px;
