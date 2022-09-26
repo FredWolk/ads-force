@@ -51,6 +51,7 @@ return [
                 'tasks' => 'site/tasks',
                 'task-page' => 'site/task-page',
                 'why-we' => 'site/why-we',
+                'performers-catalog' => 'site/performers-catalog',
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
         ],

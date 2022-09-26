@@ -167,6 +167,10 @@ class SiteController extends Controller
     {
         return $this->render('why-we');
     }
+    public function actionPerformersCatalog()
+    {
+        return $this->render('performers-catalog');
+    }
     /**
      * Signs user up.
      *

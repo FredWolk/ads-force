@@ -125,7 +125,7 @@ AppAsset::register($this);
             <div class="filter-full">
                 <div class="title-categories">
                     <h2 class="Font-size18">Категория</h2>
-                    <a href="" class="Font-size13">Сбросить</a>
+                    <a href="" class="Font-size18">Сбросить</a>
                 </div>
                 <div class="categories-select">
                     <div class="filter-item">
@@ -140,13 +140,13 @@ AppAsset::register($this);
                                 <li>
                                     <label class="custom-checkbox">
                                         <input type="checkbox" value="value-1">
-                                        <span class="Font-size13">Таргетированная реклама</span>
+                                        <span class="Font-size18">Таргетированная реклама</span>
                                     </label>
                                 </li>
                                 <li>
                                     <label class="custom-checkbox">
                                         <input type="checkbox" value="value-1">
-                                        <span class="Font-size13">Интернет-маркетинг</span>
+                                        <span class="Font-size18">Интернет-маркетинг</span>
                                     </label>
                                 </li>
                             </ul>
@@ -166,13 +166,13 @@ AppAsset::register($this);
                                 <li>
                                     <label class="custom-checkbox">
                                         <input type="checkbox" name="filter-cat" value="">
-                                        <span class="Font-size13">Таргетированная реклама</span>
+                                        <span class="Font-size18">Таргетированная реклама</span>
                                     </label>
                                 </li>
                                 <li>
                                     <label class="custom-checkbox">
                                         <input type="checkbox" name="filter-cat" value="">
-                                        <span class="Font-size13">Интернет-маркетинг</span>
+                                        <span class="Font-size18">Интернет-маркетинг</span>
                                     </label>
                                 </li>
                             </ul>
