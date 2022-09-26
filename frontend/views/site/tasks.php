@@ -235,8 +235,9 @@ AppAsset::register($this);
                     <div class="task-item">
                         <div class="filter-task-item">
                             <div class="filter-task-item-main">
-                                <div class="status-task">
-                                    <p>Свободен</p>
+                                <div class="hi-order">
+                                    <p>Повышенный спрос</p>
+                                    <img src="<?= Url::to(['img/tasks/smite.svg']) ?>" alt="">
                                 </div>
                                 <div class="filters-list">
                                     <div class="filter-view filter-task-items">

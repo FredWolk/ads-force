@@ -27,6 +27,18 @@ $('.filter-close').click(function (e) {
     $('.filter').fadeOut(300);
     $('body').css({'overflow':'auto'})
 });
+$('.2-row').click(function (e) {
+    $(this).find('rect').css({'fill':'#1EBBED'});
+    $('.1-row').find('rect').css({'fill':'#D9D9D9'});
+    $('.category-item').css({'max-width':'350px'});
+    $('.category-items').css({'flex-wrap':'nowrap'});
+});
+$('.1-row').click(function (e) {
+    $(this).find('rect').css({'fill':'#1EBBED'});
+    $('.2-row').find('rect').css({'fill':'#D9D9D9'});
+    $('.category-item').css({'max-width':'none'});
+    $('.category-items').css({'flex-wrap':'wrap'});
+});
 JS;
 $this->registerJs($js);
 AppAsset::register($this);
@@ -47,10 +59,25 @@ AppAsset::register($this);
     </section>
     <section class="filter-view-full">
         <div class="filter-view-category">
-            <img src="<?= Url::to(['img/category-performers/1-row-icon.svg']) ?>" alt="">
-            <img src="<?= Url::to(['img/category-performers/2-row-icon.svg']) ?>" alt="">
+        <svg class="2-row" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="8" height="8" fill="#E0E0E0"/>
+            <rect x="9" width="8" height="8" fill="#E0E0E0"/>
+            <rect x="9" y="9" width="8" height="8" fill="#E0E0E0"/>
+            <rect y="9" width="8" height="8" fill="#E0E0E0"/>
+        </svg>
+        <svg class="1-row" width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="3.4" height="3.4" fill="#D9D9D9"/>
+            <rect y="4.53333" width="3.4" height="3.4" fill="#D9D9D9"/>
+            <rect y="9.06665" width="3.4" height="3.4" fill="#D9D9D9"/>
+            <rect y="13.6" width="3.4" height="3.4" fill="#D9D9D9"/>
+            <rect x="4.5332" width="15.8667" height="3.4" fill="#D9D9D9"/>
+            <rect x="4.5332" y="4.53333" width="15.8667" height="3.4" fill="#D9D9D9"/>
+            <rect x="4.5332" y="9.06665" width="15.8667" height="3.4" fill="#D9D9D9"/>
+            <rect x="4.5332" y="13.6" width="15.8667" height="3.4" fill="#D9D9D9"/>
+        </svg>
         </div>
     </section>
+    <div class="tasks-content-main">
 <section class="filter">
             <div class="filter-close">
                 &times;
@@ -190,4 +217,66 @@ AppAsset::register($this);
                 </div>
             </div>
         </section>
+        <section class="category-list">
+        <div class="view-tasks-mobile">
+                <div class="view-tasks">
+                    <p class="Font-size18">Отображать по:</p>
+                    <ul>
+                        <li>
+                            <a class="Font-size18 active-view" href="">5</a>
+                        </li>
+                        <li>
+                            <a class="Font-size18" href="">10</a>
+                        </li>
+                        <li>
+                            <a class="Font-size18" href="">15</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="category-items">
+                <div class="category-item">
+                    <h3 class="Font-size18">Таргетированная реклама</h3>
+                </div>
+                <div class="category-item">
+                    <h3 class="Font-size18">Таргетированная реклама</h3>
+                </div>
+            </div>
+            <div class="pagination-tasks">
+                <div class="view-tasks">
+                    <p class="Font-size18">Отображать по:</p>
+                    <ul>
+                        <li>
+                            <a class="Font-size18 active-view" href="">5</a>
+                        </li>
+                        <li>
+                            <a class="Font-size18" href="">10</a>
+                        </li>
+                        <li>
+                            <a class="Font-size18" href="">15</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pagination-items">
+                    <a href="">
+                        <img src="<?= Url::to(['img/tasks/arrow-pagination.svg']) ?>" alt="">
+                    </a>
+                    <ul>
+                        <li>
+                            <a class="active-paginate" href="">1</a>
+                        </li>
+                        <li>
+                            <a href="">2</a>
+                        </li>
+                        <li>
+                            <a href="">3</a>
+                        </li>
+                    </ul>
+                    <a href="">
+                        <img class="right-arrow-pagination" src="<?= Url::to(['img/tasks/arrow-pagination.svg']) ?>" alt="">
+                    </a>
+                </div>
+            </div>
+        </section>
+</div>
 </div>
