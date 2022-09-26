@@ -65,6 +65,15 @@ $this->title = 'My Yii Application';
                     </div>
                 </div>
             </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Задания</h5>
+                        <p class="card-text">Тут вы можете изменить добавить или отредактировать задания от заказчиков AdsForce</p>
+                        <a href="<?= Url::to(['/tasks']) ?>" class="btn btn-primary">Перейти</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
