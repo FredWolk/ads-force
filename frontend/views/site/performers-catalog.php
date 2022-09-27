@@ -88,22 +88,6 @@ AppAsset::register($this);
                 <img src="<?= Url::to(['img/tasks/filter-open.svg']) ?>" alt="">
                 <p class="Font-size18">Фильтры</p>
             </div>
-            <div class="filter-text-mobile">
-                <div class="filter-text-item">
-                    <h2 class="Font-size18">Выбрано</h2>
-                    <div class="filter-inputs-text">
-                        <p>UI/UX-дизайн / дизайн сайтов</p>
-                        <img src="<?= Url::to(['img/tasks/clear.svg']) ?>" alt="">
-                    </div>
-                </div>
-                <div class="filter-text-item f-end">
-                    <h2 class="Font-size18">Ключевые слова</h2>
-                    <div class="filter-inputs-text">
-                        <p>UI/UX-дизайн / дизайн сайтов</p>
-                        <img src="<?= Url::to(['img/tasks/clear.svg']) ?>" alt="">
-                    </div>
-                </div>
-            </div>
             <div class="remuneration block-hidden-desctop">
                 <div class="title-remuneration">
                     <h2 class="Font-size18">Вознаграждение</h2>

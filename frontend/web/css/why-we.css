@@ -98,6 +98,10 @@
     justify-content: space-between;
 }
 
+.slide-modal {
+    display: none;
+}
+
 .advantage-item {
     display: flex;
     flex-direction: column;
@@ -141,13 +145,11 @@
     background-image: url('../img/why-we/fon-slider.png');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100%;
     position: relative;
-    max-height: 335px;
     height: 100%;
     display: flex !important;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
     width: 100%;
 }
@@ -158,16 +160,23 @@
 
 .slider-item h3 {
     color: #FFFFFF;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    margin: min(max(9.590vw, 15px), 105px) 0px;
+}
+
+.slick-slide {
+    height: auto !important;
 }
 
 .slide-link {
-    position: absolute;
-    bottom: 20px;
-    color: #FFFFFF;
-    left: 30px;
+    align-self: flex-start;
 }
 
 .slide-link a {
+    color: #FFFFFF;
     text-decoration-line: underline;
 }
 
@@ -224,10 +233,12 @@
 .step-content h3 {
     font-weight: 500;
 }
-.download-link{
+
+.download-link {
     margin-top: 43px;
 }
-.download-link button{
+
+.download-link button {
     padding: 25px;
     max-width: 719px;
     width: 100%;
@@ -237,6 +248,11 @@
     border-radius: 40px;
     color: #FFFFFF;
 }
+
+.slick-track {
+    display: flex !important;
+}
+
 @media (max-width:876px) {
     .why-we-title {
         flex-direction: column;
@@ -253,9 +269,11 @@
         flex-direction: column;
         row-gap: 30px;
     }
+
     .f-end-advantage {
         align-self: flex-start;
     }
+
     .why-we-link-block {
         margin-top: 24px;
         width: 100%;
@@ -267,8 +285,8 @@
     }
 }
 
-@media (max-width:580px){
-    .why-we-links ul li a{
+@media (max-width:580px) {
+    .why-we-links ul li a {
         font-size: 14px;
     }
 }

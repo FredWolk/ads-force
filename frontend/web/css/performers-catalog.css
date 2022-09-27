@@ -32,6 +32,7 @@
 .category-title {
     display: flex;
     flex-direction: column;
+    text-align: center;
     align-items: center;
     row-gap: 5px;
 }
@@ -191,7 +192,9 @@
     .filter-view-full {
         display: none;
     }
-
+    .category-list{
+        margin-top: 10px;
+    }
     .category-item {
         max-width: none;
         width: 100%;

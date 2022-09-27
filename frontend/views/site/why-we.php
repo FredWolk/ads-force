@@ -29,6 +29,10 @@ responsive: [
     }
 ]
 })
+
+$('.slider-item').click(function(e) {
+    $(this).find('.slide-modal').fadeIn(300);
+})
 JS;
 $this->registerJs($js);
 AppAsset::register($this);
@@ -127,6 +131,15 @@ AppAsset::register($this);
                         <h3 class="Font-size36">Разработка брендинга</h3>
                         <div class="slide-link">
                             <a class="Font-size18" href="">Посмотреть</a>
+                        </div>
+                        <div class="slide-modal">
+                            <div>
+                                <img src="<?= Url::to(['img/why-we/fon-slider.png']) ?>" alt="">
+                            </div>
+                            <div class="slide-modal-text">
+                                <div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="slider-item">

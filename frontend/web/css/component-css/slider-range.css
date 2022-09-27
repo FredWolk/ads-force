@@ -94,5 +94,7 @@ input::-webkit-inner-spin-button {
 @media(max-width:867px) {
     .range_container{
         max-width: 480px;
+        margin-bottom: 15px;
     }
+    
 }

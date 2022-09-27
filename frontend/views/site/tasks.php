@@ -63,23 +63,6 @@ AppAsset::register($this);
             <p>В данном разделе вы можете найти подходящие своему опыту и уровню желаемой оплаты задания! Для вашего удобства воспользуйтесь фильтрами по заданиям!</p>
         </div>
     </section>
-    <!--filter-text-->
-    <section class="filter-inputs">
-        <div class="filter-inputs-minus">
-            <h2 class="Font-size18">Минус - слова</h2>
-            <div class="filter-inputs-text">
-                <p>UI/UX-дизайн / дизайн сайтов</p>
-                <img src="<?= Url::to(['img/tasks/clear.svg']) ?>" alt="">
-            </div>
-        </div>
-        <div class="filter-inputs-plus">
-            <h2 class="Font-size18">Минус - слова</h2>
-            <div class="filter-inputs-text">
-                <p>UI/UX-дизайн / дизайн сайтов</p>
-                <img src="<?= Url::to(['img/tasks/clear.svg']) ?>" alt="">
-            </div>
-        </div>
-    </section>
     <div class="tasks-content-main">
         <!--filter-->
         <section class="filter">
@@ -89,22 +72,6 @@ AppAsset::register($this);
             <div class="filter-open-mobile">
                 <img src="<?= Url::to(['img/tasks/filter-open.svg']) ?>" alt="">
                 <p class="Font-size18">Фильтры</p>
-            </div>
-            <div class="filter-text-mobile">
-                <div class="filter-text-item">
-                    <h2 class="Font-size18">Выбрано</h2>
-                    <div class="filter-inputs-text">
-                        <p>UI/UX-дизайн / дизайн сайтов</p>
-                        <img src="<?= Url::to(['img/tasks/clear.svg']) ?>" alt="">
-                    </div>
-                </div>
-                <div class="filter-text-item f-end">
-                    <h2 class="Font-size18">Ключевые слова</h2>
-                    <div class="filter-inputs-text">
-                        <p>UI/UX-дизайн / дизайн сайтов</p>
-                        <img src="<?= Url::to(['img/tasks/clear.svg']) ?>" alt="">
-                    </div>
-                </div>
             </div>
             <div class="remuneration">
                 <div class="title-remuneration">
