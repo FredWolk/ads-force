@@ -1,0 +1,157 @@
+.title-tasks {
+    position: relative;
+    margin-bottom: 24px;
+    padding-top: 88px;
+}
+
+.title-text {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.title-text img {
+    width: 23px;
+    height: 23px;
+}
+
+.message-title {
+    max-width: 704px;
+    position: absolute;
+    top: 36px;
+    right: 0px;
+    border-radius: 4px;
+    background: linear-gradient(to right, rgb(206, 6, 208, 0.1), rgb(0, 219, 222, 0.1));
+    padding: 18px 20px;
+}
+
+.title-performers {
+    display: flex;
+    row-gap: 5px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-content {
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    column-gap: 60px;
+}
+
+.select-filter {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.select-popular {
+    padding: 5px 8px;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+}
+
+.select-popular p span {
+    color: #1EBBED;
+    text-decoration: underline;
+}
+
+.select-list {
+    display: none;
+}
+
+.select-list ul {
+    list-style: none;
+    display: flex;
+    margin-left: auto;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.justify-select {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.title-performers h2 {
+    font-weight: 600;
+}
+
+.performers-full {
+    max-width: 550px;
+    margin-left: auto;
+}
+
+.mobile-filter-open {
+    display: none;
+}
+
+.pagination-items {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    column-gap: 15px;
+}
+
+.pagination-items ul {
+    display: flex;
+    list-style: none;
+}
+
+.pagination-items ul li a {
+    padding: 5px 10px;
+}
+.performers-full{
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+.right-arrow-pagination{
+    transform: rotate(-180deg);
+}
+.active-paginate {
+    background: linear-gradient(90deg, #CE06D0 0%, #00DBDE 100%);
+    border-radius: 4px;
+    color: #ffffff;
+}
+
+@media(max-width:867px) {
+    .title-tasks {
+        position: relative;
+        margin-bottom: 24px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        row-gap: 10px;
+        padding-top: 30px;
+    }
+
+    .mobile-filter-open {
+        display: flex;
+    }
+
+    .select-filter {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .performers-full {
+        margin-left: 0px;
+    }
+    .performers-full{
+        max-width: none;
+    }
+    .title-text {
+        align-self: flex-start;
+    }
+
+    .message-title {
+        position: static;
+    }
+}
+
+@media(max-width:580px) {
+    .select-popular p {
+        font-size: 13px;
+    }
+}

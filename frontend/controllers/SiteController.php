@@ -171,7 +171,12 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
-
+    public function actionPerformersPage()
+    {
+        $categories = Categories::find()->asArray()->all();
+        $performers = Performers::find()->asArray()->limit(6)->all();
+        return $this->render('performers-page', compact('categories', 'performers'));
+    }
     public function actionTaskPage($id)
     {
         $task = Tasks::find()

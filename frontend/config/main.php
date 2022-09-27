@@ -52,6 +52,7 @@ return [
                 'task-page/<id:>' => 'site/task-page',
                 'why-we' => 'site/why-we',
                 'performers-catalog' => 'site/performers-catalog',
+                'performers-page' => 'site/performers-page',
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
         ],
