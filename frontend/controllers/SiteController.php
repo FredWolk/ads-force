@@ -171,10 +171,10 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
     public function actionTaskPage($id)
     {
         $task = Tasks::find()
-            ->asArray()
             ->where(['active' => 1])
             ->andWhere(['OR', ['status' => 'Свободен'], ['status' => 'Повышенный спрос']])
             ->andWhere(['id' => $id])
@@ -182,12 +182,32 @@ class SiteController extends Controller
         if (empty($task)) {
             return $this->redirect(Url::to(['/tasks']));
         }
+
+        if (!empty($_COOKIE['Views'])) {
+            $cookie = $_COOKIE['Views'];
+            $array = json_decode($cookie, true);
+            if (!in_array($id, $array)) {
+                $array[] = $id;
+                $cookie = json_encode($array, JSON_UNESCAPED_UNICODE);
+                setcookie('Views', $cookie, time() + 3600 * 24 * 365 * 10, '/');
+                $task->views = $task->views + 1;
+                $task->update();
+            }
+        } else {
+            $cookLink = json_encode([$id], JSON_UNESCAPED_UNICODE);
+            setcookie('Views', $cookLink, time() + 3600 * 24 * 365 * 10, '/');
+            $task->views = $task->views + 1;
+            $task->update();
+        }
+
         return $this->render('task-page', compact('task'));
     }
+
     public function actionWhyWe()
     {
         return $this->render('why-we');
     }
+
     public function actionPerformersCatalog()
     {
         return $this->render('performers-catalog');
