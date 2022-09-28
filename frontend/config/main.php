@@ -47,6 +47,7 @@ return [
             [
                 //['class' => 'frontend\components\ClassUrlRule'],
                 '' => 'site/index',
+                'profile-performer' => 'profile-performer/index',
                 'for-customer' => 'site/for-customer',
                 'tasks' => 'site/tasks',
                 'task-page/<id:>' => 'site/task-page',

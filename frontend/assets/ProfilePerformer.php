@@ -7,15 +7,12 @@ use yii\web\AssetBundle;
 /**
  * Main frontend application asset bundle.
  */
-class AppAsset extends AssetBundle
+class ProfilePerformer extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
-        'css/header.css',
-        'css/footer.css',
-        'css/reset.css'
+        'css/profile-performer/site.css'
     ];
     public $js = [];
     public $depends = [
