@@ -1,0 +1,27 @@
+.Profile-container {
+    max-width: 1110px;
+    margin: 0px auto;
+    width: 100%;
+    padding: 0px 20px;
+}
+
+:root {
+    --title: #F535DA;
+    --text: #1F1F1F;
+    --white: #FFFFFF;
+    --background: #1E216B;
+}
+
+.title_color {
+    color: var(--title);
+}
+.background_color_level{
+    background-color: var(--background);
+}
+.main_color_text {
+    color: var(--text);
+}
+
+.white_color {
+    color: var(--white);
+}

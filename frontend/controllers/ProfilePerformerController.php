@@ -1,8 +1,6 @@
 <?php
 namespace frontend\controllers;
-use Yii;
 use yii\web\Controller;
-use yii\web\Response;
 
 class ProfilePerformerController extends Controller
 {
@@ -10,5 +8,6 @@ class ProfilePerformerController extends Controller
     {
         return $this->render('index');
     }
+    
 }
 ?>

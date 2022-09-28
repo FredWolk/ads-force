@@ -33,35 +33,30 @@ footer {
   font-size: min(max(3.307vw, 24px), 50px);
   font-weight: 700;
   letter-spacing: 0px;
-  color: #1f1f1f;
 }
 
 .Font-size36 {
   font-size: min(max(2.381vw, 24px), 36px);
   font-weight: 600;
   letter-spacing: 0px;
-  color: #1f1f1f;
 }
 
 .Font-size28 {
   font-size: min(max(1.852vw, 18px), 28px);
   font-weight: 400;
   letter-spacing: 0px;
-  color: #1f1f1f;
 }
 
 .Font-size24 {
   font-size: min(max(1.587vw, 18px), 24px);
   font-weight: 400;
   letter-spacing: 0px;
-  color: #1f1f1f;
 }
 
 .Font-size20 {
   font-weight: 600;
   font-size: min(max(1.323vw, 18px), 20px);
   letter-spacing: 0px;
-  color: #1f1f1f;
 }
 
 .Font-size18 {
@@ -77,34 +72,29 @@ footer {
     font-size: 50px;
     font-weight: 700;
     letter-spacing: 0px;
-    color: #1f1f1f;
   }
 
   .Font-size36 {
     font-size: 36px;
     font-weight: 600;
     letter-spacing: 0px;
-    color: #1f1f1f;
   }
 
   .Font-size28 {
     font-size: 28px;
     font-weight: 400;
     letter-spacing: 0px;
-    color: #1f1f1f;
   }
 
   .Font-size24 {
     font-size: 24px;
     font-weight: 400;
     letter-spacing: 0px;
-    color: #1f1f1f;
   }
 
   .Font-size20 {
     font-weight: 600;
     font-size: 20px;
     letter-spacing: 0px;
-    color: #1f1f1f;
   }
 }
