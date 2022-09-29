@@ -18,6 +18,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yii\data\Pagination;
 use yii\helpers\Url;
 
 /**
@@ -92,17 +93,27 @@ class SiteController extends Controller
     }
     public function actionTasks()
     {
-        $tasks = Tasks::find()
+
+        $filter = ['AND'];
+
+        // if (!empty($_POST)) {
+        //     dd($_POST);
+        // }
+        $query = Tasks::find()
             ->asArray()
             ->where(['OR', ['status' => 'Свободен'], ['status' => 'Повышенный спрос']])
-            ->andWhere(['active' => true])
+            ->andWhere(['active' => true]);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => !empty($_GET['pageSize']) ? $_GET['pageSize'] : 5]);
+        $tasks = $query->offset($pages->offset)
+            ->limit($pages->limit)
             ->all();
+
         $category = Categories::find()
             ->with('subCategories')
             ->asArray()
             ->all();
 
-        return $this->render('tasks', compact('category', 'tasks'));
+        return $this->render('tasks', compact('category', 'tasks', 'pages'));
     }
     /**
      * Logs in a user.

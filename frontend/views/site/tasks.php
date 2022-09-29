@@ -2,7 +2,10 @@
 
 use yii\helpers\Url;
 use frontend\assets\AppAsset;
+use yii\helpers\Html;
 use yii\web\JqueryAsset;
+use yii\widgets\LinkPager;
+use yii\widgets\Pjax;
 
 /** @var yii\web\View $this */
 
@@ -48,6 +51,21 @@ $('.filter-close').click(function (e) {
     $('.filter').fadeOut(300);
     $('body').css({'overflow':'auto'})
 });
+
+$('.tasks-content-main').on('change', '.change_filter', function () {
+    $('.filter_form').submit();
+});
+
+$('.filter_form').on('submit', function (e) {
+    e.preventDefault();
+    $.pjax.reload({
+        container: '#task_container',
+        url: '/tasks',
+        data: $(this).serialize(),
+        type: 'GET',
+    });
+})
+
 JS;
 $this->registerJs($js);
 AppAsset::register($this);
@@ -66,6 +84,7 @@ AppAsset::register($this);
     <div class="tasks-content-main">
         <!--filter-->
         <section class="filter">
+            <?= Html::beginForm('', '', ['class' => 'filter_form', 'id' => 'filter_form']) ?>
             <div class="filter-close">
                 &times;
             </div>
@@ -81,22 +100,22 @@ AppAsset::register($this);
                     <div class="remuneration-minmax-item">
                         <div class="form_control_container">
                             <p>От</p>
-                            <input class="form_control_container__time__input" type="number" id="fromInput" value="0" min="0" max="100000" />
+                            <input form="filter_form" class="form_control_container__time__input change_filter" name="fromPrice" type="number" id="fromInput" value="0" min="0" max="100000" />
                         </div>
                         <img src="<?= Url::to(['img/tasks/rub.svg']) ?>" alt="">
                     </div>
                     <div class="remuneration-minmax-item">
                         <div class="form_control_container">
                             <p>До</p>
-                            <input class="form_control_container__time__input" type="number" id="toInput" value="100000" min="0" max="100000" />
+                            <input form="filter_form" class="form_control_container__time__input change_filter" name="toPrice" type="number" id="toInput" value="100000" min="0" max="100000" />
                         </div>
                         <img src="<?= Url::to(['img/tasks/rub.svg']) ?>" alt="">
                     </div>
                 </div>
                 <div class="range_container">
                     <div class="sliders_control">
-                        <input id="fromSlider" type="range" value="0" min="0" max="100000" />
-                        <input id="toSlider" type="range" value="100000" min="0" max="100000" />
+                        <input id="fromSlider" class="change_filter" type="range" value="0" min="0" max="100000" />
+                        <input id="toSlider" class="change_filter" type="range" value="100000" min="0" max="100000" />
                     </div>
                     <div class="form_control">
                         <p>0</p>
@@ -123,7 +142,7 @@ AppAsset::register($this);
                                     <?php foreach ($val['subCategories'] as $i) : ?>
                                         <li>
                                             <label class="custom-checkbox">
-                                                <input type="checkbox" value="value-1">
+                                                <input class="change_filter" name="skils[]" type="checkbox" value="<?= $i['title'] ?>">
                                                 <span class="Font-size18"><?= $i['title'] ?></span>
                                             </label>
                                         </li>
@@ -144,21 +163,8 @@ AppAsset::register($this);
                     </label>
                     <p class="Font-size18">Только с отзывами</p>
                 </div>
-                <div class="level-task">
-                    <h2 class="Font-size18">Выбор уровня сложности</h2>
-                    <ul>
-                        <li>
-                            <p>Легкий</p>
-                        </li>
-                        <li>
-                            <p>Средний</p>
-                        </li>
-                        <li>
-                            <p>Сложный</p>
-                        </li>
-                    </ul>
-                </div>
             </div>
+            <?= Html::endForm(); ?>
         </section>
         <div class="mobile-filter">
             <div class="mobile-filter-open">
@@ -168,6 +174,7 @@ AppAsset::register($this);
             <p>Найдено 545 заданий</p>
         </div>
         <section class="task-list">
+            <?php Pjax::begin(['id' => 'task_container']) ?>
             <div class="view-tasks-mobile">
                 <div class="view-tasks">
                     <p class="Font-size18">Отображать по:</p>
@@ -185,9 +192,8 @@ AppAsset::register($this);
                 </div>
             </div>
             <div class="tasks">
-                <?php dump($tasks) ?>
                 <?php foreach ($tasks as $task) : ?>
-                    <a href="<?= Url::to(['/task-page/' . $task['id']]) ?>">
+                    <a data-pjax="0" href="<?= Url::to(['/task-page/' . $task['id']]) ?>">
                         <div class="task-item">
                             <div class="filter-task-item">
                                 <div class="filter-task-item-main">
@@ -241,38 +247,24 @@ AppAsset::register($this);
             <div class="pagination-tasks">
                 <div class="view-tasks">
                     <p class="Font-size18">Отображать по:</p>
-                    <ul>
-                        <li>
-                            <a class="Font-size18 active-view" href="">5</a>
-                        </li>
-                        <li>
-                            <a class="Font-size18" href="">10</a>
-                        </li>
-                        <li>
-                            <a class="Font-size18" href="">15</a>
-                        </li>
-                    </ul>
+                    <label class="pageSize_label Font-size18 <?= !empty($_GET['pageSize']) && $_GET['pageSize'] == 5 ? 'active-view' : '' ?>">
+                        5
+                        <input <?= !empty($_GET['pageSize']) && $_GET['pageSize'] == 5 ? 'checked' : '' ?> form="filter_form" class="change_filter" style="display: none;" type="radio" name="pageSize" value="5">
+                    </label>
+                    <label class="pageSize_label Font-size18 <?= !empty($_GET['pageSize']) && $_GET['pageSize'] == 10 ? 'active-view' : '' ?>">
+                        10
+                        <input <?= !empty($_GET['pageSize']) && $_GET['pageSize'] == 10 ? 'checked' : '' ?> form="filter_form" class="change_filter" style="display: none;" type="radio" name="pageSize" value="10">
+                    </label>
+                    <label class="pageSize_label Font-size18 <?= !empty($_GET['pageSize']) && $_GET['pageSize'] == 15 ? 'active-view' : '' ?>">
+                        15
+                        <input <?= !empty($_GET['pageSize']) && $_GET['pageSize'] == 15 ? 'checked' : '' ?> form="filter_form" class="change_filter" style="display: none;" type="radio" name="pageSize" value="15">
+                    </label>
                 </div>
-                <div class="pagination-items">
-                    <a href="">
-                        <img src="<?= Url::to(['img/tasks/arrow-pagination.svg']) ?>" alt="">
-                    </a>
-                    <ul>
-                        <li>
-                            <a class="active-paginate" href="">1</a>
-                        </li>
-                        <li>
-                            <a href="">2</a>
-                        </li>
-                        <li>
-                            <a href="">3</a>
-                        </li>
-                    </ul>
-                    <a href="">
-                        <img class="right-arrow-pagination" src="<?= Url::to(['img/tasks/arrow-pagination.svg']) ?>" alt="">
-                    </a>
-                </div>
+                <?= LinkPager::widget([
+                    'pagination' => $pages,
+                ]); ?>
             </div>
+            <?php Pjax::end(); ?>
         </section>
     </div>
 </div>
