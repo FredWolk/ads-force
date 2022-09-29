@@ -4,6 +4,7 @@ use console\models\Categories;
 use yii\helpers\Url;
 use frontend\assets\AppAsset;
 use yii\web\JqueryAsset;
+
 $this->registerCssFile(Url::to(['css/performers-catalog.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerCssFile(Url::to(['css/component-css/filter.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $js = <<< JS
@@ -61,26 +62,26 @@ AppAsset::register($this);
     </section>
     <section class="filter-view-full">
         <div class="filter-view-category">
-        <svg class="2-row" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="8" height="8" fill="#E0E0E0"/>
-            <rect x="9" width="8" height="8" fill="#E0E0E0"/>
-            <rect x="9" y="9" width="8" height="8" fill="#E0E0E0"/>
-            <rect y="9" width="8" height="8" fill="#E0E0E0"/>
-        </svg>
-        <svg class="1-row" width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="3.4" height="3.4" fill="#D9D9D9"/>
-            <rect y="4.53333" width="3.4" height="3.4" fill="#D9D9D9"/>
-            <rect y="9.06665" width="3.4" height="3.4" fill="#D9D9D9"/>
-            <rect y="13.6" width="3.4" height="3.4" fill="#D9D9D9"/>
-            <rect x="4.5332" width="15.8667" height="3.4" fill="#D9D9D9"/>
-            <rect x="4.5332" y="4.53333" width="15.8667" height="3.4" fill="#D9D9D9"/>
-            <rect x="4.5332" y="9.06665" width="15.8667" height="3.4" fill="#D9D9D9"/>
-            <rect x="4.5332" y="13.6" width="15.8667" height="3.4" fill="#D9D9D9"/>
-        </svg>
+            <svg class="2-row" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="8" height="8" fill="#E0E0E0" />
+                <rect x="9" width="8" height="8" fill="#E0E0E0" />
+                <rect x="9" y="9" width="8" height="8" fill="#E0E0E0" />
+                <rect y="9" width="8" height="8" fill="#E0E0E0" />
+            </svg>
+            <svg class="1-row" width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="3.4" height="3.4" fill="#D9D9D9" />
+                <rect y="4.53333" width="3.4" height="3.4" fill="#D9D9D9" />
+                <rect y="9.06665" width="3.4" height="3.4" fill="#D9D9D9" />
+                <rect y="13.6" width="3.4" height="3.4" fill="#D9D9D9" />
+                <rect x="4.5332" width="15.8667" height="3.4" fill="#D9D9D9" />
+                <rect x="4.5332" y="4.53333" width="15.8667" height="3.4" fill="#D9D9D9" />
+                <rect x="4.5332" y="9.06665" width="15.8667" height="3.4" fill="#D9D9D9" />
+                <rect x="4.5332" y="13.6" width="15.8667" height="3.4" fill="#D9D9D9" />
+            </svg>
         </div>
     </section>
     <div class="tasks-content-main">
-<section class="filter">
+        <section class="filter">
             <div class="filter-close">
                 &times;
             </div>
@@ -204,14 +205,14 @@ AppAsset::register($this);
             </div>
         </section>
         <section class="category-list">
-        <div class="mobile-filter">
-            <div class="mobile-filter-open">
-                <img src="<?= Url::to(['img/tasks/filter-icon.svg']) ?>" alt="">
-                <p>Фильтры</p>
+            <div class="mobile-filter">
+                <div class="mobile-filter-open">
+                    <img src="<?= Url::to(['img/tasks/filter-icon.svg']) ?>" alt="">
+                    <p>Фильтры</p>
+                </div>
+                <p>Найдено 545 заданий</p>
             </div>
-            <p>Найдено 545 заданий</p>
-        </div>
-        <div class="view-tasks-mobile">
+            <div class="view-tasks-mobile">
                 <div class="view-tasks">
                     <p class="Font-size18">Отображать по:</p>
                     <ul>
@@ -271,5 +272,5 @@ AppAsset::register($this);
                 </div>
             </div>
         </section>
-</div>
+    </div>
 </div>

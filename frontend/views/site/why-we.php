@@ -31,7 +31,12 @@ responsive: [
 })
 
 $('.slider-item').click(function(e) {
-    $(this).find('.slide-modal').fadeIn(300);
+    $('.slide-modal').fadeIn(300);
+    $('body').css({'overflow':'hidden'})
+})
+$('.slide-close').click(function(e) {
+    $('.slide-modal').fadeOut(300);
+    $('body').css({'overflow':'auto'})
 })
 JS;
 $this->registerJs($js);
@@ -132,15 +137,6 @@ AppAsset::register($this);
                         <div class="slide-link">
                             <a class="Font-size18" href="">Посмотреть</a>
                         </div>
-                        <div class="slide-modal">
-                            <div>
-                                <img src="<?= Url::to(['img/why-we/fon-slider.png']) ?>" alt="">
-                            </div>
-                            <div class="slide-modal-text">
-                                <div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="slider-item">
                         <h3 class="Font-size36">Разработка брендинга</h3>
@@ -186,12 +182,50 @@ AppAsset::register($this);
                         </div>
                     </div>
                 </div>
-                <a href="" >
+                <a href="">
                     <div class="download-link">
                         <button class="Font-size28">Скачать руководство по работе с платформой</button>
                 </a>
             </div>
     </div>
     </section>
+
+    <div class="slide-modal">
+        <div class="modal-container">
+            <div class="modal-img">
+                <p class="Font-size36">Разработка брендинга</p>
+                <div class="slide-close">
+                    &times;
+                </div>
+                <img src="<?= Url::to(['img/why-we/fon-slider.png']) ?>" alt="">
+            </div>
+            <div class="slide-modal-text">
+                <div class="about-project">
+                    <h2 class="Font-size24">О проекте: </h2>
+                    <p class="Font-size24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Ut commodo efficitur neque.</p>
+                    <p class="Font-size24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent .</p>
+                    <p class="Font-size24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent . Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent .Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent .</p>
+                </div>
+                <div class="slide-list">
+                    <h2 class="Font-size24">Что сделали:</h2>
+                    <ul>
+                        <li><img src="<?= Url::to(['img/why-we/list-icon.svg']) ?>" alt="">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        </li>
+                        <li><img src="<?= Url::to(['img/why-we/list-icon.svg']) ?>" alt="">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        </li>
+                        <li><img src="<?= Url::to(['img/why-we/list-icon.svg']) ?>" alt="">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="time-project">
+                    <h2 class="Font-size24">За какой срок: </h2>
+                    <p class="Font-size24">2 месяца</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
