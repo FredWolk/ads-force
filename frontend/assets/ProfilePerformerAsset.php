@@ -7,7 +7,7 @@ use yii\web\AssetBundle;
 /**
  * Main frontend application asset bundle.
  */
-class ProfilePerformer extends AssetBundle
+class ProfilePerformerAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
