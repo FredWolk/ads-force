@@ -12,7 +12,8 @@ class ProfilePerformerAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/profile-performer/site.css'
+        'css/profile-performer/site.css',
+        'css/reset.css'
     ];
     public $js = [];
     public $depends = [

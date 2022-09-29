@@ -38,6 +38,10 @@
     font-size: 16px;
 }
 
+.news-mobile{
+    display: none;
+}
+
 .left-navbar-bottom ul {
     list-style: none;
     padding-top: 20px;
@@ -104,4 +108,14 @@
     margin-left: 10px;
     cursor: pointer;
     display: inline-flex;
+}
+
+@media(max-width:768px){
+    .left-navbar{
+        display: none;
+    }
+    .news-mobile{
+        display: flex;
+        flex-direction: column;
+    }
 }

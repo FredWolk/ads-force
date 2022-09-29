@@ -9,6 +9,9 @@ class ProfilePerformerController extends Controller
     {
         return $this->render('index');
     }
-    
+    public function actionProfilePrivate()
+    {
+        return $this->render('profile-private');
+    }
 }
 ?>
