@@ -1,144 +1,151 @@
 .title-text {
-    display: flex;
-    align-items: center;
-    column-gap: 10px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
 }
 
 .title-text img {
-    width: 23px;
-    height: 23px;
+  width: 23px;
+  height: 23px;
 }
 
 .title-tasks {
-    position: relative;
-    margin-bottom: 54px;
-    padding-top: 88px;
+  position: relative;
+  margin-bottom: 54px;
+  padding-top: 88px;
 }
 
 .message-title {
-    max-width: 704px;
-    position: absolute;
-    top: 36px;
-    right: 0px;
-    border-radius: 4px;
-    background: linear-gradient(to right, rgb(206, 6, 208, 0.1), rgb(0, 219, 222, 0.1));
-    padding: 18px 20px;
+  max-width: 704px;
+  position: absolute;
+  top: 36px;
+  right: 0px;
+  border-radius: 4px;
+  background: linear-gradient(
+    to right,
+    rgb(206, 6, 208, 0.1),
+    rgb(0, 219, 222, 0.1)
+  );
+  padding: 18px 20px;
 }
 
 .filter-inputs {
-    display: flex;
+  display: flex;
 }
 
 .message-title p {
-    font-size: min(max(1.058vw, 10px), 16px);
+  font-size: min(max(1.058vw, 10px), 16px);
 }
-
 
 .tasks-content-main {
-    display: flex;
-    column-gap: 50px;
-    margin-bottom: 50px;
+  display: flex;
+  column-gap: 50px;
+  margin-bottom: 50px;
 }
 
-
 .view-tasks-mobile .view-tasks {
-    display: none;
+  display: none;
 }
 
 .view-tasks {
-    display: flex;
-    column-gap: 5px;
+  display: flex;
+  column-gap: 5px;
 }
 
 .active-view {
-    color: #1EBBED;
+  color: #1ebbed;
 }
 
 .view-tasks ul li a {
-    transition: 0.5s;
+  transition: 0.5s;
 }
 
 .pagination-tasks {
-    display: flex;
-    margin-left: auto;
-    margin-top: 35px;
-    max-width: 632px;
-    justify-content: space-between;
+  display: flex;
+  margin-left: auto;
+  margin-top: 35px;
+  max-width: 632px;
+  justify-content: space-between;
 }
 
-.pagination-items {
-    display: flex;
-    column-gap: 15px;
+.pagination-items,
+.pagination {
+  list-style: none;
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
 }
 
-.right-arrow-pagination {
-    transform: rotate(-180deg);
+.pagination li {
+  display: block;
+  width: 30px;
+  height: 30px;
+  padding: 7px 10px;
 }
 
-.pagination-items ul {
-    display: flex;
-    list-style: none;
-}
-
-.pagination-items ul li a {
-    padding: 5px 10px;
+.pagination li.disabled {
+  cursor: not-allowed;
 }
 
 .view-tasks ul li a:hover {
-    color: #1EBBED;
+  color: #1ebbed;
 }
 
-.active-paginate {
-    background: linear-gradient(90deg, #CE06D0 0%, #00DBDE 100%);
-    border-radius: 4px;
-    color: #ffffff;
+.pagination .active {
+  background: linear-gradient(90deg, #ce06d0 0%, #00dbde 100%);
+  border-radius: 4px;
+  color: #ffffff;
 }
 
 .view-tasks ul {
-    display: flex;
-    list-style: none;
-    column-gap: 8px;
+  display: flex;
+  list-style: none;
+  column-gap: 8px;
 }
 
-@media(max-width:867px) {
-    .filter-inputs {
-        display: none;
-    }
+.pageSize_label {
+  cursor: pointer;
+}
 
-    .tasks {
-        margin-left: 0px !important;
-    }
+@media (max-width: 867px) {
+  .filter-inputs {
+    display: none;
+  }
 
-    .view-tasks-mobile {
-        max-width: 632px;
-    }
+  .tasks {
+    margin-left: 0px !important;
+  }
 
-    .task-list {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .view-tasks-mobile {
+    max-width: 632px;
+  }
 
-    .view-tasks-mobile .view-tasks {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 13px;
-    }
+  .task-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .tasks-content-main {
-        flex-direction: column;
-    }
+  .view-tasks-mobile .view-tasks {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 13px;
+  }
 
-    .message-title {
-        top: 13px;
-    }
+  .tasks-content-main {
+    flex-direction: column;
+  }
 
-    .pagination-tasks .view-tasks {
-        display: none;
-    }
+  .message-title {
+    top: 13px;
+  }
 
-    .pagination-tasks {
-        justify-content: center;
-        margin-left: 0px;
-    }
+  .pagination-tasks .view-tasks {
+    display: none;
+  }
+
+  .pagination-tasks {
+    justify-content: center;
+    margin-left: 0px;
+  }
 }

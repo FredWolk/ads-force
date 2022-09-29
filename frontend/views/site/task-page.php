@@ -26,7 +26,6 @@ AppAsset::register($this);
         <div class="link-back">
             <a style="cursor: pointer;" onclick="history.back()"><img src="<?= Url::to(['img/task-page/arrow-task.svg']) ?>" /> Вернуться назад</a>
         </div>
-        <?php dump($task) ?>
         <div class="task-card">
             <div class="filter-task-item">
                 <div class="filter-task-item-main">
