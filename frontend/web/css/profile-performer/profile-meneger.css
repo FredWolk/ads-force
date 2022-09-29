@@ -77,3 +77,7 @@
     align-items: center;
     justify-content: center;
 }
+.pro-account-block{
+    padding: 20px 30px;
+    background-image: url('../../img/profile/profile-meneger/bg-profile-pro.png');
+}

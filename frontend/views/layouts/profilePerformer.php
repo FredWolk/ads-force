@@ -5,8 +5,8 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-use frontend\assets\AppAsset;
-AppAsset::register($this);
+use frontend\assets\ProfilePerformer;
+ProfilePerformer::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

@@ -98,6 +98,9 @@ AppAsset::register($this);
                     </a>
                 </div>
             </div>
+            <div class="pro-account-block">
+
+            </div>
         </section>
     </div>
 </div>
