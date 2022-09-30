@@ -95,9 +95,6 @@ class SiteController extends Controller
     {
 
         $filter = ['AND'];
-        // if (!empty($_GET)) {
-        //     dd($_GET);
-        // }
         if (!empty($_GET['fromPrice']))
             $filter[] = ['>=', 'price', $_GET['fromPrice']];
 
