@@ -7,6 +7,7 @@ use yii\web\JqueryAsset;
 
 $this->registerCssFile(Url::to(['css/component-css/filter.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerCssFile(Url::to(['css/component-css/slider-range.css']), ['depends' => ['frontend\assets\AppAsset']]);
+$this->registerCssFile(Url::to(['css/component-css/performers-card.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerCssFile(Url::to(['css/performers-page.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerJsFile(Url::to(['js/slider-range.js']), ['depends' => JqueryAsset::class]);
 $js = <<< JS
