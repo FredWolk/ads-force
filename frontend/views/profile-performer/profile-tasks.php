@@ -60,9 +60,9 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
             </div>
         </section>
         <div class="profile-right">
-            <div class="">
-                <h2>Не найдено ни одного взятого в работу заказа :(</h2>
-                <button>Разместить заказ</button>
+            <div class="profile-empty">
+                <h2 class="Font-size24 gray_color">Не найдено ни одного взятого в работу заказа :(</h2>
+                <button class="Font-size18">Разместить заказ</button>
             </div>
         </div>
     </div>

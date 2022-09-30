@@ -48,7 +48,7 @@ JS;
 $this->registerJs($js);
 AppAsset::register($this);
 ?>
-<div class="container-index">
+<div class="catalog-container">
     <section class="title-tasks">
         <div class="title-text">
             <h2 class="Font-size36">Каталог исполнителей</h2>
