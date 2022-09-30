@@ -5,6 +5,7 @@ use yii\helpers\Url;
 $this->title = 'ADS.Force';
 $this->registerCssFile(Url::to(['css/profile-performer/profile-tasks.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
 $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
+$this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
 ?>
 
 <div class="Profile-container">
@@ -60,10 +61,52 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
             </div>
         </section>
         <div class="profile-right">
-            <div class="profile-empty">
+            <div class="profile-empty display-none">
                 <h2 class="Font-size24 gray_color">Не найдено ни одного взятого в работу заказа :(</h2>
                 <button class="Font-size18">Разместить заказ</button>
             </div>
+        <div class="tasks">
+            <a data-pjax="0" href="">
+                <div class="task-item">
+                    <div class="filter-task-item">
+                        <div class="filter-task-item-main">
+                            <div class="hi-order">
+                                <p>Свободен</p>
+                                <img src="<?= Url::to(['img/tasks/smite.svg']) ?>" alt="">
+                            </div>
+                            <div class="filters-list">
+                                <div class="filter-view filter-task-items">
+                                    <img src="<?= Url::to(['img/tasks/view.svg']) ?>" alt="">
+                                    <p>0</p>
+                                </div>
+                                <div class="filter-view filter-task-items">
+                                    <img src="<?= Url::to(['img/tasks/human-icon.svg']) ?>" alt="">
+                                    <p>12</p>
+                                </div>
+                                <div class="filter-view filter-task-items">
+                                    <img src="<?= Url::to(['img/tasks/summ.svg']) ?>" alt="">
+                                    <p>5000</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-item-filter">
+                            <p>29 сентября</p>
+                        </div>
+                    </div>
+                    <div class="task-title">
+                        <h2 class="Font-size24">вк</h2>
+                    </div>
+                    <div class="task-text">
+                        <span style="color: #F535DA">... Подробнее</span>
+                    </div>
+                    <div class="task-tag-list">
+                        <div class="task-tag-item">
+                            <p>#тег</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
         </div>
     </div>
 </div>
