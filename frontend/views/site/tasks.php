@@ -84,87 +84,87 @@ AppAsset::register($this);
     <div class="tasks-content-main">
         <!--filter-->
         <section class="filter">
-            <?= Html::beginForm('', '', ['class' => 'filter_form', 'id' => 'filter_form']) ?>
-            <div class="filter-close">
-                &times;
-            </div>
-            <div class="filter-open-mobile">
-                <img src="<?= Url::to(['img/tasks/filter-open.svg']) ?>" alt="">
-                <p class="Font-size18">Фильтры</p>
-            </div>
-            <div class="remuneration">
-                <div class="title-remuneration">
-                    <h2 class="Font-size18">Вознаграждение</h2>
+            <form action="" class="filter_form" id="filter_form">
+                <div class="filter-close">
+                    &times;
                 </div>
-                <div class="remuneration-minmax">
-                    <div class="remuneration-minmax-item">
-                        <div class="form_control_container">
-                            <p>От</p>
-                            <input form="filter_form" class="form_control_container__time__input change_filter" name="fromPrice" type="number" id="fromInput" value="0" min="0" max="100000" />
-                        </div>
-                        <img src="<?= Url::to(['img/tasks/rub.svg']) ?>" alt="">
-                    </div>
-                    <div class="remuneration-minmax-item">
-                        <div class="form_control_container">
-                            <p>До</p>
-                            <input form="filter_form" class="form_control_container__time__input change_filter" name="toPrice" type="number" id="toInput" value="100000" min="0" max="100000" />
-                        </div>
-                        <img src="<?= Url::to(['img/tasks/rub.svg']) ?>" alt="">
-                    </div>
+                <div class="filter-open-mobile">
+                    <img src="<?= Url::to(['img/tasks/filter-open.svg']) ?>" alt="">
+                    <p class="Font-size18">Фильтры</p>
                 </div>
-                <div class="range_container">
-                    <div class="sliders_control">
-                        <input id="fromSlider" class="change_filter" type="range" value="0" min="0" max="100000" />
-                        <input id="toSlider" class="change_filter" type="range" value="100000" min="0" max="100000" />
+                <div class="remuneration">
+                    <div class="title-remuneration">
+                        <h2 class="Font-size18">Вознаграждение</h2>
                     </div>
-                    <div class="form_control">
-                        <p>0</p>
-                        <p>100000</p>
-                    </div>
-                </div>
-            </div>
-            <div class="filter-full">
-                <div class="title-categories">
-                    <h2 class="Font-size18">Категория</h2>
-                    <a href="" class="Font-size18">Сбросить</a>
-                </div>
-                <?php foreach ($category as $val) : ?>
-                    <div class="categories-select">
-                        <div class="filter-item">
-                            <div class="categories-select-top">
-                                <b class="Font-size18"><?= $val['title'] ?></b>
-                                <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 1L7 7L13 1" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
+                    <div class="remuneration-minmax">
+                        <div class="remuneration-minmax-item">
+                            <div class="form_control_container">
+                                <p>От</p>
+                                <input form="filter_form" class="form_control_container__time__input change_filter" name="fromPrice" type="number" id="fromInput" value="0" min="0" max="100000" />
                             </div>
-                            <div class="categories-select-bottom">
-                                <ul>
-                                    <?php foreach ($val['subCategories'] as $i) : ?>
-                                        <li>
-                                            <label class="custom-checkbox">
-                                                <input class="change_filter" name="skils[]" type="checkbox" value="<?= $i['title'] ?>">
-                                                <span class="Font-size18"><?= $i['title'] ?></span>
-                                            </label>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
+                            <img src="<?= Url::to(['img/tasks/rub.svg']) ?>" alt="">
+                        </div>
+                        <div class="remuneration-minmax-item">
+                            <div class="form_control_container">
+                                <p>До</p>
+                                <input form="filter_form" class="form_control_container__time__input change_filter" name="toPrice" type="number" id="toInput" value="100000" min="0" max="100000" />
                             </div>
+                            <img src="<?= Url::to(['img/tasks/rub.svg']) ?>" alt="">
                         </div>
                     </div>
-                <?php endforeach; ?>
-                <div class="filter-show-more">
-                    <a href="" class="Font-size18">Ещё +</a>
-                </div>
-                <div class="review-switch">
-                    <label><input type="checkbox" class="ios-switch bigswitch" checked />
-                        <div>
-                            <div></div>
+                    <div class="range_container">
+                        <div class="sliders_control">
+                            <input id="fromSlider" class="change_filter" type="range" value="0" min="0" max="100000" />
+                            <input id="toSlider" class="change_filter" type="range" value="100000" min="0" max="100000" />
                         </div>
-                    </label>
-                    <p class="Font-size18">Только с отзывами</p>
+                        <div class="form_control">
+                            <p>0</p>
+                            <p>100000</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <?= Html::endForm(); ?>
+                <div class="filter-full">
+                    <div class="title-categories">
+                        <h2 class="Font-size18">Категория</h2>
+                        <a href="" class="Font-size18">Сбросить</a>
+                    </div>
+                    <?php foreach ($category as $val) : ?>
+                        <div class="categories-select">
+                            <div class="filter-item">
+                                <div class="categories-select-top">
+                                    <b class="Font-size18"><?= $val['title'] ?></b>
+                                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L7 7L13 1" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <div class="categories-select-bottom">
+                                    <ul>
+                                        <?php foreach ($val['subCategories'] as $i) : ?>
+                                            <li>
+                                                <label class="custom-checkbox">
+                                                    <input class="change_filter" name="skils[]" type="checkbox" value="<?= $i['title'] ?>">
+                                                    <span class="Font-size18"><?= $i['title'] ?></span>
+                                                </label>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                    <div class="filter-show-more">
+                        <a href="" class="Font-size18">Ещё +</a>
+                    </div>
+                    <div class="review-switch">
+                        <label><input type="checkbox" class="ios-switch bigswitch" checked />
+                            <div>
+                                <div></div>
+                            </div>
+                        </label>
+                        <p class="Font-size18">Только с отзывами</p>
+                    </div>
+                </div>
+            </form>
         </section>
         <div class="mobile-filter">
             <div class="mobile-filter-open">

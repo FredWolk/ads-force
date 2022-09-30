@@ -95,14 +95,25 @@ class SiteController extends Controller
     {
 
         $filter = ['AND'];
-
-        // if (!empty($_POST)) {
-        //     dd($_POST);
+        // if (!empty($_GET)) {
+        //     dd($_GET);
         // }
+        if (!empty($_GET['fromPrice']))
+            $filter[] = ['>=', 'price', $_GET['fromPrice']];
+
+        if (!empty($_GET['toPrice']))
+            $filter[] = ['<=', 'price', $_GET['toPrice']];
+
+        if (!empty($_GET['skils']))
+            foreach ($_GET['skils'] as $val)
+                $filter[] = ['like', 'tags', "%{$val}%", false];
+
+
         $query = Tasks::find()
             ->asArray()
             ->where(['OR', ['status' => 'Свободен'], ['status' => 'Повышенный спрос']])
-            ->andWhere(['active' => true]);
+            ->andWhere(['active' => true])
+            ->andWhere($filter);
         $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => !empty($_GET['pageSize']) ? $_GET['pageSize'] : 5]);
         $tasks = $query->offset($pages->offset)
             ->limit($pages->limit)
