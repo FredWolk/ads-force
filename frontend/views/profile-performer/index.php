@@ -1,12 +1,15 @@
 <?php
 
+use console\models\Categories;
 use yii\helpers\Url;
+use frontend\assets\AppAsset;
 
 /** @var yii\web\View $this */
 
 $this->title = 'ADS.Force';
-$this->registerCssFile(Url::to(['css/profile-performer/profile-meneger.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
-$this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
+$this->registerCssFile(Url::to(['css/profile-performer/profile-meneger.css']), ['depends' => ['frontend\assets\AppAsset']]);
+$this->registerCssFile(Url::to(['css/component-css/profile-left-nav.css']), ['depends' => ['frontend\assets\AppAsset']]);
+AppAsset::register($this);
 ?>
 <div class="Profile-container">
     <h1 class="title_color Font-size36">Личный кабинет заказчика</h1>
@@ -74,7 +77,7 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
 
                     </div>
                     <div class="circle-level">
-                        <!--Отображает уровень профиля, задавать значение left в процентах-->
+
                     </div>
                 </div>
                 <div class="level-text">
@@ -91,53 +94,12 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
                 <div class="link-level">
                     <a href="">
                         <img src="<?= Url::to(['img/profile/profile-meneger/info-icon.svg']) ?>" alt="">
-                        <p class="white_color Font-size18">Как это работает?</p>
+                        <p class="white_color Font-size18">Как это работает?</p> 
                     </a>
                 </div>
             </div>
             <div class="pro-account-block">
-                <p class="white_color Font-size18">Получите особый статус</p>
-                <h2 class="white_color Font-size24">PRO-аккаунт</h2>
-                <a href="" class="white_color Font-size18">
-                    Подробнее
-                </a>
-            </div>
-            <div class="active-project">
-                <h2 class="main_color_text Font-size24">Активные заказы</h2>
-                <p class="main_color_text Font-size18">У вас много откликов на заказы..</p>
-                <a href="" class="white_color Font-size18">
-                    Перейти к заказам
-                </a>
-            </div>
-            <div class="partners-full">
-                <h2 class="main_color_text Font-size24">Партнерство</h2>
-                <p class="white_color Font-size18">Стань партнером в один клик</p>
-                <a href="" class="white_color Font-size18">
-                    Стать партнером
-                </a>
-            </div>
-            <div class="left-nav-bar-news news-mobile">
-                <div class="news-title">
-                    <img src="<?= Url::to(['img/profile/profile-meneger/news-icon.svg']) ?>" alt="">
-                    <h2 class="Font-size24 main_color_text">Новости проекта</h2>
-                </div>
-                <div class="news-list">
-                    <ul>
-                        <li>
-                            <p class="date-news Font-size18 white_color">18.08</p>
-                            <p class="Font-size18 main_color_text">Статья «Как реклама влияет на продажи?»</p>
-                        </li>
-                        <li>
-                            <p class="date-news Font-size18 white_color">18.08</p>
-                            <p class="Font-size18 main_color_text">Запланированы технические работы с 23:00</p>
-                        </li>
-                        <li>
-                            <p class="date-news Font-size18 white_color">28.09</p>
-                            <p class="Font-size18 main_color_text">Статья «SMM: что это такое и как работает»</p>
-                        </li>
-                    </ul>
-                    <p class="more-news Font-size18 title_color">Еще + </p>
-                </div>
+
             </div>
         </section>
     </div>

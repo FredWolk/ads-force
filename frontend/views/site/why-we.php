@@ -31,11 +31,38 @@ responsive: [
 })
 
 $('.slider-item').click(function(e) {
-    $('.slide-modal').fadeIn(300);
-    $('body').css({'overflow':'hidden'})
+    let id = $(this).attr('data-id');
+    $.ajax({
+        url: '/site/show-story',
+        data: {id: id},
+        type: 'POST',
+        dataType: 'JSON',
+    }).done(function (rsp) {
+        if(!rsp.status)
+            location.reload();
+
+        $('#modalImg').attr('src', rsp.story.image);
+        $('#modalTitle').text(rsp.story.title);
+        $('#modalContent').html(rsp.story.content);
+        $('#modalWhatDo').text('');
+        let whatDo = JSON.parse(rsp.story.what_do);
+        whatDo.map(e => {
+            $('#modalWhatDo').append(`
+                <li>
+                    <img src="/img/why-we/list-icon.svg" alt="">
+                    `+ e +`
+                </li>
+            `)
+
+        });
+        $('#modalTerm').text(rsp.story.term);
+        $('body').css({'overflow':'hidden'})
+        $('.slide-modal').fadeIn(1);
+    })
+    
 })
 $('.slide-close').click(function(e) {
-    $('.slide-modal').fadeOut(300);
+    $('.slide-modal').fadeOut(1);
     $('body').css({'overflow':'auto'})
 })
 JS;
@@ -132,24 +159,14 @@ AppAsset::register($this);
                     <h2 class="Font-size36">Почему мы</h2>
                 </div>
                 <div class="slider-items">
-                    <div class="slider-item">
-                        <h3 class="Font-size36">Разработка брендинга</h3>
-                        <div class="slide-link">
-                            <a class="Font-size18" href="">Посмотреть</a>
+                    <?php foreach ($stories as $story) : ?>
+                        <div data-id="<?= $story['id'] ?>" style="background-image: url(<?= Url::to([$story['image']]) ?>);" class="slider-item">
+                            <h3 class="Font-size36"><?= $story['title'] ?></h3>
+                            <div class="slide-link">
+                                <a class="Font-size18">Посмотреть</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="slider-item">
-                        <h3 class="Font-size36">Разработка брендинга</h3>
-                        <div class="slide-link">
-                            <a class="Font-size18" href="">Посмотреть</a>
-                        </div>
-                    </div>
-                    <div class="slider-item">
-                        <h3 class="Font-size36">Разработка брендинга</h3>
-                        <div class="slide-link">
-                            <a class="Font-size18" href="">Посмотреть</a>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
                 <div class="arrows-slider-specialization">
                     <img class="prev" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
@@ -193,36 +210,28 @@ AppAsset::register($this);
     <div class="slide-modal">
         <div class="modal-container">
             <div class="modal-img">
-                <p class="Font-size36">Разработка брендинга</p>
+                <p id="modalTitle" class="Font-size36">Разработка брендинга</p>
                 <div class="slide-close">
                     &times;
                 </div>
-                <img src="<?= Url::to(['img/why-we/fon-slider.png']) ?>" alt="">
+                <img id="modalImg" src="<?= Url::to(['img/why-we/fon-slider.png']) ?>" alt="">
             </div>
             <div class="slide-modal-text">
                 <div class="about-project">
                     <h2 class="Font-size24">О проекте: </h2>
-                    <p class="Font-size24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Ut commodo efficitur neque.</p>
-                    <p class="Font-size24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent .</p>
-                    <p class="Font-size24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent . Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent .Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent .</p>
+                    <div id="modalContent" class="Font-size24"></div>
                 </div>
                 <div class="slide-list">
                     <h2 class="Font-size24">Что сделали:</h2>
-                    <ul>
-                        <li><img src="<?= Url::to(['img/why-we/list-icon.svg']) ?>" alt="">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                        </li>
-                        <li><img src="<?= Url::to(['img/why-we/list-icon.svg']) ?>" alt="">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                        </li>
-                        <li><img src="<?= Url::to(['img/why-we/list-icon.svg']) ?>" alt="">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                        </li>
+                    <ul id="modalWhatDo">
+
+
                     </ul>
                 </div>
                 <div class="time-project">
-                    <h2 class="Font-size24">За какой срок: </h2>
-                    <p class="Font-size24">2 месяца</p>
+                    <h2 class="Font-size24">За какой срок: <span id="modalTerm" class="Font-size24"></span>
+                    </h2>
+
                 </div>
             </div>
         </div>
