@@ -6,6 +6,42 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use frontend\assets\AppAsset;
+
+$js = <<< JS
+
+$('.Modal-close').click(function(e) {
+    $('.modalRegister').fadeOut(300);
+    $('body').css({'overflow':'auto'})
+});
+
+$('.registration').click(function(e) {
+    $('.modalRegister').css({'display':'flex'});
+    $('body').css({'overflow':'hidden'})
+});
+
+$('.Modal-login-close').click(function(e) {
+    $('.modalLogin').fadeOut(300);
+    $('body').css({'overflow':'auto'})
+});
+
+$('.login').click(function(e) {
+    $('.modalLogin').css({'display':'flex'});
+    $('body').css({'overflow':'hidden'})
+});
+
+$('.swap-modal').click(function(e) {
+    if($('.modalLogin').css('display') == "flex"){
+        $('.modalLogin').css({'display':'none'});
+        $('.modalRegister').css({'display':'flex'})
+    }
+    else
+        if($('.modalRegister').css('display') == "flex"){
+            $('.modalRegister').css({'display':'none'});
+            $('.modalLogin').css({'display':'flex'})
+        }
+});
+JS;
+$this->registerJs($js);
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -97,7 +133,62 @@ AppAsset::register($this);
 
             </div>
         </header>
-
+        <div class="modalRegister">
+            <div class="modalBlock">
+                <div class="Modal-close">
+                    <p>&times;</p>
+                </div>
+                <h2 class="Font-size24">Добро пожаловать!</h2>
+                <div class="modalForm">
+                    <form action="">
+                        <input type="email" required placeholder="Номер телефона или e-mail" name="email">
+                        <input type="password" required placeholder="Придумайте пароль" name="password">
+                        <input type="password" required placeholder="Повторите пароль" name="second-pass">
+                        <button class="Font-size24">Зарегистрироваться</button>
+                    </form>
+                    <div class="alternative-registration">
+                        <div class="alternative-registration-block">
+                            <p class="Font-size18">Регистрация с помощью</p>
+                            <ul>
+                                <li><a href=""><img src="<?= Url::to(['img/index/yandex-logo.svg']) ?>" alt=""></a></li>
+                                <li><a href=""><img src="<?= Url::to(['img/index/google-icon.svg']) ?>" alt=""></a></li>
+                                <li><a href=""><img src="<?= Url::to(['img/index/vk-icon.svg']) ?>" alt=""></a></li>
+                                <li><a href=""><img src="<?= Url::to(['img/index/email-icon.svg']) ?>" alt=""></a></li>
+                            </ul>
+                            <p class="swap-modal Font-size18">Вход</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modalLogin">
+            <div class="modalBlock">
+                <div class="Modal-login-close">
+                    <p>&times;</p>
+                </div>
+                <h2 class="Font-size24">Добро пожаловать!</h2>
+                <div class="modalForm">
+                    <form action="">
+                        <input type="email" placeholder="Логин" required name="Login">
+                        <input type="password" placeholder="Пароль" required name="password">
+                        <a class="password-link">Забыл пароль?</a>
+                        <button class="Font-size24">Войти</button>
+                    </form>
+                    <div class="alternative-registration">
+                        <div class="alternative-registration-block">
+                            <p class="Font-size18">Войти с помощью</p>
+                            <ul>
+                                <li><a href=""><img src="<?= Url::to(['img/index/yandex-logo.svg']) ?>" alt=""></a></li>
+                                <li><a href=""><img src="<?= Url::to(['img/index/google-icon.svg']) ?>" alt=""></a></li>
+                                <li><a href=""><img src="<?= Url::to(['img/index/vk-icon.svg']) ?>" alt=""></a></li>
+                                <li><a href=""><img src="<?= Url::to(['img/index/email-icon.svg']) ?>" alt=""></a></li>
+                            </ul>
+                            <p class="swap-modal Font-size18">Регистрация</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <main role="main" class="flex-shrink-0">
             <?= $content ?>
         </main>
