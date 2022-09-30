@@ -74,13 +74,13 @@ AppAsset::register($this);
 
                     <div class="links">
                         <div class="link">
-                            <a href="">Заказчику</a>
+                            <a href="<?= Url::to(['for-customer']) ?>">Заказчику</a>
                         </div>
                         <div class="link">
-                            <a href="">Исполнителю</a>
+                            <a href="<?= Url::to(['index']) ?>">Исполнителю</a>
                         </div>
                         <div class="link">
-                            <a href="">Почему ADS.FORCE</a>
+                            <a href="<?= Url::to(['why-we']) ?>">Почему ADS.FORCE</a>
                         </div>
                         <div class="link">
                             <a href="">Разместить заказ</a>
@@ -109,13 +109,13 @@ AppAsset::register($this);
                                 <div class="registration">Регистрация</div>
                             </div>
                             <li>
-                                <a class="menu__item" href="">Заказчику</a>
+                                <a class="menu__item" href="<?= Url::to(['for-customer']) ?>">Заказчику</a>
                             </li>
                             <li>
-                                <a class="menu__item" href="">Исполнителю</a>
+                                <a class="menu__item" href="<?= Url::to(['index']) ?>">Исполнителю</a>
                             </li>
                             <li>
-                                <a class="menu__item" href="">Почему ADS.FORCE</a>
+                                <a class="menu__item" href="<?= Url::to(['why-we']) ?>">Почему ADS.FORCE</a>
                             </li>
                             <li>
                                 <a class="menu__item" href="">Разместить заказ</a>
@@ -224,13 +224,13 @@ AppAsset::register($this);
                     <div class="footer__links">
                         <div class="links__left-column">
                             <div class="link">
-                                <a href="">Заказчику</a>
+                                <a href="<?= Url::to(['for-customer']) ?>">Заказчику</a>
                             </div>
                             <div class="link">
-                                <a href="">Исполнителю</a>
+                                <a href="<?= Url::to(['index']) ?>">Исполнителю</a>
                             </div>
                             <div class="link">
-                                <a href="">Почему ADS.FORCE</a>
+                                <a href="<?= Url::to(['why-we']) ?>">Почему ADS.FORCE</a>
                             </div>
                             <div class="link">
                                 <a href="">Быстрый старт</a>
@@ -239,13 +239,13 @@ AppAsset::register($this);
 
                         <div class="links__right-column">
                             <div class="link">
-                                <a href="">ТОП — исполнителей</a>
+                                <a href="<?= Url::to(['performers-page']) ?>">ТОП — исполнителей</a>
                             </div>
                             <div class="link">
-                                <a href="">Каталог исполнителей</a>
+                                <a href="<?= Url::to(['performers-catalog']) ?>">Каталог исполнителей</a>
                             </div>
                             <div class="link">
-                                <a href="">Специализации</a>
+                                <a href="<?= Url::to(['index']) ?>">Специализации</a>
                             </div>
                             <div class="link">
                                 <a href="">Отзывы</a>
