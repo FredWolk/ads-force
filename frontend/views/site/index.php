@@ -61,7 +61,7 @@ AppAsset::register($this);
         </div>
         <div class="Freelancer-content-buttons">
             <div class="Freelancer-content-buttons-main">
-                <a href="">
+                <a href="<?= Url::to(['for-customer']) ?>">
                     <button>
                         <img class="Freelancer-content-buttons-main-img" src="<?= Url::to(['img/index/iconFreelanceButton.svg']) ?>" alt="">
                         <p>Исполнителю</p>
@@ -69,12 +69,12 @@ AppAsset::register($this);
                 </a>
             </div>
             <div class="Freelancer-content-buttons-prev">
-                <a href="">
+                <a href="<?= Url::to(['tasks']) ?>">
                     <button class="button-active">
                         <p>Найти заказ</p>
                     </button>
                 </a>
-                <a href="">
+                <a href="<?= Url::to(['signup']) ?>">
                     <button>
                         <p>Разместить портфолио</p>
                     </button>
@@ -84,7 +84,8 @@ AppAsset::register($this);
     </div>
     <div class="Freelancer-absolute-img" style="display: block;">
         <img src="<?= Url::to(['img/index/Freelancer.png']) ?>" alt="">
-    </div><div class="Meneger-absolute-img">
+    </div>
+    <div class="Meneger-absolute-img">
         <img src="<?= Url::to(['img/index/Meneger-mask.png']) ?>" alt="">
     </div>
 </section>
@@ -109,7 +110,7 @@ AppAsset::register($this);
 <section class="performers-container">
     <div class="performers-title container-index">
         <h1 class="Font-size36">ТОП-исполнители</h1>
-        <a href="">
+        <a href="<?= Url::to(['performers-page']) ?>">
             <button>Хочу в ТОП</button>
         </a>
     </div>
@@ -202,7 +203,7 @@ AppAsset::register($this);
     <div class="specialization-items container-index">
         <?php if (!empty($categories)) : ?>
             <?php foreach ($categories as $v) : ?>
-                <a href="">
+                <a href="<?= Url::to(['performers-catalog']) ?>">
                     <div class="specialization-item" style="background-image: linear-gradient(0deg, rgba(63, 63, 63, 0.5), rgba(63, 63, 63, 0.5)), url(<?= Url::to([$v['image']]) ?>);">
                         <p class="Font-size24"><?= $v['title'] ?></p>
                     </div>
@@ -218,10 +219,12 @@ AppAsset::register($this);
 <section class="progressBar">
     <div class="progressBarTitle container-index">
         <h2 class="Font-size36">Как начать работу с ADSFORCE</h2>
-        <button class="progressBarButton">
-            <img src="<?= Url::to(['img/index/iconFreelanceButton.svg']) ?>" alt="">
-            <p>Исполнителю</p>
-        </button>
+        <a href="<?= Url::to(['for-customer']) ?>">
+            <button class="progressBarButton">
+                <img src="<?= Url::to(['img/index/iconFreelanceButton.svg']) ?>" alt="">
+                <p>Исполнителю</p>
+            </button>
+        </a>
     </div>
     <div class="progress-bar-content">
         <div class="progress-bar-img">
