@@ -13,6 +13,7 @@ use yii\filters\AccessControl;
 use common\models\LoginForm;
 use console\models\Categories;
 use console\models\Performers;
+use console\models\SuccessStories;
 use console\models\Tasks;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
@@ -20,6 +21,7 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use yii\data\Pagination;
 use yii\helpers\Url;
+use yii\web\Response;
 
 /**
  * Site controller
@@ -229,7 +231,19 @@ class SiteController extends Controller
 
     public function actionWhyWe()
     {
-        return $this->render('why-we');
+        $stories = SuccessStories::find()->asArray()->all();
+        return $this->render('why-we', compact('stories'));
+    }
+
+    public function actionShowStory()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $story = SuccessStories::find()->asArray()->where(['id' => $_POST['id']])->one();
+        if (!empty($story)) {
+            return ['status' => true, 'story' => $story];
+        } else {
+            return ['status' => false];
+        }
     }
 
     public function actionPerformersCatalog()
