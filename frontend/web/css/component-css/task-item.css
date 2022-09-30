@@ -50,10 +50,13 @@
 .task-title h2 {
     font-weight: 500;
 }
-
+.tasks-item{
+    display: none;
+}
 .right-item-filter {
     margin-left: auto;
     display: flex;
+    column-gap: 10px;
     white-space: nowrap;
     align-items: center;
     color: #BDBDBD;

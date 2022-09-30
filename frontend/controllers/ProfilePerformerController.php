@@ -13,5 +13,9 @@ class ProfilePerformerController extends Controller
     {
         return $this->render('profile-private');
     }
+    public function actionProfileTasks()
+    {
+        return $this->render('profile-tasks');
+    }
 }
 ?>
