@@ -17,3 +17,14 @@
 .display-none{
     display: none;
 }
+.profile-right{
+    width:100%;
+}
+.task-item{
+    border:0px!important;
+}
+@media(max-width:768px){
+    .tasks{
+        margin-left:0px!important;
+    }
+}

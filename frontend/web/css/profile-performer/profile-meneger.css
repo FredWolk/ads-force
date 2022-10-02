@@ -1,6 +1,7 @@
 .Profile-full {
     display: flex;
     column-gap: 30px;
+    margin-bottom: 100px;
 }
 
 .right-column-level {
@@ -11,7 +12,6 @@
     margin-right: auto;
     border-radius: 9px;
 }
-
 .right-column {
     width: 100%;
     display: flex;

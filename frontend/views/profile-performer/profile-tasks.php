@@ -67,7 +67,7 @@ $this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' 
             </div>
         <div class="tasks">
             <a data-pjax="0" href="">
-                <div class="task-item">
+                <div class="task-item white_color_bg">
                     <div class="filter-task-item">
                         <div class="filter-task-item-main">
                             <div class="hi-order">
@@ -76,12 +76,10 @@ $this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' 
                             </div>
                             <div class="filters-list">
                                 <div class="filter-view filter-task-items">
-                                    <img src="<?= Url::to(['img/tasks/view.svg']) ?>" alt="">
-                                    <p>0</p>
+                                    <img src="<?= Url::to(['img/profile/profile-tasks/message-icon.svg']) ?>" alt="">
                                 </div>
                                 <div class="filter-view filter-task-items">
-                                    <img src="<?= Url::to(['img/tasks/human-icon.svg']) ?>" alt="">
-                                    <p>12</p>
+                                    <img src="<?= Url::to(['img/profile/profile-tasks/profile-icon.svg']) ?>" alt="">
                                 </div>
                                 <div class="filter-view filter-task-items">
                                     <img src="<?= Url::to(['img/tasks/summ.svg']) ?>" alt="">
@@ -94,9 +92,12 @@ $this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' 
                         </div>
                     </div>
                     <div class="task-title">
-                        <h2 class="Font-size24">вк</h2>
+                        <h2 class="Font-size24 main_color_text">вк</h2>
                     </div>
-                    <div class="task-text">
+                    <div class="task-text main_color_text">
+                        <p>
+                            main_color_text
+                        </p>
                         <span style="color: #F535DA">... Подробнее</span>
                     </div>
                     <div class="task-tag-list">

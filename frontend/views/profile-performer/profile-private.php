@@ -2,7 +2,6 @@
 
 use yii\web\JqueryAsset;
 use yii\helpers\Url;
-use console\models\Categories;
 
 /** @var yii\web\View $this */
 
@@ -106,7 +105,7 @@ $this->registerJs($js);
                         <div style="background-image: url(<?= Url::to(['img/index/stars.png']) ?>); height: 20px; background-repeat: no-repeat; max-width:140px; width:100%;" class="stars">
                             <div style="background-image: url(<?= Url::to(['img/index/yellowStars.png']) ?>); height: 20px; background-repeat: no-repeat; width: 70%" class="yellow_stars"></div>
                         </div>
-                        <p class="Font-size24">5.0</p>
+                        <p class="Font-size24 main_color_text">5.0</p>
                     </div>
                     <div class="profile-date">
                         <p>На сайте с 02.02.2019</p>
@@ -165,36 +164,36 @@ $this->registerJs($js);
                         <div class="rewiev-card-top">
                             <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
                             <div class="rewiev-card-title">
-                                <h2 class="Font_size24">Дарья Агапова</h2>
-                                <p>Заказчик</p>
+                                <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
+                                <p class="main_color_text">Заказчик</p>
                             </div>
                         </div>
                         <div class="rewiev-card-content">
-                            <p>ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
                         </div>
                     </div>
                     <div class="rewiev-card">
                         <div class="rewiev-card-top">
                             <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
                             <div class="rewiev-card-title">
-                                <h2 class="Font_size24">Дарья Агапова</h2>
-                                <p>Заказчик</p>
+                                <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
+                                <p class="main_color_text">Заказчик</p>
                             </div>
                         </div>
                         <div class="rewiev-card-content">
-                            <p>ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
                         </div>
                     </div>
                     <div class="rewiev-card">
                         <div class="rewiev-card-top">
                             <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
                             <div class="rewiev-card-title">
-                                <h2 class="Font_size24">Дарья Агапова</h2>
-                                <p>Заказчик</p>
+                                <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
+                                <p class="main_color_text">Заказчик</p>
                             </div>
                         </div>
                         <div class="rewiev-card-content">
-                            <p>ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
                         </div>
                     </div>
                 </div>
@@ -234,9 +233,9 @@ $this->registerJs($js);
                             </div>
                         </div>
                         <div class="task-title">
-                            <h2 class="Font-size24">вк</h2>
+                            <h2 class="Font-size24 main_color_text">вк</h2>
                         </div>
-                        <div class="task-text">
+                        <div class="task-text main_color_text">
                             <span style="color: #F535DA">... Подробнее</span>
                         </div>
                         <div class="task-tag-list">
@@ -262,36 +261,36 @@ $this->registerJs($js);
                             <div class="rewiev-card-top">
                                 <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
                                 <div class="rewiev-card-title">
-                                    <h2 class="Font_size24">Дарья Агапова</h2>
-                                    <p>Заказчик</p>
+                                    <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
+                                    <p class="main_color_text">Заказчик</p>
                                 </div>
                             </div>
                             <div class="rewiev-card-content">
-                                <p>ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
                             </div>
                         </div>
                         <div class="rewiev-card">
                             <div class="rewiev-card-top">
                                 <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
                                 <div class="rewiev-card-title">
-                                    <h2 class="Font_size24">Дарья Агапова</h2>
-                                    <p>Заказчик</p>
+                                    <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
+                                    <p class="main_color_text">Заказчик</p>
                                 </div>
                             </div>
                             <div class="rewiev-card-content">
-                                <p>ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
                             </div>
                         </div>
                         <div class="rewiev-card">
                             <div class="rewiev-card-top">
                                 <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
                                 <div class="rewiev-card-title">
-                                    <h2 class="Font_size24">Дарья Агапова</h2>
-                                    <p>Заказчик</p>
+                                    <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
+                                    <p class="main_color_text">Заказчик</p>
                                 </div>
                             </div>
                             <div class="rewiev-card-content">
-                                <p>ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
                             </div>
                         </div>
                     </div>
@@ -319,10 +318,10 @@ $this->registerJs($js);
                 <h2 class="Font-size18 main_color_text">ИНФОРМАЦИЯ</h2>
                 <img src="<?= Url::to(['img/profile/private-profile/arrow-mobile.svg']) ?>" alt="">
             </div>
-            <div class="block-mobile-information-content mobile-hide-info">
+            <div class="block-mobile-information-content  mobile-hide-info">
                 <div class="tasks tasks-item">
                     <a data-pjax="0" href="">
-                        <div class="task-item">
+                        <div class="task-item white_color_bg">
                             <div class="filter-task-item">
                                 <div class="filter-task-item-main">
                                     <div class="hi-order">
@@ -351,9 +350,10 @@ $this->registerJs($js);
                                 </div>
                             </div>
                             <div class="task-title">
-                                <h2 class="Font-size24">вк</h2>
+                                <h2 class="Font-size24 main_color_text">вк</h2>
                             </div>
-                            <div class="task-text">
+                            <div class="task-text main_color_text">
+                                dasdas
                                 <span style="color: #F535DA">... Подробнее</span>
                             </div>
                             <div class="task-tag-list">
@@ -364,6 +364,7 @@ $this->registerJs($js);
                         </div>
                     </a>
                 </div>
+                <button class="add-mobile-task">Добавить</button>
             </div>
         </div>
     </section>

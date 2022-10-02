@@ -17,5 +17,9 @@ class ProfilePerformerController extends Controller
     {
         return $this->render('profile-tasks');
     }
+    public function actionProfileChat()
+    {
+        return $this->render('profile-chat');
+    }
 }
 ?>

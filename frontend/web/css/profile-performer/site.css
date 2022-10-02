@@ -11,16 +11,19 @@
 
 :root {
     --title: #F535DA;
-    --text: #1F1F1F;
+    --text: #FFFFFF;
     --gray: #828282;
     --white: #FFFFFF;
-    --background-white: #FFFFFF;
+    --background-white: #414C94;
     --background: #1E216B;
 }
-
 html,
 body {
     height: 100%;
+}
+
+.bg-dark{
+    background: #0A0B2D;
 }
 
 .wrapper {

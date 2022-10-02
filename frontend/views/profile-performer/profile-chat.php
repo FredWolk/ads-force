@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Url;
 
 /** @var yii\web\View $this */
@@ -57,57 +58,6 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
                     </ul>
                     <p class="more-news Font-size18 title_color">Еще + </p>
                 </div>
-            </div>
-        </section>
-        <section class="right-column">
-            <div class="right-column-level background_color_level">
-                <h2 class="Font-size24 white_color">У вас 0 баллов, ваш уровень заказчика <b>Новичок</b></h2>
-                <div class="level-container">
-                    <div class="level-container-left">
-
-                    </div>
-                    <div class="level-container-middle">
-
-                    </div>
-                    <div class="level-container-right">
-
-                    </div>
-                    <div class="circle-level">
-
-                    </div>
-                </div>
-                <div class="level-text">
-                    <div class="level-item">
-                        <p class="white_color Font-size18">Базовый</p>
-                    </div>
-                    <div class="level-item">
-                        <p class="white_color Font-size18">Продвинутый</p>
-                    </div>
-                    <div class="level-item">
-                        <p class="white_color Font-size18">Профи</p>
-                    </div>
-                </div>
-                <div class="link-level">
-                    <a href="">
-                        <img src="<?= Url::to(['img/profile/profile-meneger/info-icon.svg']) ?>" alt="">
-                        <p class="white_color Font-size18">Как это работает?</p> 
-                    </a>
-                </div>
-            </div>
-            <div class="pro-account-block">
-                <p class="Font-size18 white_color">Получите особый статус</p>
-                <h2 class="white_color Font-size24">PRO-аккаунт</h2>
-                <a class="white_color Font-size18">Подробнее</a>
-            </div>
-            <div class="active-project">
-                <h2 class="Font-size24">Активные заказы</h2>
-                <p class="Font-size18">У вас много откликов на заказы..</p>
-                <a class="white_color Font-size18">Перейти к заказам</a>
-            </div>
-            <div class="partners-full">
-                <h2 class="Font-size24">Партнерство</h2>
-                <p class="white_color Font-size18">Стань партнером в один клик</p>
-                <a class="white_color Font-size18">Стать партнером</a>
             </div>
         </section>
     </div>
