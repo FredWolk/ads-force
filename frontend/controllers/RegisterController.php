@@ -11,10 +11,7 @@ use yii\web\Response;
 
 class RegisterController extends Controller
 {
-  public function actionRegister()
-  {
-    return $this->render('reg');
-  }
+
   public function actionCheckEmail()
   {
     Yii::$app->response->format = Response::FORMAT_JSON;
@@ -33,8 +30,11 @@ class RegisterController extends Controller
     $model->email = $_POST['email'];
     $model->password = $_POST['password'];
     $model->validate();
-    $model->signup();
-    return ['message' => $model->errors];
+    if ($model->signup()) {
+      return ['status' => true];
+    } else {
+      return ['status' => false, 'message' => $model->errors];
+    }
   }
 
   public function actionLogin()
@@ -45,15 +45,15 @@ class RegisterController extends Controller
     $model->password = $_POST['password'];
     $model->validate();
     if ($model->login()) {
-      return ['status' => 'success'];
+      return $this->redirect('/profile-performer');
     } else {
-      return ['status' => 'false', 'message' => $model->errors];
+      return ['status' => false, 'message' => $model->errors];
     }
   }
 
   public function actionLogout()
   {
     Yii::$app->user->logout();
-    return $this->redirect('/register');
+    return $this->redirect('/');
   }
 }

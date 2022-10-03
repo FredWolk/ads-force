@@ -14,7 +14,7 @@ $('.Modal-close').click(function(e) {
     $('body').css({'overflow':'auto'})
 });
 
-$('.registration').click(function(e) {
+$('.regPop').click(function(e) {
     $('.modalRegister').css({'display':'flex'});
     $('body').css({'overflow':'hidden'})
 });
@@ -24,7 +24,7 @@ $('.Modal-login-close').click(function(e) {
     $('body').css({'overflow':'auto'})
 });
 
-$('.login').click(function(e) {
+$('.logPop').click(function(e) {
     $('.modalLogin').css({'display':'flex'});
     $('body').css({'overflow':'hidden'})
 });
@@ -40,6 +40,58 @@ $('.swap-modal').click(function(e) {
             $('.modalLogin').css({'display':'flex'})
         }
 });
+
+$('.register_form').on('submit', function (e) {
+    e.preventDefault();
+    let pass = $('#password').val();
+        secondPass = $('#second-pass').val();
+    if(pass == secondPass){
+        $.ajax({
+            url: '/register/signup',
+            data: $(this).serialize(),
+            type: 'POST',
+            dataType: 'JSON'
+        }).done(function (r) {
+            if(!r.status){
+                if(r.message.email)
+                    $('#email').text(r.message.email).fadeIn(100);
+                if(r.message.username)
+                    $('#username').text(r.message.username).fadeIn(100);
+                if(r.message.password)
+                    $('#username').text(r.message.password).fadeIn(100);
+            } else {
+                $('.error_register-block').fadeOut(100);
+            }
+        })
+    } else {
+        $('#password').fadeIn(100);
+    }
+});
+
+$('.login_form').on('submit', function (e) {
+    e.preventDefault();
+    $.ajax({
+        url: '/register/check-email',
+        data: {email: $('#login_email').val()},
+        type: 'POST',
+        dataType: 'JSON'
+    }).done(function (r) {
+        if(!r.status){
+            $('#login_email-error').text(r.message).fadeIn(100);
+        } else {
+            $.ajax({
+                url: '/register/login',
+                data: $('.login_form').serialize(),
+                type: 'POST',
+                dataType: 'JSON'
+            }).done(function (rsp) {
+                if(!rsp.status){
+                    console.log(rsp);
+                }
+            })
+        }
+    })
+})
 JS;
 $this->registerJs($js);
 AppAsset::register($this);
@@ -89,8 +141,13 @@ AppAsset::register($this);
                     </div>
 
                     <div class="entry">
-                        <div class="login">Вход</div>
-                        <div class="registration">Регистрация</div>
+                        <?php if (Yii::$app->getUser()->isGuest) : ?>
+                            <div class="login logPop">Вход</div>
+                            <div class="registration regPop">Регистрация</div>
+                        <?php else : ?>
+                            <a href="<?= Url::to(['/register/logout']) ?>" class="login">Выход</a>
+                            <a href="<?= Url::to(['/profile-performer']) ?>" class="registration">Кабинет</a>
+                        <?php endif; ?>
                     </div>
 
                     <!-- появляется при > 1024px-->
@@ -140,15 +197,22 @@ AppAsset::register($this);
                 </div>
                 <h2 class="Font-size24">Добро пожаловать!</h2>
                 <div class="modalForm">
-                    <form action="">
-                        <input type="email" required placeholder="Номер телефона или e-mail" name="email">
-                        <input type="password" required placeholder="Придумайте пароль" name="password">
-                        <input type="password" required placeholder="Повторите пароль" name="second-pass">
-                        <button class="Font-size24">Зарегистрироваться</button>
-                    </form>
+                    <?= Html::beginForm('', 'post', ['class' => 'register_form']) ?>
+                    <input type="text" required placeholder="Введите никнейм" name="username">
+                    <div id="username" class="error_register-block"></div>
+
+                    <input type="email" required placeholder="Номер телефона или e-mail" name="email">
+                    <div id="email" class="error_register-block"></div>
+
+                    <input type="password" id="password" required placeholder="Придумайте пароль" name="password">
+                    <input type="password" id="second-pass" required placeholder="Повторите пароль" name="second-pass">
+                    <div id="password" class="error_register-block">Введеные пароли не совпадают</div>
+
+                    <button class="Font-size24">Зарегистрироваться</button>
+                    <?= Html::endForm(); ?>
                     <div class="alternative-registration">
                         <div class="alternative-registration-block">
-                            <p class="Font-size18">Регистрация с помощью</p>
+                            <p style="white-space: nowrap;" class="Font-size18">Регистрация с помощью</p>
                             <ul>
                                 <li><a href=""><img src="<?= Url::to(['img/index/yandex-logo.svg']) ?>" alt=""></a></li>
                                 <li><a href=""><img src="<?= Url::to(['img/index/google-icon.svg']) ?>" alt=""></a></li>
@@ -168,12 +232,16 @@ AppAsset::register($this);
                 </div>
                 <h2 class="Font-size24">Добро пожаловать!</h2>
                 <div class="modalForm">
-                    <form action="">
-                        <input type="email" placeholder="Логин" required name="Login">
-                        <input type="password" placeholder="Пароль" required name="password">
-                        <a class="password-link">Забыл пароль?</a>
-                        <button class="Font-size24">Войти</button>
-                    </form>
+                    <?= Html::beginForm('', 'post', ['class' => 'login_form']) ?>
+                    <input id="login_email" type="email" placeholder="email" required name="email">
+                    <div id="login_email-error" class="error_register-block"></div>
+
+                    <input id="login_password" type="password" placeholder="Пароль" required name="password">
+                    <div id="login_password-error" class="error_register-block"></div>
+
+                    <a class="password-link">Забыл пароль?</a>
+                    <button class="Font-size24">Войти</button>
+                    <?= Html::endForm(); ?>
                     <div class="alternative-registration">
                         <div class="alternative-registration-block">
                             <p class="Font-size18">Войти с помощью</p>
