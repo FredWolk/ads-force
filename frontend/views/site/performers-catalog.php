@@ -35,12 +35,13 @@ $('.filter-close').click(function (e) {
 $('.2-row').click(function (e) {
     $(this).find('rect').css({'fill':'#1EBBED'});
     $('.1-row').find('rect').css({'fill':'#D9D9D9'});
-    $('.category-item').css({'max-width':'350px'});
-    $('.category-items').css({'flex-wrap':'nowrap'});
+    $('.category-item').css({'width':'calc(50% - 5px)'});
+    $('.category-items').css({'flex-wrap':'wrap'});
 });
 $('.1-row').click(function (e) {
     $(this).find('rect').css({'fill':'#1EBBED'});
     $('.2-row').find('rect').css({'fill':'#D9D9D9'});
+    $('.category-item').css({'width':'100%'});
     $('.category-item').css({'max-width':'none'});
     $('.category-items').css({'flex-wrap':'wrap'});
 });
