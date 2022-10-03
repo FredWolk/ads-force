@@ -13,6 +13,21 @@ use Yii;
  */
 class Role extends \yii\db\ActiveRecord
 {
+
+
+    const ROLE_ADMIN = 0,
+        ROLE_PERFORMERS = 1,
+        ROLE_CUSTOMER = 2;
+
+    public static function getRoles()
+    {
+        return [
+            self::ROLE_ADMIN => 'Админ',
+            self::ROLE_PERFORMERS => 'Исполнитель',
+            self::ROLE_CUSTOMER => 'Заказчик',
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */

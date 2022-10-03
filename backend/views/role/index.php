@@ -1,5 +1,6 @@
 <?php
 
+use common\models\User;
 use console\models\Role;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -12,6 +13,12 @@ use yii\grid\GridView;
 
 $this->title = 'Роли';
 $this->params['breadcrumbs'][] = $this->title;
+$users = User::find()->asArray()->select('username, id')->all();
+if (!empty($users)) {
+    foreach ($users as $v) {
+        $usersName[$v['id']] = $v['username'];
+    }
+}
 ?>
 <div class="role-index">
 
@@ -21,7 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Создать роль', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -30,13 +38,23 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'role',
-            'user_id',
+            [
+                'attribute' => 'role',
+                'value' => function ($model) {
+                    return Role::getRoles()[$model->role];
+                }
+            ],
+            [
+                'attribute' => 'user_id',
+                'value' => function ($model) use ($usersName) {
+                    return $usersName[$model->user_id];
+                }
+            ],
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Role $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                }
             ],
         ],
     ]); ?>
