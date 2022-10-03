@@ -492,6 +492,7 @@
 
 .rewiev-card-top img {
     margin-top: -50px;
+    object-fit: contain;
     width: 78px;
     border-radius: 50%;
     height: 78px;
