@@ -252,42 +252,23 @@ AppAsset::register($this);
         <h2 class="Font-size36">Отзывы</h2>
     </div>
     <div class="rewiev-items container-index">
-        <div class="rewiev-card">
-            <div class="rewiev-card-top">
-                <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
-                <div class="rewiev-card-title">
-                    <h2 class="Font_size24">Дарья Агапова</h2>
-                    <p>Заказчик</p>
+        <?php if (!empty($reviews)) : ?>
+            <?php foreach ($reviews as $review) : ?>
+                <div class="rewiev-card">
+                    <div class="rewiev-card-top">
+                        <img src="<?= Url::to([$review['info']['photo']]) ?>" alt="">
+                        <div class="rewiev-card-title">
+                            <h2 class="Font_size24"><?= $review['info']['name'] ?></h2>
+                            <p>Заказчик</p>
+                        </div>
+                    </div>
+                    <div class="rewiev-card-content">
+                        <p><?= $review['text'] ?></p>
+                    </div>
                 </div>
-            </div>
-            <div class="rewiev-card-content">
-                <p>ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
-            </div>
-        </div>
-        <div class="rewiev-card">
-            <div class="rewiev-card-top">
-                <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
-                <div class="rewiev-card-title">
-                    <h2 class="Font_size24">Дарья Агапова</h2>
-                    <p>Заказчик</p>
-                </div>
-            </div>
-            <div class="rewiev-card-content">
-                <p>ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
-            </div>
-        </div>
-        <div class="rewiev-card">
-            <div class="rewiev-card-top">
-                <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
-                <div class="rewiev-card-title">
-                    <h2 class="Font_size24">Дарья Агапова</h2>
-                    <p>Заказчик</p>
-                </div>
-            </div>
-            <div class="rewiev-card-content">
-                <p>ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
-            </div>
-        </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+
     </div>
     <div class="arrows-slider container-index">
         <img class="prev" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">

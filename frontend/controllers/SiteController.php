@@ -13,6 +13,7 @@ use yii\filters\AccessControl;
 use common\models\LoginForm;
 use console\models\Categories;
 use console\models\Performers;
+use console\models\Reviews;
 use console\models\SuccessStories;
 use console\models\Tasks;
 use frontend\models\PasswordResetRequestForm;
@@ -79,14 +80,24 @@ class SiteController extends Controller
     {
         $categories = Categories::find()->asArray()->all();
         $performers = Performers::find()->asArray()->limit(6)->all();
-        return $this->render('index', compact('categories', 'performers'));
+        $reviews = Reviews::find()->limit(12)->with('info')->asArray()->all();
+        return $this->render('index', compact(
+            'categories',
+            'performers',
+            'reviews'
+        ));
     }
 
     public function actionForCustomer()
     {
         $categories = Categories::find()->asArray()->all();
         $performers = Performers::find()->asArray()->limit(6)->all();
-        return $this->render('for-customer', compact('categories', 'performers'));
+        $reviews = Reviews::find()->limit(12)->with('info')->asArray()->all();
+        return $this->render('for-customer', compact(
+            'categories', 
+            'performers', 
+            'reviews'
+        ));
     }
     public function actionTasks()
     {
