@@ -21,5 +21,9 @@ class ProfilePerformerController extends Controller
     {
         return $this->render('profile-chat');
     }
+    public function actionProfileChatPrivate()
+    {
+        return $this->render('profile-chat-private');
+    }
 }
 ?>

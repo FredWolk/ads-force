@@ -16,14 +16,20 @@
     --white: #FFFFFF;
     --background-white: #414C94;
     --background: #1E216B;
+    --background-chat-message: #0A0B2D;
 }
+
 html,
 body {
     height: 100%;
 }
 
-.bg-dark{
+.bg-dark {
     background: #0A0B2D;
+}
+
+.bg-chat {
+    background: var(--background-chat-message);
 }
 
 .wrapper {
@@ -50,9 +56,11 @@ footer {
 .title_color {
     color: var(--title);
 }
-.gray_color{
+
+.gray_color {
     color: var(--gray);
 }
+
 .background_color_level {
     background-color: var(--background);
 }
