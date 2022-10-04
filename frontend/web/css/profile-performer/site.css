@@ -13,6 +13,7 @@
     --title: #F535DA;
     --text: #FFFFFF;
     --gray: #828282;
+    --background-chat-img: #FFFFFF;
     --white: #FFFFFF;
     --background-white: #414C94;
     --background: #1E216B;
@@ -30,6 +31,10 @@ body {
 
 .bg-chat {
     background: var(--background-chat-message);
+}
+
+.bg-chat-img {
+    background: var(--background-chat-img);
 }
 
 .wrapper {
@@ -67,6 +72,10 @@ footer {
 
 .main_color_text {
     color: var(--text);
+}
+
+.arrow-color {
+    stroke: var(--text);
 }
 
 .white_color {

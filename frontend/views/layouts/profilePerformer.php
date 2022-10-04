@@ -6,7 +6,21 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use frontend\assets\ProfilePerformerAsset;
+
 ProfilePerformerAsset::register($this);
+$js = <<< JS
+$('.avtorize-header').click(function (e) {
+    if($(this).parent().find('.avtorize-modal').css('display') == "block"){
+        $(this).parent().find('.avtorize-modal').fadeOut(300);
+        $('.avtorize-content-top').find('img').css({'transform':'rotate(0deg)'})
+    }
+    else{
+        $(this).parent().find('.avtorize-modal').fadeIn(300);
+        $('.avtorize-content-top').find('img').css({'transform':'rotate(-180deg)'})
+    }
+})
+JS;
+$this->registerJs($js);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -30,6 +44,34 @@ ProfilePerformerAsset::register($this);
             <div class="header__container">
                 <div class="header-main">
                     <div class="logo-lang">
+                        <div class="header__menu">
+                            <input id="menu__toggle" type="checkbox">
+                            <label class="menu__btn" for="menu__toggle">
+                                <span></span>
+                            </label>
+                            <ul class="menu__box">
+                                <input id="menu__toggle-inner" type="checkbox" checked>
+                                <label class="menu__btn" for="menu__toggle">
+                                    <span></span>
+                                </label>
+                                <div class="entry">
+                                    <div class="login">Вход</div>
+                                    <div class="registration">Регистрация</div>
+                                </div>
+                                <li>
+                                    <a class="menu__item" href="">Заказчику</a>
+                                </li>
+                                <li>
+                                    <a class="menu__item" href="">Исполнителю</a>
+                                </li>
+                                <li>
+                                    <a class="menu__item" href="">Почему ADS.FORCE</a>
+                                </li>
+                                <li>
+                                    <a class="menu__item" href="">Разместить заказ</a>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="logo">ADSFORCE</div>
                         <div class="language">
                             <span>Eng</span> <span>|</span> <img src="<?= Url::to(['img/footer-header/language-en.webp']) ?>" alt="logo">
@@ -52,13 +94,55 @@ ProfilePerformerAsset::register($this);
 
                     </div>
 
-                    <div class="entry">
+                    <div class="entry dis-none-header"><!--Отключаеться когда пользователь зашел(добавить класс: dis-none-header)-->
                         <div class="login">Вход</div>
                         <div class="registration">Регистрация</div>
                     </div>
+                    <div class="avtorize-modal-container">
+                        <div class="avtorize-header">
+                            <div class="avtorize-header-img">
+                                <img src="<?= Url::to(['img/footer-header/profile-icon.svg']) ?>" alt="">
+                            </div>
+                            <div class="avtorize-content">
+                                <div class="avtorize-content-top">
+                                    <h2 class="Font-size18">Juliya</h2>
+                                    <img src="<?= Url::to(['img/footer-header/arrow-icon.svg']) ?>" alt="">
+                                </div>
+                                <p>заказчик</p>
+                            </div>
+                        </div>
+                        <div class="avtorize-modal">
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <img src="<?= Url::to(['img/footer-header/payment-link-icon.svg']) ?>" alt="">
+                                        <p>Мой счёт:0 ₽</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="<?= Url::to(['img/footer-header/user-icon.svg']) ?>" alt="">
+                                        <p>Мой кабинет</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="<?= Url::to(['img/footer-header/doc-link-icon.svg']) ?>" alt="">
+                                        <p>Мой кабинет</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="<?= Url::to(['img/footer-header/doc-link-icon.svg']) ?>" alt="">
+                                        <p>Мой кабинет</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
                     <!-- появляется при > 1024px-->
-                    <div class="header__menu">
+                    <div class="header__menu dis-none-header"> <!--Отключаеться когда пользователь зашел(добавить класс: dis-none-header)-->
                         <input id="menu__toggle" type="checkbox">
                         <label class="menu__btn" for="menu__toggle">
                             <span></span>
@@ -88,7 +172,7 @@ ProfilePerformerAsset::register($this);
                     </div>
                 </div>
 
-                <div class="header-search">
+                <div class="header-search dis-none-header">
                     <div class="search__container search">
                         <img src="<?= Url::to(['img/footer-header/search.webp']) ?>" alt="">
                         <input type="text" placeholder="Поиск">

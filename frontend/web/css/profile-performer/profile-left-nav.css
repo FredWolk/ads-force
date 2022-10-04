@@ -38,7 +38,7 @@
     font-size: 16px;
 }
 
-.news-mobile{
+.news-mobile {
     display: none;
 }
 
@@ -111,11 +111,16 @@
     display: inline-flex;
 }
 
-@media(max-width:768px){
-    .left-navbar{
+.active-link {
+    font-weight: 600;
+}
+
+@media(max-width:768px) {
+    .left-navbar {
         display: none;
     }
-    .news-mobile{
+
+    .news-mobile {
         display: flex;
         margin-left: auto;
         margin-right: auto;

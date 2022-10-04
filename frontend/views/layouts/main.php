@@ -118,6 +118,34 @@ AppAsset::register($this);
             <div class="header__container">
                 <div class="header-main">
                     <div class="logo-lang">
+                        <div class="header__menu dis-none-header"> <!--Отключаеться когда пользователь НЕ зашел(добавить класс: dis-none-header)-->
+                            <input id="menu__toggle1" type="checkbox">
+                            <label class="menu__btn" for="menu__toggle1">
+                                <span></span>
+                            </label>
+                            <ul class="menu__box">
+                                <input id="menu__toggle-inner" type="checkbox" checked>
+                                <label class="menu__btn" for="menu__toggle1">
+                                    <span></span>
+                                </label>
+                                <div class="entry">
+                                    <div class="login logPop">Вход</div>
+                                    <div class="registration regPop">Регистрация</div>
+                                </div>
+                                <li>
+                                    <a class="menu__item" href="<?= Url::to(['for-customer']) ?>">Заказчику</a>
+                                </li>
+                                <li>
+                                    <a class="menu__item" href="<?= Url::to(['index']) ?>">Исполнителю</a>
+                                </li>
+                                <li>
+                                    <a class="menu__item" href="<?= Url::to(['why-we']) ?>">Почему ADS.FORCE</a>
+                                </li>
+                                <li>
+                                    <a class="menu__item" href="<?= Url::to(['index']) ?>">Разместить заказ</a>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="logo">ADSFORCE</div>
                         <div class="language">
                             <span>Eng</span> <span>|</span> <img src="<?= Url::to(['img/footer-header/language-en.webp']) ?>" alt="logo">
@@ -135,23 +163,62 @@ AppAsset::register($this);
                             <a href="<?= Url::to(['why-we']) ?>">Почему ADS.FORCE</a>
                         </div>
                         <div class="link">
-                            <a href="">Разместить заказ</a>
+                            <a href="<?= Url::to(['index']) ?>">Разместить заказ</a>
                         </div>
 
                     </div>
 
                     <div class="entry">
-                        <?php if (Yii::$app->getUser()->isGuest) : ?>
-                            <div class="login logPop">Вход</div>
-                            <div class="registration regPop">Регистрация</div>
-                        <?php else : ?>
-                            <a href="<?= Url::to(['/register/logout']) ?>" class="login">Выход</a>
-                            <a href="<?= Url::to(['/profile-performer']) ?>" class="registration">Кабинет</a>
-                        <?php endif; ?>
+                        <!--Отключаеться когда пользователь зашел(добавить класс: dis-none-header)-->
+                        <div class="login logPop">Вход</div>
+                        <div class="registration regPop">Регистрация</div>
+                    </div>
+                    <div class="avtorize-modal-container dis-none-header"><!--Отключаеться когда пользователь НЕ зашел(добавить класс: dis-none-header)-->
+                        <div class="avtorize-header">
+                            <div class="avtorize-header-img">
+                                <img src="<?= Url::to(['img/footer-header/profile-icon.svg']) ?>" alt="">
+                            </div>
+                            <div class="avtorize-content">
+                                <div class="avtorize-content-top">
+                                    <h2 class="Font-size18">Juliya</h2>
+                                    <img src="<?= Url::to(['img/footer-header/arrow-icon.svg']) ?>" alt="">
+                                </div>
+                                <p>заказчик</p>
+                            </div>
+                        </div>
+                        <div class="avtorize-modal">
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <img src="<?= Url::to(['img/footer-header/payment-link-icon.svg']) ?>" alt="">
+                                        <p>Мой счёт:0 ₽</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="<?= Url::to(['img/footer-header/user-icon.svg']) ?>" alt="">
+                                        <p>Мой кабинет</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="<?= Url::to(['img/footer-header/doc-link-icon.svg']) ?>" alt="">
+                                        <p>Мой кабинет</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="<?= Url::to(['img/footer-header/doc-link-icon.svg']) ?>" alt="">
+                                        <p>Мой кабинет</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                     <!-- появляется при > 1024px-->
                     <div class="header__menu">
+                        <!--Отключаеться когда пользователь зашел(добавить класс: dis-none-header)-->
                         <input id="menu__toggle" type="checkbox">
                         <label class="menu__btn" for="menu__toggle">
                             <span></span>
@@ -162,17 +229,17 @@ AppAsset::register($this);
                                 <span></span>
                             </label>
                             <div class="entry">
-                                <div class="login">Вход</div>
-                                <div class="registration">Регистрация</div>
+                                <div class="login logPop">Вход</div>
+                                <div class="registration regPop">Регистрация</div>
                             </div>
                             <li>
-                                <a class="menu__item" href="<?= Url::to(['for-customer']) ?>">Заказчику</a>
+                                <a class="menu__item" href="">Заказчику</a>
                             </li>
                             <li>
-                                <a class="menu__item" href="<?= Url::to(['index']) ?>">Исполнителю</a>
+                                <a class="menu__item" href="">Исполнителю</a>
                             </li>
                             <li>
-                                <a class="menu__item" href="<?= Url::to(['why-we']) ?>">Почему ADS.FORCE</a>
+                                <a class="menu__item" href="">Почему ADS.FORCE</a>
                             </li>
                             <li>
                                 <a class="menu__item" href="">Разместить заказ</a>
