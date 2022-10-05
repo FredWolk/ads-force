@@ -25,5 +25,13 @@ class ProfilePerformerController extends Controller
     {
         return $this->render('profile-chat-private');
     }
+    public function actionProfileFreelancer()
+    {
+        return $this->render('profile-freelancer');
+    }
+    public function actionProfilePaymentInfo()
+    {
+        return $this->render('profile-payment-info');
+    }
 }
 ?>

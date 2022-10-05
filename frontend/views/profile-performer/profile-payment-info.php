@@ -2,12 +2,12 @@
 
 use yii\helpers\Url;
 
-$this->title = 'ADS.Force';
-$this->registerCssFile(Url::to(['css/profile-performer/profile-tasks.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
-$this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
-$this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
-?>
+/** @var yii\web\View $this */
 
+$this->title = 'ADS.Force';
+$this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
+$this->registerCssFile(Url::to(['css/profile-performer/profile-payment.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
+?>
 <div class="Profile-container">
     <h1 class="title_color Font-size36">Личный кабинет заказчика</h1>
     <div class="Profile-full">
@@ -16,7 +16,7 @@ $this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' 
                 <div class="hello-user">
                     <img src="<?= Url::to(['img/profile/profile-meneger/hand.svg']) ?>" alt="">
                     <h2 class="Font-size24 main_color_text">Привет, Juliya!</h2>
-                    <img src="<?= Url::to(['img/profile/profile-meneger/night.svg']) ?>" class="dark-bg" alt="">
+                    <img src="<?= Url::to(['img/profile/profile-meneger/night.svg']) ?>" alt="">
                 </div>
                 <div class="balance-user">
                     <p class="Font-size18 main_color_text">Баланс: 0 руб.</p>
@@ -38,7 +38,7 @@ $this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' 
                         </div>
                     </li>
                     <li>
-                        <a href="<?= Url::to(['index']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-tasks' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/performers-link-icon.svg']) ?>" alt="">Мои исполнители</a>
+                        <a href="<?= Url::to(['profile-performer/profile-freelancer']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-freelancer' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/performers-link-icon.svg']) ?>" alt="">Мои исполнители</a>
                     </li>
                     <li>
                         <a href="<?= Url::to(['index']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-tasks' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/payment-link-icon.svg']) ?>" alt="">Финансы</a>
@@ -79,56 +79,118 @@ $this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' 
             </div>
         </section>
         <div class="profile-right">
-            <div class="profile-empty display-none">
-                <h2 class="Font-size24 gray_color">Не найдено ни одного взятого в работу заказа :(</h2>
-                <button class="Font-size18">Разместить заказ</button>
+            <div class="main-info-payment">
+                <div class="main-info-balance">
+                    <h2 class="main_color_text Font-size24">Ваш баланс</h2>
+                    <p class="main_color_text Font-size24">4500 руб.</p>
+                </div>
+                <div class="main-info-buttons">
+                    <button class="add-button">Пополнить</button>
+                    <button class="withdraw-button main_color_text">Вывести</button>
+                </div>
             </div>
-            <div class="tasks">
-                <a data-pjax="0" href="">
-                    <div class="task-item white_color_bg">
-                        <div class="filter-task-item">
-                            <div class="filter-task-item-main">
-                                <div class="hi-order">
-                                    <p>Свободен</p>
-                                    <img src="<?= Url::to(['img/tasks/smite.svg']) ?>" alt="">
-                                </div>
-                                <div class="filters-list">
-                                    <div class="filter-view filter-task-items">
-                                        <img src="<?= Url::to(['img/profile/profile-tasks/message-icon.svg']) ?>" alt="">
-                                        <p class="img-title">Перейти на страницу заказчика</p>
-                                    </div>
-                                    <div class="filter-view filter-task-items">
-                                        <img src="<?= Url::to(['img/profile/profile-tasks/profile-icon.svg']) ?>" alt="">
-                                        <p class="img-title">Перейти на страницу заказчика</p>
-                                    </div>
-                                    <div class="filter-view filter-task-items">
-                                        <img src="<?= Url::to(['img/tasks/summ.svg']) ?>" alt="">
-                                        <p>5000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="right-item-filter">
-                                <p>29 сентября</p>
-                            </div>
+            <div class="history-payment">
+                <h2 class="Font-size24 main_color_text">История операций</h2>
+                <div class="table-payment">
+                    <div class="table-title">
+                        <ul>
+                            <li>
+                                <h2 class="Font-size18 main_color_text">Дата операций</h2>
+                            </li>
+                            <li>
+                                <h2 class="Font-size18 main_color_text text-center">Тип</h2>
+                            </li>
+                            <li>
+                                <h2 class="Font-size18 main_color_text text-right">Баланс</h2>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="table-body">
+                        <ul>
+                            <li>
+                                <p class="Font-size18 main_color_text">16.07.2021</p>
+                            </li>
+                            <li>
+                                <p class="Font-size18 main_color_text text-center">Начисление</p>
+                            </li>
+                            <li>
+                                <p class="Font-size18 main_color_text text-right summ-table">+1000 руб.</p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <p class="Font-size18 main_color_text">16.07.2021</p>
+                            </li>
+                            <li>
+                                <p class="Font-size18 main_color_text text-center">Начисление</p>
+                            </li>
+                            <li>
+                                <p class="Font-size18 main_color_text text-right summ-table">+1000 руб.</p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <p class="Font-size18 main_color_text">16.07.2021</p>
+                            </li>
+                            <li>
+                                <p class="Font-size18 main_color_text text-center">Отмена списания</p>
+                            </li>
+                            <li>
+                                <p class="Font-size18 main_color_text text-right summ-table">+1000 руб.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="success-tasks-list">
+                <h2 class="Font-size24 main_color_text">Акты выполненых работ</h2>
+                <div class="success-calendar-filter">
+                    <form action="">
+                        <div class="main-content-form">
+                            <p class="main_color_text">C</p>
+                            <input type="date">
+                            <p class="main_color_text">по</p>
+                            <input type="date">
+                            <img src="<?= Url::to(['img/profile/profile-meneger/close-icon.svg']) ?>" alt="">
                         </div>
-                        <div class="task-title">
-                            <h2 class="Font-size24 main_color_text">вк</h2>
+                        <div class="button-form">
+                            <button>Показать</button>
                         </div>
-                        <div class="task-text main_color_text">
-                            <p>
-                                main_color_text
-                            </p>
-                            <span style="color: #F535DA">... Подробнее</span>
+                    </form>
+                </div>
+                <div class="empty-success-task">
+                    <p>Акты не найдены</p>
+                </div>
+                <div class="act-lists">
+                    <div class="act-items white_color_bg">
+                        <div class="act-items-title">
+                            <h2 class="main_color_text">Акт выполненной работы №1234</h2>
                         </div>
-                        <div class="task-tag-list">
-                            <div class="task-tag-item">
-                                <p>#тег</p>
-                            </div>
+                        <div class="act-items-img">
+                            <img src="<?= Url::to(['img/profile/profile-meneger/watch-icon.svg']) ?>" alt="">
+                            <img src="<?= Url::to(['img/profile/profile-meneger/install-icon.svg']) ?>" alt="">
                         </div>
                     </div>
-                </a>
-                <div class="navigation-task">
-                    <button>Разместить заказ</button>
+                    <div class="act-items white_color_bg">
+                        <div class="act-items-title">
+                            <h2 class="main_color_text">Акт выполненной работы №1234</h2>
+                        </div>
+                        <div class="act-items-img">
+                            <img src="<?= Url::to(['img/profile/profile-meneger/watch-icon.svg']) ?>" alt="">
+                            <img src="<?= Url::to(['img/profile/profile-meneger/install-icon.svg']) ?>" alt="">
+                        </div>
+                    </div>
+                    <div class="act-items white_color_bg">
+                        <div class="act-items-title">
+                            <h2 class="main_color_text">Акт выполненной работы №1234</h2>
+                        </div>
+                        <div class="act-items-img">
+                            <img src="<?= Url::to(['img/profile/profile-meneger/watch-icon.svg']) ?>" alt="">
+                            <img src="<?= Url::to(['img/profile/profile-meneger/install-icon.svg']) ?>" alt="">
+                        </div>
+                    </div>
+
+
                     <div class="pagination-items">
                         <a href="">
                             <svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -148,7 +210,7 @@ $this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' 
                             </li>
                         </ul>
                         <a href="">
-                            <svg class="right-arrow-pagination"  width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="right-arrow-pagination" width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4.5 1L1 4.5L4.5 8" class="arrow-color" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M9 1L5.5 4.5L9 8" class="arrow-color" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>

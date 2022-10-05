@@ -7,6 +7,7 @@ use yii\helpers\Url;
 $this->title = 'ADS.Force';
 $this->registerCssFile(Url::to(['css/profile-performer/profile-meneger.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
 $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
+
 ?>
 <div class="Profile-container">
     <h1 class="title_color Font-size36">Личный кабинет заказчика</h1>
@@ -16,7 +17,7 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
                 <div class="hello-user">
                     <img src="<?= Url::to(['img/profile/profile-meneger/hand.svg']) ?>" alt="">
                     <h2 class="Font-size24 main_color_text">Привет, Juliya!</h2>
-                    <img src="<?= Url::to(['img/profile/profile-meneger/night.svg']) ?>" alt="">
+                    <img src="<?= Url::to(['img/profile/profile-meneger/night.svg']) ?>" class="dark-bg" alt="">
                 </div>
                 <div class="balance-user">
                     <p class="Font-size18 main_color_text">Баланс: 0 руб.</p>
@@ -24,7 +25,7 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
                 <button class="button-add-balance Font-size18">Пополнить</button>
             </div>
             <div class="left-navbar-bottom">
-            <ul>
+                <ul>
                     <li>
                         <a href="<?= Url::to(['index']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'index' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/user-icon.svg']) ?>" alt="">Моя страница</a>
                     </li>
