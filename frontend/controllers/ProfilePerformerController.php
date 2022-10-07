@@ -33,5 +33,13 @@ class ProfilePerformerController extends Controller
     {
         return $this->render('profile-payment-info');
     }
+    public function actionProfilePro()
+    {
+        return $this->render('profile-pro');
+    }
+    public function actionTechnicalSupport()
+    {
+        return $this->render('technical-support');
+    }
 }
 ?>

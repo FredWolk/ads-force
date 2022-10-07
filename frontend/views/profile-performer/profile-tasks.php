@@ -17,6 +17,7 @@ $this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' 
                     <img src="<?= Url::to(['img/profile/profile-meneger/hand.svg']) ?>" alt="">
                     <h2 class="Font-size24 main_color_text">Привет, Juliya!</h2>
                     <img src="<?= Url::to(['img/profile/profile-meneger/night.svg']) ?>" class="dark-bg" alt="">
+                    <img src="<?= Url::to(['img/profile/profile-meneger/sun-icon.svg']) ?>" class="dark-bg sun" alt="">
                 </div>
                 <div class="balance-user">
                     <p class="Font-size18 main_color_text">Баланс: 0 руб.</p>

@@ -22,12 +22,16 @@ $('.avtorize-header').click(function (e) {
 $(document).ready(function(){
     let darkTheme = window.localStorage.getItem('dark-theme');
     if(darkTheme == 'false' || !darkTheme){
+        $('.dark-bg').css({'display':'none'});
+        $('.sun').css({'display':'flex'});
         document.documentElement.style.setProperty('--text', '#fff');
         document.documentElement.style.setProperty('--background-white', '#414C94');
         document.documentElement.style.setProperty('--background-chat-message', '#0A0B2D');
         $('body').addClass('bg-dark');
     }
     else if(darkTheme == 'true'){
+        $('.dark-bg').css({'display':'flex'});
+        $('.sun').css({'display':'none'});
         document.documentElement.style.setProperty('--text', '#1F1F1F');
         document.documentElement.style.setProperty('--background-white', '#ffffff');
         document.documentElement.style.setProperty('--background-chat-message', '#ffffff');
@@ -36,6 +40,8 @@ $(document).ready(function(){
 $('.dark-bg').click(function(e){
     let darkTheme = window.localStorage.getItem('dark-theme');
     if(darkTheme == 'false'){
+        $('.dark-bg').css({'display':'flex'});
+        $('.sun').css({'display':'none'});
         document.documentElement.style.setProperty('--text', '#1F1F1F');
         document.documentElement.style.setProperty('--background-white', '#ffffff');
         document.documentElement.style.setProperty('--background-chat-message', '#ffffff');
@@ -43,6 +49,8 @@ $('.dark-bg').click(function(e){
         $('body').removeClass('bg-dark');
     }
     if(darkTheme == 'true'){
+        $('.dark-bg').css({'display':'none'});
+        $('.sun').css({'display':'flex'});
         document.documentElement.style.setProperty('--text', '#fff');
         document.documentElement.style.setProperty('--background-white', '#414C94');
         document.documentElement.style.setProperty('--background-chat-message', '#0A0B2D');
@@ -126,7 +134,8 @@ $this->registerJs($js);
 
                     </div>
 
-                    <div class="entry dis-none-header"><!--Отключаеться когда пользователь зашел(добавить класс: dis-none-header)-->
+                    <div class="entry dis-none-header">
+                        <!--Отключаеться когда пользователь зашел(добавить класс: dis-none-header)-->
                         <div class="login">Вход</div>
                         <div class="registration">Регистрация</div>
                     </div>
@@ -174,7 +183,8 @@ $this->registerJs($js);
                     </div>
 
                     <!-- появляется при > 1024px-->
-                    <div class="header__menu dis-none-header"> <!--Отключаеться когда пользователь зашел(добавить класс: dis-none-header)-->
+                    <div class="header__menu dis-none-header">
+                        <!--Отключаеться когда пользователь зашел(добавить класс: dis-none-header)-->
                         <input id="menu__toggle" type="checkbox">
                         <label class="menu__btn" for="menu__toggle">
                             <span></span>
