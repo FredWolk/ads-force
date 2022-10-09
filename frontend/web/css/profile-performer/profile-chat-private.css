@@ -129,6 +129,7 @@
     max-width: 457px;
     border-radius: 15px;
     padding: 15px;
+    border: 1px solid #BDBDBD;
     margin-bottom: 15px;
     display: inline-flex;
     min-width: 307px;

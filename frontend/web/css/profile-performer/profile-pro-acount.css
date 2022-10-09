@@ -1,6 +1,7 @@
 .Profile-full {
     display: flex;
     column-gap: 35px;
+    margin-bottom: 100px;
 }
 
 .rigth-column {
@@ -139,4 +140,8 @@
 
 .d-none{
     display: none;
+}
+
+.news-mobile{
+    margin-top: 30px;
 }

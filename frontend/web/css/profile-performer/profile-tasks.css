@@ -1,6 +1,7 @@
 .Profile-full {
     display: flex;
     column-gap: 30px;
+    margin-bottom: 100px;
 }
 
 .profile-empty {

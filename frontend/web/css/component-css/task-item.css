@@ -35,7 +35,7 @@
 .filter-task-item .status-task p {
     padding: 5px;
     font-size: 14px;
-    background-color: #B7FFA5;
+    background: #B7FFA5;
     border-radius: 4px;
     display: inline-flex;
 }

@@ -1,6 +1,7 @@
 .Profile-full {
     display: flex;
     column-gap: 35px;
+    margin-bottom: 100px;
 }
 
 .rigth-column {
@@ -109,7 +110,7 @@
     padding: 20px;
 }
 
-.call-tehnical-item .call-tehnical-item-img{
+.call-tehnical-item .call-tehnical-item-img {
     width: 60px;
     height: 60px;
     background: #ffffff;
@@ -121,30 +122,72 @@
     border: 1px solid #1EBBED;
 }
 
-.call-tehnical-item-text b{
+.call-tehnical-item-text b {
     font-size: 16px;
     display: inline-flex;
 }
 
-.call-tehnical-item-text p{
+.call-tehnical-item-text p {
     font-size: 14px;
     color: #BDBDBD;
 }
 
-.call-tehnical-item-text a{
+.call-tehnical-item-text a {
     font-size: 14px;
     margin-top: 15px;
     text-decoration: underline;
 }
 
-.date-call-tehnical{
+.date-call-tehnical {
     position: absolute;
     top: 20px;
     color: #BDBDBD;
     font-size: 14px;
     right: 20px;
 }
-@media(max-width:580px){
+
+.call-list-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+}
+
+.call-list-button button {
+    max-width: 403px;
+    width: 100%;
+    padding: 15px;
+    color: #ffffff;
+    background: #F535DA;
+    border-radius: 100px;
+}
+
+.pagination-items {
+    display: flex;
+    column-gap: 15px;
+    margin-bottom: 20px;
+}
+
+.pagination-items ul {
+    display: flex;
+    list-style: none;
+}
+
+.active-paginate {
+    background: linear-gradient(90deg, #CE06D0 0%, #00DBDE 100%);
+    border-radius: 4px;
+    color: #ffffff;
+}
+
+.pagination-items ul li a {
+    padding: 5px 10px;
+}
+
+.right-arrow-pagination {
+    transform: rotate(-180deg);
+}
+
+@media(max-width:580px) {
     .call-tehnical-item {
         border: 2px solid #E0E0E0;
         border-radius: 15px;
@@ -153,20 +196,21 @@
         column-gap: 10px;
         padding: 20px 10px;
     }
-    .date-call-tehnical{
+
+    .date-call-tehnical {
         right: 10px;
     }
-    .call-tehnical-item-text b{
+
+    .call-tehnical-item-text b {
         font-size: 14px;
         max-width: 140px;
     }
-    
-    .call-tehnical-item-text p{
+
+    .call-tehnical-item-text p {
         font-size: 12px;
-        color: #4F4F4F;
     }
-    
-    .call-tehnical-item-text a{
+
+    .call-tehnical-item-text a {
         font-size: 14px;
         margin-top: 15px;
         text-decoration: underline;

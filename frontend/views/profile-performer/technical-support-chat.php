@@ -2,11 +2,26 @@
 
 use yii\helpers\Url;
 
-/** @var yii\web\View $this */
-
 $this->title = 'ADS.Force';
+$this->registerCssFile(Url::to(['css/profile-performer/technical-support-chat.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
 $this->registerCssFile(Url::to(['css/profile-performer/profile-chat-private.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
 $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
+$js = <<< JS
+$('.chat-private-show').click(function(){
+    if($('.chat-private').css('display') == "none"){
+        $('.chat-private').fadeIn(300);
+        $(this).find('img').css({'transform':'rotate(-180deg) '})
+}
+    else{
+        $('.chat-private').fadeOut(300);
+        $(this).find('img').css({'transform':'rotate(0deg)'})
+    }
+})
+$('.container').click(function(){
+    $('.select-category-list').fadeOut(300);
+});
+JS;
+$this->registerJs($js);
 ?>
 <div class="Profile-container">
     <h1 class="title_color Font-size36">Личный кабинет заказчика</h1>
@@ -25,7 +40,7 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
                 <button class="button-add-balance Font-size18">Пополнить</button>
             </div>
             <div class="left-navbar-bottom">
-                <ul>
+            <ul>
                     <li>
                         <a href="<?= Url::to(['index']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'index' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/user-icon.svg']) ?>" alt="">Моя страница</a>
                     </li>
@@ -79,8 +94,33 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
                 </div>
             </div>
         </section>
-        <section class="rigth-column">
-            <div class="chat-private white_color_bg">
+        <div class="rigth-column">
+            <div class="support-chat-title">
+                <h2 class="main_color_text Font-size24">Данные обращения № 123456</h2>
+            </div>
+            <div class="support-chat-information">
+                <div class="information-item">
+                    <p class="Font-size18">Раздел:</p>
+                    <b class="main_color_text">Статус PRO</b>
+                </div>
+                <div class="information-item">
+                    <p class="Font-size18">Тема:</p>
+                    <b class="main_color_text">Продление статуса</b>
+                </div>
+                <div class="information-item">
+                    <p class="Font-size18">Дата:</p>
+                    <b class="main_color_text">19.08.2022</b>
+                </div>
+                <div class="information-item">
+                    <p class="Font-size18">Текст обращения:</p>
+                    <b class="main_color_text">Здравствуйте! Не получается повторно продлить вип-статус.</b>
+                </div>
+            </div>
+            <div class="chat-private-show">
+                <h2>Посмотреть историю диалога с поддержкой</h2>
+                <img src="<?= Url::to(['img/profile/profile-tasks/arrow-tehnical.svg']) ?>" alt="">
+            </div>
+            <div class="chat-private white_color_bg" style="display: none;">
                 <div class="header-chat-private">
                     <div class="header-chat-img bg-chat-img">
                         <img src="<?= Url::to(['img/profile/profile-chat/profile-chat-private.png']) ?>" alt="">
@@ -174,29 +214,6 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
                     </div>
                 </div>
             </div>
-            <div class="left-nav-bar-news news-mobile">
-                <div class="news-title">
-                    <img src="<?= Url::to(['img/profile/profile-meneger/news-icon.svg']) ?>" alt="">
-                    <h2 class="Font-size24 main_color_text">Новости проекта</h2>
-                </div>
-                <div class="news-list">
-                    <ul>
-                        <li>
-                            <p class="date-news Font-size18 white_color">18.08</p>
-                            <p class="Font-size18 main_color_text">Статья «Как реклама влияет на продажи?»</p>
-                        </li>
-                        <li>
-                            <p class="date-news Font-size18 white_color">18.08</p>
-                            <p class="Font-size18 main_color_text">Запланированы технические работы с 23:00</p>
-                        </li>
-                        <li>
-                            <p class="date-news Font-size18 white_color">28.09</p>
-                            <p class="Font-size18 main_color_text">Статья «SMM: что это такое и как работает»</p>
-                        </li>
-                    </ul>
-                    <a class="more-news Font-size18 title_color">Еще + </a>
-                </div>
-            </div>
-        </section>
+        </div>
     </div>
 </div>

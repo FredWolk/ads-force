@@ -1,6 +1,7 @@
 .Profile-full {
     display: flex;
     column-gap: 30px;
+    margin-bottom: 100px;
 }
 
 .main-info-payment {
@@ -241,6 +242,110 @@
     transform: rotate(-180deg);
 }
 
+.ModalPuyment {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: 0px auto;
+    z-index: 3;
+    background: #252525;
+}
+
+.modalBlock {
+    background: linear-gradient(0deg, #FC00FF -8.13%, #00DBDE 100%);
+    border-radius: 10px;
+    max-width: 621px;
+    width: 100%;
+    padding: 40px;
+}
+
+.Modal-close {
+    position: absolute;
+    right: 50px;
+    top: 20px;
+}
+
+.Modal-close p {
+    font-size: 40px;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.modalBlock {
+    display: flex;
+    width: 100%;
+    margin: auto;
+    row-gap: 15px;
+    position: relative;
+    flex-direction: column;
+}
+
+.modalBlock h2 {
+    color: #FFFFFF;
+    max-width: 416px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modalBlockForm form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    max-width: 416px;
+    margin: 0px auto;
+}
+
+.modalBlockForm form p {
+    color: #FFFFFF;
+}
+
+.puymentModalButton {
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    background: #F535DA;
+    border-radius: 40px;
+    color: #FFFFFF;
+}
+
+.closeModalButton {
+    width: 100%;
+    padding: 15px;
+    cursor: pointer;
+    color: #F535DA;
+    background: #FFFFFF;
+    font-size: 20px;
+    border: 2px solid #F535DA;
+    border-radius: 40px;
+}
+
+.modalBlockForm form input {
+    padding: 15px;
+    max-width: 416px;
+    font-size: 14px;
+    border: 1px solid #08E5FC;
+    border-radius: 10px;
+}
+
+.formCheckbox {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.formCheckbox input {
+    background: none;
+}
+
+.formCheckbox p {
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
 @media (max-width: 978px) {
     .success-calendar-filter form {
         flex-direction: column;
@@ -252,6 +357,7 @@
 @media (max-width: 768px) {
     .news-mobile {
         margin: 30px auto;
+        margin-bottom: 0px;
     }
 }
 

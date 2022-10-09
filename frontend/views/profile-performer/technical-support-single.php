@@ -3,12 +3,27 @@
 use yii\helpers\Url;
 
 /** @var yii\web\View $this */
-
 $this->title = 'ADS.Force';
-$this->registerCssFile(Url::to(['css/profile-performer/profile-meneger.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
+$this->registerCssFile(Url::to(['css/profile-performer/technical-support-single.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
 $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
-
+$js = <<< JS
+$('.select-category-text').click(function(){
+    if($('.select-category-list').css('display') == "none"){
+        $('.select-category-list').fadeIn(300);
+        $(this).find('img').css({'transform':'translate(0%, -50%) rotate(-180deg) '})
+}
+    else{
+        $('.select-category-list').fadeOut(300);
+        $(this).find('img').css({'transform':'translate(0%, -50%) rotate(0deg)'})
+    }
+})
+$('.container').click(function(){
+    $('.select-category-list').fadeOut(300);
+});
+JS;
+$this->registerJs($js);
 ?>
+
 <div class="Profile-container">
     <h1 class="title_color Font-size36">Личный кабинет заказчика</h1>
     <div class="Profile-full">
@@ -80,79 +95,69 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
                 </div>
             </div>
         </section>
-        <section class="right-column">
-            <div class="right-column-level background_color_level">
-                <h2 class="Font-size24 white_color">У вас 0 баллов, ваш уровень заказчика <b>Новичок</b></h2>
-                <div class="level-container">
-                    <div class="level-container-left">
-
-                    </div>
-                    <div class="level-container-middle">
-
-                    </div>
-                    <div class="level-container-right">
-
-                    </div>
-                    <div class="circle-level">
-
+        <div class="profile-right">
+            <div class="support-single-title">
+                <h2 class="main_color_text Font-size24">Создание обращения № 123456</h2>
+            </div>
+            <div class="support-single">
+                <div class="select-category-title">
+                    <b class="main_color_text">Категория</b>
+                    <div class="select-category">
+                        <div class="select-category-text white_color_bg">
+                            <p>Выберите категорию</p>
+                            <img src="<?= Url::to(['img/profile/profile-tasks/arrow-tehnical.svg']) ?>" alt="">
+                        </div>
+                        <div class="select-category-list">
+                            <ul>
+                                <li>
+                                    <label class="container Font-size18 main_color_text">One
+                                        <input type="radio" name="radio">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="container Font-size18 main_color_text">One
+                                        <input type="radio" name="radio">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="level-text">
-                    <div class="level-item">
-                        <p class="white_color Font-size18">Базовый</p>
-                    </div>
-                    <div class="level-item">
-                        <p class="white_color Font-size18">Продвинутый</p>
-                    </div>
-                    <div class="level-item">
-                        <p class="white_color Font-size18">Профи</p>
+                <div class="tema-tehnical">
+                    <b class="main_color_text">Тема</b>
+                    <div class="tema-tehnical-text white_color_bg">
+                        <p class="main_color_text">Возврат денег</p>
                     </div>
                 </div>
-                <div class="link-level">
-                    <a href="">
-                        <img src="<?= Url::to(['img/profile/profile-meneger/info-icon.svg']) ?>" alt="">
-                        <p class="white_color Font-size18">Как это работает?</p>
-                    </a>
+                <div class="text-area">
+                    <b class="main_color_text">Сообщение</b>
+                    <div class="text-area-text">
+                        <textarea class="main_color_text white_color_bg" name="" id="" cols="30" rows="10"></textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="pro-account-block">
-                <p class="Font-size18 white_color">Получите особый статус</p>
-                <h2 class="white_color Font-size24">PRO-аккаунт</h2>
-                <a class="white_color Font-size18">Подробнее</a>
-            </div>
-            <div class="active-project">
-                <h2 class="Font-size24">Активные заказы</h2>
-                <p class="Font-size18">У вас много откликов на заказы..</p>
-                <a class="white_color Font-size18">Перейти к заказам</a>
-            </div>
-            <div class="partners-full">
-                <h2 class="Font-size24">Партнерство</h2>
-                <p class="white_color Font-size18">Стань партнером в один клик</p>
-                <a class="white_color Font-size18">Стать партнером</a>
-            </div>
-            <div class="left-nav-bar-news news-mobile">
-                <div class="news-title">
-                    <img src="<?= Url::to(['img/profile/profile-meneger/news-icon.svg']) ?>" alt="">
-                    <h2 class="Font-size24 main_color_text">Новости проекта</h2>
-                </div>
-                <div class="news-list">
+                <div class="link-file">
+                    <div class="link-add">
+                        <img src="<?= Url::to(['img/profile/profile-chat/post-file-icon.svg']) ?>" alt="">
+                        <p>Добавить вложения</p>
+                    </div>
                     <ul>
                         <li>
-                            <p class="date-news Font-size18 white_color">18.08</p>
-                            <p class="Font-size18 main_color_text">Статья «Как реклама влияет на продажи?»</p>
+                            <a href="" class="main_color_text">Файл 1.png</a>
                         </li>
                         <li>
-                            <p class="date-news Font-size18 white_color">18.08</p>
-                            <p class="Font-size18 main_color_text">Запланированы технические работы с 23:00</p>
+                            <a href="" class="main_color_text">Файл 2.txt</a>
                         </li>
                         <li>
-                            <p class="date-news Font-size18 white_color">28.09</p>
-                            <p class="Font-size18 main_color_text">Статья «SMM: что это такое и как работает»</p>
+                            <a href="" class="main_color_text">Файл 3.pdf</a>
                         </li>
                     </ul>
-                    <p class="more-news Font-size18 title_color">Еще + </p>
                 </div>
             </div>
-        </section>
+            <div class="support-single-button">
+                <button>Отправить</button>
+            </div>
+        </div>
     </div>
 </div>

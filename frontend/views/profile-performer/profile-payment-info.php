@@ -7,7 +7,44 @@ use yii\helpers\Url;
 $this->title = 'ADS.Force';
 $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
 $this->registerCssFile(Url::to(['css/profile-performer/profile-payment.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
+
+$js = <<< JS
+
+$('.add-button').click(function(e) {
+    $('.ModalPuyment').css({'display':'flex'});
+    $('body').css({'overflow':'hidden'});
+});
+$('.Modal-close').click(function(e) {
+    $('.ModalPuyment').fadeOut(300);
+    $('body').css({'overflow':'auto'})
+});
+$('.closeModalButton').click(function(e) {
+    $('.ModalPuyment').fadeOut(300);
+    $('body').css({'overflow':'auto'})
+});
+JS;
+$this->registerJs($js);
 ?>
+<div class="ModalPuyment" style="display: none;">
+    <div class="modalBlock">
+        <div class="Modal-close">
+            <p>&times;</p>
+        </div>
+        <h2 class="Font-size24">Пополнение баланса</h2>
+        <div class="modalBlockForm">
+            <form action="">
+                <p>Сумма</p>
+                <input type="number" placeholder="Минимальная сумма пополнения 5000 руб.">
+                <div class="formCheckbox">
+                    <input type="checkbox">
+                    <p>Подтверждаю согласие с условиями обработки данных</p>
+                </div>
+                <button class="puymentModalButton">Оплатить</button>
+                <button class="closeModalButton">Отмена</button>
+            </form>
+        </div>
+    </div>
+</div>
 <div class="Profile-container">
     <h1 class="title_color Font-size36">Личный кабинет заказчика</h1>
     <div class="Profile-full">
@@ -33,25 +70,25 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-payment.css']), [
                         <a href="<?= Url::to(['profile-performer/profile-tasks']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-tasks' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/doc-link-icon.svg']) ?>" alt="">Мои заказы</a>
                     </li>
                     <li>
-                        <a href="<?= Url::to(['profile-chat']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-chat' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/message-link-icon.svg']) ?>" alt="">Сообщения</a>
+                        <a href="<?= Url::to(['profile-chat']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-chat' || Yii::$app->controller->action->id === 'profile-chat-private' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/message-link-icon.svg']) ?>" alt="">Сообщения</a>
                         <div class="circle-message">
                             <p class="white_color">12</p>
                         </div>
                     </li>
                     <li>
-                        <a href="<?= Url::to(['profile-performer/profile-freelancer']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-freelancer' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/performers-link-icon.svg']) ?>" alt="">Мои исполнители</a>
+                        <a href="<?= Url::to(['profile-freelancer']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-freelancer' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/performers-link-icon.svg']) ?>" alt="">Мои исполнители</a>
                     </li>
                     <li>
-                        <a href="<?= Url::to(['index']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-tasks' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/payment-link-icon.svg']) ?>" alt="">Финансы</a>
+                        <a href="<?= Url::to(['profile-payment-info']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-payment-info' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/payment-link-icon.svg']) ?>" alt="">Финансы</a>
                     </li>
                     <li>
-                        <a href="<?= Url::to(['index']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-tasks' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/partners-link-icon.svg']) ?>" alt="">Партнерская программа</a>
+                        <a href="<?= Url::to(['profile-pro']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-pro' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/partners-link-icon.svg']) ?>" alt="">Партнерская программа</a>
                     </li>
                     <li>
-                        <a href="<?= Url::to(['index']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-tasks' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/help-link-icon.svg']) ?>" alt="">Служба поддержки</a>
+                        <a href="<?= Url::to(['technical-support']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'technical-support-chat' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/help-link-icon.svg']) ?>" alt="">Служба поддержки</a>
                     </li>
                     <li>
-                        <a href="<?= Url::to(['index']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-tasks' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/seetings-link-icon.svg']) ?>" alt="">Настройки</a>
+                        <a href="<?= Url::to(['profile-seetings']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-seetings' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/seetings-link-icon.svg']) ?>" alt="">Настройки</a>
                     </li>
                 </ul>
             </div>

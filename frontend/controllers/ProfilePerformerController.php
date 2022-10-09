@@ -41,5 +41,25 @@ class ProfilePerformerController extends Controller
     {
         return $this->render('technical-support');
     }
+    public function actionProfileSeetings()
+    {
+        return $this->render('profile-seetings');
+    }
+    public function actionTechnicalSupportSingle()
+    {
+        return $this->render('technical-support-single');
+    }
+    public function actionTechnicalSupportChat()
+    {
+        return $this->render('technical-support-chat');
+    }
+    public function actionProfileCreateTask()
+    {
+        return $this->render('profile-create-task');
+    }
+    public function actionNewTaskPreview()
+    {
+        return $this->render('new-task-preview');
+    }
 }
 ?>
