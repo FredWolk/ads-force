@@ -8,7 +8,7 @@ $this->registerCssFile(Url::to(['css/profile-performer/technical-support.css']),
 $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
 ?>
 <div class="Profile-container">
-    <h1 class="title_color Font-size36">Личный кабинет заказчика</h1>
+    <h1 class="title_color Font-size36">Личный кабинет заказчика 123</h1>
     <div class="Profile-full">
         <section class="left-navbar">
             <div class="left-navbar-top">
