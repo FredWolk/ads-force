@@ -21,6 +21,7 @@ $('.avtorize-header').click(function (e) {
 })
 $(document).ready(function(){
     let darkTheme = window.localStorage.getItem('dark-theme');
+    console.log(darkTheme);
     if(darkTheme == 'false' || !darkTheme){
         $('.dark-bg').css({'display':'none'});
         $('.sun').css({'display':'flex'});
@@ -39,7 +40,7 @@ $(document).ready(function(){
     }
 $('.dark-bg').click(function(e){
     let darkTheme = window.localStorage.getItem('dark-theme');
-    if(darkTheme == 'false'){
+    if(darkTheme == 'false' || !darkTheme){
         $('.dark-bg').css({'display':'flex'});
         $('.sun').css({'display':'none'});
         document.documentElement.style.setProperty('--text', '#1F1F1F');
