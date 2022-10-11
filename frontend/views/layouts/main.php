@@ -118,7 +118,8 @@ AppAsset::register($this);
             <div class="header__container">
                 <div class="header-main">
                     <div class="logo-lang">
-                        <div class="header__menu dis-none-header"> <!--Отключаеться когда пользователь НЕ зашел(добавить класс: dis-none-header)-->
+                        <div class="header__menu dis-none-header">
+                            <!--Отключаеться когда пользователь НЕ зашел(добавить класс: dis-none-header)-->
                             <input id="menu__toggle1" type="checkbox">
                             <label class="menu__btn" for="menu__toggle1">
                                 <span></span>
@@ -167,54 +168,57 @@ AppAsset::register($this);
                         </div>
 
                     </div>
-
-                    <div class="entry">
-                        <!--Отключаеться когда пользователь зашел(добавить класс: dis-none-header)-->
-                        <div class="login logPop">Вход</div>
-                        <div class="registration regPop">Регистрация</div>
-                    </div>
-                    <div class="avtorize-modal-container dis-none-header"><!--Отключаеться когда пользователь НЕ зашел(добавить класс: dis-none-header)-->
-                        <div class="avtorize-header">
-                            <div class="avtorize-header-img">
-                                <img src="<?= Url::to(['img/footer-header/profile-icon.svg']) ?>" alt="">
-                            </div>
-                            <div class="avtorize-content">
-                                <div class="avtorize-content-top">
-                                    <h2 class="Font-size18">Juliya</h2>
-                                    <img src="<?= Url::to(['img/footer-header/arrow-icon.svg']) ?>" alt="">
+                    <?php if (Yii::$app->getUser()->isGuest) : ?>
+                        <div class="entry">
+                            <div class="login logPop">Вход</div>
+                            <div class="registration regPop">Регистрация</div>
+                        </div>
+                    <?php else : ?>
+                        <div class="avtorize-modal-container">
+                            <div class="avtorize-header">
+                                <div class="avtorize-header-img">
+                                    <img src="<?= Url::to(['img/footer-header/profile-icon.svg']) ?>" alt="">
                                 </div>
-                                <p>заказчик</p>
+                                <div class="avtorize-content">
+                                    <div class="avtorize-content-top">
+                                        <h2 class="Font-size18">Juliya</h2>
+                                        <img src="<?= Url::to(['img/footer-header/arrow-icon.svg']) ?>" alt="">
+                                    </div>
+                                    <p>заказчик</p>
+                                </div>
+                            </div>
+                            <div class="avtorize-modal">
+                                <ul>
+                                    <li>
+                                        <a href="">
+                                            <img src="<?= Url::to(['img/footer-header/payment-link-icon.svg']) ?>" alt="">
+                                            <p>Мой счёт:0 ₽</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <img src="<?= Url::to(['img/footer-header/user-icon.svg']) ?>" alt="">
+                                            <p>Мой кабинет</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <img src="<?= Url::to(['img/footer-header/doc-link-icon.svg']) ?>" alt="">
+                                            <p>Мой кабинет</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <img src="<?= Url::to(['img/footer-header/doc-link-icon.svg']) ?>" alt="">
+                                            <p>Мой кабинет</p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="avtorize-modal">
-                            <ul>
-                                <li>
-                                    <a href="">
-                                        <img src="<?= Url::to(['img/footer-header/payment-link-icon.svg']) ?>" alt="">
-                                        <p>Мой счёт:0 ₽</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <img src="<?= Url::to(['img/footer-header/user-icon.svg']) ?>" alt="">
-                                        <p>Мой кабинет</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <img src="<?= Url::to(['img/footer-header/doc-link-icon.svg']) ?>" alt="">
-                                        <p>Мой кабинет</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <img src="<?= Url::to(['img/footer-header/doc-link-icon.svg']) ?>" alt="">
-                                        <p>Мой кабинет</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <?php endif; ?>
+
+
 
                     <!-- появляется при > 1024px-->
                     <div class="header__menu">
