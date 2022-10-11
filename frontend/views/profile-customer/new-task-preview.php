@@ -8,7 +8,7 @@ $this->registerCssFile(Url::to(['css/task-page.css']), ['depends' => ['frontend\
 $this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
 $this->registerCssFile(Url::to(['css/profile-performer/new-task-preview.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
 ?>
-<div class="container-index">
+<div class="Profile-container">
     <div class="task-page-full">
         <div class="link-back">
             <a style="cursor: pointer;" onclick="history.back()"><img src="<?= Url::to(['img/task-page/arrow-task.svg']) ?>" /> Вернуться назад</a>

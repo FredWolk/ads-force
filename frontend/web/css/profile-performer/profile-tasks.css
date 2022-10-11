@@ -38,11 +38,13 @@
     row-gap: 15px;
 }
 
-.navigation-task button {
+.navigation-task>a {
     padding: 20px;
     background: #F535DA;
     border-radius: 100px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
     color: #FFFFFF;
     max-width: 403px;
     width: 100%;

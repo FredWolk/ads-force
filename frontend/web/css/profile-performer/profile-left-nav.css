@@ -112,7 +112,7 @@
 }
 
 .active-link {
-    font-weight: 600;
+    font-weight: 600!important;
 }
 
 @media(max-width:768px) {
