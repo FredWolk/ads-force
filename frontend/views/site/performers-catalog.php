@@ -3,12 +3,15 @@
 use console\models\Categories;
 use yii\helpers\Url;
 use frontend\assets\AppAsset;
+use yii\helpers\Html;
 use yii\web\JqueryAsset;
+use yii\widgets\LinkPager;
+use yii\widgets\Pjax;
 
 $this->registerCssFile(Url::to(['css/performers-catalog.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerCssFile(Url::to(['css/component-css/filter.css']), ['depends' => ['frontend\assets\AppAsset']]);
-$this->registerCssFile(Url::to(['css/component-css/slider-range.css']), ['depends' => ['frontend\assets\AppAsset']]);
-$this->registerJsFile(Url::to(['js/slider-range.js']), ['depends' => JqueryAsset::class]);
+// $this->registerCssFile(Url::to(['css/component-css/slider-range.css']), ['depends' => ['frontend\assets\AppAsset']]);
+// $this->registerJsFile(Url::to(['js/slider-range.js']), ['depends' => JqueryAsset::class]);
 $js = <<< JS
     $('.2-row').find('rect').css({'fill':'#1EBBED'});
     $('.1-row').find('rect').css({'fill':'#D9D9D9'});
@@ -23,19 +26,20 @@ let statusFilter = false
         $(this).find('svg').css({'transform':'translate(0%, -50%) rotate(-180deg) '})
     }
 })
-$('.mobile-filter-open').click(function (e) {
-    $('.filter').fadeIn(300);
-    $('body').css({'overflow':'hidden'})
-});
+// $('.mobile-filter-open').click(function (e) {
+//     $('.filter').fadeIn(300);
+//     $('body').css({'overflow':'hidden'})
+// });
 
-$('.filter-close').click(function (e) {
-    $('.filter').fadeOut(300);
-    $('body').css({'overflow':'auto'})
-});
+// $('.filter-close').click(function (e) {
+//     $('.filter').fadeOut(300);
+//     $('body').css({'overflow':'auto'})
+// });
 $('.2-row').click(function (e) {
     $(this).find('rect').css({'fill':'#1EBBED'});
     $('.1-row').find('rect').css({'fill':'#D9D9D9'});
     $('.category-item').css({'width':'calc(50% - 5px)'});
+    $('.category-item').css({'max-width':'350px'});
     $('.category-items').css({'flex-wrap':'wrap'});
 });
 $('.1-row').click(function (e) {
@@ -45,6 +49,20 @@ $('.1-row').click(function (e) {
     $('.category-item').css({'max-width':'none'});
     $('.category-items').css({'flex-wrap':'wrap'});
 });
+
+$('.tasks-content-main').on('submit', '.filter_form', function (e) {
+    e.preventDefault();
+    $.pjax.reload({
+        container: '#category_container',
+        url: '/performers-catalog',
+        data: $(this).serialize(),
+        type: 'GET',
+    });
+})
+
+$('.tasks-content-main').on('click', '.change_filter', function () {
+    $('.filter_form').submit()
+})
 JS;
 $this->registerJs($js);
 AppAsset::register($this);
@@ -84,7 +102,7 @@ AppAsset::register($this);
         </div>
     </section>
     <div class="tasks-content-main">
-        <section class="filter">
+        <!-- <section class="filter">
             <div class="filter-close">
                 &times;
             </div>
@@ -206,15 +224,16 @@ AppAsset::register($this);
                     </ul>
                 </div>
             </div>
-        </section>
+        </section> -->
         <section class="category-list">
-            <div class="mobile-filter">
+            <!-- <div class="mobile-filter">
                 <div class="mobile-filter-open">
                     <img src="<?= Url::to(['img/tasks/filter-icon.svg']) ?>" alt="">
                     <p>Фильтры</p>
                 </div>
                 <p>Найдено 545 заданий</p>
-            </div>
+            </div> -->
+            <?php Pjax::begin(['id' => 'category_container']) ?>
             <div class="view-tasks-mobile">
                 <div class="view-tasks">
                     <p class="Font-size18">Отображать по:</p>
@@ -231,49 +250,41 @@ AppAsset::register($this);
                     </ul>
                 </div>
             </div>
+
             <div class="category-items">
-                <div class="category-item">
-                    <h3 class="Font-size18">Таргетированная реклама</h3>
-                </div>
-                <div class="category-item">
-                    <h3 class="Font-size18">Таргетированная реклама</h3>
-                </div>
+                <?php if (!empty($categories)) : ?>
+                    <?php foreach ($categories as $category) : ?>
+                        <div style="position: relative; background: url(<?= Url::to([$category['image']]) ?>)" class="category-item">
+                            <a class="category_link" href="<?= Url::to(['performers-page']) ?>"></a>
+                            <h3 class="Font-size18"><?= $category['title'] ?></h3>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
+
             <div class="pagination-tasks">
-                <div class="view-tasks">
-                    <p class="Font-size18">Отображать по:</p>
-                    <ul>
-                        <li>
-                            <a class="Font-size18 active-view" href="">5</a>
-                        </li>
-                        <li>
-                            <a class="Font-size18" href="">10</a>
-                        </li>
-                        <li>
-                            <a class="Font-size18" href="">15</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="pagination-items">
-                    <a href="">
-                        <img src="<?= Url::to(['img/tasks/arrow-pagination.svg']) ?>" alt="">
-                    </a>
-                    <ul>
-                        <li>
-                            <a class="active-paginate" href="">1</a>
-                        </li>
-                        <li>
-                            <a href="">2</a>
-                        </li>
-                        <li>
-                            <a href="">3</a>
-                        </li>
-                    </ul>
-                    <a href="">
-                        <img class="right-arrow-pagination" src="<?= Url::to(['img/tasks/arrow-pagination.svg']) ?>" alt="">
-                    </a>
-                </div>
+                <form class="filter_form">
+                    <div class="view-tasks">
+                        <p class="Font-size18">Отображать по:</p>
+                        <label class="pageSize_label Font-size18 <?= !empty($_GET['pageSize']) && $_GET['pageSize'] == 5 ? 'active-view' : '' ?>">
+                            5
+                            <input <?= !empty($_GET['pageSize']) && $_GET['pageSize'] == 5 ? 'checked' : '' ?> class="change_filter" style="display: none;" type="radio" name="pageSize" value="5">
+                        </label>
+                        <label class="pageSize_label Font-size18 <?= !empty($_GET['pageSize']) && $_GET['pageSize'] == 10 ? 'active-view' : '' ?>">
+                            10
+                            <input <?= !empty($_GET['pageSize']) && $_GET['pageSize'] == 10 ? 'checked' : '' ?> class="change_filter" style="display: none;" type="radio" name="pageSize" value="10">
+                        </label>
+                        <label class="pageSize_label Font-size18 <?= !empty($_GET['pageSize']) && $_GET['pageSize'] == 15 ? 'active-view' : '' ?>">
+                            15
+                            <input <?= !empty($_GET['pageSize']) && $_GET['pageSize'] == 15 ? 'checked' : '' ?> class="change_filter" style="display: none;" type="radio" name="pageSize" value="15">
+                        </label>
+                    </div>
+                </form>
+                <?= LinkPager::widget([
+                    'pagination' => $pages,
+                ]); ?>
             </div>
+            <?php Pjax::end(); ?>
         </section>
     </div>
 </div>

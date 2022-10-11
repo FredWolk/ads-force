@@ -94,8 +94,8 @@ class SiteController extends Controller
         $performers = Performers::find()->asArray()->limit(6)->all();
         $reviews = Reviews::find()->limit(12)->with('info')->asArray()->all();
         return $this->render('for-customer', compact(
-            'categories', 
-            'performers', 
+            'categories',
+            'performers',
             'reviews'
         ));
     }
@@ -197,6 +197,12 @@ class SiteController extends Controller
 
     public function actionPerformersCatalog()
     {
-        return $this->render('performers-catalog');
+        $query = Categories::find()->asArray();
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => !empty($_GET['pageSize']) ? $_GET['pageSize'] : 5]);
+        $categories = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('performers-catalog', compact('categories', 'pages'));
     }
 }
