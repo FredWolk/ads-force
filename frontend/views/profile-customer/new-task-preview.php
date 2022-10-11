@@ -4,9 +4,9 @@ use yii\helpers\Url;
 
 /** @var yii\web\View $this */
 $this->title = 'ADS.Force';
-$this->registerCssFile(Url::to(['css/task-page.css']), ['depends' => ['frontend\assets\AppAsset']]);
-$this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' => ['frontend\assets\AppAsset']]);
-$this->registerCssFile(Url::to(['css/profile-performer/new-task-preview.css']), ['depends' => ['frontend\assets\AppAsset']]);
+$this->registerCssFile(Url::to(['css/task-page.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
+$this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
+$this->registerCssFile(Url::to(['css/profile-performer/new-task-preview.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
 ?>
 <div class="container-index">
     <div class="task-page-full">

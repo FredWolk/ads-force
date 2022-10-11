@@ -5,12 +5,12 @@ use yii\helpers\Url;
 /** @var yii\web\View $this */
 
 $this->title = 'ADS.Force';
-$this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
-$this->registerCssFile(Url::to(['css/component-css/performers-card.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
-$this->registerCssFile(Url::to(['css/profile-performer/profile-freelancer.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
+$this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
+$this->registerCssFile(Url::to(['css/component-css/performers-card.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
+$this->registerCssFile(Url::to(['css/profile-performer/profile-freelancer.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
 ?>
 <div class="Profile-container">
-    <h1 class="title_color Font-size36">Личный кабинет заказчика</h1>
+<h1 class="title_color Font-size36">Личный кабинет заказчика</h1>
     <div class="Profile-full">
         <section class="left-navbar">
             <div class="left-navbar-top">
@@ -31,7 +31,7 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-freelancer.css'])
                         <a href="<?= Url::to(['index']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'index' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/user-icon.svg']) ?>" alt="">Моя страница</a>
                     </li>
                     <li>
-                        <a href="<?= Url::to(['profile-performer/profile-tasks']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-tasks' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/doc-link-icon.svg']) ?>" alt="">Мои заказы</a>
+                        <a href="<?= Url::to(['profile-tasks']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-tasks' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/doc-link-icon.svg']) ?>" alt="">Мои заказы</a>
                     </li>
                     <li>
                         <a href="<?= Url::to(['profile-chat']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-chat' || Yii::$app->controller->action->id === 'profile-chat-private' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/message-link-icon.svg']) ?>" alt="">Сообщения</a>

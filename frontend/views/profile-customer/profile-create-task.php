@@ -4,7 +4,7 @@ use yii\helpers\Url;
 
 /** @var yii\web\View $this */
 $this->title = 'ADS.Force';
-$this->registerCssFile(Url::to(['css/profile-performer/profile-create-task.css']), ['depends' => ['frontend\assets\ProfilePerformerAsset']]);
+$this->registerCssFile(Url::to(['css/profile-performer/profile-create-task.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
 $js = <<< JS
 $('.create-task-select-title').click(function(){
     if($(this).parent().find('.select-category-list').css('display') == "none"){
@@ -196,6 +196,6 @@ $this->registerJs($js);
         </div>
     </div>
     <div class="button-show-preview">
-        <a href="">Предпросмотр</a>
+        <a href="<?= Url::to(['new-task-preview']) ?>">Предпросмотр</a>
     </div>
 </div>

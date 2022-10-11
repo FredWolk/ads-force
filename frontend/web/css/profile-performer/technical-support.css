@@ -153,9 +153,11 @@
     row-gap: 20px;
 }
 
-.call-list-button button {
+.call-list-button>a {
     max-width: 403px;
     width: 100%;
+    display: flex;
+    justify-content: center;
     padding: 15px;
     color: #ffffff;
     background: #F535DA;
