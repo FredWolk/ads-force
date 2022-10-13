@@ -272,7 +272,11 @@ AppAsset::register($this);
             <?php foreach ($reviews as $review) : ?>
                 <div class="rewiev-card">
                     <div class="rewiev-card-top">
-                        <img src="<?= Url::to([$review['info']['photo']]) ?>" alt="">
+                        <?php if (!empty($review['info']['photo'])) : ?>
+                            <img src="<?= Url::to([$review['info']['photo']]) ?>" alt="">
+                        <?php else : ?>
+                            <img src="<?= Url::to(['/img/index/rewievImg.png']) ?>" alt="">
+                        <?php endif; ?>
                         <div class="rewiev-card-title">
                             <h2 class="Font_size24"><?= $review['info']['name'] ?></h2>
                             <p>Заказчик</p>
