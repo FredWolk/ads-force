@@ -8,20 +8,34 @@ $this->title = 'ADS.Force';
 $this->registerCssFile(Url::to(['css/profile-performer/profile-meneger.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
 $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
 
+switch ($user['info']['position']) {
+    case 'Базовый':
+        $left = '33%';
+        break;
+    case 'Продвинутый':
+        $left = '66%';
+        break;
+    case 'Профи':
+        $left = '98%';
+        break;
+    default:
+        $left = '0%';
+}
+
 ?>
 <div class="Profile-container">
-    <h1 class="title_color Font-size36">Личный кабинет заказчика</h1>
+    <h1 class="title_color Font-size36">Личный кабинет исполнителя</h1>
     <div class="Profile-full">
         <section class="left-navbar">
             <div class="left-navbar-top">
                 <div class="hello-user">
                     <img src="<?= Url::to(['img/profile/profile-meneger/hand.svg']) ?>" alt="">
-                    <h2 class="Font-size24 main_color_text">Привет, Juliya!</h2>
+                    <h2 class="Font-size24 main_color_text">Привет, <?= $user['username'] ?></h2>
                     <img src="<?= Url::to(['img/profile/profile-meneger/night.svg']) ?>" class="dark-bg" alt="">
                     <img src="<?= Url::to(['img/profile/profile-meneger/sun-icon.svg']) ?>" class="dark-bg sun" alt="">
                 </div>
                 <div class="balance-user">
-                    <p class="Font-size18 main_color_text">Баланс: 0 руб.</p>
+                    <p class="Font-size18 main_color_text">Баланс: <?= $user['balance']['balance'] ?> руб.</p>
                 </div>
                 <button class="button-add-balance Font-size18">Пополнить</button>
             </div>
@@ -84,18 +98,10 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
             <div class="right-column-level background_color_level">
                 <h2 class="Font-size24 white_color">У вас 0 баллов, ваш уровень заказчика <b>Новичок</b></h2>
                 <div class="level-container">
-                    <div class="level-container-left">
-
-                    </div>
-                    <div class="level-container-middle">
-
-                    </div>
-                    <div class="level-container-right">
-
-                    </div>
-                    <div class="circle-level">
-
-                    </div>
+                    <div class="level-container-left"></div>
+                    <div class="level-container-middle"></div>
+                    <div class="level-container-right"></div>
+                    <div style="left: <?= $left ?>" class="circle-level"></div>
                 </div>
                 <div class="level-text">
                     <div class="level-item">

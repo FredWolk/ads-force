@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use common\models\LoginForm;
 use common\models\User;
+use console\models\Balance;
 use frontend\models\SignupForm;
 use Yii;
 use yii\web\Controller;
@@ -36,6 +37,26 @@ class RegisterController extends Controller
       return ['status' => false, 'message' => $model->errors];
     }
   }
+
+  public function actionSignupConfirm($email)
+  {
+    Yii::$app->response->format = Response::FORMAT_JSON;
+    $user = User::findByEmailCheck($email);
+    $user->status = User::STATUS_ACTIVE;
+    if ($user->update() !== false) {
+      $model = new Balance();
+      $model->user_id = $user->id;
+      $model->validate();
+      if ($model->save()) {
+        return ['status' => true];
+      } else {
+        return ['status' => false, 'message' => $model->errors];
+      }
+    } else {
+      return ['status' => false, 'message' => 'Ошибка подтверждения почты'];
+    }
+  }
+
 
   public function actionLogin()
   {

@@ -3,9 +3,15 @@
 /** @var \yii\web\View $this */
 /** @var string $content */
 
+use console\models\User;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use frontend\assets\ProfileCustomerAsset;
+
+$user = User::find()->where(['id' => Yii::$app->getUser()->getId()])
+    ->with('balance')
+    ->asArray()
+    ->one();
 
 ProfileCustomerAsset::register($this);
 $js = <<< JS
@@ -147,7 +153,7 @@ $this->registerJs($js);
                             </div>
                             <div class="avtorize-content">
                                 <div class="avtorize-content-top">
-                                    <h2 class="Font-size18">Juliya</h2>
+                                    <h2 class="Font-size18"><?= $user['username'] ?></h2>
                                     <img src="<?= Url::to(['img/footer-header/arrow-icon.svg']) ?>" alt="">
                                 </div>
                                 <p>заказчик</p>
@@ -158,7 +164,7 @@ $this->registerJs($js);
                                 <li>
                                     <a href="">
                                         <img src="<?= Url::to(['img/footer-header/payment-link-icon.svg']) ?>" alt="">
-                                        <p>Мой счёт:0 ₽</p>
+                                        <p>Мой счёт:<?= $user['balance']['balance'] ?> ₽</p>
                                     </a>
                                 </li>
                                 <li>

@@ -3,9 +3,16 @@
 /** @var \yii\web\View $this */
 /** @var string $content */
 
+use console\models\User;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use frontend\assets\AppAsset;
+
+
+$user = User::find()->where(['id' => Yii::$app->getUser()->getId()])
+    ->with('balance')
+    ->asArray()
+    ->one();
 
 $js = <<< JS
 
@@ -147,7 +154,7 @@ AppAsset::register($this);
                                 </li>
                             </ul>
                         </div>
-                        <div class="logo">ADSFORCE</div>
+                        <a href="/" class="logo">ADSFORCE</a>
                         <div class="language">
                             <span>Eng</span> <span>|</span> <img src="<?= Url::to(['img/footer-header/language-en.webp']) ?>" alt="logo">
                         </div>
@@ -181,7 +188,7 @@ AppAsset::register($this);
                                 </div>
                                 <div class="avtorize-content">
                                     <div class="avtorize-content-top">
-                                        <h2 class="Font-size18">Juliya</h2>
+                                        <h2 class="Font-size18"><?= $user['username'] ?></h2>
                                         <img src="<?= Url::to(['img/footer-header/arrow-icon.svg']) ?>" alt="">
                                     </div>
                                     <p>заказчик</p>
@@ -192,7 +199,7 @@ AppAsset::register($this);
                                     <li>
                                         <a href="">
                                             <img src="<?= Url::to(['img/footer-header/payment-link-icon.svg']) ?>" alt="">
-                                            <p>Мой счёт:0 ₽</p>
+                                            <p>Мой счёт:<?= $user['balance']['balance'] ?> ₽</p>
                                         </a>
                                     </li>
                                     <li>
