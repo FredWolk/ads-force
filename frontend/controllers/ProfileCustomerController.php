@@ -13,7 +13,6 @@ class ProfileCustomerController extends Controller
     public function actionIndex()
     {
         $user = User::find()->where(['id' => Yii::$app->getUser()->getId()])
-            ->with('balance')
             ->with('info')
             ->asArray()
             ->one();
