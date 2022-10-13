@@ -16,16 +16,99 @@
     align-items: center;
     color: #F535DA;
 }
-.slick-slide{
+
+.slick-slide {
     margin-right: 15px;
 }
+
 .card-portfolio {
     background: linear-gradient(0deg, rgba(16, 17, 65, 0.58), rgba(16, 17, 65, 0.58)), url('../../img/profile/private-profile/bg-slider.png');
     border: 1px solid #828282;
     border-radius: 7px;
     height: 100%;
+    padding-left: 10px;
+    cursor: pointer;
+    background-size: cover;
+    padding-right: 10px;
+    background-repeat: no-repeat;
     padding-top: min(max(40vw, 15px), 105px);
     padding-bottom: 15px;
+}
+
+.tasks-items {
+    margin-bottom: 20px;
+}
+
+.modalPortfolio {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow: auto;
+    display: none;
+    margin: 0px auto;
+    z-index: 3;
+    background: #252525;
+}
+
+.ModalClose {
+    position: absolute;
+    right: 30px;
+    cursor: pointer;
+    font-size: 40px;
+    color: #FFFFFF;
+    top: 18px;
+}
+.img-slider-item img{
+    width: 100%;
+}
+.modalPortfolioContainer {
+    max-width: 1080px;
+    position: relative;
+    padding: 0px 20px;
+    margin: auto;
+}
+
+.portfolioBG {
+    background: linear-gradient(0deg, rgba(85, 79, 79, 0.58), rgba(85, 79, 79, 0.58)), url('../../img/profile/private-profile/bg-slider.png');
+    padding: min(max(40vw, 60px), 120px) 0px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background-size: cover;
+}
+
+.img-slider-items {
+    margin-bottom: 20px;
+}
+
+.portfolioInformation h2 {
+    padding-bottom: 18px;
+    padding-top: 30px;
+    color: #FFFFFF;
+}
+
+.portfolioInformation p {
+    color: #FFFFFF;
+    font-weight: 400 !important;
+}
+
+.img-slider-full h2 {
+    color: #FFFFFF;
+    padding-top: 70px;
+    padding-bottom: 25px;
+}
+
+.portfolioBG h2 {
+    color: #FFFFFF;
+}
+
+.card-portfolio h2 {
+    color: #FFFFFF;
+    text-align: center;
 }
 
 .img-profile-full {
@@ -373,7 +456,7 @@
     }
 
     .tasks-item {
-        display: flex !important;
+        display: block !important;
     }
 
     .mobile-information-table {

@@ -33,20 +33,91 @@ responsive: [
     }
   ]
 });
+$('.img-slider-items').slick({
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  prevArrow: $('.prev-img'),
+nextArrow: $('.next-img'),
+responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 580,
+      settings: {
+        slidesToShow: 1
+      }
+    }
+  ]
+});
+  $('.tasks-items-mobile').slick({
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  prevArrow: $('.prev-tasks-mobile'),
+nextArrow: $('.next-tasks-mobile'),
+responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 580,
+      settings: {
+        slidesToShow: 1
+      }
+    }
+  ]
+});
+  $('.tasks-items').slick({
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  prevArrow: $('.prev-tasks'),
+nextArrow: $('.next-tasks'),
+responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 580,
+      settings: {
+        slidesToShow: 1
+      }
+    }
+  ]
+});
 $('.rewiev-nav').click(function(e){
     $('.content-text').fadeOut(300);
-    $('.rewiev-full').fadeIn(300);
+    $('.block-mobile-information-content').fadeIn(300);
     $('.tasks-item').fadeOut(300);
 });
 $('.information-nav').click(function(e){
     $('.content-text').fadeIn(300);
-    $('.rewiev-full').fadeOut(300);
+    $('.block-mobile-information-content').fadeOut(300);
     $('.tasks-item').fadeOut(300);
 });
 $('.tasks-nav').click(function(e){
     $('.content-text').fadeOut(300);
-    $('.rewiev-full').fadeOut(300);
+    $('.block-mobile-information-content').fadeOut(300);
     $('.tasks-item').fadeIn(300);
+});
+$('.ModalClose').click(function(e){
+    $('.modalPortfolio').fadeOut(300);
+    $('.modalPortfolio').css({'overflow':'none'});
+    $('body').css({'overflow':'none'});
+});
+
+$('.card-portfolio').click(function(e){
+    $('.modalPortfolio').fadeIn(300);
+    $('.modalPortfolio').css({'overflow':'auto'});
+    $('body').css({'overflow':'none'});
 });
 $('.mobile-review-text').click(function(e){
     if($(this).parent().find('.block-mobile-information-content').css('display') == "block"){
@@ -81,6 +152,40 @@ $this->registerJs($js);
         <img src="<?= Url::to(['img/profile/private-profile/img-fon.png']) ?>" alt="">
     </div>
 </section>
+<div class="modalPortfolio">
+    <div class="modalPortfolioContainer">
+        <div class="portfolioBG">
+            <h2 class="Font-size36">UI/UX дизайн для Автошколы</h2>
+        </div>
+        <div class="ModalClose">
+            &times;
+        </div>
+        <div class="portfolioInformation">
+            <h2 class="Font-size24">О проекте: </h2>
+            <p class="Font-size24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Ut commodo efficitur neque. </p>
+        </div>
+        <div class="img-slider-full">
+            <h2 class="Font-size24">Изображения:</h2>
+            <div class="img-slider">
+                <div class="img-slider-items">
+                    <div class="img-slider-item">
+                        <img src="../../img/profile/private-profile/bg-slider.png" alt="">
+                    </div>
+                    <div class="img-slider-item">
+                        <img src="../../img/profile/private-profile/bg-slider.png" alt="">
+                    </div>
+                    <div class="img-slider-item">
+                        <img src="../../img/profile/private-profile/bg-slider.png" alt="">
+                    </div>
+                </div>
+                <div class="arrows-slider container-index">
+                    <img class="prev-img" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+                    <img class="arrows-slider-right next-img" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="Profile-container">
     <div class="back-link">
         <a href="" class="Font-size18"><img src="<?= Url::to(['img/profile/private-profile/back-profile.svg']) ?>" alt="">Вернуться назад</a>
@@ -164,7 +269,7 @@ $this->registerJs($js);
                         <div class="rewiev-card-top">
                             <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
                             <div class="rewiev-card-title">
-                                <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
+                                <h2 class="Font-size24 main_color_text">Дарья Агапова</h2>
                                 <p class="main_color_text">Заказчик</p>
                             </div>
                         </div>
@@ -176,7 +281,7 @@ $this->registerJs($js);
                         <div class="rewiev-card-top">
                             <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
                             <div class="rewiev-card-title">
-                                <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
+                                <h2 class="Font-size24 main_color_text">Дарья Агапова</h2>
                                 <p class="main_color_text">Заказчик</p>
                             </div>
                         </div>
@@ -188,7 +293,7 @@ $this->registerJs($js);
                         <div class="rewiev-card-top">
                             <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
                             <div class="rewiev-card-title">
-                                <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
+                                <h2 class="Font-size24 main_color_text">Дарья Агапова</h2>
                                 <p class="main_color_text">Заказчик</p>
                             </div>
                         </div>
@@ -203,22 +308,21 @@ $this->registerJs($js);
                 </div>
             </section>
             <div class="tasks-item">
-                <div class="rewiev-items container-index">
+                <div class="tasks-items container-index">
                     <div class="card-portfolio">
-                        <h2>UI/UX дизайн для Автошколы</h2>
+                        <h2 class="Font-size24">UI/UX дизайн для Автошколы</h2>
                     </div>
                     <div class="card-portfolio">
-                        <h2>UI/UX дизайн для Автошколы</h2>
+                        <h2 class="Font-size24">UI/UX дизайн для Автошколы</h2>
                     </div>
                     <div class="card-portfolio">
-                        <h2>UI/UX дизайн для Автошколы</h2>
+                        <h2 class="Font-size24">UI/UX дизайн для Автошколы</h2>
                     </div>
                 </div>
                 <div class="arrows-slider container-index">
-                    <img class="prev" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
-                    <img class="arrows-slider-right next" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+                    <img class="prev-tasks" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+                    <img class="arrows-slider-right next-tasks" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
                 </div>
-
             </div>
         </div>
     </section>
@@ -293,52 +397,23 @@ $this->registerJs($js);
                 <img src="<?= Url::to(['img/profile/private-profile/arrow-mobile.svg']) ?>" alt="">
             </div>
             <div class="block-mobile-information-content  mobile-hide-info">
-                <div class="tasks tasks-item">
-                    <a data-pjax="0" href="">
-                        <div class="task-item white_color_bg">
-                            <div class="filter-task-item">
-                                <div class="filter-task-item-main">
-                                    <div class="hi-order">
-                                        <p>Свободен</p>
-                                        <img src="<?= Url::to(['img/tasks/smite.svg']) ?>" alt="">
-                                    </div>
-                                    <div class="filters-list">
-                                        <div class="filter-view filter-task-items">
-                                            <img src="<?= Url::to(['img/tasks/view.svg']) ?>" alt="">
-                                            <p>0</p>
-                                        </div>
-                                        <div class="filter-view filter-task-items">
-                                            <img src="<?= Url::to(['img/tasks/human-icon.svg']) ?>" alt="">
-                                            <p>12</p>
-                                        </div>
-                                        <div class="filter-view filter-task-items">
-                                            <img src="<?= Url::to(['img/tasks/summ.svg']) ?>" alt="">
-                                            <p>5000</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="right-item-filter">
-                                    <p>29 сентября</p>
-                                    <img src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt="">
-                                    <img src="<?= Url::to(['img/profile/private-profile/close-task.svg']) ?>" alt="">
-                                </div>
-                            </div>
-                            <div class="task-title">
-                                <h2 class="Font-size24 main_color_text">вк</h2>
-                            </div>
-                            <div class="task-text main_color_text">
-                                dasdas
-                                <span style="color: #F535DA">... Подробнее</span>
-                            </div>
-                            <div class="task-tag-list">
-                                <div class="task-tag-item">
-                                    <p>#тег</p>
-                                </div>
-                            </div>
+                <div class="tasks-item">
+                    <div class="tasks-items-mobile container-index">
+                        <div class="card-portfolio">
+                            <h2 class="Font-size24">UI/UX дизайн для Автошколы</h2>
                         </div>
-                    </a>
+                        <div class="card-portfolio">
+                            <h2 class="Font-size24">UI/UX дизайн для Автошколы</h2>
+                        </div>
+                        <div class="card-portfolio">
+                            <h2 class="Font-size24">UI/UX дизайн для Автошколы</h2>
+                        </div>
+                    </div>
+                    <div class="arrows-slider container-index">
+                        <img class="prev-tasks-mobile" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+                        <img class="arrows-slider-right next-tasks-mobile" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+                    </div>
                 </div>
-                <button class="add-mobile-task">Добавить</button>
             </div>
         </div>
     </section>
