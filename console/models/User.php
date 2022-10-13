@@ -63,4 +63,16 @@ class User extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getBalance()
+    {
+        return $this->hasOne(Balance::className(), ['user_id' => 'id']);
+    }
+
+    public function getInfo()
+    {
+        $info = $this->hasOne(Performers::className(), ['user_id' => 'id']);
+        // if(empty($info))
+        // $info = 
+        return $info;
+    }
 }

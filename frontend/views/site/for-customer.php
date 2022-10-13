@@ -189,13 +189,14 @@ AppAsset::register($this);
     <div class="specialization-items container-index">
         <?php if (!empty($categories)) : ?>
             <?php foreach ($categories as $v) : ?>
-                <a href="<?= Url::to(['performers-catalog']) ?>">
+                <a href="<?= Url::to(['performers-page']) ?>">
                     <div class="specialization-item" style="background-image: linear-gradient(0deg, rgba(63, 63, 63, 0.5), rgba(63, 63, 63, 0.5)), url(<?= Url::to([$v['image']]) ?>);">
                         <p class="Font-size24"><?= $v['title'] ?></p>
                     </div>
                 </a>
             <?php endforeach; ?>
         <?php endif; ?>
+        <a class="see_more" href="<?= Url::to(['performers-catalog']) ?>">Все категории</a>
     </div>
     <div class="arrows-slider-specialization">
         <img class="prev-spec" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">

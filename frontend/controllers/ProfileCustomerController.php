@@ -1,13 +1,23 @@
 <?php
+
 namespace frontend\controllers;
+
+use console\models\User;
+use Yii;
 use yii\web\Controller;
 
 class ProfileCustomerController extends Controller
 {
     public $layout = 'profileCustomer';
+
     public function actionIndex()
     {
-        return $this->render('index');
+        $user = User::find()->where(['id' => Yii::$app->getUser()->getId()])
+            ->with('info')
+            ->asArray()
+            ->one();
+
+        return $this->render('index', compact('user'));
     }
     public function actionProfileFreelancer()
     {
@@ -62,4 +72,3 @@ class ProfileCustomerController extends Controller
         return $this->render('new-task-preview');
     }
 }
-?>

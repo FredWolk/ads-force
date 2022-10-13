@@ -141,12 +141,18 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
     public function actionPerformersPage()
     {
-        $categories = Categories::find()->asArray()->all();
-        $performers = Performers::find()->asArray()->limit(6)->all();
-        return $this->render('performers-page', compact('categories', 'performers'));
+        $categories = Categories::find()->with('subCategories')->asArray()->all();
+        $query = Performers::find();
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => !empty($_GET['pageSize']) ? $_GET['pageSize'] : 1]);
+        $performers = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        return $this->render('performers-page', compact('categories', 'performers', 'pages'));
     }
+
     public function actionTaskPage($id)
     {
         $task = Tasks::find()

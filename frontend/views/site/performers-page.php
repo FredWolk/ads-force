@@ -4,12 +4,12 @@ use console\models\Categories;
 use yii\helpers\Url;
 use frontend\assets\AppAsset;
 use yii\web\JqueryAsset;
+use yii\widgets\LinkPager;
+use yii\widgets\Pjax;
 
 $this->registerCssFile(Url::to(['css/component-css/filter.css']), ['depends' => ['frontend\assets\AppAsset']]);
-$this->registerCssFile(Url::to(['css/component-css/slider-range.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerCssFile(Url::to(['css/component-css/performers-card.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerCssFile(Url::to(['css/performers-page.css']), ['depends' => ['frontend\assets\AppAsset']]);
-$this->registerJsFile(Url::to(['js/slider-range.js']), ['depends' => JqueryAsset::class]);
 $js = <<< JS
 let statusFilter = false
 $('.select-popular p').click(function (e) {
@@ -37,6 +37,8 @@ $('.filter-close').click(function (e) {
     $('.filter').fadeOut(300);
     $('body').css({'overflow':'auto'})
 });
+
+
 JS;
 $this->registerJs($js);
 AppAsset::register($this);
@@ -57,26 +59,19 @@ AppAsset::register($this);
             <p class="Font-size18">Лучшие маркетологи здесь!</p>
         </div>
     </section>
+
+    <?php Pjax::begin(['id' => 'perf__block']) ?>
     <section class="select-filter">
         <div class="mobile-filter-open">
             <img src="<?= Url::to(['img/tasks/filter-icon.svg']) ?>" alt="">
             <p>Фильтры</p>
         </div>
         <div class="select-popular">
-            <p class="Font-size18">Сортировать по:
-                <span>рекомендациям </span>
-                <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L7 7L13 1" stroke="#1EBBED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </p>
-            <div class="justify-select">
-                <div class="select-list">
-                    <ul>
-                        <li class="Font-size18">Новизне</li>
-                        <li class="Font-size18">Рекомендуемые</li>
-                    </ul>
-                </div>
-            </div>
+            <P>Сортировать по:</P>
+            <select class="select__pop" name="" id="">
+                <option value="">Новизне</option>
+                <option value="">Рекомендуемые</option>
+            </select>
         </div>
     </section>
     <div class="main-content">
@@ -88,94 +83,39 @@ AppAsset::register($this);
                 <img src="<?= Url::to(['img/tasks/filter-open.svg']) ?>" alt="">
                 <p class="Font-size18">Фильтры</p>
             </div>
-            <div class="remuneration">
-                <div class="title-remuneration">
-                    <h2 class="Font-size18">Вознаграждение</h2>
-                </div>
-                <div class="remuneration-minmax">
-                    <div class="remuneration-minmax-item">
-                        <div class="form_control_container">
-                            <p>От</p>
-                            <input class="form_control_container__time__input" type="number" id="fromInput" value="0" min="0" max="100000" />
-                        </div>
-                        <img src="<?= Url::to(['img/tasks/rub.svg']) ?>" alt="">
-                    </div>
-                    <div class="remuneration-minmax-item">
-                        <div class="form_control_container">
-                            <p>До</p>
-                            <input class="form_control_container__time__input" type="number" id="toInput" value="100000" min="0" max="100000" />
-                        </div>
-                        <img src="<?= Url::to(['img/tasks/rub.svg']) ?>" alt="">
-                    </div>
-                </div>
-                <div class="range_container">
-                    <div class="sliders_control">
-                        <input id="fromSlider" type="range" value="0" min="0" max="100000" />
-                        <input id="toSlider" type="range" value="100000" min="0" max="100000" />
-                    </div>
-                    <div class="form_control">
-                        <p>0</p>
-                        <p>100000</p>
-                    </div>
-                </div>
-            </div>
-            <div class="filter-full">
+            <div style="padding-top: 0; border: none;" class="filter-full">
                 <div class="title-categories">
                     <h2 class="Font-size18">Категория</h2>
                     <a href="" class="Font-size18">Сбросить</a>
                 </div>
-                <div class="categories-select">
-                    <div class="filter-item">
-                        <div class="categories-select-top">
-                            <b class="Font-size18">Интернет продвижение и реклама</b>
-                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L7 7L13 1" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                <?php if (!empty($categories)) : ?>
+                    <?php foreach ($categories as $category) : ?>
+                        <div class="categories-select">
+                            <div class="filter-item">
+                                <div class="categories-select-top">
+                                    <b class="Font-size18"><?= $category['title'] ?></b>
+                                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L7 7L13 1" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                <div class="categories-select-bottom">
+                                    <ul>
+                                        <?php if (!empty($category['subCategories'])) : ?>
+                                            <?php foreach ($category['subCategories'] as $v) : ?>
+                                                <li>
+                                                    <label class="custom-checkbox">
+                                                        <input type="checkbox" value="<?= $v['title'] ?>">
+                                                        <span class="Font-size18"><?= $v['title'] ?></span>
+                                                    </label>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        <?php endif; ?>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <div class="categories-select-bottom">
-                            <ul>
-                                <li>
-                                    <label class="custom-checkbox">
-                                        <input type="checkbox" value="value-1">
-                                        <span class="Font-size18">Таргетированная реклама</span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="custom-checkbox">
-                                        <input type="checkbox" value="value-1">
-                                        <span class="Font-size18">Интернет-маркетинг</span>
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="categories-select">
-                    <div class="filter-item">
-                        <div class="categories-select-top">
-                            <b class="Font-size18">Интернет продвижение и реклама</b>
-                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L7 7L13 1" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <div class="categories-select-bottom">
-                            <ul>
-                                <li>
-                                    <label class="custom-checkbox">
-                                        <input type="checkbox" name="filter-cat" value="">
-                                        <span class="Font-size18">Таргетированная реклама</span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="custom-checkbox">
-                                        <input type="checkbox" name="filter-cat" value="">
-                                        <span class="Font-size18">Интернет-маркетинг</span>
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
                 <div class="filter-show-more">
                     <a href="" class="Font-size18">Ещё +</a>
                 </div>
@@ -197,7 +137,7 @@ AppAsset::register($this);
                             <div class="performers-card-right">
                                 <div class="performers-card-right-title">
                                     <h2 class="Font-size20"><?= $performer['name'] ?></h2>
-                                    <p><?= $performer['position'] ?></p>
+                                    <p><?= $performer['position'] == 'Профи' ? 'PRO' : '' ?></p>
                                 </div>
                                 <?php
                                 $category = Categories::find()->asArray()->where(['id' => $performer['specialization_id']])->select('title')->one();
@@ -264,24 +204,11 @@ AppAsset::register($this);
                 <?php endif; ?>
             </div>
             <div class="pagination-items">
-                <a href="">
-                    <img src="<?= Url::to(['img/tasks/arrow-pagination.svg']) ?>" alt="">
-                </a>
-                <ul>
-                    <li>
-                        <a class="active-paginate" href="">1</a>
-                    </li>
-                    <li>
-                        <a href="">2</a>
-                    </li>
-                    <li>
-                        <a href="">3</a>
-                    </li>
-                </ul>
-                <a href="">
-                    <img class="right-arrow-pagination" src="<?= Url::to(['img/tasks/arrow-pagination.svg']) ?>" alt="">
-                </a>
+                <?= LinkPager::widget([
+                    'pagination' => $pages,
+                ]); ?>
             </div>
         </div>
     </div>
+    <?php Pjax::end(); ?>
 </div>
