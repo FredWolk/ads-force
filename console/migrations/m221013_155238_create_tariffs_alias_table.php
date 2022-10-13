@@ -13,7 +13,10 @@ class m221013_155238_create_tariffs_alias_table extends Migration
     public function safeUp()
     {
         $this->createTable('{{%tariffs_alias}}', [
-            'id' => $this->primaryKey(),
+            'id'            => $this->primaryKey(),
+            'tariff_id'     => $this->integer()->notNull(),
+            'user_id'       => $this->integer()->notNull(),
+            'status'        => $this->integer()->defaultValue(0)
         ]);
     }
 

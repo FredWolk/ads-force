@@ -13,7 +13,10 @@ class m221013_155351_create_dialogs_table extends Migration
     public function safeUp()
     {
         $this->createTable('{{%dialogs}}', [
-            'id' => $this->primaryKey(),
+            'id'            => $this->primaryKey(),
+            'performers_id' => $this->integer()->notNull(),
+            'customer_id'   => $this->integer()->notNull(),
+            
         ]);
     }
 

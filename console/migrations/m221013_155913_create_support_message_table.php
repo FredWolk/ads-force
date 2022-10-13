@@ -13,7 +13,12 @@ class m221013_155913_create_support_message_table extends Migration
     public function safeUp()
     {
         $this->createTable('{{%support_message}}', [
-            'id' => $this->primaryKey(),
+            'id'            => $this->primaryKey(),
+            'is_support'    => $this->boolean()->defaultValue(0),
+            'date'          => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
+            'text'          => $this->text()->notNull(),
+            'attachments'   => $this->text()->null(),
+            'is_read'       => $this->boolean()->defaultValue(0),
         ]);
     }
 
