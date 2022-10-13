@@ -49,5 +49,9 @@ class ProfilePerformerController extends Controller
     {
         return $this->render('technical-support-chat');
     }
+    public function actionProfileMessage()
+    {
+        return $this->render('profile-message');
+    }
 }
 ?>

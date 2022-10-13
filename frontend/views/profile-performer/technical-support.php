@@ -98,7 +98,7 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
                     <div class="call-tehnical-item-text">
                         <b class="main_color_text">Владислав Редс</b>
                         <p>Техническая поддержка</p>
-                        <a class="main_color_text" href="">Тикет №123456 Заголовок — Тема</a>
+                        <a class="main_color_text" href="<?= Url::to(['technical-support-chat']) ?>">Тикет №123456 Заголовок — Тема</a>
                     </div>
                     <p class="date-call-tehnical">19 ноября</p>
                 </div>
@@ -109,12 +109,12 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
                     <div class="call-tehnical-item-text">
                         <b class="main_color_text">Владислав Редс</b>
                         <p>Техническая поддержка</p>
-                        <a class="main_color_text" href="">Тикет №123456 Заголовок — Тема</a>
+                        <a class="main_color_text" href="<?= Url::to(['technical-support-chat']) ?>">Тикет №123456 Заголовок — Тема</a>
                     </div>
                     <p class="date-call-tehnical">19 ноября</p>
                 </div>
                 <div class="call-list-button">
-                    <button>Создать обращение</button>
+                    <a href="<?= Url::to(['technical-support-single']) ?>">Создать обращение</a>
                     <div class="pagination-items">
                         <a href="">
                             <svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
