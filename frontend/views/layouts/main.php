@@ -99,6 +99,16 @@ $('.login_form').on('submit', function (e) {
         }
     })
 })
+$('.avtorize-header').click(function (e) {
+    if($(this).parent().find('.avtorize-modal').css('display') == "block"){
+        $(this).parent().find('.avtorize-modal').fadeOut(300);
+        $('.avtorize-content-top').find('img').css({'transform':'rotate(0deg)'})
+    }
+    else{
+        $(this).parent().find('.avtorize-modal').fadeIn(300);
+        $('.avtorize-content-top').find('img').css({'transform':'rotate(-180deg)'})
+    }
+})
 JS;
 $this->registerJs($js);
 AppAsset::register($this);

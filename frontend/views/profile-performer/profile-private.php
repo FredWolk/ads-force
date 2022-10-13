@@ -150,7 +150,7 @@ $this->registerJs($js);
                 <h2 class="Font-size24 main_color_text">Информация</h2>
             </div>
             <div class="nav-item tasks-nav">
-                <h2 class="Font-size24 main_color_text">Свободные задания</h2>
+                <h2 class="Font-size24 main_color_text">Портфолио</h2>
             </div>
         </div>
         <div class="content">
@@ -202,49 +202,23 @@ $this->registerJs($js);
                     <img class="arrows-slider-right next" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
                 </div>
             </section>
-            <div class="tasks tasks-item">
-                <a data-pjax="0" href="">
-                    <div class="task-item">
-                        <div class="filter-task-item">
-                            <div class="filter-task-item-main">
-                                <div class="hi-order">
-                                    <p>Свободен</p>
-                                    <img src="<?= Url::to(['img/tasks/smite.svg']) ?>" alt="">
-                                </div>
-                                <div class="filters-list">
-                                    <div class="filter-view filter-task-items">
-                                        <img src="<?= Url::to(['img/tasks/view.svg']) ?>" alt="">
-                                        <p>0</p>
-                                    </div>
-                                    <div class="filter-view filter-task-items">
-                                        <img src="<?= Url::to(['img/tasks/human-icon.svg']) ?>" alt="">
-                                        <p>12</p>
-                                    </div>
-                                    <div class="filter-view filter-task-items">
-                                        <img src="<?= Url::to(['img/tasks/summ.svg']) ?>" alt="">
-                                        <p>5000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="right-item-filter">
-                                <p>29 сентября</p>
-                                <img src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt="">
-                                <img src="<?= Url::to(['img/profile/private-profile/close-task.svg']) ?>" alt="">
-                            </div>
-                        </div>
-                        <div class="task-title">
-                            <h2 class="Font-size24 main_color_text">вк</h2>
-                        </div>
-                        <div class="task-text main_color_text">
-                            <span style="color: #F535DA">... Подробнее</span>
-                        </div>
-                        <div class="task-tag-list">
-                            <div class="task-tag-item">
-                                <p>#тег</p>
-                            </div>
-                        </div>
+            <div class="tasks-item">
+                <div class="rewiev-items container-index">
+                    <div class="card-portfolio">
+                        <h2>UI/UX дизайн для Автошколы</h2>
                     </div>
-                </a>
+                    <div class="card-portfolio">
+                        <h2>UI/UX дизайн для Автошколы</h2>
+                    </div>
+                    <div class="card-portfolio">
+                        <h2>UI/UX дизайн для Автошколы</h2>
+                    </div>
+                </div>
+                <div class="arrows-slider container-index">
+                    <img class="prev" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+                    <img class="arrows-slider-right next" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+                </div>
+
             </div>
         </div>
     </section>
