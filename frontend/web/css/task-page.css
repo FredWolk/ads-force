@@ -45,7 +45,7 @@
     justify-content: center;
 }
 
-.task-button button {
+.task-button a {
     display: flex;
     justify-content: center;
     padding: 25px;

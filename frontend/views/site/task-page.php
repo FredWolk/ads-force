@@ -97,7 +97,7 @@ AppAsset::register($this);
             </div>
         </div>
         <div class="task-button">
-            <button class="Font-size28">Откликнуться</button>
+            <a href="<?= Url::to(['tasks']) ?>" class="Font-size28">Откликнуться</a>
         </div>
     </div>
 </div>

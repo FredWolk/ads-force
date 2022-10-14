@@ -162,27 +162,58 @@ $this->registerJs($js);
                         <div class="avtorize-modal">
                             <ul>
                                 <li>
-                                    <a href="">
-                                        <img src="<?= Url::to(['img/footer-header/payment-link-icon.svg']) ?>" alt="">
-                                        <p>Мой счёт:<?= $user['balance']['balance'] ?> ₽</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
+                                    <a href="<?= Url::to(['index']) ?>">
                                         <img src="<?= Url::to(['img/footer-header/user-icon.svg']) ?>" alt="">
                                         <p>Мой кабинет</p>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="<?= Url::to(['profile-tasks']) ?>">
                                         <img src="<?= Url::to(['img/footer-header/doc-link-icon.svg']) ?>" alt="">
-                                        <p>Мой кабинет</p>
+                                        <p>Мои задания/ работы</p>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
-                                        <img src="<?= Url::to(['img/footer-header/doc-link-icon.svg']) ?>" alt="">
-                                        <p>Мой кабинет</p>
+                                    <a href="<?= Url::to(['profile-message']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/message-link.svg']) ?>" alt="">
+                                        <p>Уведомления</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= Url::to(['profile-chat']) ?>">
+                                        <img src="<?= Url::to(['img/profile/profile-meneger/message-link-icon.svg']) ?>" alt="">
+                                        <p>Сообщения</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= Url::to(['profile-freelancer']) ?>">
+                                        <img src="<?= Url::to(['img/profile/profile-meneger/add-icon.svg']) ?>" alt="">
+                                        <p>Найти исполнителя</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= Url::to(['profile-payment-info']) ?>">
+                                        <img src="<?= Url::to(['img/footer-header/payment-link-icon.svg']) ?>" alt="">
+                                        <p>Финансы</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= Url::to(['profile-pro']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/partners-link-icon.svg']) ?>" alt="">
+                                        <p>Партнерская программа</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= Url::to(['technical-support']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/help-link-icon.svg']) ?>" alt="">
+                                        <p>Служба поддержки</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= Url::to(['profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/seetings-link-icon.svg']) ?>" alt="">
+                                        <p>Настройки</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= Url::to(['profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/exit-icon.svg']) ?>" alt="">
+                                        <p>Выйти</p>
                                     </a>
                                 </li>
                             </ul>
@@ -233,7 +264,7 @@ $this->registerJs($js);
 
         <main role="main" class="flex-shrink-0">
             <div class="Profile-container">
-                <h1 class="title_color Font-size36">Личный кабинет исполнителя</h1>
+                <h1 class="title_color Font-size36">Личный кабинет заказчика</h1>
                 <div class="Profile-full">
                     <section class="left-navbar">
                         <div class="left-navbar-top">
@@ -252,6 +283,11 @@ $this->registerJs($js);
                             <ul>
                                 <li>
                                     <a href="<?= Url::to(['index']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'index' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/user-icon.svg']) ?>" alt="">Моя страница</a>
+                                </li>
+                                <li>
+                                    <a href="<?= Url::to(['profile-message']) ?>"class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-message' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/message-link.svg']) ?>" alt="">
+                                        Уведомления
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="<?= Url::to(['profile-tasks']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-tasks' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/doc-link-icon.svg']) ?>" alt="">Мои заказы</a>

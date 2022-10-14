@@ -1,13 +1,18 @@
 <?php
 namespace frontend\controllers;
 use yii\web\Controller;
+use console\models\User;
+use Yii;
 
 class ProfilePerformerController extends Controller
 {
     public $layout = 'profilePerformer';
     public function actionIndex()
     {
-        return $this->render('index');
+        $user = User::find()->where(['id' => Yii::$app->getUser()->getId()])
+            ->asArray()
+            ->one();
+        return $this->render('index',compact('user'));
     }
     public function actionProfilePrivate()
     {

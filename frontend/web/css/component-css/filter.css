@@ -218,7 +218,12 @@
 /* Checked Track (Blue) */
 .review-switch input[type="checkbox"].ios-switch:checked+div {
   width: 40px;
-  border: 1px solid;
+  border: 1px solid transparent;
+  border-image-slice: 1;
+  background-repeat: repeat;
+  border-image-source: linear-gradient(#0B0E7F , #0B95DD)!important;
+  -moz-border-image: -moz-linear-gradient(#0B0E7F, #0B95DD);
+  -webkit-border-image: -webkit-linear-gradient(#0B0E7F, #0B95DD);
 }
 
 .review-switch input[type="checkbox"].bigswitch.ios-switch+div {

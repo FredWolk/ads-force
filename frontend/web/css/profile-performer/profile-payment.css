@@ -10,6 +10,7 @@
 
 .profile-right {
     width: 100%;
+    max-width: 635px;
 }
 
 .main-info-balance {

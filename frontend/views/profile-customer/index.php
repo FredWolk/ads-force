@@ -7,7 +7,6 @@ use yii\helpers\Url;
 $this->title = 'ADS.Force';
 $this->registerCssFile(Url::to(['css/profile-performer/profile-meneger.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
 $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
-
 switch ($user['info']['position']) {
     case 'Базовый':
         $left = '33%';

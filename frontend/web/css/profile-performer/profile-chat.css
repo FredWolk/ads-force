@@ -6,6 +6,7 @@
 
 .rigth-column {
     width: 100%;
+    max-width: 635px;
 }
 
 .chat-item-img {

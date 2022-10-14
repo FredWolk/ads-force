@@ -13,7 +13,6 @@ class ProfileCustomerController extends Controller
     public function actionIndex()
     {
         $user = User::find()->where(['id' => Yii::$app->getUser()->getId()])
-            ->with('info')
             ->asArray()
             ->one();
 
@@ -70,5 +69,9 @@ class ProfileCustomerController extends Controller
     public function actionNewTaskPreview()
     {
         return $this->render('new-task-preview');
+    }
+    public function actionProfileMessage()
+    {
+        return $this->render('profile-message');
     }
 }

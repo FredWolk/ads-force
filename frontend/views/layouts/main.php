@@ -254,16 +254,16 @@ AppAsset::register($this);
                                 <div class="registration regPop">Регистрация</div>
                             </div>
                             <li>
-                                <a class="menu__item" href="">Заказчику</a>
+                                <a class="menu__item" href="<?= Url::to(['for-customer']) ?>">Заказчику</a>
                             </li>
                             <li>
-                                <a class="menu__item" href="">Исполнителю</a>
+                                <a class="menu__item" href="<?= Url::to(['index']) ?>">Исполнителю</a>
                             </li>
                             <li>
-                                <a class="menu__item" href="">Почему ADS.FORCE</a>
+                                <a class="menu__item" href="<?= Url::to(['why-we']) ?>">Почему ADS.FORCE</a>
                             </li>
                             <li>
-                                <a class="menu__item" href="">Разместить заказ</a>
+                                <a class="menu__item" href="<?= Url::to(['index']) ?>">Разместить заказ</a>
                             </li>
                         </ul>
                     </div>
@@ -412,8 +412,8 @@ AppAsset::register($this);
 
                     <div class="info__other">
                         <div class="entry">
-                            <div class="login">Вход</div>
-                            <div class="registration">Регистрация</div>
+                            <div class="login logPop">Вход</div>
+                            <div class="registration regPop">Регистрация</div>
                         </div>
                         <div class="info__contacts">
                             <a href="tel:8 945 118 39 34" class="contacts__tel">8 945 118 39 34</a>
