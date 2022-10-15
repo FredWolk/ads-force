@@ -25,6 +25,26 @@ $('.closeModalButton').click(function(e) {
 JS;
 $this->registerJs($js);
 ?>
+<div class="ModalPuyment" style="display: none;">
+    <div class="modalBlock">
+        <div class="Modal-close">
+            <p>&times;</p>
+        </div>
+        <h2 class="Font-size24">Пополнение баланса</h2>
+        <div class="modalBlockForm">
+            <form action="">
+                <p>Сумма</p>
+                <input type="number" placeholder="Минимальная сумма пополнения 5000 руб.">
+                <div class="formCheckbox">
+                    <input type="checkbox">
+                    <p>Подтверждаю согласие с условиями обработки данных</p>
+                </div>
+                <button class="puymentModalButton">Оплатить</button>
+                <button class="closeModalButton">Отмена</button>
+            </form>
+        </div>
+    </div>
+</div>
 <div class="profile-right">
     <div class="main-info-payment">
         <div class="main-info-balance">

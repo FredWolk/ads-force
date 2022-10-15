@@ -19,8 +19,10 @@
 .button-add-balance {
     padding: 20px;
     max-width: 214px;
+    justify-content: center;
     color: #FFFFFF;
     width: 100%;
+    display: inline-flex;
     background: #F535DA;
     border-radius: 100px;
     margin-bottom: 30px;

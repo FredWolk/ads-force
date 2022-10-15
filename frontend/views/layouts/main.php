@@ -135,7 +135,7 @@ AppAsset::register($this);
             <div class="header__container">
                 <div class="header-main">
                     <div class="logo-lang">
-                        <div class="header__menu dis-none-header">
+                        <div class="header__menu">
                             <!--Отключаеться когда пользователь НЕ зашел(добавить класс: dis-none-header)-->
                             <input id="menu__toggle1" type="checkbox">
                             <label class="menu__btn" for="menu__toggle1">
@@ -213,21 +213,58 @@ AppAsset::register($this);
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="<?= Url::to(['../site/tasks.php']) ?>">
+                                            <img src="<?= Url::to(['img/profile/profile-meneger/search-icon.svg']) ?>" alt="">
+                                            <p>Поиск задач</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= Url::to(['profile-tasks']) ?>">
+                                            <img src="<?= Url::to(['img/footer-header/doc-link-icon.svg']) ?>" alt="">
+                                            <p>Мои задания/ работы</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= Url::to(['profile-message']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/message-link.svg']) ?>" alt="">
+                                            <p>Уведомления</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= Url::to(['index']) ?>">
                                             <img src="<?= Url::to(['img/footer-header/user-icon.svg']) ?>" alt="">
                                             <p>Мой кабинет</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
-                                            <img src="<?= Url::to(['img/footer-header/doc-link-icon.svg']) ?>" alt="">
-                                            <p>Мой кабинет</p>
+                                        <a href="<?= Url::to(['profile-chat']) ?>">
+                                            <img src="<?= Url::to(['img/profile/profile-meneger/message-link-icon.svg']) ?>" alt="">
+                                            <p>Сообщения</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
-                                            <img src="<?= Url::to(['img/footer-header/doc-link-icon.svg']) ?>" alt="">
-                                            <p>Мой кабинет</p>
+                                        <a href="<?= Url::to(['profile-payment-info']) ?>">
+                                            <img src="<?= Url::to(['img/footer-header/payment-link-icon.svg']) ?>" alt="">
+                                            <p>Финансы</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= Url::to(['profile-pro']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/partners-link-icon.svg']) ?>" alt="">
+                                            <p>Партнерская программа</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= Url::to(['technical-support']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/help-link-icon.svg']) ?>" alt="">
+                                            <p>Служба поддержки</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= Url::to(['profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/seetings-link-icon.svg']) ?>" alt="">
+                                            <p>Настройки</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= Url::to(['profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/exit-icon.svg']) ?>" alt="">
+                                            <p>Выйти</p>
                                         </a>
                                     </li>
                                 </ul>
@@ -238,7 +275,7 @@ AppAsset::register($this);
 
 
                     <!-- появляется при > 1024px-->
-                    <div class="header__menu">
+                    <div class="header__menu dis-none-header">
                         <!--Отключаеться когда пользователь зашел(добавить класс: dis-none-header)-->
                         <input id="menu__toggle" type="checkbox">
                         <label class="menu__btn" for="menu__toggle">

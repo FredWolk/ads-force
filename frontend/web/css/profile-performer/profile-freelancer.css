@@ -4,10 +4,11 @@
     margin-bottom: 100px;
 }
 
-.profile-right{
+.profile-right {
     width: 100%;
     max-width: 700px;
 }
+
 .navigation-task {
     display: flex;
     align-items: center;
@@ -16,8 +17,9 @@
     margin-bottom: 15px;
 }
 
-.navigation-task button {
+.navigation-task>a {
     padding: 20px;
+    text-align: center;
     background: #F535DA;
     border-radius: 100px;
     cursor: pointer;
@@ -25,9 +27,11 @@
     max-width: 403px;
     width: 100%;
 }
-.performers-cards{
+
+.performers-cards {
     margin-bottom: 55px;
 }
+
 .pagination-items {
     display: flex;
     column-gap: 15px;

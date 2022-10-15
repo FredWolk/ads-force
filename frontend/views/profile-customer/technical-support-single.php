@@ -84,6 +84,6 @@ $this->registerJs($js);
         </div>
     </div>
     <div class="support-single-button">
-        <button>Отправить</button>
+        <a href="<?= Url::to(['technical-support'])?>">Отправить</a>
     </div>
 </div>

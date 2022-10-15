@@ -74,7 +74,7 @@ $this->registerCssFile(Url::to(['css/profile-performer/new-task-preview.css']), 
             </div>
         </div>
         <div class="task-button">
-            <button class="Font-size28">Сохранить</button>
+            <a href="index" class="Font-size28">Сохранить</a>
         </div>
     </div>
 </div>

@@ -158,61 +158,71 @@ $this->registerJs($js);
                                 <p>заказчик</p>
                             </div>
                         </div>
-                        <div class="avtorize-modal">
+                        <div class="avtorize-modal white_color_bg">
+                            <div class="left-navbar-top">
+                                <div class="hello-user">
+                                    <img src="<?= Url::to(['img/profile/profile-meneger/hand.svg']) ?>" alt="">
+                                    <h2 class="Font-size24 main_color_text">Привет, <?= $user['username'] ?></h2>
+                                </div>
+                                <div class="balance-user">
+                                    <p class="Font-size18 main_color_text">Баланс: <?= $user['balance']['balance'] ?> руб.</p>
+                                </div>
+                                <a href="<?=Url::to(['profile-payment-info'])?>" class="button-add-balance Font-size18">Пополнить</a>
+                            </div>
                             <ul>
                                 <li>
                                     <a href="<?= Url::to(['../site/tasks.php']) ?>">
                                         <img src="<?= Url::to(['img/profile/profile-meneger/search-icon.svg']) ?>" alt="">
-                                        <p>Поиск задач</p>
+                                        <p class="main_color_text">Поиск задач</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="<?= Url::to(['profile-tasks']) ?>">
                                         <img src="<?= Url::to(['img/footer-header/doc-link-icon.svg']) ?>" alt="">
-                                        <p>Мои задания/ работы</p>
+                                        <p class="main_color_text">Мои задания/ работы</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="<?= Url::to(['profile-message']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/message-link.svg']) ?>" alt="">
-                                        <p>Уведомления</p>
+                                        <p class="main_color_text">Уведомления</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="<?= Url::to(['index']) ?>">
                                         <img src="<?= Url::to(['img/footer-header/user-icon.svg']) ?>" alt="">
-                                        <p>Мой кабинет</p>
+                                        <p class="main_color_text">Мой кабинет</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="<?= Url::to(['profile-chat']) ?>">
                                         <img src="<?= Url::to(['img/profile/profile-meneger/message-link-icon.svg']) ?>" alt="">
-                                        <p>Сообщения</p>
+                                        <p class="main_color_text">Сообщения</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="<?= Url::to(['profile-payment-info']) ?>">
                                         <img src="<?= Url::to(['img/footer-header/payment-link-icon.svg']) ?>" alt="">
-                                        <p>Финансы</p>
+                                        <p class="main_color_text">Финансы</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="<?= Url::to(['profile-pro']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/partners-link-icon.svg']) ?>" alt="">
-                                        <p>Партнерская программа</p>
+                                        <p class="main_color_text">Партнерская программа</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="<?= Url::to(['technical-support']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/help-link-icon.svg']) ?>" alt="">
-                                        <p>Служба поддержки</p>
+                                        <p class="main_color_text">Служба поддержки</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="<?= Url::to(['profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/seetings-link-icon.svg']) ?>" alt="">
-                                        <p>Настройки</p>
+                                        <p class="main_color_text">Настройки</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="<?= Url::to(['profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/exit-icon.svg']) ?>" alt="">
-                                        <p>Выйти</p>
+                                        <p class="main_color_text">Выйти</p>
                                     </a>
                                 </li>
                             </ul>
@@ -276,18 +286,18 @@ $this->registerJs($js);
                             <div class="balance-user">
                                 <p class="Font-size18 main_color_text">Баланс: <?= $user['balance']['balance'] ?> руб.</p>
                             </div>
-                            <button class="button-add-balance Font-size18">Пополнить</button>
+                            <a href="<?=Url::to(['profile-payment-info'])?>" class="button-add-balance Font-size18">Пополнить</a>
                         </div>
                         <div class="left-navbar-bottom">
                             <ul>
                                 <li>
-                                    <a href="<?= Url::to(['../site/tasks.php']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-tasks' ? 'active-link' : '' ?>">
+                                    <a href="<?= Url::to(['../site/tasks.php']) ?>" class="Font-size24 main_color_text">
                                         <img src="<?= Url::to(['img/profile/profile-meneger/search-icon.svg']) ?>" alt="">
                                         Поиск задач
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?= Url::to(['profile-message']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-tasks' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/message-link.svg']) ?>" alt="">
+                                    <a href="<?= Url::to(['profile-message']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-message' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/message-link.svg']) ?>" alt="">
                                         Уведомления
                                     </a>
                                 </li>
@@ -337,7 +347,7 @@ $this->registerJs($js);
                                         <p class="Font-size18 main_color_text">Статья «SMM: что это такое и как работает»</p>
                                     </li>
                                 </ul>
-                                <p class="more-news Font-size18 title_color">Еще + </p>
+                                <a href="<?=Url::to(['profile-news'])?>" class="more-news Font-size18 title_color">Еще + </a>
                             </div>
                         </div>
                     </section>

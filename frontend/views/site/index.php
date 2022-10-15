@@ -117,6 +117,7 @@ AppAsset::register($this);
     <div class="performers-cards container-index">
         <?php if (!empty($performers)) : ?>
             <?php foreach ($performers as $performer) : ?>
+                <a href="<?= Url::to(['profile-performer/profile-private']) ?>">
                 <div class="performers-card">
                     <div class="performers-card-left">
                         <img src="<?= Url::to([$performer['photo']]) ?>" alt="">
@@ -194,6 +195,7 @@ AppAsset::register($this);
                         </div>
                     </div>
                 </div>
+                </a>
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
@@ -278,7 +280,7 @@ AppAsset::register($this);
                             <img src="<?= Url::to(['/img/index/rewievImg.png']) ?>" alt="">
                         <?php endif; ?>
                         <div class="rewiev-card-title">
-                            <h2 class="Font_size24"><?= $review['info']['name'] ?></h2>
+                            <h2 class="Font-size24"><?= $review['info']['name'] ?></h2>
                             <p>Заказчик</p>
                         </div>
                     </div>

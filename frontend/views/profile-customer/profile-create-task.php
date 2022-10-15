@@ -34,7 +34,7 @@ $this->registerJs($js);
         <img src="<?= Url::to(['img/profile/private-profile/img-fon.png']) ?>" alt="">
     </div>
 </section>
-<div class="Profile-container">
+<div class="Profile-container" style="max-width: 1110px; padding:0px 20px;">
     <div class="back-link">
         <a href="" class="Font-size18"><img src="<?= Url::to(['img/profile/private-profile/back-profile.svg']) ?>" alt="">Вернуться назад</a>
     </div>
@@ -103,7 +103,7 @@ $this->registerJs($js);
                     <img src="<?= Url::to(['img/profile/profile-tasks/delete-icon.svg']) ?>" alt="">
                 </div>
                 <p>Со статусом PRO ваше задание увидят больше исполнителей, вы получите место в ТОПе среди лучше, а также кэшбэк на счет!</p>
-                <a href="">Перейти на PRO</a>
+                <a href="profile-pro">Перейти на PRO</a>
             </div>
         </div>
         <div class="task-form-title">

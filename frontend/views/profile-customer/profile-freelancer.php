@@ -142,7 +142,7 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-freelancer.css'])
 
     <!--Пагинация-->
     <div class="navigation-task">
-        <button>Разместить заказ</button>
+        <a href="<?=Url::to(['profile-create-task'])?>">Разместить заказ</a>
         <div class="pagination-items">
             <a href="">
                 <svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -189,7 +189,7 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-freelancer.css'])
                     <p class="Font-size18 main_color_text">Статья «SMM: что это такое и как работает»</p>
                 </li>
             </ul>
-            <p class="more-news Font-size18 title_color">Еще + </p>
+            <a href="<?=Url::to(['profile-news'])?>" class="more-news Font-size18 title_color">Еще + </a>
         </div>
     </div>
 </section>

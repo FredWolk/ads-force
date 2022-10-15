@@ -17,6 +17,7 @@
 
 .messages-item {
     padding: 20px 30px;
+    border: 2px solid #E0E0E0;
     display: flex;
     position: relative;
     flex-direction: column;

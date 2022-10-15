@@ -5,6 +5,20 @@
     padding: 60px;
 }
 
+
+.Profile-container {
+    max-width: none;
+    padding: 0px;
+}
+
+.Profile-container h1 {
+    display: none;
+}
+
+.left-navbar {
+    display: none;
+}
+
 .back-link {
     margin-top: 35px;
     margin-bottom: 10px;
@@ -60,9 +74,11 @@
     color: #FFFFFF;
     top: 18px;
 }
-.img-slider-item img{
+
+.img-slider-item img {
     width: 100%;
 }
+
 .modalPortfolioContainer {
     max-width: 1080px;
     position: relative;

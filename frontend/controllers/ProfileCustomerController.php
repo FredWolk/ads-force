@@ -74,4 +74,12 @@ class ProfileCustomerController extends Controller
     {
         return $this->render('profile-message');
     }
+    public function actionProfileNews()
+    {
+        return $this->render('profile-news');
+    }
+    public function actionProfileNewsPrivate()
+    {
+        return $this->render('profile-news-private');
+    }
 }

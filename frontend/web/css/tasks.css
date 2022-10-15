@@ -96,7 +96,9 @@
   border-radius: 4px;
   color: #ffffff;
 }
-
+#task_container{
+  width: 100%;
+}
 .view-tasks ul {
   display: flex;
   list-style: none;

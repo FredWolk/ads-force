@@ -33,6 +33,26 @@ responsive: [
     }
   ]
 });
+$('.rewiev-items-mobile').slick({
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  prevArrow: $('.prev-mobile'),
+nextArrow: $('.next-mobile'),
+responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 580,
+      settings: {
+        slidesToShow: 1
+      }
+    }
+  ]
+});
 $('.rewiev-nav').click(function(e){
     $('.content-text').fadeOut(300);
     $('.rewiev-full').fadeIn(300);
@@ -81,7 +101,7 @@ $this->registerJs($js);
         <img src="<?= Url::to(['img/profile/private-profile/img-fon.png']) ?>" alt="">
     </div>
 </section>
-<div class="Profile-container">
+<div class="Profile-container" style="max-width: 1110px; padding:0px 20px;">
     <div class="back-link">
         <a href="" class="Font-size18"><img src="<?= Url::to(['img/profile/private-profile/back-profile.svg']) ?>" alt="">Вернуться назад</a>
     </div>
@@ -285,7 +305,7 @@ $this->registerJs($js);
             </div>
             <div class="block-mobile-information-content">
                 <section class="rewiev-full">
-                    <div class="rewiev-items container-index">
+                    <div class="rewiev-items-mobile container-index">
                         <div class="rewiev-card">
                             <div class="rewiev-card-top">
                                 <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
@@ -324,8 +344,8 @@ $this->registerJs($js);
                         </div>
                     </div>
                     <div class="arrows-slider container-index">
-                        <img class="prev" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
-                        <img class="arrows-slider-right next" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+                        <img class="prev-mobile" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+                        <img class="arrows-slider-right next-mobile" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
                     </div>
                 </section>
             </div>

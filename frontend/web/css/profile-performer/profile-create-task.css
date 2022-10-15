@@ -1,6 +1,19 @@
 .Profile-full {
-    display: flex;
+    display: block;
     column-gap: 35px;
+}
+
+.Profile-container {
+    max-width: none;
+    padding: 0px;
+}
+
+.Profile-container h1 {
+    display: none;
+}
+
+.left-navbar {
+    display: none;
 }
 
 .fon-custom {

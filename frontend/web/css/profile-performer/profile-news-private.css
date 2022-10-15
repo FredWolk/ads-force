@@ -1,0 +1,30 @@
+.Profile-container h1 {
+    display: none;
+}
+
+.left-navbar {
+    display: none;
+}
+
+.Profile-container{
+    max-width: none!important;
+    padding: 0!important;
+}
+
+.profile-news-title{
+    display: flex;
+    background: linear-gradient(0deg, rgba(48, 38, 38, 0.58), rgba(48, 38, 38, 0.58)), url('../../img/profile/private-profile/bg-slider.png');
+    padding: min(max(40vw, 60px), 120px) 0px;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+    justify-content: center;
+}
+.profile-news-title h2{
+    text-align: center;
+}
+.profile-news-content{
+    max-width: 1067px;
+    margin: 100px auto;
+    padding: 0px 20px;
+}

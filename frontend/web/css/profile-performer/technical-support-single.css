@@ -112,10 +112,12 @@
     margin-top: 30px;
 }
 
-.support-single-button button {
+.support-single-button a {
     padding: 20px;
     color: #FFFFFF;
     max-width: 280px;
+    display: inline-flex;
+    justify-content: center;
     width: 100%;
     background: #F535DA;
     border-radius: 100px;
