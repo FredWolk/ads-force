@@ -66,5 +66,9 @@ class ProfilePerformerController extends Controller
     {
         return $this->render('profile-news-private');
     }
+    public function actionCreatePortfolio()
+    {
+        return $this->render('create-portfolio');
+    }
 }
 ?>

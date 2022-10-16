@@ -1,0 +1,61 @@
+.Profile-container h1 {
+    display: none;
+}
+
+.left-navbar {
+    display: none;
+}
+
+.Profile-container {
+    max-width: none;
+    padding: 0px;
+}
+
+.fon-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+}
+
+.back-link {
+    margin-top: 35px;
+    margin-bottom: 10px;
+}
+
+.back-link a {
+    display: inline-flex;
+    column-gap: 5px;
+    align-items: center;
+    color: #F535DA;
+}
+
+.FormPortfolio {
+    max-width: 1075px;
+    width: 100%;
+    padding: 20px;
+    margin: 0px auto;
+}
+
+.form-main-container {
+    padding: 40px;
+    border: 1px solid #828282;
+    border-radius: 10px;
+}
+
+.form-main-bg {
+    position: relative;
+    width: 100%;
+    height: 137px;
+    border-radius: 5px;
+    border: 1px solid #1EBBED;
+}
+
+.form-main-bg svg {
+    position: absolute;
+    width: 84px;
+    height: 76px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

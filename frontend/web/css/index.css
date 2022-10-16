@@ -68,23 +68,27 @@
   max-width: 468px;
   width: 100%;
 }
+
 .Freelancer-content-buttons-black {
   height: 86px;
   max-width: 468px;
   width: 100%;
 }
+
 .Freelancer-content-buttons-main-img {
   position: absolute;
   top: 50%;
   left: 19px;
   transform: translate(0%, -50%);
 }
+
 .Freelancer-content-buttons-black-img {
   position: absolute;
   top: 50%;
   right: 11px;
   transform: translate(0%, -50%);
 }
+
 .Freelancer-content-buttons-main button {
   background: #ffffff;
   filter: drop-shadow(2px 3px 7px rgba(158, 158, 158, 0.25));
@@ -144,6 +148,12 @@
   width: 100%;
 }
 
+.performers-cards-mob {
+  display: none!important;
+}
+.performers-container .arrows-slider{
+  display: none!important;
+}
 .Freelancer-content-buttons-prev button p {
   font-family: "Rubik", sans-serif;
   font-weight: 600;
@@ -153,9 +163,11 @@
 .button-active {
   background: #f535da !important;
 }
+
 .button-active p {
   color: #ffffff;
 }
+
 .button-white p {
   color: #ffffff;
 }
@@ -274,11 +286,9 @@
 }
 
 .specialization-item {
-  background-image: linear-gradient(
-      0deg,
+  background-image: linear-gradient(0deg,
       rgba(63, 63, 63, 0.5),
-      rgba(63, 63, 63, 0.5)
-    ),
+      rgba(63, 63, 63, 0.5)),
     url(../img/index/specializationFon.png);
   max-width: 319px;
   width: 100%;
@@ -358,15 +368,19 @@
 .progress-bar-content ul li div p {
   font-size: 1.19vw;
 }
+
 .progress-bar-content ul .client::before {
   background-image: url(../img/index/clientMapIcon.svg);
 }
+
 .progress-bar-content ul .success::before {
   background-image: url(../img/index/NoteSucces.svg);
 }
+
 .progress-bar-content ul .chat::before {
   background-image: url(../img/index/ChatIcon.svg);
 }
+
 .progress-bar-content ul li::before {
   content: "";
   width: 69px;
@@ -391,10 +405,12 @@
   align-items: center;
   margin-bottom: 30px !important;
 }
+
 .progressBarTitle a {
   max-width: 311px;
   width: 100%;
 }
+
 .progressBarTitle .progressBarButton {
   position: relative;
   filter: drop-shadow(0px 3px 5px rgba(158, 158, 158, 0.25));
@@ -406,10 +422,12 @@
   border-radius: 42px;
   min-height: 62px;
 }
+
 .progressBarTitle a {
   max-width: 311px;
   width: 100%;
 }
+
 .progressBarTitle .progressBlackButton {
   position: relative;
   filter: drop-shadow(0px 3px 5px rgba(158, 158, 158, 0.25));
@@ -529,7 +547,9 @@
   column-gap: 11px;
   margin-top: 30px;
 }
-
+.slick-slide{
+  margin-bottom: 30px;
+}
 .arrows-slider-right {
   transform: rotate(-180deg);
 }
@@ -563,6 +583,7 @@
   .Meneger-absolute-img {
     display: none;
   }
+
   .Freelancer-absolute-img {
     display: none;
   }
@@ -626,6 +647,16 @@
   .Freelancer-content-buttons-prev {
     flex-direction: column;
     align-items: center;
+  }
+  .performers-cards-mob {
+    display: block!important;
+  }
+  .performers-container .arrows-slider{
+    display: flex!important;
+  }
+
+  .desctop-performer {
+    display: none!important;
   }
 
   .progress-bar-content ul li div h1 {

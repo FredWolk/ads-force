@@ -17,15 +17,23 @@ $js = <<< JS
 const availableScreenWidth = window.screen.availWidth;
 if(availableScreenWidth <=735){
 $('.specialization-items').slick({
-  slidesToShow: 3,
+  slidesToShow: 2,
   slidesToScroll: 1,
-        slidesToShow: 3,
+        slidesToShow: 2,
         vertical: true,
         verticalSwiping: true,
         prevArrow: $('.prev-spec'),
         nextArrow: $('.next-spec')
 })
 }
+$('.performers-cards-mob').slick({
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    prevArrow: $('.prev-performer'),
+    nextArrow: $('.next-performer'),
+    vertical: true,
+        verticalSwiping: true
+});
   $('.rewiev-items').slick({
   slidesToShow: 3,
   slidesToScroll: 1,
@@ -110,77 +118,33 @@ AppAsset::register($this);
 <section class="performers-container">
     <div class="performers-title container-index">
         <h1 class="Font-size36">ТОП-исполнители</h1>
-        <a href="<?= Url::to(['performers-page']) ?>">
-            <button>Хочу в ТОП</button>
+        <a>
+            <button class="topShow">Хочу в ТОП</button>
         </a>
     </div>
-    <div class="performers-cards container-index">
+    <div class="performers-cards desctop-performer container-index">
         <?php if (!empty($performers)) : ?>
             <?php foreach ($performers as $performer) : ?>
                 <a href="<?= Url::to(['profile-performer/profile-private']) ?>">
-                <div class="performers-card">
-                    <div class="performers-card-left">
-                        <img src="<?= Url::to([$performer['photo']]) ?>" alt="">
-                        <div class="performers-card-stars">
-                            <div style="background-image: url(<?= Url::to(['img/index/stars.png']) ?>); height: 20px; background-repeat: no-repeat;" class="stars">
-                                <div style="background-image: url(<?= Url::to(['img/index/yellowStars.png']) ?>); height: 20px; background-repeat: no-repeat; width: <?= $performer['rating'] ?>%" class="yellow_stars"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="performers-card-right">
-                        <div class="performers-card-right-title">
-                            <h2 class="Font-size20"><?= $performer['name'] ?></h2>
-                            <p><?= $performer['position'] ?></p>
-                        </div>
-                        <?php
-                        $category = Categories::find()->asArray()->where(['id' => $performer['specialization_id']])->select('title')->one();
-                        $skils = json_decode($performer['skills'], 1);
-                        ?>
-                        <p class="text-italic"><?= $category['title'] ?></p>
-                        <p class="liked-message">1810 положительных отзывов</p>
-                        <ul>
-                            <?php if ($skils) : ?>
-                                <?php foreach ($skils as $k => $skill) : ?>
-                                    <?php if ($k == 3) break; ?>
-                                    <li>
-                                        <p class="Font-size20"><?= $skill ?></p>
-                                    </li>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </ul>
-                    </div>
-
-                    <div class="performers-card-mobile">
-                        <div class="performers-card-mobile-top">
+                    <div class="performers-card">
+                        <div class="performers-card-left">
                             <img src="<?= Url::to([$performer['photo']]) ?>" alt="">
-                            <div>
-                                <div class="performers-card-right-title">
-                                    <h2 class="Font-size20"><?= $performer['name'] ?></h2>
-                                    <p><?= $performer['position'] ?></p>
-                                </div>
-                                <p class="text-italic"><?= $category['title'] ?></p>
-                                <div class="performers-card-stars">
-                                    <ul>
-                                        <li>
-                                            <div class="yellowStar"></div>
-                                        </li>
-                                        <li>
-                                            <div class="yellowStar"></div>
-                                        </li>
-                                        <li>
-                                            <div class="yellowStar"></div>
-                                        </li>
-                                        <li>
-                                            <div class="yellowStar"></div>
-                                        </li>
-                                        <li>
-                                            <div class="yellowStar"></div>
-                                        </li>
-                                    </ul>
+                            <div class="performers-card-stars">
+                                <div style="background-image: url(<?= Url::to(['img/index/stars.png']) ?>); height: 20px; background-repeat: no-repeat;" class="stars">
+                                    <div style="background-image: url(<?= Url::to(['img/index/yellowStars.png']) ?>); height: 20px; background-repeat: no-repeat; width: <?= $performer['rating'] ?>%" class="yellow_stars"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="performers-card-mobile-bottom">
+                        <div class="performers-card-right">
+                            <div class="performers-card-right-title">
+                                <h2 class="Font-size20"><?= $performer['name'] ?></h2>
+                                <p><?= $performer['position'] ?></p>
+                            </div>
+                            <?php
+                            $category = Categories::find()->asArray()->where(['id' => $performer['specialization_id']])->select('title')->one();
+                            $skils = json_decode($performer['skills'], 1);
+                            ?>
+                            <p class="text-italic"><?= $category['title'] ?></p>
                             <p class="liked-message">1810 положительных отзывов</p>
                             <ul>
                                 <?php if ($skils) : ?>
@@ -193,11 +157,144 @@ AppAsset::register($this);
                                 <?php endif; ?>
                             </ul>
                         </div>
+
+                        <div class="performers-card-mobile">
+                            <div class="performers-card-mobile-top">
+                                <img src="<?= Url::to([$performer['photo']]) ?>" alt="">
+                                <div>
+                                    <div class="performers-card-right-title">
+                                        <h2 class="Font-size20"><?= $performer['name'] ?></h2>
+                                        <p><?= $performer['position'] ?></p>
+                                    </div>
+                                    <p class="text-italic"><?= $category['title'] ?></p>
+                                    <div class="performers-card-stars">
+                                        <ul>
+                                            <li>
+                                                <div class="yellowStar"></div>
+                                            </li>
+                                            <li>
+                                                <div class="yellowStar"></div>
+                                            </li>
+                                            <li>
+                                                <div class="yellowStar"></div>
+                                            </li>
+                                            <li>
+                                                <div class="yellowStar"></div>
+                                            </li>
+                                            <li>
+                                                <div class="yellowStar"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="performers-card-mobile-bottom">
+                                <p class="liked-message">1810 положительных отзывов</p>
+                                <ul>
+                                    <?php if ($skils) : ?>
+                                        <?php foreach ($skils as $k => $skill) : ?>
+                                            <?php if ($k == 3) break; ?>
+                                            <li>
+                                                <p class="Font-size20"><?= $skill ?></p>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                </div>
                 </a>
             <?php endforeach; ?>
         <?php endif; ?>
+    </div>
+    <div class="performers-cards-mob performers-cards container-index">
+        <?php if (!empty($performers)) : ?>
+            <?php foreach ($performers as $performer) : ?>
+                <a href="<?= Url::to(['profile-performer/profile-private']) ?>">
+                    <div class="performers-card">
+                        <div class="performers-card-left">
+                            <img src="<?= Url::to([$performer['photo']]) ?>" alt="">
+                            <div class="performers-card-stars">
+                                <div style="background-image: url(<?= Url::to(['img/index/stars.png']) ?>); height: 20px; background-repeat: no-repeat;" class="stars">
+                                    <div style="background-image: url(<?= Url::to(['img/index/yellowStars.png']) ?>); height: 20px; background-repeat: no-repeat; width: <?= $performer['rating'] ?>%" class="yellow_stars"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="performers-card-right">
+                            <div class="performers-card-right-title">
+                                <h2 class="Font-size20"><?= $performer['name'] ?></h2>
+                                <p><?= $performer['position'] ?></p>
+                            </div>
+                            <?php
+                            $category = Categories::find()->asArray()->where(['id' => $performer['specialization_id']])->select('title')->one();
+                            $skils = json_decode($performer['skills'], 1);
+                            ?>
+                            <p class="text-italic"><?= $category['title'] ?></p>
+                            <p class="liked-message">1810 положительных отзывов</p>
+                            <ul>
+                                <?php if ($skils) : ?>
+                                    <?php foreach ($skils as $k => $skill) : ?>
+                                        <?php if ($k == 3) break; ?>
+                                        <li>
+                                            <p class="Font-size20"><?= $skill ?></p>
+                                        </li>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
+
+                        <div class="performers-card-mobile">
+                            <div class="performers-card-mobile-top">
+                                <img src="<?= Url::to([$performer['photo']]) ?>" alt="">
+                                <div>
+                                    <div class="performers-card-right-title">
+                                        <h2 class="Font-size20"><?= $performer['name'] ?></h2>
+                                        <p><?= $performer['position'] ?></p>
+                                    </div>
+                                    <p class="text-italic"><?= $category['title'] ?></p>
+                                    <div class="performers-card-stars">
+                                        <ul>
+                                            <li>
+                                                <div class="yellowStar"></div>
+                                            </li>
+                                            <li>
+                                                <div class="yellowStar"></div>
+                                            </li>
+                                            <li>
+                                                <div class="yellowStar"></div>
+                                            </li>
+                                            <li>
+                                                <div class="yellowStar"></div>
+                                            </li>
+                                            <li>
+                                                <div class="yellowStar"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="performers-card-mobile-bottom">
+                                <p class="liked-message">1810 положительных отзывов</p>
+                                <ul>
+                                    <?php if ($skils) : ?>
+                                        <?php foreach ($skils as $k => $skill) : ?>
+                                            <?php if ($k == 3) break; ?>
+                                            <li>
+                                                <p class="Font-size20"><?= $skill ?></p>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+    <div class="arrows-slider container-index">
+        <img class="prev-performer" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+        <img class="arrows-slider-right next-performer" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
     </div>
 </section>
 <section class="specialization-full">

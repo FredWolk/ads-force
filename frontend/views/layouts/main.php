@@ -25,7 +25,30 @@ $('.regPop').click(function(e) {
     $('.modalRegister').css({'display':'flex'});
     $('body').css({'overflow':'hidden'})
 });
-
+$('.topShow').click(function(e) {
+    $('.ModalPro').fadeIn(300);
+    $('body').css({'overflow':'hidden'})
+});
+$('.ModalClosePro').click(function(e) {
+    $('.ModalPro').fadeOut(300);
+    $('body').css({'overflow':'auto'})
+});
+$('.ModalPro .buttonClick').click(function(e) {
+    if($('.Freelancer-content-buttons-black-img').css('display') == "none"){
+    $(this).addClass('Freelancer-content-buttons-black');
+    $(this).removeClass('Freelancer-content-buttons-main');
+    $('.Freelancer-content-buttons-black-img').css({'display':'block'});
+    $('.Freelancer-content-buttons-main-img').css({'display':'none'});
+    $('.buttonClick a button p').html('Заказчику');
+    }
+    else if($('.Freelancer-content-buttons-black-img').css('display') == "block"){
+    $(this).addClass('Freelancer-content-buttons-main');
+    $(this).removeClass('Freelancer-content-buttons-black');
+    $('.Freelancer-content-buttons-black-img').css({'display':'none'});
+    $('.Freelancer-content-buttons-main-img').css({'display':'block'});
+    $('.buttonClick a button p').html('Исполнителю');
+    }
+});
 $('.Modal-login-close').click(function(e) {
     $('.modalLogin').fadeOut(300);
     $('body').css({'overflow':'auto'})
@@ -378,6 +401,96 @@ AppAsset::register($this);
                             </ul>
                             <p class="swap-modal Font-size18">Регистрация</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ModalPro">
+            <div class="ModalProCenter">
+                <div class="ModalClosePro">
+                    &times;
+                </div>
+                <h2 class="Font-size24">Тарифы</h2>
+                <div class="ButtonPro">
+                    <div class="buttonClick Freelancer-content-buttons-main">
+                        <a>
+                            <button>
+                                <img class="Freelancer-content-buttons-black-img" src="<?= Url::to(['img/index/iconMenegerButton.svg']) ?>" style="display: none;" alt="">
+                                <img class="Freelancer-content-buttons-main-img" src="<?= Url::to(['img/index/iconFreelanceButton.svg']) ?>" alt="">
+                                <p>Исполнителю</p>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="ModalProContainer">
+                    <div class="ModalProBasic">
+                        <h2 class="Font-size24">Начальный</h2>
+                        <ul>
+                            <li>
+                                <img src="<?= Url::to(['img/index/plus-icon.svg']) ?>" alt="">
+                                <p class="Font-size18">Количество объявлений Х</p>
+                            </li>
+                            <li>
+                                <img src="<?= Url::to(['img/index/plus-icon.svg']) ?>" alt="">
+                                <p class="Font-size18">Нет возможности отслеживать выполнение</p>
+                            </li>
+                        </ul>
+                        <button class="Font-size24">Выбрать</button>
+                        <b class="Font-size18">Цена: бесплатно</b>
+                    </div>
+                    <div class="ModalProBasic">
+                        <h2 class="Font-size24">Начальный</h2>
+                        <ul>
+                            <li>
+                                <img src="<?= Url::to(['img/index/plus-icon.svg']) ?>" alt="">
+                                <p class="Font-size18">Количество объявлений Х</p>
+                            </li>
+                            <li>
+                                <img src="<?= Url::to(['img/index/plus-icon.svg']) ?>" alt="">
+                                <p class="Font-size18">Нет возможности отслеживать выполнение</p>
+                            </li>
+                            <li>
+                                <img src="<?= Url::to(['img/index/plus-icon.svg']) ?>" alt="">
+                                <p class="Font-size18">Количество объявлений Х</p>
+                            </li>
+                            <li>
+                                <img src="<?= Url::to(['img/index/plus-icon.svg']) ?>" alt="">
+                                <p class="Font-size18">Нет возможности отслеживать выполнение</p>
+                            </li>
+                        </ul>
+                        <button class="Font-size24">Выбрать</button>
+                        <b class="Font-size18">Цена: бесплатно</b>
+                    </div>
+                    <div class="ModalProBasic">
+                        <h2 class="Font-size24">Начальный</h2>
+                        <ul>
+                            <li>
+                                <img src="<?= Url::to(['img/index/plus-icon.svg']) ?>" alt="">
+                                <p class="Font-size18">Количество объявлений Х</p>
+                            </li>
+                            <li>
+                                <img src="<?= Url::to(['img/index/plus-icon.svg']) ?>" alt="">
+                                <p class="Font-size18">Нет возможности отслеживать выполнение</p>
+                            </li>
+                            <li>
+                                <img src="<?= Url::to(['img/index/plus-icon.svg']) ?>" alt="">
+                                <p class="Font-size18">Количество объявлений Х</p>
+                            </li>
+                            <li>
+                                <img src="<?= Url::to(['img/index/plus-icon.svg']) ?>" alt="">
+                                <p class="Font-size18">Нет возможности отслеживать выполнение</p>
+                            </li>
+                            <li>
+                                <img src="<?= Url::to(['img/index/plus-icon.svg']) ?>" alt="">
+                                <p class="Font-size18">Количество объявлений Х</p>
+                            </li>
+                            <li>
+                                <img src="<?= Url::to(['img/index/plus-icon.svg']) ?>" alt="">
+                                <p class="Font-size18">Нет возможности отслеживать выполнение</p>
+                            </li>
+                        </ul>
+                        <button class="Font-size24">Выбрать</button>
+                        <b class="Font-size18">Цена: бесплатно</b>
                     </div>
                 </div>
             </div>
