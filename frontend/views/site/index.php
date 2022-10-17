@@ -304,7 +304,7 @@ AppAsset::register($this);
     <div class="specialization-items container-index">
         <?php if (!empty($categories)) : ?>
             <?php foreach ($categories as $v) : ?>
-                <a href="<?= Url::to(['performers-page']) ?>">
+                <a href="<?= Url::to(['performers-catalog']) ?>">
                     <div class="specialization-item" style="background-image: linear-gradient(0deg, rgba(63, 63, 63, 0.5), rgba(63, 63, 63, 0.5)), url(<?= Url::to([$v['image']]) ?>);">
                         <p class="Font-size24"><?= $v['title'] ?></p>
                     </div>

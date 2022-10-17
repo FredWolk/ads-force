@@ -15,6 +15,14 @@ $user = User::find()->where(['id' => Yii::$app->getUser()->getId()])
 
 ProfileCustomerAsset::register($this);
 $js = <<< JS
+$('.chat-hide').click(function(e){
+    $('.chat-hide').fadeOut(300);
+    $('.chat-show').fadeIn(300);
+});
+$('.chat-close').click(function(e){
+    $('.chat-show').fadeOut(300);
+    $('.chat-hide').fadeIn(300);
+});
 $('.avtorize-header').click(function (e) {
     if($(this).parent().find('.avtorize-modal').css('display') == "block"){
         $(this).parent().find('.avtorize-modal').fadeOut(300);
@@ -101,25 +109,28 @@ $this->registerJs($js);
                                 <label class="menu__btn" for="menu__toggle">
                                     <span></span>
                                 </label>
-                                <div class="entry">
+                                <div class="entry dis-none-header">
                                     <div class="login">Вход</div>
                                     <div class="registration">Регистрация</div>
                                 </div>
                                 <li>
-                                    <a class="menu__item" href="">Заказчику</a>
+                                    <a class="menu__item" href="<?= Url::to(['/']) ?>">Заказчику</a>
                                 </li>
                                 <li>
-                                    <a class="menu__item" href="">Исполнителю</a>
+                                    <a class="menu__item" href="<?= Url::to(['/for-customer']) ?>">Исполнителю</a>
                                 </li>
                                 <li>
-                                    <a class="menu__item" href="">Почему ADS.FORCE</a>
+                                    <a class="menu__item" href="<?= Url::to(['/why-we']) ?>">Почему ADS.FORCE</a>
                                 </li>
                                 <li>
-                                    <a class="menu__item" href="">Разместить заказ</a>
+                                    <a class="menu__item" href="<?= Url::to(['/']) ?>">Разместить заказ</a>
                                 </li>
                             </ul>
                         </div>
-                        <div class="logo">ADSFORCE</div>
+                        <a href="<?= Url::to(['/']) ?>">
+                            <div class="logo">ADSFORCE</div>
+                        </a>
+
                         <div class="language">
                             <span>Eng</span> <span>|</span> <img src="<?= Url::to(['img/footer-header/language-en.webp']) ?>" alt="logo">
                         </div>
@@ -127,16 +138,16 @@ $this->registerJs($js);
 
                     <div class="links">
                         <div class="link">
-                            <a href="">Заказчику</a>
+                            <a href="<?= Url::to(['/']) ?>">Заказчику</a>
                         </div>
                         <div class="link">
-                            <a href="">Исполнителю</a>
+                            <a href="<?= Url::to(['/for-customer']) ?>">Исполнителю</a>
                         </div>
                         <div class="link">
-                            <a href="">Почему ADS.FORCE</a>
+                            <a href="<?= Url::to(['/why-we']) ?>">Почему ADS.FORCE</a>
                         </div>
                         <div class="link">
-                            <a href="">Разместить заказ</a>
+                            <a href="<?= Url::to(['/']) ?>">Разместить заказ</a>
                         </div>
 
                     </div>
@@ -168,7 +179,7 @@ $this->registerJs($js);
                                 <div class="balance-user">
                                     <p class="Font-size18 main_color_text">Баланс: <?= $user['balance']['balance'] ?> руб.</p>
                                 </div>
-                                <a href="<?=Url::to(['profile-payment-info'])?>" class="button-add-balance Font-size18">Пополнить</a>
+                                <a href="<?= Url::to(['profile-payment-info']) ?>" class="button-add-balance Font-size18">Пополнить</a>
                             </div>
                             <ul>
                                 <li>
@@ -242,18 +253,18 @@ $this->registerJs($js);
                             <label class="menu__btn" for="menu__toggle">
                                 <span></span>
                             </label>
-                            <div class="entry">
+                            <div class="entry dis-none-header">
                                 <div class="login">Вход</div>
                                 <div class="registration">Регистрация</div>
                             </div>
                             <li>
-                                <a class="menu__item" href="">Заказчику</a>
+                                <a class="menu__item" href="<?= Url::to(['/']) ?>">Заказчику</a>
                             </li>
                             <li>
-                                <a class="menu__item" href="">Исполнителю</a>
+                                <a class="menu__item" href="<?= Url::to(['/for-customer']) ?>">Исполнителю</a>
                             </li>
                             <li>
-                                <a class="menu__item" href="">Почему ADS.FORCE</a>
+                                <a class="menu__item" href="<?= Url::to(['/why-we']) ?>">Почему ADS.FORCE</a>
                             </li>
                             <li>
                                 <a class="menu__item" href="">Разместить заказ</a>
@@ -272,7 +283,7 @@ $this->registerJs($js);
             </div>
         </header>
 
-        <main role="main" class="flex-shrink-0">
+        <main role="main" style="position:relative;"  class="flex-shrink-0">
             <div class="Profile-container">
                 <h1 class="title_color Font-size36">Личный кабинет заказчика</h1>
                 <div class="Profile-full">
@@ -287,7 +298,7 @@ $this->registerJs($js);
                             <div class="balance-user">
                                 <p class="Font-size18 main_color_text">Баланс: <?= $user['balance']['balance'] ?> руб.</p>
                             </div>
-                            <a href="<?=Url::to(['profile-payment-info'])?>" class="button-add-balance Font-size18">Пополнить</a>
+                            <a href="<?= Url::to(['profile-payment-info']) ?>" class="button-add-balance Font-size18">Пополнить</a>
                         </div>
                         <div class="left-navbar-bottom">
                             <ul>
@@ -295,7 +306,7 @@ $this->registerJs($js);
                                     <a href="<?= Url::to(['index']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'index' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/user-icon.svg']) ?>" alt="">Моя страница</a>
                                 </li>
                                 <li>
-                                    <a href="<?= Url::to(['profile-message']) ?>"class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-message' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/message-link.svg']) ?>" alt="">
+                                    <a href="<?= Url::to(['profile-message']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-message' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/message-link.svg']) ?>" alt="">
                                         Уведомления
                                     </a>
                                 </li>
@@ -345,11 +356,71 @@ $this->registerJs($js);
                                         <p class="Font-size18 main_color_text">Статья «SMM: что это такое и как работает»</p>
                                     </li>
                                 </ul>
-                                <a href="<?=Url::to(['profile-news'])?>" class="more-news Font-size18 title_color">Еще + </a>
+                                <a href="<?= Url::to(['profile-news']) ?>" class="more-news Font-size18 title_color">Еще + </a>
                             </div>
                         </div>
                     </section>
                     <?= $content ?>
+                    <div class="chat">
+                        <div class="chat-hide">
+                            <img src="<?= Url::to(['/img/index/rewievImg.png']) ?>" alt="">
+                            <div>
+                                <h2>Иванов Иван</h2>
+                                <p>Онлайн-поддержка ADSFORCE</p>
+                            </div>
+                        </div>
+                        <div class="chat-show">
+                            <div class="chat-show-header">
+                                <img src="<?= Url::to(['/img/index/rewievImg.png']) ?>" alt="">
+                                <p>Онлайн-поддержка ADSFORCE</p>
+                                <div class="chat-close">
+                                    &times;
+                                </div>
+                            </div>
+                            <div class="message-chat">
+                                <div class="message-container">
+                                    <div class="message-tehpod">
+                                        <div class="message-title">
+                                            <img src="<?= Url::to(['/img/index/rewievImg.png']) ?>" alt="">
+                                            <div class="message-main-content">
+                                                <div class="message-title-text">
+                                                    <h2>Иванов Иван</h2>
+                                                    <p>оператор чата</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="message-content-text">
+                                            <p>Здравствуйте! Буду рад Вам помочь по любому вопросу. </p>
+                                        </div>
+                                        <div class="message-content-text">
+                                            <p>Здравствуйте! Буду рад Вам помочь по любому вопросу. </p>
+                                        </div>
+                                        <div class="message-content-text">
+                                            <p>Здравствуйте! Буду рад Вам помочь по любому вопросу. </p>
+                                        </div>
+                                    </div>
+                                    <p class="dont-empty-form">Заполните данные ниже для продолжения диалога</p>
+                                    <form action="">
+                                        <input type="text" name="name" placeholder="Ваше имя">
+                                        <input type="tel" name="telephone" placeholder="Номер телефона">
+                                        <input type="email" name="email" placeholder="E-mail">
+                                    </form>
+                                </div>
+                                <div class="input-message-block">
+                                    <div class="input-message-relative">
+                                        <input type="text" class="input-message" placeholder="Сообщение">
+                                        <div class="left-buttons">
+                                            <img src="<?= Url::to(['img/profile/profile-chat/chat-smile.svg']) ?>" alt="">
+                                        </div>
+                                        <div class="right-buttons">
+                                            <img src="<?= Url::to(['img/profile/profile-chat/img-send.svg']) ?>" alt="">
+                                            <img src="<?= Url::to(['img/profile/profile-chat/send-message.svg']) ?>" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -385,13 +456,13 @@ $this->registerJs($js);
                     <div class="footer__links">
                         <div class="links__left-column">
                             <div class="link">
-                                <a href="">Заказчику</a>
+                                <a href="<?= Url::to(['/']) ?>">Заказчику</a>
                             </div>
                             <div class="link">
-                                <a href="">Исполнителю</a>
+                                <a href="<?= Url::to(['/for-customer']) ?>">Исполнителю</a>
                             </div>
                             <div class="link">
-                                <a href="">Почему ADS.FORCE</a>
+                                <a href="<?= Url::to(['/why-we']) ?>">Почему ADS.FORCE</a>
                             </div>
                             <div class="link">
                                 <a href="">Быстрый старт</a>
@@ -400,13 +471,13 @@ $this->registerJs($js);
 
                         <div class="links__right-column">
                             <div class="link">
-                                <a href="">ТОП — исполнителей</a>
+                                <a href="<?= Url::to(['/why-we']) ?>">ТОП — исполнителей</a>
                             </div>
                             <div class="link">
-                                <a href="">Каталог исполнителей</a>
+                                <a href="<?= Url::to(['/performers-page']) ?>>">Каталог исполнителей</a>
                             </div>
                             <div class="link">
-                                <a href="">Специализации</a>
+                                <a href="<?= Url::to(['/performers-catalog']) ?>">Специализации</a>
                             </div>
                             <div class="link">
                                 <a href="">Отзывы</a>
@@ -416,7 +487,7 @@ $this->registerJs($js);
                     </div>
 
                     <div class="info__other">
-                        <div class="entry">
+                        <div class="entry dis-none-header">
                             <div class="login">Вход</div>
                             <div class="registration">Регистрация</div>
                         </div>

@@ -172,6 +172,7 @@
     justify-content: space-between;
     display: flex;
     max-width: 418px;
+    cursor: pointer;
     align-items: center;
     transition: 0.5s;
     border: 1.5px solid #1EBBED;
@@ -184,7 +185,9 @@
     box-shadow: 0px 2px 15px rgba(225, 225, 225, 0.25);
     border-radius: 10px;
 }
-
+.act-items:hover .act-items-title h2{
+    color: #FFFFFF;
+}
 .act-items-img {
     display: flex;
     align-items: center;
@@ -250,7 +253,7 @@
     right: 0px;
     bottom: 0px;
     margin: 0px auto;
-    z-index: 3;
+    z-index: 4;
     background: #252525;
 }
 

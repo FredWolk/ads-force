@@ -29,6 +29,14 @@ $('.topShow').click(function(e) {
     $('.ModalPro').fadeIn(300);
     $('body').css({'overflow':'hidden'})
 });
+$('.chat-hide').click(function(e){
+    $('.chat-hide').fadeOut(300);
+    $('.chat-show').fadeIn(300);
+});
+$('.chat-close').click(function(e){
+    $('.chat-show').fadeOut(300);
+    $('.chat-hide').fadeIn(300);
+});
 $('.ModalClosePro').click(function(e) {
     $('.ModalPro').fadeOut(300);
     $('body').css({'overflow':'auto'})
@@ -236,57 +244,57 @@ AppAsset::register($this);
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= Url::to(['../site/tasks.php']) ?>">
+                                        <a href="<?= Url::to(['tasks']) ?>">
                                             <img src="<?= Url::to(['img/profile/profile-meneger/search-icon.svg']) ?>" alt="">
                                             <p>Поиск задач</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= Url::to(['profile-tasks']) ?>">
+                                        <a href="<?= Url::to(['profile-customer/profile-tasks']) ?>">
                                             <img src="<?= Url::to(['img/footer-header/doc-link-icon.svg']) ?>" alt="">
                                             <p>Мои задания/ работы</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= Url::to(['profile-message']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/message-link.svg']) ?>" alt="">
+                                        <a href="<?= Url::to(['profile-customer/profile-message']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/message-link.svg']) ?>" alt="">
                                             <p>Уведомления</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= Url::to(['index']) ?>">
+                                        <a href="<?= Url::to(['profile-customer/index']) ?>">
                                             <img src="<?= Url::to(['img/footer-header/user-icon.svg']) ?>" alt="">
                                             <p>Мой кабинет</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= Url::to(['profile-chat']) ?>">
+                                        <a href="<?= Url::to(['profile-customer/profile-chat']) ?>">
                                             <img src="<?= Url::to(['img/profile/profile-meneger/message-link-icon.svg']) ?>" alt="">
                                             <p>Сообщения</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= Url::to(['profile-payment-info']) ?>">
+                                        <a href="<?= Url::to(['profile-customer/profile-payment-info']) ?>">
                                             <img src="<?= Url::to(['img/footer-header/payment-link-icon.svg']) ?>" alt="">
                                             <p>Финансы</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= Url::to(['profile-pro']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/partners-link-icon.svg']) ?>" alt="">
+                                        <a href="<?= Url::to(['profile-customer/profile-pro']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/partners-link-icon.svg']) ?>" alt="">
                                             <p>Партнерская программа</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= Url::to(['technical-support']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/help-link-icon.svg']) ?>" alt="">
+                                        <a href="<?= Url::to(['profile-customer/technical-support']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/help-link-icon.svg']) ?>" alt="">
                                             <p>Служба поддержки</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= Url::to(['profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/seetings-link-icon.svg']) ?>" alt="">
+                                        <a href="<?= Url::to(['profile-customer/profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/seetings-link-icon.svg']) ?>" alt="">
                                             <p>Настройки</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= Url::to(['profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/exit-icon.svg']) ?>" alt="">
+                                        <a href="<?= Url::to(['profile-customer/profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/exit-icon.svg']) ?>" alt="">
                                             <p>Выйти</p>
                                         </a>
                                     </li>
@@ -495,8 +503,62 @@ AppAsset::register($this);
                 </div>
             </div>
         </div>
-        <main role="main" class="flex-shrink-0">
+        <main role="main" style="position:relative;" class="flex-shrink-0">
             <?= $content ?>
+            <div class="chat">
+                <div class="chat-hide">
+                    <img src="<?= Url::to(['/img/index/rewievImg.png']) ?>" alt="">
+                    <div>
+                        <h2>Иванов Иван</h2>
+                        <p>Онлайн-поддержка ADSFORCE</p>
+                    </div>
+                </div>
+                <div class="chat-show">
+                    <div class="chat-show-header">
+                        <img src="<?= Url::to(['/img/index/rewievImg.png']) ?>" alt="">
+                        <p>Онлайн-поддержка ADSFORCE</p>
+                        <div class="chat-close">
+                            &times;
+                        </div>
+                    </div>
+                    <div class="message-chat">
+                        <div class="message-container">
+                            <div class="message-tehpod">
+                                <div class="message-title1">
+                                    <img src="<?= Url::to(['/img/index/rewievImg.png']) ?>" alt="">
+                                    <div class="message-main-content">
+                                        <div class="message-title-text">
+                                            <h2>Иванов Иван</h2>
+                                            <p>оператор чата</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="message-content-text">
+                                    <p>Здравствуйте! Буду рад Вам помочь по любому вопросу. </p>
+                                </div>
+                            </div>
+                            <p class="dont-empty-form">Заполните данные ниже для продолжения диалога</p>
+                            <form action="">
+                                <input type="text" name="name" placeholder="Ваше имя">
+                                <input type="tel" name="telephone" placeholder="Номер телефона">
+                                <input type="email" name="email" placeholder="E-mail">
+                            </form>
+                        </div>
+                        <div class="input-message-block">
+                            <div class="input-message-relative">
+                                <input type="text" class="input-message" placeholder="Сообщение">
+                                <div class="left-buttons">
+                                    <img src="<?= Url::to(['img/profile/profile-chat/chat-smile.svg']) ?>" alt="">
+                                </div>
+                                <div class="right-buttons">
+                                    <img src="<?= Url::to(['img/profile/profile-chat/img-send.svg']) ?>" alt="">
+                                    <img src="<?= Url::to(['img/profile/profile-chat/send-message.svg']) ?>" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
 
         <footer class="mt-auto">

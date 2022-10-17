@@ -20,6 +20,19 @@ $arrMonth = [
 $this->registerCssFile(Url::to(['css/task-page.css']), ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' => ['frontend\assets\AppAsset']]);
 AppAsset::register($this);
+$js = <<< JS
+    $('.task-button').click(function (e) {
+        $('.modalRegister').css({'display':'flex'});
+    })
+    $('.modalRegisterClose').click(function (e) {
+        $('.modalRegister').css({'display':'none'});
+    });
+    $('.upwout-button').click(function (e) {
+        $('.success-modal').css({'display':'flex'});
+        $('.formModal').css({'display':'none'});
+    })
+JS;
+$this->registerJs($js);
 ?>
 <div class="container-index">
     <div class="task-page-full">
@@ -97,7 +110,37 @@ AppAsset::register($this);
             </div>
         </div>
         <div class="task-button">
-            <a href="<?= Url::to(['tasks']) ?>" class="Font-size28">Откликнуться</a>
+            <a class="Font-size28">Откликнуться</a>
         </div>
+    </div>
+</div>
+<div class="modalRegister">
+    <div class="modalRegisterContainer formModal">
+        <div class="modalRegisterClose">
+            &times;
+        </div>
+        <h2 class="Font-size24">Отклик на задание</h2>
+        <form action="">
+            <input type="text" placeholder="Введите имя">
+            <textarea name="" placeholder="Сообщение" id="" cols="30" rows="10"></textarea>
+        </form>
+        <div class="upload-file">
+            <div class="upload-link">
+                <img src="<?= Url::to(['img/task-page/upload-file.svg']) ?>" alt="">
+                <a class="Font-size18" href="">Добавить файлы</a>
+            </div>
+            <ul>
+                <li><a href="">файл1.png</a></li>
+            </ul>
+        </div>
+        <button class="upwout-button Font-size24">Откликнуться</button>
+    </div>
+    <div class="modalRegisterContainer success-modal">
+        <div class="modalRegisterClose">
+            &times;
+        </div>
+        <h2 class="Font-size24">Отклик на задание</h2>
+        <p class="Font-size18">Отклик успешно отправлен!</p>
+        <button>Перейти в сообщения</button>
     </div>
 </div>
