@@ -283,7 +283,7 @@ $this->registerJs($js);
             </div>
         </header>
 
-        <main role="main" style="position:relative;"  class="flex-shrink-0">
+        <main role="main" style="position:relative;" class="flex-shrink-0">
             <div class="Profile-container">
                 <h1 class="title_color Font-size36">Личный кабинет заказчика</h1>
                 <div class="Profile-full">
@@ -361,61 +361,61 @@ $this->registerJs($js);
                         </div>
                     </section>
                     <?= $content ?>
-                    <div class="chat">
-                        <div class="chat-hide">
+                </div>
+                <div class="chat">
+                    <div class="chat-hide">
+                        <img src="<?= Url::to(['/img/index/rewievImg.png']) ?>" alt="">
+                        <div>
+                            <h2>Иванов Иван</h2>
+                            <p>Онлайн-поддержка ADSFORCE</p>
+                        </div>
+                    </div>
+                    <div class="chat-show">
+                        <div class="chat-show-header">
                             <img src="<?= Url::to(['/img/index/rewievImg.png']) ?>" alt="">
-                            <div>
-                                <h2>Иванов Иван</h2>
-                                <p>Онлайн-поддержка ADSFORCE</p>
+                            <p>Онлайн-поддержка ADSFORCE</p>
+                            <div class="chat-close">
+                                &times;
                             </div>
                         </div>
-                        <div class="chat-show">
-                            <div class="chat-show-header">
-                                <img src="<?= Url::to(['/img/index/rewievImg.png']) ?>" alt="">
-                                <p>Онлайн-поддержка ADSFORCE</p>
-                                <div class="chat-close">
-                                    &times;
-                                </div>
-                            </div>
-                            <div class="message-chat">
-                                <div class="message-container">
-                                    <div class="message-tehpod">
-                                        <div class="message-title">
-                                            <img src="<?= Url::to(['/img/index/rewievImg.png']) ?>" alt="">
-                                            <div class="message-main-content">
-                                                <div class="message-title-text">
-                                                    <h2>Иванов Иван</h2>
-                                                    <p>оператор чата</p>
-                                                </div>
+                        <div class="message-chat">
+                            <div class="message-container">
+                                <div class="message-tehpod">
+                                    <div class="message-title">
+                                        <img src="<?= Url::to(['/img/index/rewievImg.png']) ?>" alt="">
+                                        <div class="message-main-content">
+                                            <div class="message-title-text">
+                                                <h2>Иванов Иван</h2>
+                                                <p>оператор чата</p>
                                             </div>
                                         </div>
-                                        <div class="message-content-text">
-                                            <p>Здравствуйте! Буду рад Вам помочь по любому вопросу. </p>
-                                        </div>
-                                        <div class="message-content-text">
-                                            <p>Здравствуйте! Буду рад Вам помочь по любому вопросу. </p>
-                                        </div>
-                                        <div class="message-content-text">
-                                            <p>Здравствуйте! Буду рад Вам помочь по любому вопросу. </p>
-                                        </div>
                                     </div>
-                                    <p class="dont-empty-form">Заполните данные ниже для продолжения диалога</p>
-                                    <form action="">
-                                        <input type="text" name="name" placeholder="Ваше имя">
-                                        <input type="tel" name="telephone" placeholder="Номер телефона">
-                                        <input type="email" name="email" placeholder="E-mail">
-                                    </form>
+                                    <div class="message-content-text">
+                                        <p>Здравствуйте! Буду рад Вам помочь по любому вопросу. </p>
+                                    </div>
+                                    <div class="message-content-text">
+                                        <p>Здравствуйте! Буду рад Вам помочь по любому вопросу. </p>
+                                    </div>
+                                    <div class="message-content-text">
+                                        <p>Здравствуйте! Буду рад Вам помочь по любому вопросу. </p>
+                                    </div>
                                 </div>
-                                <div class="input-message-block">
-                                    <div class="input-message-relative">
-                                        <input type="text" class="input-message" placeholder="Сообщение">
-                                        <div class="left-buttons">
-                                            <img src="<?= Url::to(['img/profile/profile-chat/chat-smile.svg']) ?>" alt="">
-                                        </div>
-                                        <div class="right-buttons">
-                                            <img src="<?= Url::to(['img/profile/profile-chat/img-send.svg']) ?>" alt="">
-                                            <img src="<?= Url::to(['img/profile/profile-chat/send-message.svg']) ?>" alt="">
-                                        </div>
+                                <p class="dont-empty-form">Заполните данные ниже для продолжения диалога</p>
+                                <form action="">
+                                    <input type="text" name="name" placeholder="Ваше имя">
+                                    <input type="tel" name="telephone" placeholder="Номер телефона">
+                                    <input type="email" name="email" placeholder="E-mail">
+                                </form>
+                            </div>
+                            <div class="input-message-block">
+                                <div class="input-message-relative">
+                                    <input type="text" class="input-message" placeholder="Сообщение">
+                                    <div class="left-buttons">
+                                        <img src="<?= Url::to(['img/profile/profile-chat/chat-smile.svg']) ?>" alt="">
+                                    </div>
+                                    <div class="right-buttons">
+                                        <img src="<?= Url::to(['img/profile/profile-chat/img-send.svg']) ?>" alt="">
+                                        <img src="<?= Url::to(['img/profile/profile-chat/send-message.svg']) ?>" alt="">
                                     </div>
                                 </div>
                             </div>

@@ -53,7 +53,7 @@ $this->registerJs($js);
 </section>
 <div class="FormPortfolio">
     <div class="back-link">
-        <a href="" class="Font-size18"><img src="<?= Url::to(['img/profile/private-profile/back-profile.svg']) ?>" alt="">Вернуться назад</a>
+        <a onclick="history.back()" class="Font-size18"><img src="<?= Url::to(['img/profile/private-profile/back-profile.svg']) ?>" alt="">Вернуться назад</a>
     </div>
     <div class="form-main-container">
         <div class="form-main-delete">

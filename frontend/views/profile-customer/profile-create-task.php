@@ -36,7 +36,7 @@ $this->registerJs($js);
 </section>
 <div class="Profile-container" style="max-width: 1110px; padding:0px 20px;">
     <div class="back-link">
-        <a href="" class="Font-size18"><img src="<?= Url::to(['img/profile/private-profile/back-profile.svg']) ?>" alt="">Вернуться назад</a>
+        <a onclick="history.back()" class="Font-size18"><img src="<?= Url::to(['img/profile/private-profile/back-profile.svg']) ?>" alt="">Вернуться назад</a>
     </div>
     <div class="create-task-full">
         <div class="create-task-select-full">
