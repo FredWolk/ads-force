@@ -311,11 +311,14 @@ AppAsset::register($this);
                 </a>
             <?php endforeach; ?>
         <?php endif; ?>
-        <a class="see_more" href="<?= Url::to(['performers-catalog']) ?>">Все категории</a>
+        <a class="see_more desc-category" href="<?= Url::to(['performers-catalog']) ?>">Все категории</a>
     </div>
     <div class="arrows-slider-specialization">
         <img class="prev-spec" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
         <img class="arrows-slider-right next-spec" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+    </div>
+    <div>
+        <a class="see_more mobile-all-category" href="<?= Url::to(['performers-catalog']) ?>">Все категории</a>
     </div>
 </section>
 <section class="progressBar">

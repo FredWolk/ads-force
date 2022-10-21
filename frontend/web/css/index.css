@@ -149,11 +149,13 @@
 }
 
 .performers-cards-mob {
-  display: none!important;
+  display: none !important;
 }
-.performers-container .arrows-slider{
-  display: none!important;
+
+.performers-container .arrows-slider {
+  display: none !important;
 }
+
 .Freelancer-content-buttons-prev button p {
   font-family: "Rubik", sans-serif;
   font-weight: 600;
@@ -245,7 +247,7 @@
 }
 
 .performers-container {
-  padding: 100px 15px;
+  padding: 50px 15px;
 }
 
 .rewiev-card-title p {
@@ -477,6 +479,11 @@
   color: #f535da;
 }
 
+.mobile-all-category {
+  display: none;
+  margin: 0px auto;
+}
+
 .rewiev-card {
   width: 100%;
   position: relative;
@@ -547,9 +554,11 @@
   column-gap: 11px;
   margin-top: 30px;
 }
-.slick-slide{
+
+.slick-slide {
   margin-bottom: 30px;
 }
+
 .arrows-slider-right {
   transform: rotate(-180deg);
 }
@@ -558,7 +567,7 @@
   font-size: 16px;
   color: #f535da;
   position: absolute;
-  right: 0;
+  right: 30px;
   bottom: -45px;
   max-width: fit-content;
 }
@@ -648,15 +657,28 @@
     flex-direction: column;
     align-items: center;
   }
+
   .performers-cards-mob {
-    display: block!important;
+    display: block !important;
   }
-  .performers-container .arrows-slider{
-    display: flex!important;
+
+  .desc-category {
+    display: none;
+  }
+
+  .mobile-all-category {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    color: #f535da;
+  }
+
+  .performers-container .arrows-slider {
+    display: flex !important;
   }
 
   .desctop-performer {
-    display: none!important;
+    display: none !important;
   }
 
   .progress-bar-content ul li div h1 {

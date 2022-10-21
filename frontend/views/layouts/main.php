@@ -195,7 +195,7 @@ AppAsset::register($this);
                                 </li>
                             </ul>
                         </div>
-                        <a href="/" class="logo">ADSFORCE</a>
+                        <a href="<?= Url::to(['/']) ?>" class="logo">ADSFORCE</a>
                         <div class="language">
                             <span>Eng</span> <span>|</span> <img src="<?= Url::to(['img/footer-header/language-en.webp']) ?>" alt="logo">
                         </div>
@@ -601,7 +601,7 @@ AppAsset::register($this);
                                 <a href="<?= Url::to(['why-we']) ?>">Почему ADS.FORCE</a>
                             </div>
                             <div class="link">
-                                <a href="">Быстрый старт</a>
+                                <a href="<?= Url::to(['why-we']) ?>">Быстрый старт</a>
                             </div>
                         </div>
 
@@ -616,7 +616,7 @@ AppAsset::register($this);
                                 <a href="<?= Url::to(['index']) ?>">Специализации</a>
                             </div>
                             <div class="link">
-                                <a href="">Отзывы</a>
+                                <a href="<?= Url::to(['profile-performer/profile-private']) ?>">Отзывы</a>
                             </div>
                         </div>
 

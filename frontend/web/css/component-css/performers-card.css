@@ -9,6 +9,9 @@
     display: flex;
     gap: 30px;
 }
+.performers-cards a{
+    height: 260px!important;
+}
 
 
 .performers-card:hover .performers-card-right ul li::before {

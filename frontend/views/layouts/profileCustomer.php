@@ -471,16 +471,16 @@ $this->registerJs($js);
 
                         <div class="links__right-column">
                             <div class="link">
-                                <a href="<?= Url::to(['/why-we']) ?>">ТОП — исполнителей</a>
+                                <a href="<?= Url::to(['/performers-page']) ?>">ТОП — исполнителей</a>
                             </div>
                             <div class="link">
-                                <a href="<?= Url::to(['/performers-page']) ?>>">Каталог исполнителей</a>
+                                <a href="<?= Url::to(['/performers-catalog']) ?>">Каталог исполнителей</a>
                             </div>
                             <div class="link">
-                                <a href="<?= Url::to(['/performers-catalog']) ?>">Специализации</a>
+                                <a href="">Специализации</a>
                             </div>
                             <div class="link">
-                                <a href="">Отзывы</a>
+                                <a href="<?= Url::to(['profile-performer/profile-private']) ?>">Отзывы</a>
                             </div>
                         </div>
 
