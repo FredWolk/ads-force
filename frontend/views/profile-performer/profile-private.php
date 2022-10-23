@@ -131,13 +131,13 @@ $('.tasks-nav').click(function(e){
 $('.ModalClose').click(function(e){
     $('.modalPortfolio').fadeOut(300);
     $('.modalPortfolio').css({'overflow':'none'});
-    $('body').css({'overflow':'none'});
+    $('html').css({'overflow':'auto'});
 });
 
 $('.card-portfolio').click(function(e){
     $('.modalPortfolio').fadeIn(300);
     $('.modalPortfolio').css({'overflow':'auto'});
-    $('body').css({'overflow':'none'});
+    $('html').css({'overflow':'none'});
 });
 $('.mobile-review-text').click(function(e){
     if($(this).parent().find('.block-mobile-information-content').css('display') == "block"){
