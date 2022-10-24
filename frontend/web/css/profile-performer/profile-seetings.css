@@ -16,7 +16,19 @@
     padding-bottom: 55px;
     border-bottom: 1px solid #BDBDBD;
 }
-
+.button-pro{
+    font-size: 16px;
+    font-weight: 500;
+    padding: 20px;
+    color: #FFFFFF;
+    justify-content: center;
+    text-decoration: none!important;
+    max-width: 191px;
+    display: inline-flex;
+    width: 100%;
+    border: 2px solid #F535DA;
+    border-radius: 100px;
+}
 .change-input {
     width: 100%;
     max-width: 417px;
@@ -53,6 +65,8 @@
     flex-direction: column;
     align-items: center;
     row-gap: 10px;
+    max-width: 191px;
+    width: 100%;
 }
 
 .change-photo-text a {
