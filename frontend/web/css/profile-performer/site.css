@@ -42,6 +42,10 @@ body {
     flex-direction: column;
 }
 
+.dark-bg {
+    cursor: pointer;
+}
+
 .Profile-container {
     max-width: 1110px;
     margin: 0px auto;

@@ -174,7 +174,7 @@ footer {
     height: 32px;
 }
 
-.info__contacts a, img {
+.info__contacts a{
     cursor: pointer;
 }
 

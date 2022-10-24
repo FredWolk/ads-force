@@ -45,6 +45,7 @@
 .create-task-select-title {
     border: 1px solid #1EBBED;
     padding: 12px;
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     border-radius: 5px 5px 0px 0px;

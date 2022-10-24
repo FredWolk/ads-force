@@ -50,6 +50,7 @@
     max-width: 214px;
     color: #FFFFFF;
     width: 100%;
+    cursor: pointer;
     background: #F535DA;
     border-radius: 100px;
 }
@@ -57,6 +58,7 @@
 .withdraw-button {
     padding: 20px;
     max-width: 214px;
+    cursor: pointer;
     width: 100%;
     background: none;
     border: 1.5px solid #F535DA;
@@ -130,7 +132,9 @@
     align-items: center;
     column-gap: 10px;
 }
-
+.main-content-form img{
+    cursor:pointer;
+}
 .button-form {
     width: 100%;
 }
@@ -256,7 +260,16 @@
     z-index: 4;
     background: #252525;
 }
-
+.ModalPurcase{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: 0px auto;
+    z-index: 4;
+    background: #252525;
+}
 .modalBlock {
     background: linear-gradient(0deg, #FC00FF -8.13%, #00DBDE 100%);
     border-radius: 10px;
