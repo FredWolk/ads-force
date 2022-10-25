@@ -66,6 +66,61 @@
     background: #252525;
 }
 
+.modalReview {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    flex-direction: column;
+    overflow: auto;
+    display: none;
+    row-gap: 15px;
+    justify-content: center;
+    margin: 0px auto;
+    z-index: 3;
+    background: #252525;
+}
+
+.content-text textarea {
+    width: 100%;
+    padding: 15px;
+    resize: none;
+    border-radius: 8px;
+}
+
+.information-text-profile textarea {
+    width: 100%;
+    padding: 15px;
+    resize: none;
+    border-radius: 8px;
+}
+
+.modalReviewContainer {
+    max-width: 912px;
+    display: flex;
+    margin: 0px auto;
+}
+
+.rewiev-card {
+    position: relative;
+}
+
+.rewiev-card-close {
+    position: absolute;
+    top: 15px;
+    cursor: pointer;
+    font-size: 25px;
+    color: #F535DA;
+    right: 15px;
+}
+
+.modalReview .arrows-slider {
+    width: 100%;
+    margin: 0px auto;
+    max-width: 912px;
+}
+
 .ModalClose {
     position: absolute;
     right: 30px;

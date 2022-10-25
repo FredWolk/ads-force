@@ -10,15 +10,16 @@ $js = <<< JS
 $('.select-category-text').click(function(){
     if($('.select-category-list').css('display') == "none"){
         $('.select-category-list').fadeIn(300);
-        $(this).find('img').css({'transform':'translate(0%, -50%) rotate(-180deg) '})
+        $(this).find('img').css({'transform':'translate(0%, -50%) rotate(-180deg) '});
 }
     else{
         $('.select-category-list').fadeOut(300);
-        $(this).find('img').css({'transform':'translate(0%, -50%) rotate(0deg)'})
     }
 })
 $('.container').click(function(){
     $('.select-category-list').fadeOut(300);
+    $('.select-category-text p').html($(this).text());
+    $('.select-category-text').find('img').css({'transform':'translate(0%, -50%) rotate(0deg)'});
 });
 JS;
 $this->registerJs($js);
@@ -44,7 +45,7 @@ $this->registerJs($js);
                             </label>
                         </li>
                         <li>
-                            <label class="container Font-size18 main_color_text">One
+                            <label class="container Font-size18 main_color_text">One1
                                 <input type="radio" name="radio">
                                 <span class="checkmark"></span>
                             </label>
@@ -55,8 +56,8 @@ $this->registerJs($js);
         </div>
         <div class="tema-tehnical">
             <b class="main_color_text">Тема</b>
-            <div class="tema-tehnical-text white_color_bg">
-                <p class="main_color_text">Возврат денег</p>
+            <div class="">
+                <input class="main_color_text tema-tehnical-text white_color_bg" name="" placeholder="Введите тему проблемы"/>
             </div>
         </div>
         <div class="text-area">

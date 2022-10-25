@@ -61,6 +61,7 @@ $this->registerJs($js);
             <div class="change-photo-text">
                 <a href="">Выбрать файл</a>
                 <p>Файл не выбран</p>
+                <a href="<?= Url::to(['profile-pro']) ?>" class="button-pro">Стать PRO</a>
             </div>
         </div>
         <div class="change-input">

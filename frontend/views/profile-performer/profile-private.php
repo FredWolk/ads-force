@@ -53,51 +53,11 @@ responsive: [
     }
   ]
 });
-$('.img-slider-items').slick({
-  slidesToShow: 2,
-  slidesToScroll: 1,
-  prevArrow: $('.prev-img'),
-nextArrow: $('.next-img'),
-responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 2
-      }
-    },
-    {
-      breakpoint: 580,
-      settings: {
-        slidesToShow: 1
-      }
-    }
-  ]
-});
   $('.tasks-items-mobile').slick({
   slidesToShow: 2,
   slidesToScroll: 1,
   prevArrow: $('.prev-tasks-mobile'),
 nextArrow: $('.next-tasks-mobile'),
-responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 2
-      }
-    },
-    {
-      breakpoint: 580,
-      settings: {
-        slidesToShow: 1
-      }
-    }
-  ]
-});
-  $('.tasks-items').slick({
-  slidesToShow: 2,
-  slidesToScroll: 1,
-  prevArrow: $('.prev-tasks'),
-nextArrow: $('.next-tasks'),
 responsive: [
     {
       breakpoint: 768,
@@ -127,17 +87,57 @@ $('.tasks-nav').click(function(e){
     $('.content-text').fadeOut(300);
     $('.rewiev-full').fadeOut(300);
     $('.tasks-item').fadeIn(300);
+  $('.tasks-items').slick({
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  prevArrow: $('.prev-tasks'),
+nextArrow: $('.next-tasks'),
+responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 580,
+      settings: {
+        slidesToShow: 1
+      }
+    }
+  ]
+});
 });
 $('.ModalClose').click(function(e){
     $('.modalPortfolio').fadeOut(300);
     $('.modalPortfolio').css({'overflow':'none'});
-    $('body').css({'overflow':'none'});
+    $('html,body').css({'overflow':'auto'});
 });
 
 $('.card-portfolio').click(function(e){
     $('.modalPortfolio').fadeIn(300);
     $('.modalPortfolio').css({'overflow':'auto'});
-    $('body').css({'overflow':'none'});
+    $('html,body').css({'overflow':'none'});
+$('.img-slider-items').slick({
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  prevArrow: $('.prev-img'),
+nextArrow: $('.next-img'),
+responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 580,
+      settings: {
+        slidesToShow: 1
+      }
+    }
+  ]
+});
 });
 $('.mobile-review-text').click(function(e){
     if($(this).parent().find('.block-mobile-information-content').css('display') == "block"){
@@ -163,7 +163,48 @@ $('.mobile-information-text').click(function(e){
         $(this).find('img').css({'transform':'rotate(-180deg) '})
     }
 })
-
+$('.load-more-rewiev').click(function(e) {
+    $('.modalReview').css({'display':'flex'});
+$('.modalReviewContainer').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  prevArrow: $('.prev-review-modal'),
+nextArrow: $('.next-review-modal')
+});
+});
+$('.rewiev-card-close').click(function(e) {
+    $('.modalReview').fadeOut(300);
+});
+$('.content-text img').click(function(e){
+    if($('.content-text p').css('display') !== "none"){
+        $('.content-text').append('<textarea rows="10" cols="45" name="text"> </ textarea>');
+    $('.content-text textarea').text($('.content-text p').text());
+    $('.content-text textarea').removeAttr('id');
+    $('.content-text textarea').addClass('bg-chat');
+    $('.content-text textarea').addClass('main_color_text');
+    $('.content-text p').css({'display':'none'});
+    $('.content-text textarea').attr('type', 'text');
+    }
+    else{
+        $('.content-text p').css({'display':'inline'});
+        $('.content-text textarea').css({'display':'none'})
+    }
+});
+$('.information-text-profile img').click(function(e){
+    if($('.information-text-profile p').css('display') !== "none"){
+        $('.information-text-profile').append('<textarea rows="10" cols="45" name="text"> </ textarea>');
+    $('.information-text-profile textarea').text($('.content-text p').text());
+    $('.information-text-profile textarea').removeAttr('id');
+    $('.information-text-profile textarea').addClass('bg-chat');
+    $('.information-text-profile textarea').addClass('main_color_text');
+    $('.information-text-profile p').css({'display':'none'});
+    $('.information-text-profile textarea').attr('type', 'text');
+    }
+    else{
+        $('.information-text-profile p').css({'display':'inline'});
+        $('.information-text-profile textarea').css({'display':'none'})
+    }
+});
 JS;
 $this->registerJs($js);
 ?>
@@ -172,6 +213,44 @@ $this->registerJs($js);
         <img src="<?= Url::to(['img/profile/private-profile/img-fon.png']) ?>" alt="">
     </div>
 </section>
+<div class="modalReview">
+    <div class="modalReviewContainer">
+        <div class="rewiev-card white_color_bg">
+            <div class="rewiev-card-close">
+                &times;
+            </div>
+            <div class="rewiev-card-top">
+                <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
+                <div class="rewiev-card-title">
+                    <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
+                    <p class="main_color_text">Заказчик</p>
+                </div>
+            </div>
+            <div class="rewiev-card-content">
+                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+            </div>
+        </div>
+        <div class="rewiev-card white_color_bg">
+            <div class="rewiev-card-close">
+                &times;
+            </div>
+            <div class="rewiev-card-top">
+                <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
+                <div class="rewiev-card-title">
+                    <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
+                    <p class="main_color_text">Заказчик</p>
+                </div>
+            </div>
+            <div class="rewiev-card-content">
+                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+            </div>
+        </div>
+    </div>
+    <div class="arrows-slider container-index">
+        <img class="prev-review-modal" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+        <img class="arrows-slider-right next-review-modal" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+    </div>
+</div>
 <div class="modalPortfolio">
     <div class="modalPortfolioContainer">
         <div class="portfolioBG">
@@ -223,7 +302,7 @@ $this->registerJs($js);
                     <div class="profile-name">
                         <h2 class="Font-size24 main_color_text">Иванова Мария Иванова Мария</h2>
                         <img src="<?= Url::to(['img/profile/private-profile/confirm-icon.svg']) ?>" alt="">
-                        <img src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt="">
+                        <a href="<?= Url::to(['profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt=""></a>
                     </div>
                     <p class="main_color_text">заказчик</p>
                     <div class="performers-card-stars">
@@ -294,7 +373,7 @@ $this->registerJs($js);
                             </div>
                         </div>
                         <div class="rewiev-card-content">
-                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span style="color:#F535DA;">читать далее</span></p>
+                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
                         </div>
                     </div>
                     <div class="rewiev-card">
@@ -306,7 +385,7 @@ $this->registerJs($js);
                             </div>
                         </div>
                         <div class="rewiev-card-content">
-                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span style="color:#F535DA;">читать далее</span></p>
+                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
                         </div>
                     </div>
                     <div class="rewiev-card">
@@ -318,7 +397,7 @@ $this->registerJs($js);
                             </div>
                         </div>
                         <div class="rewiev-card-content">
-                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span style="color:#F535DA;">читать далее</span></p>
+                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
                         </div>
                     </div>
                 </div>
@@ -364,7 +443,7 @@ $this->registerJs($js);
                                 </div>
                             </div>
                             <div class="rewiev-card-content">
-                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
                             </div>
                         </div>
                         <div class="rewiev-card">
@@ -376,7 +455,7 @@ $this->registerJs($js);
                                 </div>
                             </div>
                             <div class="rewiev-card-content">
-                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт...<span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
                             </div>
                         </div>
                         <div class="rewiev-card">
@@ -388,7 +467,7 @@ $this->registerJs($js);
                                 </div>
                             </div>
                             <div class="rewiev-card-content">
-                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
                             </div>
                         </div>
                     </div>

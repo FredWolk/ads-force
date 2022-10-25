@@ -28,7 +28,9 @@
     margin-bottom: 30px;
     cursor: pointer;
 }
-
+.button-add-balance:hover{
+    color: #FFFFFF;
+}
 .circle-message {
     background: #F535DA;
     height: 100%;

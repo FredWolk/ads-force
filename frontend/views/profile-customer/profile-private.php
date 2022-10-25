@@ -53,6 +53,37 @@ responsive: [
     }
   ]
 });
+
+$('.content-text img').click(function(e){
+    if($('.content-text p').css('display') !== "none"){
+        $('.content-text').append('<textarea rows="10" cols="45" name="text"> </ textarea>');
+    $('.content-text textarea').text($('.content-text p').text());
+    $('.content-text textarea').removeAttr('id');
+    $('.content-text textarea').addClass('bg-chat');
+    $('.content-text textarea').addClass('main_color_text');
+    $('.content-text p').css({'display':'none'});
+    $('.content-text textarea').attr('type', 'text');
+    }
+    else{
+        $('.content-text p').css({'display':'inline'});
+        $('.content-text textarea').css({'display':'none'})
+    }
+});
+$('.information-text-profile img').click(function(e){
+    if($('.information-text-profile p').css('display') !== "none"){
+        $('.information-text-profile').append('<textarea rows="10" cols="45" name="text"> </ textarea>');
+    $('.information-text-profile textarea').text($('.content-text p').text());
+    $('.information-text-profile textarea').removeAttr('id');
+    $('.information-text-profile textarea').addClass('bg-chat');
+    $('.information-text-profile textarea').addClass('main_color_text');
+    $('.information-text-profile p').css({'display':'none'});
+    $('.information-text-profile textarea').attr('type', 'text');
+    }
+    else{
+        $('.information-text-profile p').css({'display':'inline'});
+        $('.information-text-profile textarea').css({'display':'none'})
+    }
+});
 $('.rewiev-nav').click(function(e){
     $('.content-text').fadeOut(300);
     $('.rewiev-full').fadeIn(300);
@@ -92,7 +123,18 @@ $('.mobile-information-text').click(function(e){
         $(this).find('img').css({'transform':'rotate(-180deg) '})
     }
 })
-
+$('.load-more-rewiev').click(function(e) {
+    $('.modalReview').css({'display':'flex'});
+$('.modalReviewContainer').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  prevArrow: $('.prev-review-modal'),
+nextArrow: $('.next-review-modal')
+});
+});
+$('.rewiev-card-close').click(function(e) {
+    $('.modalReview').fadeOut(300);
+});
 JS;
 $this->registerJs($js);
 ?>
@@ -101,6 +143,44 @@ $this->registerJs($js);
         <img src="<?= Url::to(['img/profile/private-profile/img-fon.png']) ?>" alt="">
     </div>
 </section>
+<div class="modalReview">
+    <div class="modalReviewContainer">
+        <div class="rewiev-card white_color_bg">
+            <div class="rewiev-card-close">
+                &times;
+            </div>
+            <div class="rewiev-card-top">
+                <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
+                <div class="rewiev-card-title">
+                    <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
+                    <p class="main_color_text">Заказчик</p>
+                </div>
+            </div>
+            <div class="rewiev-card-content">
+                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+            </div>
+        </div>
+        <div class="rewiev-card white_color_bg">
+            <div class="rewiev-card-close">
+                &times;
+            </div>
+            <div class="rewiev-card-top">
+                <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
+                <div class="rewiev-card-title">
+                    <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
+                    <p class="main_color_text">Заказчик</p>
+                </div>
+            </div>
+            <div class="rewiev-card-content">
+                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+            </div>
+        </div>
+    </div>
+    <div class="arrows-slider container-index">
+        <img class="prev-review-modal" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+        <img class="arrows-slider-right next-review-modal" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+    </div>
+</div>
 <div class="Profile-container" style="max-width: 1110px; padding:0px 20px;">
     <div class="back-link">
         <a onclick="history.back()" class="Font-size18"><img src="<?= Url::to(['img/profile/private-profile/back-profile.svg']) ?>" alt="">Вернуться назад</a>
@@ -118,7 +198,7 @@ $this->registerJs($js);
                     <div class="profile-name">
                         <h2 class="Font-size24 main_color_text">Иванова Мария Иванова Мария</h2>
                         <img src="<?= Url::to(['img/profile/private-profile/confirm-icon.svg']) ?>" alt="">
-                        <img src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt="">
+                        <a href="<?= Url::to(['profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt=""></a>
                     </div>
                     <p class="main_color_text">заказчик</p>
                     <div class="performers-card-stars">
@@ -189,7 +269,7 @@ $this->registerJs($js);
                             </div>
                         </div>
                         <div class="rewiev-card-content">
-                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
                         </div>
                     </div>
                     <div class="rewiev-card">
@@ -201,7 +281,7 @@ $this->registerJs($js);
                             </div>
                         </div>
                         <div class="rewiev-card-content">
-                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
                         </div>
                     </div>
                     <div class="rewiev-card">
@@ -213,7 +293,7 @@ $this->registerJs($js);
                             </div>
                         </div>
                         <div class="rewiev-card-content">
-                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
                         </div>
                     </div>
                 </div>
@@ -315,7 +395,7 @@ $this->registerJs($js);
                                 </div>
                             </div>
                             <div class="rewiev-card-content">
-                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
                             </div>
                         </div>
                         <div class="rewiev-card">
@@ -327,7 +407,7 @@ $this->registerJs($js);
                                 </div>
                             </div>
                             <div class="rewiev-card-content">
-                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
                             </div>
                         </div>
                         <div class="rewiev-card">
@@ -339,7 +419,7 @@ $this->registerJs($js);
                                 </div>
                             </div>
                             <div class="rewiev-card-content">
-                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
+                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
                             </div>
                         </div>
                     </div>

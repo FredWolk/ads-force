@@ -16,11 +16,17 @@ $('.add-button').click(function(e) {
 });
 $('.Modal-close').click(function(e) {
     $('.ModalPuyment').fadeOut(300);
+    $('.ModalPurcase').fadeOut(300);
     $('body').css({'overflow':'auto'})
 });
 $('.closeModalButton').click(function(e) {
     $('.ModalPuyment').fadeOut(300);
+    $('.ModalPurcase').fadeOut(300);
     $('body').css({'overflow':'auto'})
+});
+$('.withdraw-button').click(function(e) {
+    $('.ModalPurcase').css({'display':'flex'});
+    $('body').css({'overflow':'hidden'});
 });
 JS;
 $this->registerJs($js);
@@ -40,6 +46,26 @@ $this->registerJs($js);
                     <p>Подтверждаю согласие с условиями обработки данных</p>
                 </div>
                 <button class="puymentModalButton">Оплатить</button>
+                <button class="closeModalButton">Отмена</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="ModalPurcase" style="display: none;">
+    <div class="modalBlock">
+        <div class="Modal-close">
+            <p>&times;</p>
+        </div>
+        <h2 class="Font-size24">Вывести средства</h2>
+        <div class="modalBlockForm">
+            <form action="">
+                <p>Сумма</p>
+                <input type="number" placeholder="Минимальная сумма вывода 5000 руб.">
+                <div class="formCheckbox">
+                    <input type="checkbox">
+                    <p>Подтверждаю согласие с условиями обработки данных</p>
+                </div>
+                <button class="puymentModalButton">Вывести</button>
                 <button class="closeModalButton">Отмена</button>
             </form>
         </div>
