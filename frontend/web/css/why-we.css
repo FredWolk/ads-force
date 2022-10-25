@@ -75,7 +75,17 @@
 .darkblue-link {
   color: #4135f1;
 }
+.green-link:hover {
+  color: #27ae60;
+}
 
+.blue-link:hover {
+  color: #1a83ff;
+}
+
+.darkblue-link:hover {
+  color: #4135f1;
+}
 .advantage-company {
   margin-bottom: 100px;
 }
