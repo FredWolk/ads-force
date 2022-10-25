@@ -7,19 +7,23 @@ use yii\helpers\Url;
 $this->title = 'ADS.Force';
 $this->registerCssFile(Url::to(['css/profile-performer/profile-meneger.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
 $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
-switch ($user['info']['position']) {
-    case 'Базовый':
-        $left = '33%';
-        break;
-    case 'Продвинутый':
-        $left = '66%';
-        break;
-    case 'Профи':
-        $left = '98%';
-        break;
-    default:
-        $left = '0%';
+$left = '0%';
+if (!empty($user['info']['position'])) {
+    switch ($user['info']['position']) {
+        case 'Базовый':
+            $left = '33%';
+            break;
+        case 'Продвинутый':
+            $left = '66%';
+            break;
+        case 'Профи':
+            $left = '98%';
+            break;
+        default:
+            $left = '0%';
+    }
 }
+
 
 ?>
 
@@ -85,7 +89,7 @@ switch ($user['info']['position']) {
                     <p class="Font-size18 main_color_text">Статья «SMM: что это такое и как работает»</p>
                 </li>
             </ul>
-            <a href="<?=Url::to(['profile-news'])?>" class="more-news Font-size18 title_color">Еще + </a>
+            <a href="<?= Url::to(['profile-news']) ?>" class="more-news Font-size18 title_color">Еще + </a>
         </div>
     </div>
 </section>
