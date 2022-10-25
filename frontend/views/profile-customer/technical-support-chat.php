@@ -1,6 +1,8 @@
 <?php
 
+use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\Pjax;
 
 $this->title = 'ADS.Force';
 $this->registerCssFile(Url::to(['css/profile-performer/technical-support-chat.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
@@ -20,6 +22,10 @@ $('.chat-private-show').click(function(){
 $('.container').click(function(){
     $('.select-category-list').fadeOut(300);
 });
+$('.send__message').on('submit', function (e) {
+    e.preventDefault();
+
+})
 JS;
 $this->registerJs($js);
 ?>
@@ -28,21 +34,22 @@ $this->registerJs($js);
         <h2 class="main_color_text Font-size24">Данные обращения № 123456</h2>
     </div>
     <div class="support-chat-information">
-        <div class="information-item">
+        <!-- <div class="information-item">
             <p class="Font-size18">Раздел:</p>
             <b class="main_color_text">Статус PRO</b>
-        </div>
+        </div> -->
+        <?php dump($dialog) ?>
         <div class="information-item">
             <p class="Font-size18">Тема:</p>
-            <b class="main_color_text">Продление статуса</b>
+            <b class="main_color_text"><?= $dialog['theme'] ?></b>
         </div>
         <div class="information-item">
             <p class="Font-size18">Дата:</p>
-            <b class="main_color_text">19.08.2022</b>
+            <b class="main_color_text"><?= date('d.m.Y', strtotime($dialog['date'])) ?></b>
         </div>
         <div class="information-item">
             <p class="Font-size18">Текст обращения:</p>
-            <b class="main_color_text">Здравствуйте! Не получается повторно продлить вип-статус.</b>
+            <b class="main_color_text"><?= $dialog['message'][0]['text'] ?></b>
         </div>
     </div>
     <div class="chat-private-show">
@@ -56,16 +63,36 @@ $this->registerJs($js);
             </div>
             <div class="header-chat-content">
                 <div class="header-chat-name">
-                    <h2 class="main_color_text">Дарья Агапова</h2>
+                    <h2 class="main_color_text">Ads.Force</h2>
                     <div class="header-chat-online"></div>
                 </div>
                 <p class="header-chat-status">в сети</p>
             </div>
         </div>
         <div class="chat-body-message">
+            <?php Pjax::begin(['id' => 'chatContainer']) ?>
             <div class="chat-body-main">
                 <div class="message-container">
                     <div class="message-user">
+                        <!-- <div class="message-user-header">
+                            <div class="header-chat-img bg-chat-img">
+                                <img src="<?= Url::to(['img/profile/profile-chat/profile-chat-private.png']) ?>" alt="">
+                            </div>
+                            <h2 class="main_color_text">Ads.Force</h2>
+                            <p>Тех. поддержка</p>
+                        </div> -->
+                        <div style="margin-left: 0;" class="message-list">
+                            <?php if (!empty($dialog['message'])) : ?>
+                                <?php foreach ($dialog['message'] as $item) : ?>
+                                    <div class="message-text <?= $item['is_support'] == 0 ? 'bg-chat' : 'my-message' ?>">
+                                        <p class="main_color_text"><?= $item['text'] ?></p>
+                                        <p class="time-message main_color_text"><?= date('H:i', strtotime($item['date'])) ?></p>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <!-- <div class="message-user">
                         <div class="message-user-header">
                             <div class="header-chat-img bg-chat-img">
                                 <img src="<?= Url::to(['img/profile/profile-chat/profile-chat-private.png']) ?>" alt="">
@@ -74,72 +101,28 @@ $this->registerJs($js);
                             <p>исполнитель</p>
                         </div>
                         <div class="message-list">
-                            <div class="message-text bg-chat">
-                                <p class="main_color_text">Текст сообщения</p>
-                                <p class="time-message main_color_text">14:00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="message-user">
-                        <div class="message-user-header">
-                            <div class="header-chat-img bg-chat-img">
-                                <img src="<?= Url::to(['img/profile/profile-chat/profile-chat-private.png']) ?>" alt="">
-                            </div>
-                            <h2 class="main_color_text">Дарья Агапова</h2>
-                            <p>исполнитель</p>
-                        </div>
-                        <div class="message-list">
                             <div class="message-text my-message">
                                 <p>Текст сообщения</p>
-                                <p class="time-message">14:00</p>
-                            </div>
-                            <div class="message-text my-message">
-                                <p>Текст сообщения</p>
-                                <p class="time-message">14:00</p>
-                            </div>
-                            <div class="message-text my-message">
-                                <p>Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения</p>
-                                <p class="time-message">14:00</p>
-                            </div>
-                            <div class="message-text my-message">
-                                <p>Текст сообщения</p>
-                                <p class="time-message">14:00</p>
-                            </div>
-                            <div class="message-text my-message">
-                                <p>Текст сообщения</p>
-                                <p class="time-message">14:00</p>
-                            </div>
-                            <div class="message-text my-message">
-                                <p>Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения</p>
-                                <p class="time-message">14:00</p>
-                            </div>
-                            <div class="message-text my-message">
-                                <p>Текст сообщения</p>
-                                <p class="time-message">14:00</p>
-                            </div>
-                            <div class="message-text my-message">
-                                <p>Текст сообщения</p>
-                                <p class="time-message">14:00</p>
-                            </div>
-                            <div class="message-text my-message">
-                                <p>Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения</p>
                                 <p class="time-message">14:00</p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
+            <?php Pjax::end(); ?>
             <div class="chat-body-input">
+                <?= Html::beginForm('', 'post', ['class' => 'send__message']) ?>
                 <input type="text" class="bg-chat" placeholder="Сообщение">
                 <div class="buttons-message">
-                    <div class="left-buttons">
+                    <!-- <div class="left-buttons">
                         <img src="<?= Url::to(['img/profile/profile-chat/chat-smile.svg']) ?>" alt="">
-                    </div>
+                    </div> -->
                     <div class="right-buttons">
-                        <img src="<?= Url::to(['img/profile/profile-chat/img-send.svg']) ?>" alt="">
+                        <!-- <img src="<?= Url::to(['img/profile/profile-chat/img-send.svg']) ?>" alt=""> -->
                         <img src="<?= Url::to(['img/profile/profile-chat/send-message.svg']) ?>" alt="">
                     </div>
                 </div>
+                <?= Html::endForm(); ?>
             </div>
         </div>
     </div>

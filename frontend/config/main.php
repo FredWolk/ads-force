@@ -57,6 +57,7 @@ return [
                 'performers-catalog' => 'site/performers-catalog',
                 'performers-page' => 'site/performers-page',
                 'profile-customer/profile-news-private/<link:>' => 'profile-customer/profile-news-private',
+                'profile-customer/technical-support-chat/<link:>' => 'profile-customer/technical-support-chat',
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
         ],

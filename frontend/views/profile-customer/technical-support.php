@@ -8,40 +8,33 @@ $this->registerCssFile(Url::to(['css/profile-performer/technical-support.css']),
 $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
 ?>
 <div class="rigth-column">
-    <div class="technical-support-title">
+    <div style="margin-bottom: 20px;" class="technical-support-title">
         <h2 class="main_color_text">Список обращений</h2>
-        <div class="review-switch">
+        <!-- <div class="review-switch">
             <label><input type="checkbox" class="ios-switch bigswitch" checked />
                 <div>
                     <div></div>
                 </div>
             </label>
             <p class="Font-size18 main_color_text">Показывать архив</p>
-        </div>
+        </div> -->
     </div>
     <div class="call-tehnical-list">
-        <div class="call-tehnical-item white_color_bg">
-            <div class="call-tehnical-item-img">
-                <img src="<?= Url::to(['img/profile/profile-chat/avatar-icon.svg']) ?>" alt="">
-            </div>
-            <div class="call-tehnical-item-text">
-                <b class="main_color_text">Владислав Редс</b>
-                <p>Техническая поддержка</p>
-                <a class="main_color_text" href="<?= Url::to(['technical-support-chat']) ?>">Тикет №123456 Заголовок — Тема</a>
-            </div>
-            <p class="date-call-tehnical">19 ноября</p>
-        </div>
-        <div class="call-tehnical-item white_color_bg">
-            <div class="call-tehnical-item-img">
-                <img src="<?= Url::to(['img/profile/profile-chat/avatar-icon.svg']) ?>" alt="">
-            </div>
-            <div class="call-tehnical-item-text">
-                <b class="main_color_text">Владислав Редс</b>
-                <p>Техническая поддержка</p>
-                <a class="main_color_text" href="<?= Url::to(['technical-support-chat']) ?>">Тикет №123456 Заголовок — Тема</a>
-            </div>
-            <p class="date-call-tehnical">19 ноября</p>
-        </div>
+        <?php if (!empty($dialogs)) : ?>
+            <?php foreach ($dialogs as $item) : ?>
+                <div class="call-tehnical-item white_color_bg">
+                    <div class="call-tehnical-item-img">
+                        <img src="<?= Url::to(['img/profile/profile-chat/avatar-icon.svg']) ?>" alt="">
+                    </div>
+                    <div class="call-tehnical-item-text">
+                        <b class="main_color_text">Ads.Force</b>
+                        <p>Техническая поддержка</p>
+                        <a class="main_color_text" href="<?= Url::to(['technical-support-chat', 'link' => $item['id']]) ?>">Тикет №<?= $item['id'] ?> Заголовок — <?= $item['theme'] ?></a>
+                    </div>
+                    <!-- <p class="date-call-tehnical">19 ноября</p> -->
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
         <div class="call-list-button">
             <a href="<?= Url::to(['technical-support-single']) ?>">Создать обращение</a>
             <div class="pagination-items">
@@ -89,7 +82,7 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
                             <p class="Font-size18 main_color_text">Статья «SMM: что это такое и как работает»</p>
                         </li>
                     </ul>
-                    <a href="<?=Url::to(['profile-news'])?>" class="more-news Font-size18 title_color">Еще + </a>
+                    <a href="<?= Url::to(['profile-news']) ?>" class="more-news Font-size18 title_color">Еще + </a>
                 </div>
             </div>
         </div>

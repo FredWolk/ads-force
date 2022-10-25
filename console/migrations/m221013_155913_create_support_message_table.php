@@ -14,6 +14,7 @@ class m221013_155913_create_support_message_table extends Migration
     {
         $this->createTable('{{%support_message}}', [
             'id'            => $this->primaryKey(),
+            'dialog_id'     => $this->integer()->notNull(),
             'is_support'    => $this->boolean()->defaultValue(0),
             'date'          => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
             'text'          => $this->text()->notNull(),

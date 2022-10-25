@@ -3,10 +3,13 @@
 namespace frontend\controllers;
 
 use console\models\News;
+use console\models\Support;
+use console\models\SupportMessage;
 use console\models\User;
 use Yii;
 use yii\data\Pagination;
 use yii\web\Controller;
+use yii\web\Response;
 
 class ProfileCustomerController extends Controller
 {
@@ -54,15 +57,53 @@ class ProfileCustomerController extends Controller
     }
     public function actionTechnicalSupport()
     {
-        return $this->render('technical-support');
+        $dialogs = Support::find()->asArray()->orderBy('status desc')->all();
+        return $this->render('technical-support', compact('dialogs'));
     }
-    public function actionTechnicalSupportChat()
+    public function actionTechnicalSupportChat($link)
     {
-        return $this->render('technical-support-chat');
+        $dialog = Support::find()->asArray()->with('message')->where(['id' => $link])->one();
+        return $this->render('technical-support-chat', compact('dialog'));
     }
+
+    public function actionSendMessage()
+    {
+        if (empty($_POST['message']) || empty($_POST['dialog_id'])) {
+            return ['status' => false, 'message' => 'Отсутствуют обязательные параметры'];
+        }
+    }
+
     public function actionTechnicalSupportSingle()
     {
         return $this->render('technical-support-single');
+    }
+    public function actionCreateTask()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if (empty($_POST['theme']) || empty($_POST['message'])) {
+            return ['status' => false, 'message' => 'Отсутствуют обязательные параметры'];
+        }
+        $model = new Support();
+        $model->user_id = Yii::$app->getUser()->getId();
+        $model->support_id = 0;
+        $model->theme = $_POST['theme'];
+        $model->status = Support::STATUS_OPEN;
+        $model->date = date('Y-m-d H:i:s');
+        if ($model->save()) {
+            $mes = new SupportMessage();
+            $mes->dialog_id = $model->id;
+            $mes->is_support = SupportMessage::USER;
+            $mes->date = date('Y-m-d H:i:s');
+            $mes->text = $_POST['message'];
+            $mes->is_read = SupportMessage::UN_READ;
+            if ($mes->save()) {
+                return $this->redirect(['technical-support-chat', 'link' => $model->id]);
+            } else {
+                return ['status' => false, 'message' => 'Ошибка сохранения сообщения'];
+            }
+        } else {
+            return ['status' => false, 'message' => 'Ошибка создания диалога'];
+        }
     }
     public function actionProfileCreateTask()
     {
