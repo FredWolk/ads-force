@@ -3,97 +3,85 @@
 /** @var \yii\web\View $this */
 /** @var string $content */
 
-use console\models\User;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use frontend\assets\ProfileCustomerAsset;
+use yii\widgets\LinkPager;
+use yii\widgets\Pjax;
 
 $this->registerCssFile(Url::to(['css/profile-performer/profile-news.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
+$js = <<< JS
+$('.news__block').on('change', '.date__checkbox', function () {
+    $('.news-category').submit();
+})
+$(".news__block").on('submit', '.news-category', function (e) {
+    e.preventDefault();
+    $.pjax.reload({
+        url: '',
+        type: 'POST',
+        data: $(this).serialize(),
+        container: '#newsContainer'
+    })
+})
+JS;
+$this->registerJs($js)
 ?>
-
-
-<div>
+<div class="news__block">
+    <?php Pjax::begin(['id' => 'newsContainer']) ?>
     <div class="title-news">
         <h2 class="Font-size36 main_color_text">Новости проекта</h2>
     </div>
-    <div class="news-category">
-        <a class="active-category Font-size18">Все</a>
-        <a class="Font-size18 main_color_text">За сутки</a>
-        <a class="Font-size18 main_color_text">За неделю</a>
-    </div>
-    <div class="news-list">
-        <a class="new-news">
-            <div class="new-news-item white_color_bg">
-                <img src="<?= Url::to(['/img/profile/profile-tasks/news-img.svg']) ?>" alt="">
-                <div class="new-news-text">
-                    <p class="new-news-day main_color_text">Сегодня</p>
-                    <h2 class="new-news-title Font-size18 main_color_text">Статья «Как реклама влияет на продажи?»</h2>
-                    <p class="new-news-content main_color_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-        </a>
-        <div class="news-medium-level">
-            <a class="news-medium-item white_color_bg">
-                <p class="new-news-day main_color_text">Сегодня</p>
-                <h2 class="Font-size18 main_color_text">Статья «Как реклама влияет на продажи?»</h2>
-                <p class="new-news-content main_color_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </a>
-            <a class="news-medium-item white_color_bg">
-                <p class="new-news-day main_color_text">Сегодня</p>
-                <h2 class="Font-size18 main_color_text">Статья «Как реклама влияет на продажи?»</h2>
-                <p class="new-news-content main_color_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </a>
-            <a class="news-medium-item white_color_bg">
-                <p class="new-news-day main_color_text">Сегодня</p>
-                <h2 class="Font-size18 main_color_text">Статья «Как реклама влияет на продажи?»</h2>
-                <p class="new-news-content main_color_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </a>
-            <a class="news-medium-item white_color_bg">
-                <p class="new-news-day main_color_text">Сегодня</p>
-                <h2 class="Font-size18 main_color_text">Статья «Как реклама влияет на продажи?»</h2>
-                <p class="new-news-content main_color_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </a>
-            <a class="news-medium-item white_color_bg">
-                <p class="new-news-day main_color_text">Сегодня</p>
-                <h2 class="Font-size18 main_color_text">Статья «Как реклама влияет на продажи?»</h2>
-                <p class="new-news-content main_color_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </a>
-            <a class="news-medium-item white_color_bg">
-                <p class="new-news-day main_color_text">Сегодня</p>
-                <h2 class="Font-size18 main_color_text">Статья «Как реклама влияет на продажи?»</h2>
-                <p class="new-news-content main_color_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </a>
-        </div>
-        <div class="bottom-news">
-            <div class="">
+    <?= Html::beginForm('', 'post', ['class' => 'news-category']) ?>
+    <label class="<?= empty($_POST['date']) || $_POST['date'] == 'all' ? 'active-category' : '' ?> Font-size18 main_color_text">
+        Все
+        <input class="date__checkbox" style="display: none;" type="checkbox" name="date" value="all">
+    </label>
+    <label class="<?= !empty($_POST['date']) && $_POST['date'] == 'day' ? 'active-category' : '' ?> Font-size18 main_color_text">
+        За сутки
+        <input class="date__checkbox" style="display: none;" type="checkbox" name="date" value="day">
+    </label>
+    <label class="<?= !empty($_POST['date']) && $_POST['date'] == 'week' ? 'active-category' : '' ?> Font-size18 main_color_text">
+        За неделю
+        <input class="date__checkbox" style="display: none;" type="checkbox" name="date" value="week">
+    </label>
+    <?= Html::endForm(); ?>
 
-            </div>
+    <div class="news-list">
+        <?php if (!empty($news)) : ?>
+            <?php foreach ($news as $k => $i) : ?>
+                <?php if ($k == 0) : ?>
+                    <a data-pjax="0" href="<?= Url::to(['profile-news-private', 'link' => $i['link']]) ?>" class="new-news">
+                        <div class="new-news-item white_color_bg">
+                            <img src="<?= Url::to(['/img/profile/profile-tasks/news-img.svg']) ?>" alt="">
+                            <div class="new-news-text">
+                                <p class="new-news-day main_color_text"><?= date('Y-m-d', strtotime($i['date'])) == date('Y-m-d') ? 'Сегодня' : date('d.m.Y', strtotime($i['date'])) ?></p>
+                                <h2 class="new-news-title Font-size18 main_color_text">Статья «<?= $i['title'] ?>»</h2>
+                                <p class="new-news-content main_color_text"><?= $i['subtitle'] ?></p>
+                            </div>
+                        </div>
+                    </a>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
+
+        <div class="news-medium-level">
+            <?php if (!empty($news)) : ?>
+                <?php foreach ($news as $k => $i) : ?>
+                    <?php if ($k != 0) : ?>
+                        <a data-pjax="0" href="<?= Url::to(['profile-news-private', 'link' => $i['link']]) ?>" class="news-medium-item white_color_bg">
+                            <p class="new-news-day main_color_text"><?= date('Y-m-d', strtotime($i['date'])) == date('Y-m-d') ? 'Сегодня' : date('d.m.Y', strtotime($i['date'])) ?></p>
+                            <h2 class="Font-size18 main_color_text">Статья «<?= $i['title'] ?>»</h2>
+                            <p class="new-news-content main_color_text"><?= $i['subtitle'] ?></p>
+                        </a>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
+
     </div>
     <div class="pagination-items">
-        <a href="">
-            <svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.5 1L1 4.5L4.5 8" class="arrow-color" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M9 1L5.5 4.5L9 8" class="arrow-color" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </a>
-        <ul>
-            <li>
-                <a class="active-paginate main_color_text" href="">1</a>
-            </li>
-            <li>
-                <a href="" class="main_color_text">2</a>
-            </li>
-            <li>
-                <a href="" class="main_color_text">3</a>
-            </li>
-        </ul>
-        <a href="">
-            <svg class="right-arrow-pagination" width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.5 1L1 4.5L4.5 8" class="arrow-color" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M9 1L5.5 4.5L9 8" class="arrow-color" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </a>
+        <?= LinkPager::widget([
+            'pagination' => $pages,
+        ]); ?>
     </div>
-</div>
+    <?php Pjax::end(); ?>
 </div>

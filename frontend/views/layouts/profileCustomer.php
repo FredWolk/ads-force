@@ -3,6 +3,7 @@
 /** @var \yii\web\View $this */
 /** @var string $content */
 
+use console\models\News;
 use console\models\User;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -12,6 +13,8 @@ $user = User::find()->where(['id' => Yii::$app->getUser()->getId()])
     ->with('balance')
     ->asArray()
     ->one();
+
+$news = News::find()->asArray()->limit(3)->all();
 
 ProfileCustomerAsset::register($this);
 $js = <<< JS
@@ -343,18 +346,16 @@ $this->registerJs($js);
                             </div>
                             <div class="news-list">
                                 <ul>
-                                    <li>
-                                        <p class="date-news Font-size18 white_color">18.08</p>
-                                        <p class="Font-size18 main_color_text">Статья «Как реклама влияет на продажи?»</p>
-                                    </li>
-                                    <li>
-                                        <p class="date-news Font-size18 white_color">18.08</p>
-                                        <p class="Font-size18 main_color_text">Запланированы технические работы с 23:00</p>
-                                    </li>
-                                    <li>
-                                        <p class="date-news Font-size18 white_color">28.09</p>
-                                        <p class="Font-size18 main_color_text">Статья «SMM: что это такое и как работает»</p>
-                                    </li>
+                                    <?php if (!empty($news)) : ?>
+                                        <?php foreach ($news as $value) : ?>
+                                            <li>
+                                                <a style="display: flex; align-items: center; gap: 5px" href="<?= Url::to(['profile-news-private', 'link' => $value['link']]) ?>">
+                                                    <p class="date-news Font-size18 white_color"><?= date('d.m', strtotime($value['date'])) ?></p>
+                                                    <p class="Font-size18 main_color_text">Статья «<?= $value['title'] ?>»</p>
+                                                </a>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </ul>
                                 <a href="<?= Url::to(['profile-news']) ?>" class="more-news Font-size18 title_color">Еще + </a>
                             </div>

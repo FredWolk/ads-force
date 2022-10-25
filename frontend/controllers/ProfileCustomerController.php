@@ -2,8 +2,10 @@
 
 namespace frontend\controllers;
 
+use console\models\News;
 use console\models\User;
 use Yii;
+use yii\data\Pagination;
 use yii\web\Controller;
 
 class ProfileCustomerController extends Controller
@@ -76,10 +78,31 @@ class ProfileCustomerController extends Controller
     }
     public function actionProfileNews()
     {
-        return $this->render('profile-news');
+        $filter = ['AND'];
+
+        if (!empty($_POST['date'])) {
+            if ($_POST['date'] == 'all') {
+                $filter = [];
+            }
+            if ($_POST['date'] == 'day') {
+                $filter = ['>=', 'date', date('Y-m-d H:i:s', strtotime('-1 day'))];
+            }
+            if ($_POST['date'] == 'week') {
+                $filter = ['>=', 'date', date('Y-m-d H:i:s', strtotime('-1 week'))];
+            }
+        }
+
+        $query = News::find()->asArray()->where($filter);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 7]);
+        $news = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        return $this->render('profile-news', compact('news', 'pages'));
     }
-    public function actionProfileNewsPrivate()
+    public function actionProfileNewsPrivate($link)
     {
-        return $this->render('profile-news-private');
+        $news = News::findOne(['link' => $link]);
+        $newses = News::find()->asArray()->where(['!=', 'id', $news->id])->limit(3)->all();
+        return $this->render('profile-news-private', compact('news', 'newses'));
     }
 }
