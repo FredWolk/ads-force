@@ -13,7 +13,7 @@ $this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' 
         <button class="Font-size18">Разместить заказ</button>
     </div>
     <div class="tasks">
-        <a data-pjax="0" href="<?= Url::to(['/tasks']) ?>">
+        <a data-pjax="0" href="<?= Url::to(['new-task-preview']) ?>">
             <div class="task-item white_color_bg">
                 <div class="filter-task-item">
                     <div class="filter-task-item-main">

@@ -72,6 +72,7 @@
     left: 0px;
     right: 0px;
     bottom: 0px;
+    padding: 0px 20px;
     flex-direction: column;
     overflow: auto;
     display: none;
@@ -86,6 +87,7 @@
     width: 100%;
     padding: 15px;
     resize: none;
+    border: 1px solid #E0E0E0;
     border-radius: 8px;
 }
 
@@ -93,11 +95,19 @@
     width: 100%;
     padding: 15px;
     resize: none;
+    border: 1px solid #E0E0E0;
     border-radius: 8px;
 }
-
+.block-mobile-information-content textarea{
+    width: 100%;
+    padding: 15px;
+    resize: none;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+}
 .modalReviewContainer {
     max-width: 912px;
+    width: 100%;
     display: flex;
     margin: 0px auto;
 }
@@ -147,11 +157,17 @@
     background-repeat: no-repeat;
     background-size: 100%;
     display: flex;
+    border-radius: 10px;
     text-align: center;
     justify-content: center;
     background-size: cover;
 }
-
+.tag-input{
+    padding:15px;
+    max-width: 380px;
+    width: 100%;
+    border-radius: 8px;
+}
 .img-slider-items {
     margin-bottom: 20px;
 }
@@ -262,7 +278,9 @@
     row-gap: 30px;
     width: 100%;
 }
-
+.arrows-slider{
+    margin-top: 10px;
+}
 .profile-text {
     display: flex;
     flex-direction: column;
@@ -329,6 +347,7 @@
     background: #F535DA;
     max-width: 214px;
     margin-left: auto;
+    cursor: pointer;
     margin-right: auto;
     width: 100%;
     display: inline-flex;

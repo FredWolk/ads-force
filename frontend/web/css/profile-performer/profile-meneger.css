@@ -12,6 +12,7 @@
     margin-right: auto;
     border-radius: 9px;
 }
+
 .right-column {
     width: 100%;
     display: flex;
@@ -53,6 +54,26 @@
 
 .link-level a p {
     text-decoration: underline;
+    position: relative;
+}
+
+.modal-what-work {
+    display: none;
+}
+
+.link-level a p:hover .modal-what-work {
+    display: flex;
+    padding: 15px;
+    left: 40px;
+    max-width: 300px;
+    position: absolute;
+    width: 100vw;
+    top: 20px;
+
+    color: #ffffff;
+    font-size: 11px;
+    background: linear-gradient(90deg, #CE06D0 0%, #00DBDE 100%);
+    border-radius: 4px;
 }
 
 .level-container-left {
@@ -103,9 +124,11 @@
     width: 100%;
     background-image: url('../../img/profile/profile-meneger/bg-profile-pro.png');
 }
-.pro-account-block h2{
+
+.pro-account-block h2 {
     font-weight: 500;
 }
+
 .pro-account-block a {
     background: #231C6F;
     padding: 20px;
@@ -116,6 +139,8 @@
     border: 1px solid #F535DA;
     border-radius: 100px;
 }
+
+
 .active-project {
     background-image: url('../../img/profile/profile-meneger/bg-project.png');
     padding: 20px 30px;
@@ -126,9 +151,11 @@
     row-gap: 10px;
     flex-direction: column;
 }
-.active-project h2{
+
+.active-project h2 {
     font-weight: 500;
 }
+
 .active-project a {
     background: #F535DA;
     border-radius: 100px;
@@ -139,7 +166,7 @@
     max-width: 216px;
 }
 
-.partners-full{
+.partners-full {
     background-image: url('../../img/profile/profile-meneger/partners-bg.png');
     padding: 20px 30px;
     max-width: 506px;
@@ -149,9 +176,11 @@
     row-gap: 10px;
     flex-direction: column;
 }
-.partners-full h2{
+
+.partners-full h2 {
     font-weight: 500;
 }
+
 .partners-full a {
     background: #F535DA;
     border-radius: 100px;

@@ -70,5 +70,9 @@ class ProfilePerformerController extends Controller
     {
         return $this->render('create-portfolio');
     }
+    public function actionNewTaskPreview()
+    {
+        return $this->render('new-task-preview');
+    }
 }
 ?>

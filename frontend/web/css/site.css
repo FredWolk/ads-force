@@ -271,6 +271,7 @@ footer {
   bottom: 0px;
   float: right;
   margin-right: 30px;
+  z-index: 2;
   max-width: 318px;
   width: 100%;
 }

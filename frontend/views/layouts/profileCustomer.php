@@ -186,7 +186,7 @@ $this->registerJs($js);
                             </div>
                             <ul>
                                 <li>
-                                    <a href="<?= Url::to(['index']) ?>">
+                                    <a href="<?= Url::to(['profile-private']) ?>">
                                         <img src="<?= Url::to(['img/footer-header/user-icon.svg']) ?>" alt="">
                                         <p class="Font-size18 main_color_text">Мой кабинет</p>
                                     </a>
@@ -306,7 +306,7 @@ $this->registerJs($js);
                         <div class="left-navbar-bottom">
                             <ul>
                                 <li>
-                                    <a href="<?= Url::to(['index']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'index' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/user-icon.svg']) ?>" alt="">Моя страница</a>
+                                    <a href="<?= Url::to(['profile-private']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-private' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/user-icon.svg']) ?>" alt="">Моя страница</a>
                                 </li>
                                 <li>
                                     <a href="<?= Url::to(['profile-message']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-message' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/message-link.svg']) ?>" alt="">

@@ -54,7 +54,7 @@ $this->registerJs($js);
     </div>
     <div class="chat-private-show">
         <h2>Посмотреть историю диалога с поддержкой</h2>
-        <img src="<?= Url::to(['img/profile/profile-tasks/arrow-tehnical.svg']) ?>" alt="">
+        <img src="<?= Url::to(['img/profile/profile-tasks/arrow-tehnical.svg']) ?>" style="cursor: pointer;" alt="">
     </div>
     <div class="chat-private white_color_bg" style="display: none;">
         <div class="header-chat-private">
@@ -112,7 +112,7 @@ $this->registerJs($js);
             <?php Pjax::end(); ?>
             <div class="chat-body-input">
                 <?= Html::beginForm('', 'post', ['class' => 'send__message']) ?>
-                <input type="text" class="bg-chat" placeholder="Сообщение">
+                <input type="text" class="bg-chat main_color_text" placeholder="Сообщение">
                 <div class="buttons-message">
                     <!-- <div class="left-buttons">
                         <img src="<?= Url::to(['img/profile/profile-chat/chat-smile.svg']) ?>" alt="">

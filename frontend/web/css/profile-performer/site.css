@@ -37,6 +37,19 @@ body {
     background: var(--background-chat-img);
 }
 
+
+.title_color:hover {
+    color: var(--title);
+}
+
+.main_color_text:hover {
+    color: var(--text);
+}
+
+.white_color:hover {
+    color: #ffffff;
+}
+
 .wrapper {
     display: flex;
     height: 100%;
@@ -132,6 +145,7 @@ footer {
     position: sticky;
     bottom: 0px;
     float: right;
+    z-index: 2;
     margin-right: 30px;
     max-width: 318px;
     width: 100%;
