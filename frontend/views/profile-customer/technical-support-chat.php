@@ -30,9 +30,17 @@ $('.send__message').on('submit', function (e) {
         data: $(this).serialize(),
         dataType: 'JSON',
     }).done(function (r) {
-        $.pjax.reload({
-            container: '#chatContainer'
-        })
+       if(r.status){
+        var mes = $('#message').val(),
+            date = new Date();
+        $('.message-list').append(`
+            <div class="message-text my-message">
+                <p class="main_color_text">`+ mes +`</p>
+                <p class="time-message main_color_text">`+ date.getHours() +` `+ date.getMinutes() +`</p>
+            </div>
+        `);
+        $('#message').val('');
+       }
     })
 })
 JS;
@@ -78,7 +86,6 @@ $this->registerJs($js);
             </div>
         </div>
         <div class="chat-body-message">
-            <?php Pjax::begin(['id' => 'chatContainer']) ?>
             <div class="chat-body-main">
                 <div class="message-container">
                     <div class="message-user">
@@ -89,7 +96,7 @@ $this->registerJs($js);
                             <h2 class="main_color_text">Ads.Force</h2>
                             <p>Тех. поддержка</p>
                         </div> -->
-                        <div style="margin-left: 0;" class="message-list">
+                        <div class="message-list">
                             <?php if (!empty($dialog['message'])) : ?>
                                 <?php foreach ($dialog['message'] as $item) : ?>
                                     <div class="message-text <?= $item['is_support'] == 0 ? 'bg-chat' : 'my-message' ?>">
@@ -117,11 +124,10 @@ $this->registerJs($js);
                     </div> -->
                 </div>
             </div>
-            <?php Pjax::end(); ?>
             <div class="chat-body-input">
                 <?= Html::beginForm('', 'post', ['class' => 'send__message']) ?>
                 <input type="hidden" name="dialog_id" value="<?= !empty($dialog['id']) ? $dialog['id'] : '' ?>">
-                <input required type="text" name="message" class="bg-chat main_color_text" placeholder="Сообщение">
+                <input id="message" required type="text" name="message" class="bg-chat main_color_text" placeholder="Сообщение">
                 <div class="buttons-message">
                     <!-- <div class="left-buttons">
                         <img src="<?= Url::to(['img/profile/profile-chat/chat-smile.svg']) ?>" alt="">

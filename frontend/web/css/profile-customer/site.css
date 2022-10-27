@@ -30,6 +30,7 @@ body {
 }
 
 .bg-chat {
+  margin-right: auto;
   background: var(--background-chat-message);
 }
 

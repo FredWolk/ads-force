@@ -46,11 +46,11 @@ class Support extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
+            'user_id' => 'ID пользователя',
             'support_id' => 'Support ID',
-            'theme' => 'Theme',
-            'status' => 'Status',
-            'date' => 'Date',
+            'theme' => 'Тема',
+            'status' => 'Статус',
+            'date' => 'Дата',
         ];
     }
 

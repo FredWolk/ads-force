@@ -83,6 +83,15 @@ $this->title = 'My Yii Application';
                     </div>
                 </div>
             </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Тех поддержка</h5>
+                        <p class="card-text">Тут вы можете отвечать на сообщения присланные пользователями Ads.Force</p>
+                        <a href="<?= Url::to(['/support']) ?>" class="btn btn-primary">Перейти</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
