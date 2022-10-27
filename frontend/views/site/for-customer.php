@@ -118,8 +118,8 @@ AppAsset::register($this);
 <section class="performers-container">
     <div class="performers-title container-index">
         <h1 class="Font-size36">ТОП-исполнители</h1>
-        <a href="<?= Url::to(['performers-page']) ?>">
-            <button>Хочу в ТОП</button>
+        <a>
+            <button class="topShow">Хочу в ТОП</button>
         </a>
     </div>
     <div class="performers-cards desctop-performer container-index">
