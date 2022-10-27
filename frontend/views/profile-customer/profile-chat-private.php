@@ -90,7 +90,7 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
                 </div>
             </div>
             <div class="chat-body-input">
-                <input type="text" class="bg-chat" placeholder="Сообщение">
+                <input type="text" class="bg-chat main_color_text" placeholder="Сообщение">
                 <div class="buttons-message">
                     <div class="left-buttons">
                         <img src="<?= Url::to(['img/profile/profile-chat/chat-smile.svg']) ?>" alt="">

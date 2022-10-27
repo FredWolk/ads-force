@@ -198,7 +198,7 @@ $this->registerJs($js);
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?= Url::to(['index']) ?>">
+                                    <a href="<?= Url::to(['profile-private']) ?>">
                                         <img src="<?= Url::to(['img/footer-header/user-icon.svg']) ?>" alt="">
                                         <p class="main_color_text">Мой кабинет</p>
                                     </a>
@@ -312,7 +312,7 @@ $this->registerJs($js);
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?= Url::to(['index']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'index' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/user-icon.svg']) ?>" alt="">Моя страница</a>
+                                    <a href="<?= Url::to(['profile-private']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-private' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/user-icon.svg']) ?>" alt="">Моя страница</a>
                                 </li>
                                 <li>
                                     <a href="<?= Url::to(['profile-tasks']) ?>" class="Font-size24 main_color_text <?= Yii::$app->controller->action->id === 'profile-tasks' ? 'active-link' : '' ?>"><img src="<?= Url::to(['img/profile/profile-meneger/doc-link-icon.svg']) ?>" alt="">Мои задания/ работы</a>

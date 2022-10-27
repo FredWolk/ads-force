@@ -49,9 +49,11 @@ body {
   width: 100%;
   padding: 0px 20px;
 }
-.dark-bg{
-    cursor: pointer;
+
+.dark-bg {
+  cursor: pointer;
 }
+
 main {
   flex: 1 0 auto;
 }
@@ -63,8 +65,17 @@ footer {
 .title_color {
   color: var(--title);
 }
-.title_color:hover  {
-    color: var(--title);
+
+.title_color:hover {
+  color: var(--title);
+}
+
+.main_color_text:hover {
+  color: var(--text);
+}
+
+.white_color:hover {
+  color: #ffffff;
 }
 
 .gray_color {
@@ -78,9 +89,7 @@ footer {
 .main_color_text {
   color: var(--text);
 }
-.main_color_text:hover {
-    color: var(--text);
-}
+
 .arrow-color {
   stroke: var(--text);
 }
@@ -135,6 +144,7 @@ footer {
   position: sticky;
   bottom: 0px;
   float: right;
+  z-index: 2;
   margin-right: 30px;
   max-width: 318px;
   width: 100%;

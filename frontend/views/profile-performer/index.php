@@ -40,7 +40,12 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
         <div class="link-level">
             <a href="">
                 <img src="<?= Url::to(['img/profile/profile-meneger/info-icon.svg']) ?>" alt="">
-                <p class="white_color Font-size18">Как это работает?</p>
+                <p class="white_color Font-size18">Как это работает?
+
+                    <span class="modal-what-work">
+                        Текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст
+                    </span>
+                </p>
             </a>
         </div>
     </div>
@@ -79,7 +84,7 @@ $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), 
                     <p class="Font-size18 main_color_text">Статья «SMM: что это такое и как работает»</p>
                 </li>
             </ul>
-            <a href="<?=Url::to(['profile-news'])?>" class="more-news Font-size18 title_color">Еще + </a>
+            <a href="<?= Url::to(['profile-news']) ?>" class="more-news Font-size18 title_color">Еще + </a>
         </div>
     </div>
 </section>

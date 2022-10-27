@@ -50,24 +50,29 @@ if (!empty($user['info']['position'])) {
         <div class="link-level">
             <a href="">
                 <img src="<?= Url::to(['img/profile/profile-meneger/info-icon.svg']) ?>" alt="">
-                <p class="white_color Font-size18">Как это работает?</p>
+                <p class="white_color Font-size18">Как это работает?
+                    <span class="modal-what-work">
+                        Текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст
+                    </span>
+                </p>
+
             </a>
         </div>
     </div>
     <div class="pro-account-block">
         <p class="Font-size18 white_color">Получите особый статус</p>
         <h2 class="white_color Font-size24">PRO-аккаунт</h2>
-        <a class="white_color Font-size18">Подробнее</a>
+        <a href="<?= Url::to(['profile-pro']) ?>" class="white_color Font-size18">Подробнее</a>
     </div>
     <div class="active-project">
         <h2 class="Font-size24">Активные заказы</h2>
         <p class="Font-size18">У вас много откликов на заказы..</p>
-        <a class="white_color Font-size18">Перейти к заказам</a>
+        <a href="<?= Url::to(['profile-tasks']) ?>" class="white_color Font-size18">Перейти к заказам</a>
     </div>
     <div class="partners-full">
         <h2 class="Font-size24">Партнерство</h2>
         <p class="white_color Font-size18">Стань партнером в один клик</p>
-        <a class="white_color Font-size18">Стать партнером</a>
+        <a href="<?= Url::to(['profile-pro']) ?>" class="white_color Font-size18">Стать партнером</a>
     </div>
     <div class="left-nav-bar-news news-mobile">
         <div class="news-title">

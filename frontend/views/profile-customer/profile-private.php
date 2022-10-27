@@ -33,6 +33,7 @@ responsive: [
     }
   ]
 });
+
 $('.rewiev-items-mobile').slick({
   slidesToShow: 2,
   slidesToScroll: 1,
@@ -53,7 +54,6 @@ responsive: [
     }
   ]
 });
-
 $('.content-text img').click(function(e){
     if($('.content-text p').css('display') !== "none"){
         $('.content-text').append('<textarea rows="10" cols="45" name="text"> </ textarea>');
@@ -109,6 +109,26 @@ $('.mobile-review-text').click(function(e){
         $('.block-mobile-information-content').fadeOut(300);
         $(this).parent().find('.block-mobile-information-content').fadeIn(300);
         $(this).find('img').css({'transform':'rotate(-180deg) '})
+$('.rewiev-items-mobile').slick({
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  prevArrow: $('.prev-mobile'),
+nextArrow: $('.next-mobile'),
+responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 580,
+      settings: {
+        slidesToShow: 1
+      }
+    }
+  ]
+});
     }
 });
 $('.mobile-information-text').click(function(e){
@@ -134,6 +154,24 @@ nextArrow: $('.next-review-modal')
 });
 $('.rewiev-card-close').click(function(e) {
     $('.modalReview').fadeOut(300);
+});
+$('.content-text-mobile img').click(function(e){
+    if($('.content-text-mobile p').css('display') !== "none"){
+        $('.content-text-mobile').append('<textarea rows="10" cols="45" name="text"> </ textarea>');
+    $('.content-text-mobile textarea').text($('.content-text p').text());
+    $('.content-text-mobile textarea').removeAttr('id');
+    $('.content-text-mobile textarea').addClass('bg-chat');
+    $('.content-text-mobile textarea').addClass('main_color_text');
+    $('.content-text-mobile p').css({'display':'none'});
+    $('.content-text-mobile textarea').attr('type', 'text');
+    }
+    else{
+        $('.content-text-mobile p').css({'display':'inline'});
+        $('.content-text-mobile textarea').css({'display':'none'})
+    }
+});
+$('.tag-button').click(function(e){
+    $('.tag-input').fadeIn(300);
 });
 JS;
 $this->registerJs($js);
@@ -183,7 +221,7 @@ $this->registerJs($js);
 </div>
 <div class="Profile-container" style="max-width: 1110px; padding:0px 20px;">
     <div class="back-link">
-        <a onclick="history.back()" class="Font-size18"><img src="<?= Url::to(['img/profile/private-profile/back-profile.svg']) ?>" alt="">Вернуться назад</a>
+        <a onclick="history.back()" style="cursor:pointer;" class="Font-size18"><img src="<?= Url::to(['img/profile/private-profile/back-profile.svg']) ?>" alt="">Вернуться назад</a>
     </div>
     <div class="profile-full">
         <div class="profile-left">
@@ -236,7 +274,8 @@ $this->registerJs($js);
                         <p class="Font-size24 main_color_text">SEO</p>
                     </div>
                 </div>
-                <a href="" class="white_color">Добавить
+                <input type="text" style="display:none;" class="tag-input main_color_text white_color_bg" placeholder="Добавить тег" name="tag">
+                <a class="white_color tag-button">Добавить
                 </a>
             </section>
         </div>
@@ -303,7 +342,7 @@ $this->registerJs($js);
                 </div>
             </section>
             <div class="tasks tasks-item">
-                <a data-pjax="0" href="">
+                <a data-pjax="0" href="<?= Url::to(['new-task-preview']) ?>">
                     <div class="task-item">
                         <div class="filter-task-item">
                             <div class="filter-task-item-main">
@@ -436,7 +475,7 @@ $this->registerJs($js);
                 <img src="<?= Url::to(['img/profile/private-profile/arrow-mobile.svg']) ?>" alt="">
             </div>
             <div class="block-mobile-information-content mobile-hide-info">
-                <div class="content-item text-information .content-text-mobile">
+                <div class="content-item text-information content-text-mobile">
                     <p class="Font-size24 main_color_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>
                     <img class="pen-abs" src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt="">
                 </div>
@@ -444,12 +483,12 @@ $this->registerJs($js);
         </div>
         <div class="mobile-task">
             <div class="mobile-information-text mobile-nav white_color_bg">
-                <h2 class="Font-size18 main_color_text">ИНФОРМАЦИЯ</h2>
+                <h2 class="Font-size18 main_color_text">СВОБОДНЫЕ ЗАДАНИЯ</h2>
                 <img src="<?= Url::to(['img/profile/private-profile/arrow-mobile.svg']) ?>" alt="">
             </div>
             <div class="block-mobile-information-content  mobile-hide-info">
                 <div class="tasks tasks-item">
-                    <a data-pjax="0" href="">
+                    <a data-pjax="0" href="<?= Url::to(['new-task-preview']) ?>">
                         <div class="task-item white_color_bg">
                             <div class="filter-task-item">
                                 <div class="filter-task-item-main">

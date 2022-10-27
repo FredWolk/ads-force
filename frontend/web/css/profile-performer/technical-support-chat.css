@@ -28,6 +28,7 @@
 }
 .chat-private-show h2{
     color: #F535DA;
+    cursor: pointer;
     font-size: 20px;
 }
 .information-item {

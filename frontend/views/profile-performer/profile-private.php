@@ -33,46 +33,7 @@ responsive: [
     }
   ]
 });
-$('.rewiev-items-mobile').slick({
-  slidesToShow: 2,
-  slidesToScroll: 1,
-  prevArrow: $('.prev-mobile'),
-nextArrow: $('.next-mobile'),
-responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 2
-      }
-    },
-    {
-      breakpoint: 580,
-      settings: {
-        slidesToShow: 1
-      }
-    }
-  ]
-});
-  $('.tasks-items-mobile').slick({
-  slidesToShow: 2,
-  slidesToScroll: 1,
-  prevArrow: $('.prev-tasks-mobile'),
-nextArrow: $('.next-tasks-mobile'),
-responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 2
-      }
-    },
-    {
-      breakpoint: 580,
-      settings: {
-        slidesToShow: 1
-      }
-    }
-  ]
-});
+  
 $('.rewiev-nav').click(function(e){
     $('.content-text').fadeOut(300);
     $('.rewiev-full').fadeIn(300);
@@ -107,6 +68,26 @@ responsive: [
     }
   ]
 });
+});
+$('.rewiev-items-mobile').slick({
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  prevArrow: $('.prev-mobile'),
+nextArrow: $('.next-mobile'),
+responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 580,
+      settings: {
+        slidesToShow: 1
+      }
+    }
+  ]
 });
 $('.ModalClose').click(function(e){
     $('.modalPortfolio').fadeOut(300);
@@ -149,6 +130,26 @@ $('.mobile-review-text').click(function(e){
         $('.block-mobile-information-content').fadeOut(300);
         $(this).parent().find('.block-mobile-information-content').fadeIn(300);
         $(this).find('img').css({'transform':'rotate(-180deg) '})
+$('.rewiev-items-mobile').slick({
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  prevArrow: $('.prev-mobile'),
+nextArrow: $('.next-mobile'),
+responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 580,
+      settings: {
+        slidesToShow: 1
+      }
+    }
+  ]
+});
     }
 });
 $('.mobile-information-text').click(function(e){
@@ -161,6 +162,27 @@ $('.mobile-information-text').click(function(e){
         $('.block-mobile-information-content').fadeOut(300);
         $(this).parent().find('.block-mobile-information-content').fadeIn(300);
         $(this).find('img').css({'transform':'rotate(-180deg) '})
+        
+        $('.tasks-items-mobile').slick({
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  prevArrow: $('.prev-tasks-mobile'),
+nextArrow: $('.next-tasks-mobile'),
+responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2
+      }
+    },
+    {
+      breakpoint: 580,
+      settings: {
+        slidesToShow: 1
+      }
+    }
+  ]
+});
     }
 })
 $('.load-more-rewiev').click(function(e) {
@@ -204,6 +226,24 @@ $('.information-text-profile img').click(function(e){
         $('.information-text-profile p').css({'display':'inline'});
         $('.information-text-profile textarea').css({'display':'none'})
     }
+});
+$('.content-text-mobile img').click(function(e){
+    if($('.content-text-mobile p').css('display') !== "none"){
+        $('.content-text-mobile').append('<textarea rows="10" cols="45" name="text"> </ textarea>');
+    $('.content-text-mobile textarea').text($('.content-text p').text());
+    $('.content-text-mobile textarea').removeAttr('id');
+    $('.content-text-mobile textarea').addClass('bg-chat');
+    $('.content-text-mobile textarea').addClass('main_color_text');
+    $('.content-text-mobile p').css({'display':'none'});
+    $('.content-text-mobile textarea').attr('type', 'text');
+    }
+    else{
+        $('.content-text-mobile p').css({'display':'inline'});
+        $('.content-text-mobile textarea').css({'display':'none'})
+    }
+});
+$('.tag-button').click(function(e){
+    $('.tag-input').fadeIn(300);
 });
 JS;
 $this->registerJs($js);
@@ -287,7 +327,7 @@ $this->registerJs($js);
 </div>
 <div class="Profile-container" style="max-width: 1110px; padding:0px 20px;">
     <div class="back-link">
-        <a href="" class="Font-size18"><img src="<?= Url::to(['img/profile/private-profile/back-profile.svg']) ?>" alt="">Вернуться назад</a>
+        <a onclick="history.back()" style="cursor:pointer;" class="Font-size18"><img src="<?= Url::to(['img/profile/private-profile/back-profile.svg']) ?>" alt="">Вернуться назад</a>
     </div>
     <div class="profile-full">
         <div class="profile-left">
@@ -340,7 +380,8 @@ $this->registerJs($js);
                         <p class="Font-size24 main_color_text">SEO</p>
                     </div>
                 </div>
-                <a href="" class="white_color">Добавить
+                <input type="text" style="display:none;" class="tag-input main_color_text white_color_bg" placeholder="Добавить тег" name="tag">
+                <a class="white_color tag-button">Добавить
                 </a>
             </section>
         </div>
@@ -484,7 +525,7 @@ $this->registerJs($js);
                 <img src="<?= Url::to(['img/profile/private-profile/arrow-mobile.svg']) ?>" alt="">
             </div>
             <div class="block-mobile-information-content mobile-hide-info">
-                <div class="content-item text-information .content-text-mobile">
+                <div class="content-item text-information content-text-mobile">
                     <p class="Font-size24 main_color_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>
                     <img class="pen-abs" src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt="">
                 </div>
