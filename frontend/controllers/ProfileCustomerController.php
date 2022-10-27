@@ -62,14 +62,28 @@ class ProfileCustomerController extends Controller
     }
     public function actionTechnicalSupportChat($link)
     {
+
         $dialog = Support::find()->asArray()->with('message')->where(['id' => $link])->one();
         return $this->render('technical-support-chat', compact('dialog'));
     }
 
     public function actionSendMessage()
     {
+        Yii::$app->response->format = Response::FORMAT_JSON;
         if (empty($_POST['message']) || empty($_POST['dialog_id'])) {
             return ['status' => false, 'message' => 'Отсутствуют обязательные параметры'];
+        }
+        $model = new SupportMessage();
+        $model->dialog_id = $_POST['dialog_id'];
+        $model->is_support = SupportMessage::USER;
+        $model->date = date('Y-m-d H:i:s');
+        $model->text = $_POST['message'];
+        $model->attachments = null;
+        $model->is_read = SupportMessage::UN_READ;
+        if($model->save()){
+            return ['status' => true];
+        } else {
+            return ['status' => false, 'message' => 'Ошибка отправки сообщения'];
         }
     }
 
