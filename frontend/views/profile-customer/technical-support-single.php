@@ -25,7 +25,7 @@ $('.container').click(function(){
 $('.create__tiket').on('submit', function (e) {
     e.preventDefault();
     $.ajax({
-        url: 'create-task',
+        url: 'create-tiket',
         data: $(this).serialize(),
         type: 'POST',
         dataType: 'JSON',

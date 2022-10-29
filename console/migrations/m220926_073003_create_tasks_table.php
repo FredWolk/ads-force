@@ -25,7 +25,7 @@ class m220926_073003_create_tasks_table extends Migration
             'status'            => "ENUM('Свободен', 'Повышенный спрос', 'В работе', 'Выполнен')",
             'responded'         => $this->integer()->defaultValue(0),
             'materials'         => $this->text()->null(),
-            'active'            => $this->boolean()->defaultValue(0),
+            'active'            => $this->boolean()->defaultValue(0), // 0 - inactive / 1 - active
             'views'             => $this->integer()->defaultValue(0),
             'date_public'       => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP')->notNull(),
         ]);

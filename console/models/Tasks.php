@@ -25,6 +25,12 @@ use Yii;
  */
 class Tasks extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 1,
+        STATUS_INACTIVE = 0,
+        STATUS_FREE = 'Свободен',
+        STATUS_TOP = 'Повышенный спрос',
+        STATUS_WORK = 'В работе',
+        STATUS_COMPLETE = 'Выполнен';
     /**
      * {@inheritdoc}
      */
@@ -39,7 +45,7 @@ class Tasks extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['author_id', 'title', 'about_project', 'deadline', 'price'], 'required'],
+            [['author_id', 'title', 'about_project', 'deadline'], 'required'],
             [['author_id', 'performer_id', 'price', 'responded', 'active', 'views'], 'integer'],
             [['about_project', 'technical_task', 'tags', 'status', 'materials'], 'string'],
             [['date_public'], 'safe'],
@@ -55,20 +61,20 @@ class Tasks extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'author_id' => 'Автор',
-            'performer_id' => 'Исполнитель',
-            'title' => 'Заголовок',
-            'about_project' => 'О задании',
-            'technical_task' => 'Техническое задание',
-            'price' => 'Цена',
-            'deadline' => 'Срок выполнения',
-            'tags' => 'Теги',
-            'status' => 'Статус',
-            'responded' => 'Откликов',
-            'materials' => 'Материалы',
-            'active' => 'Активен \ Не активен',
-            'views' => 'Просмотров',
-            'date_public' => 'Дата публикации',
+            'author_id' => 'Author ID',
+            'performer_id' => 'Performer ID',
+            'title' => 'Title',
+            'about_project' => 'About Project',
+            'technical_task' => 'Technical Task',
+            'price' => 'Price',
+            'deadline' => 'Deadline',
+            'tags' => 'Tags',
+            'status' => 'Status',
+            'responded' => 'Responded',
+            'materials' => 'Materials',
+            'active' => 'Active',
+            'views' => 'Views',
+            'date_public' => 'Date Public',
         ];
     }
 }

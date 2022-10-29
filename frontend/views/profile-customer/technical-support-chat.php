@@ -13,6 +13,7 @@ $('.chat-private-show').click(function(){
     if($('.chat-private').css('display') == "none"){
         $('.chat-private').fadeIn(300);
         $(this).find('img').css({'transform':'rotate(-180deg) '})
+        $(".message-container").scrollTop($(".message-container")[0].scrollHeight);
 }
     else{
         $('.chat-private').fadeOut(300);
@@ -41,6 +42,7 @@ $('.send__message').on('submit', function (e) {
         `);
         $('#message').val('');
        }
+       $(".message-container").scrollTop($(".message-container")[0].scrollHeight);
     })
 })
 JS;

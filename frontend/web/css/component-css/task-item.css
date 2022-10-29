@@ -26,7 +26,10 @@
     box-shadow: 0px 2px 15px rgba(225, 225, 225, 0.25);
     padding: 20px;
 }
-
+.inactive__tasks{
+    border: 2px solid darkred;
+    box-shadow: 0px 2px 15px rgba(170, 6, 6, 0.75);
+}
 .filter-task-item {
     display: flex;
     column-gap: 20px;
