@@ -207,8 +207,8 @@ $this->registerJs($js);
             </div>
         </div>
         <div class="tag-text-area">
-            <p class="Font-size18 main_color_text">Теги</p>
-            <textarea required name="tags" id="" cols="30" rows="10" class="white_color_bg main_color_text"></textarea>
+            <p class="Font-size18 main_color_text">Теги через ;</p>
+            <textarea style="padding: 15px" required placeholder="Укажите теги через ;" name="tags" id="" cols="30" rows="10" class="white_color_bg main_color_text"></textarea>
         </div>
         <div class="button-show-preview">
             <button href="<?= Url::to(['new-task-preview']) ?>">Предпросмотр</button>

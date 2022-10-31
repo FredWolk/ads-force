@@ -188,6 +188,7 @@ $this->registerJs($js);
                 &times;
             </div>
             <div class="rewiev-card-top">
+
                 <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
                 <div class="rewiev-card-title">
                     <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
@@ -228,25 +229,28 @@ $this->registerJs($js);
             <section class="profile-info">
                 <div class="img-profile-full">
                     <div class="img-profile">
-                        <img src="<?= Url::to(['img/profile/private-profile/profile-img.png']) ?>" alt="">
+                        <?php if(!empty($info['photo'])): ?>
+                            <img src="<?= Url::to([$info['photo']]) ?>" alt="">
+                        <?php else: ?>
+                            <img src="<?= Url::to(['img/profile/private-profile/profile-img.png']) ?>" alt="">
+                        <?php endif; ?>
                     </div>
-                    <a href="" class="Font-size18">Выбрать фото</a>
                 </div>
                 <div class="profile-text">
                     <div class="profile-name">
-                        <h2 class="Font-size24 main_color_text">Иванова Мария Иванова Мария</h2>
+                        <h2 class="Font-size24 main_color_text"><?= !empty($info['fio']) ? $info['fio'] : 'Имя не указано' ?></h2>
                         <img src="<?= Url::to(['img/profile/private-profile/confirm-icon.svg']) ?>" alt="">
                         <a href="<?= Url::to(['profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt=""></a>
                     </div>
                     <p class="main_color_text">заказчик</p>
                     <div class="performers-card-stars">
                         <div style="background-image: url(<?= Url::to(['img/index/stars.png']) ?>); height: 20px; background-repeat: no-repeat; max-width:140px; width:100%;" class="stars">
-                            <div style="background-image: url(<?= Url::to(['img/index/yellowStars.png']) ?>); height: 20px; background-repeat: no-repeat; width: 70%" class="yellow_stars"></div>
+                            <div style="background-image: url(<?= Url::to(['img/index/yellowStars.png']) ?>); height: 20px; background-repeat: no-repeat; width: <?= !empty($info['rating']) ? $info['rating'] : 0 ?>%" class="yellow_stars"></div>
                         </div>
-                        <p class="Font-size24 main_color_text">5.0</p>
+                        <p class="Font-size24 main_color_text"><?= !empty($info['rating']) ? $info['rating'] : 0 ?></p>
                     </div>
                     <div class="profile-date">
-                        <p>На сайте с 02.02.2019</p>
+                        <p>На сайте с <?= date('d.m.Y', strtotime($info['date'])) ?></p>
                     </div>
                 </div>
             </section>

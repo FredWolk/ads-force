@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use console\models\Customer;
 use console\models\News;
 use console\models\Support;
 use console\models\SupportMessage;
@@ -34,7 +35,13 @@ class ProfileCustomerController extends Controller
 
     public function actionProfilePrivate()
     {
-        return $this->render('profile-private');
+        $user_id = Yii::$app->getUser()->getId();
+        $info = Customer::find()
+            ->asArray()
+            ->where(['user_id' => $user_id])
+            ->one();
+
+        return $this->render('profile-private', compact('info'));
     }
 
     public function actionProfilePaymentInfo()
@@ -54,7 +61,134 @@ class ProfileCustomerController extends Controller
 
     public function actionProfileSeetings()
     {
-        return $this->render('profile-seetings');
+        $info = Customer::find()
+            ->where(['user_id' => Yii::$app->getUser()->getId()])
+            ->asArray()
+            ->one();
+        return $this->render('profile-seetings', compact('info'));
+    }
+
+    public function actionSavePhoto()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if ($_FILES['file']['size'] > 5242880) {
+            return ['status' => false, 'message' => 'Размер фото не должен превышать 5 мегабайт'];
+        }
+        $user_id = Yii::$app->getUser()->getId();
+        $url = "/img/user-photo/{$user_id}";
+        $uploadfile = $url . '/' . basename($_FILES['file']['name']);
+        $info = Customer::findOne(['user_id' => $user_id]);
+        if (!file_exists('../web' . $url)) {
+            mkdir('../web' . $url);
+        }
+        $files = scandir('../web' . $url);
+
+        if (!empty($files[2])) {
+            unlink('../web'.$url.'/'.$files[2]);
+        }
+        if (move_uploaded_file($_FILES['file']['tmp_name'], '../web' . $uploadfile)) {
+            $info->photo = $uploadfile;
+            if ($info->update() !== false){
+                return ['status' => true];
+            } else {
+                return ['status' => false, 'message' => 'Ошибка обновления данных'];
+            }
+        } else {
+            return ['status' => false, 'message' => 'Ошибка сохранения файла'];
+        }
+    }
+
+    public function actionSaveProfile()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $user_id = Yii::$app->getUser()->getId();
+        if (empty($_POST['fio']) && empty($_POST['phone'])) {
+            return ['status' => false, 'message' => 'Отсутствуют обязательные параметры'];
+        }
+        $info = Customer::findOne(['user_id' => $user_id]);
+        $info->fio = $_POST['fio'];
+        $info->phone = $_POST['phone'];
+        if ($info->update() !== false){
+            return ['status' => true];
+        } else {
+            return ['status' => false, 'message' => 'Ошибка сохранения параметров'];
+        }
+    }
+
+    public function actionChangePassword()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if (empty($_POST['password'])){
+            return ['status' => false, 'message' => 'Ведите пароль'];
+        }
+        if (strlen($_POST['password']) < 8){
+            return ['status' => false, 'message' => 'Пароль должен быть длиной 8 символов'];
+        }
+        $user_id = Yii::$app->getUser()->getId();
+        $user = User::findOne($user_id);
+        $user->password_hash = Yii::$app->security->generatePasswordHash($_POST['password']);
+        if ($user->update() !== false){
+            return ['status' => true, 'message' => 'Пароль успешно изменен'];
+        } else {
+            return ['status' => false, 'message' => 'Ошибка обновлени пароля'];
+        }
+    }
+
+    public function actionSaveFizInfo()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $arr = [
+            'f' => "Фамилию",
+            'i' => "Имя",
+            'o' => 'Отчество',
+            'addr' => 'Адрес',
+        ];
+        if (!empty($_POST)){
+            unset($_POST['_csrf-frontend']);
+            foreach ($arr as $key => $item){
+                if (empty($_POST[$key])){
+                    return ['status' => false, 'message' => "Укажите {$item}"];
+                }
+            }
+        }
+        $info = Customer::findOne(['user_id' => Yii::$app->getUser()->getId()]);
+        $info->fiz_payment_info = json_encode($_POST, JSON_UNESCAPED_UNICODE);
+        if ($info->update() !== false){
+            return ['status' => true, 'message' => 'Данные плательщика сохранены'];
+        } else {
+            return ['status' => false, 'message' => 'Ошибка сохранения данных'];
+        }
+    }
+
+    public function actionSaveJurInfo()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $arr = [
+            'organization' => 'полное название организации',
+            'director' => 'фио генерального директора',
+            'jurAddress' => 'юридический адрес',
+            'realAddress' => 'фактический адрес',
+            'inn' => 'ИНН',
+            'kpp' => 'КПП',
+            'ogrn' => 'ОГРН',
+            'bik' => 'БИК',
+            'check' => 'расчетный счет',
+        ];
+        if (!empty($_POST)){
+            unset($_POST['_csrf-frontend']);
+            foreach ($arr as $key => $item){
+                if (empty($_POST[$key])){
+                    return ['status' => false, 'message' => "Укажите {$item}"];
+                }
+            }
+        }
+        $info = Customer::findOne(['user_id' => Yii::$app->getUser()->getId()]);
+        $info->jur_payment_info = json_encode($_POST, JSON_UNESCAPED_UNICODE);
+        if ($info->update() !== false){
+            return ['status' => true, 'message' => 'Данные плательщика сохранены'];
+        } else {
+            return ['status' => false, 'message' => 'Ошибка сохранения данных'];
+        }
     }
 
     public function actionProfilePro()
@@ -67,7 +201,7 @@ class ProfileCustomerController extends Controller
         $query = Tasks::find()
             ->asArray()
             ->where(['author_id' => Yii::$app->getUser()->getId()]);
-        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 1]);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 10]);
         $tasks = $query->offset($pages->offset)
             ->limit($pages->limit)
             ->all();
@@ -82,7 +216,6 @@ class ProfileCustomerController extends Controller
 
     public function actionTechnicalSupportChat($link)
     {
-
         $dialog = Support::find()->asArray()->with('message')->where(['id' => $link])->one();
         return $this->render('technical-support-chat', compact('dialog'));
     }
@@ -177,13 +310,16 @@ class ProfileCustomerController extends Controller
                 return $this->redirect(Url::to('/profile-customer'));
             }
         }
+        if (!strpos($_POST['tags'], ';')){
+            return ['status' => false, 'message' => 'Теги надо перечислять через запятую'];
+        }
         $model->author_id = $user_id;
         $model->title = $_POST['title'];
         $model->about_project = $_POST['about'];
         $model->deadline = $_POST['deadline'];
         $model->technical_task = !empty($_POST['tz']) ? $_POST['tz'] : null;
         $model->price = !empty($_POST['price']) ? $_POST['price'] : null;
-        $model->tags = !empty($_POST['tags']) ? $_POST['tags'] : null;
+        $model->tags = !empty($_POST['tags']) ? json_encode(explode(';', $_POST['tags']), JSON_UNESCAPED_UNICODE) : null;
         $model->status = Tasks::STATUS_FREE;
         $model->active = Tasks::STATUS_INACTIVE;
         $model->date_public = date('Y-m-d H:i:s');
@@ -208,14 +344,14 @@ class ProfileCustomerController extends Controller
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $user_id = Yii::$app->getUser()->getId();
-        if (empty($_POST['id']) || empty($user_id)){
+        if (empty($_POST['id']) || empty($user_id)) {
             return ['status' => false, 'message' => 'Отсутствуют обязательные параметры'];
         }
         $task = Tasks::find()
             ->where(['active' => Tasks::STATUS_INACTIVE])
             ->andWhere(['author_id' => $user_id])
             ->one();
-        if (empty($task)){
+        if (empty($task)) {
             return ['status' => false, 'message' => 'У вас нет заданий в процессе создания'];
         }
         $task->active = Tasks::STATUS_ACTIVE;

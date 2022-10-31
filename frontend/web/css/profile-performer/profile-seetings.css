@@ -58,10 +58,13 @@
 
 .change-photo-img img {
     object-fit: cover;
-    width: 95px;
+    width: 180px;
     height: auto;
+    border-radius: 50%;
 }
-
+.change__password{
+    margin-top: 20px;
+}
 .change-photo-text {
     display: flex;
     flex-direction: column;
@@ -70,7 +73,43 @@
     max-width: 191px;
     width: 100%;
 }
-
+.select__photo{
+    width: 0;
+    height: 0;
+    position: absolute;
+    opacity: 0;
+}
+.alert{
+    display: none;
+    position: relative;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.alert__title{
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.close__alert{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+.alert__text{
+    font-size: 14px;
+}
+.alert-danger{
+    background: #db6f6f;
+}
+.alert-success{
+    background: #6bd56c;
+}
 .change-photo-text a {
     color: #F535DA;
     font-size: 14px;

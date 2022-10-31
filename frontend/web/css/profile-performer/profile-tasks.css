@@ -49,27 +49,32 @@
     max-width: 403px;
     width: 100%;
 }
-
-.pagination-items {
+.pagination{
     display: flex;
     column-gap: 15px;
+    list-style: none;
 }
 
-.pagination-items ul {
+.pagination ul {
     display: flex;
     list-style: none;
 }
 
-.active-paginate {
+.pagination .active {
     background: linear-gradient(90deg, #CE06D0 0%, #00DBDE 100%);
     border-radius: 4px;
     color: #ffffff;
 }
 
-.pagination-items ul li a {
+.pagination li a{
+    display: block;
+    color: white;
     padding: 5px 10px;
 }
-
+.pagination .disabled{
+    color: white;
+    padding: 5px 10px;
+}
 .right-arrow-pagination {
     transform: rotate(-180deg);
 }

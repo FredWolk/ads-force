@@ -85,13 +85,14 @@ $this->registerJs($js);
             <div>
                 <p class="main_color_text"><b>Срок выполнения:</b> <?= $task['deadline'] ?></p>
             </div>
+            <?php $tags = !empty($task['tags']) ? json_decode($task['tags'], 1) : [] ?>
             <div class="task-tag-list">
-                <div class="task-tag-item">
-                    <p>#еукф</p>
-                </div>
-                <div class="task-tag-item">
-                    <p>#еукф</p>
-                </div>
+                <?php foreach($tags as $i): ?>
+                    <div class="task-tag-item">
+                        <p>#<?= $i ?></p>
+                    </div>
+                <?php endforeach; ?>
+
             </div>
         </div>
         <div class="task-button">

@@ -49,6 +49,7 @@ JS;
 $this->registerJs($js);
 ?>
 <div class="rigth-column">
+
     <div class="support-chat-title">
         <h2 class="main_color_text Font-size24">Данные обращения № <?= !empty($dialog['id']) ? $dialog['id'] : '' ?></h2>
     </div>

@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\LoginForm;
 use common\models\User;
 use console\models\Balance;
+use console\models\Customer;
 use frontend\models\SignupForm;
 use Yii;
 use yii\web\Controller;
@@ -47,7 +48,11 @@ class RegisterController extends Controller
       $model = new Balance();
       $model->user_id = $user->id;
       $model->validate();
-      if ($model->save()) {
+      $info = new Customer();
+      $info->user_id = $user->id;
+      $info->email = $email;
+      $info->validate();
+      if ($model->save() && $info->save()) {
         return ['status' => true];
       } else {
         return ['status' => false, 'message' => $model->errors];

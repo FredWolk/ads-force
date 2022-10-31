@@ -53,10 +53,13 @@ $this->registerCssFile(Url::to(['css/component-css/task-item.css']), ['depends' 
                             <?= $task['about_project'] ?>
                             <span style="color: #F535DA">... Подробнее</span>
                         </div>
+                        <?php $tags = !empty($task['tags']) ? json_decode($task['tags'], 1) : [] ?>
                         <div class="task-tag-list">
-                            <div class="task-tag-item">
-                                <p>#тег</p>
-                            </div>
+                            <?php foreach($tags as $i): ?>
+                                <div class="task-tag-item">
+                                    <p>#<?= $i ?></p>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </a>
