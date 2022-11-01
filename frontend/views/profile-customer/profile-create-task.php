@@ -184,7 +184,7 @@ $this->registerJs($js);
         <div class="create-task-select-item input-status-item">
             <p class="Font-size18 main_color_text">Статус</p>
             <div class="create-task-select input-status">
-                <input type="text" placeholder="Количество недель/месяцев">
+                <input class="main_color_text white_color_bg" type="text" required name="days" placeholder="Количество недель/месяцев">
                 <div class="input-status-select">
                     <div class="create-task-select-title">
                         <p class="Font-size18 main_color_text">Месяц</p>
