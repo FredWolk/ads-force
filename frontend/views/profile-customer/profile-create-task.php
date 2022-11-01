@@ -181,28 +181,31 @@ $this->registerJs($js);
             <a class="Font-size18">Добавить вложения</a>
             <p class="Font-size18">файл не выбран</p>
         </div>
-        <div class="create-task-select-item">
+        <div class="create-task-select-item input-status-item">
             <p class="Font-size18 main_color_text">Статус</p>
-            <div class="create-task-select">
-                <div class="create-task-select-title">
-                    <p class="Font-size18 main_color_text">Месяц</p>
-                    <img src="<?= Url::to(['img/profile/profile-tasks/arrow-tehnical.svg']) ?>" alt="">
-                </div>
-                <div class="select-category-list">
-                    <ul>
-                        <li>
-                            <label class="container Font-size18 main_color_text">Месяц
-                                <input type="radio" value="1 неделя" name="deadline">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="container Font-size18 main_color_text">Дней
-                                <input type="radio" value="5 дней" name="deadline">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                    </ul>
+            <div class="create-task-select input-status">
+                <input type="text" placeholder="Количество недель/месяцев">
+                <div class="input-status-select">
+                    <div class="create-task-select-title">
+                        <p class="Font-size18 main_color_text">Месяц</p>
+                        <img src="<?= Url::to(['img/profile/profile-tasks/arrow-tehnical.svg']) ?>" alt="">
+                    </div>
+                    <div class="select-category-list">
+                        <ul>
+                            <li>
+                                <label class="container Font-size18 main_color_text">Месяц
+                                    <input type="radio" value="1 неделя" name="deadline">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="container Font-size18 main_color_text">Дней
+                                    <input type="radio" value="5 дней" name="deadline">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

@@ -56,7 +56,13 @@ responsive: [
 });
 $('.content-text img').click(function(e){
     if($('.content-text p').css('display') !== "none"){
-        $('.content-text').append('<textarea rows="10" cols="45" name="text"> </ textarea>');
+    if ($('.content-area').length > 0) {
+        $('.content-area').text($('.content-text p').text());
+        $('.content-area').fadeIn(300);
+    $('.content-text p').css({'display':'none'});
+    } 
+    else {
+    $('.content-text').append('<textarea rows="10" cols="45" name="text" class="content-area"> </ textarea>');
     $('.content-text textarea').text($('.content-text p').text());
     $('.content-text textarea').removeAttr('id');
     $('.content-text textarea').addClass('bg-chat');
@@ -64,6 +70,7 @@ $('.content-text img').click(function(e){
     $('.content-text p').css({'display':'none'});
     $('.content-text textarea').attr('type', 'text');
     }
+}   
     else{
         $('.content-text p').css({'display':'inline'});
         $('.content-text textarea').css({'display':'none'})
@@ -71,13 +78,20 @@ $('.content-text img').click(function(e){
 });
 $('.information-text-profile img').click(function(e){
     if($('.information-text-profile p').css('display') !== "none"){
-        $('.information-text-profile').append('<textarea rows="10" cols="45" name="text"> </ textarea>');
-    $('.information-text-profile textarea').text($('.content-text p').text());
-    $('.information-text-profile textarea').removeAttr('id');
-    $('.information-text-profile textarea').addClass('bg-chat');
-    $('.information-text-profile textarea').addClass('main_color_text');
-    $('.information-text-profile p').css({'display':'none'});
-    $('.information-text-profile textarea').attr('type', 'text');
+        if ($('.information-area').length > 0) {
+            $('.information-area').text($('.content-text p').text());
+            $('.information-area').fadeIn(300);
+            $('.information-text-profile p').css({'display':'none'});
+        }
+        else {
+            $('.information-text-profile').append('<textarea rows="10" cols="45" name="text" class="information-area"> </ textarea>');
+            $('.information-text-profile textarea').text($('.information-text-profile p').text());
+            $('.information-text-profile textarea').removeAttr('id');
+            $('.information-text-profile textarea').addClass('bg-chat');
+            $('.information-text-profile textarea').addClass('main_color_text');
+            $('.information-text-profile p').css({'display':'none'});
+            $('.information-text-profile textarea').attr('type', 'text');
+        }
     }
     else{
         $('.information-text-profile p').css({'display':'inline'});
@@ -157,13 +171,20 @@ $('.rewiev-card-close').click(function(e) {
 });
 $('.content-text-mobile img').click(function(e){
     if($('.content-text-mobile p').css('display') !== "none"){
-        $('.content-text-mobile').append('<textarea rows="10" cols="45" name="text"> </ textarea>');
-    $('.content-text-mobile textarea').text($('.content-text p').text());
-    $('.content-text-mobile textarea').removeAttr('id');
-    $('.content-text-mobile textarea').addClass('bg-chat');
-    $('.content-text-mobile textarea').addClass('main_color_text');
-    $('.content-text-mobile p').css({'display':'none'});
-    $('.content-text-mobile textarea').attr('type', 'text');
+        if ($('.content-text-mobile-area').length > 0) {
+            $('.content-text-mobile-area').text($('.content-text p').text());
+            $('.content-text-mobile-area').fadeIn(300);
+            $('.content-text-mobile p').css({'display':'none'});
+        }
+    else {
+        $('.content-text-mobile').append('<textarea rows="10" cols="45" name="text" class="content-text-mobile-area"> </ textarea>');
+        $('.content-text-mobile textarea').text($('.content-text p').text());
+        $('.content-text-mobile textarea').removeAttr('id');
+        $('.content-text-mobile textarea').addClass('bg-chat');
+        $('.content-text-mobile textarea').addClass('main_color_text');
+        $('.content-text-mobile p').css({'display':'none'});
+        $('.content-text-mobile textarea').attr('type', 'text');
+    }
     }
     else{
         $('.content-text-mobile p').css({'display':'inline'});

@@ -153,7 +153,28 @@
   justify-content: center;
   align-items: center;
 }
-
+.input-status-item{
+  width: 100%;
+  max-width: none;
+}
+.input-status{
+  display: flex;
+  width: 100%;
+  column-gap: 15px;
+}
+.input-status input{
+  border: 1px solid #1ebbed;
+  border-radius: 8px;
+  height: 44px;
+  padding: 0px 15px;
+}
+.input-status-select{
+  width: 100%;
+  max-width: 240px;
+}
+.input-status .create-task-select-title{
+  width: 100%;
+}
 .textAreaIcon p {
   font-size: 20px;
 }
@@ -311,4 +332,13 @@
   .pro-information p {
     text-align: left;
   }
+}
+
+@media(max-width: 580px){
+  
+.input-status{
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
 }
