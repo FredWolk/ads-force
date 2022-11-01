@@ -62,13 +62,12 @@ $('.content-text img').click(function(e){
     $('.content-text p').css({'display':'none'});
     } 
     else {
-    $('.content-text').append('<textarea rows="10" cols="45" name="text" class="content-area"> </ textarea>');
-    $('.content-text textarea').text($('.content-text p').text());
-    $('.content-text textarea').removeAttr('id');
-    $('.content-text textarea').addClass('bg-chat');
-    $('.content-text textarea').addClass('main_color_text');
+    $('.content-text').append('<textarea rows="10" cols="45" name="information" class="content-area"> </ textarea>');
+    $('.content-text textarea').text($('.content-text p').text())
+        .removeAttr('id')
+        .addClass('bg-chat main_color_text')
+        .attr('type', 'text');
     $('.content-text p').css({'display':'none'});
-    $('.content-text textarea').attr('type', 'text');
     }
 }   
     else{
@@ -84,13 +83,12 @@ $('.information-text-profile img').click(function(e){
             $('.information-text-profile p').css({'display':'none'});
         }
         else {
-            $('.information-text-profile').append('<textarea rows="10" cols="45" name="text" class="information-area"> </ textarea>');
-            $('.information-text-profile textarea').text($('.information-text-profile p').text());
-            $('.information-text-profile textarea').removeAttr('id');
-            $('.information-text-profile textarea').addClass('bg-chat');
-            $('.information-text-profile textarea').addClass('main_color_text');
+            $('.information-text-profile').append('<textarea rows="10" cols="45" name="about" class="information-area"> </ textarea>');
+            $('.information-text-profile textarea').text($('.information-text-profile p').text())
+                .removeAttr('id')
+                .addClass('bg-chat main_color_text')
+                .attr('type', 'text');
             $('.information-text-profile p').css({'display':'none'});
-            $('.information-text-profile textarea').attr('type', 'text');
         }
     }
     else{
@@ -111,7 +109,7 @@ $('.information-nav').click(function(e){
 $('.tasks-nav').click(function(e){
     $('.content-text').fadeOut(300);
     $('.rewiev-full').fadeOut(300);
-    $('.tasks-item').fadeIn(300);
+    $('.tasks-item').fadeIn(300).css('display', 'flex');
 });
 $('.mobile-review-text').click(function(e){
     if($(this).parent().find('.block-mobile-information-content').css('display') == "block"){
@@ -177,13 +175,12 @@ $('.content-text-mobile img').click(function(e){
             $('.content-text-mobile p').css({'display':'none'});
         }
     else {
-        $('.content-text-mobile').append('<textarea rows="10" cols="45" name="text" class="content-text-mobile-area"> </ textarea>');
-        $('.content-text-mobile textarea').text($('.content-text p').text());
-        $('.content-text-mobile textarea').removeAttr('id');
-        $('.content-text-mobile textarea').addClass('bg-chat');
-        $('.content-text-mobile textarea').addClass('main_color_text');
+        $('.content-text-mobile').append('<textarea rows="10" cols="45" name="information" class="content-text-mobile-area"> </ textarea>');
+        $('.content-text-mobile textarea').text($('.content-text p').text())
+            .removeAttr('id')
+            .addClass('bg-chat main_color_text')
+            .attr('type', 'text');
         $('.content-text-mobile p').css({'display':'none'});
-        $('.content-text-mobile textarea').attr('type', 'text');
     }
     }
     else{
@@ -194,6 +191,51 @@ $('.content-text-mobile img').click(function(e){
 $('.tag-button').click(function(e){
     $('.tag-input').fadeIn(300);
 });
+
+$('input[name="tag"]').on('change', function() {
+    let tag = $(this).val();
+  $.ajax({
+    url: 'save-skills',
+    type: 'POST',
+    dataType: 'JSON',
+    data: {skill: tag},
+  }).done(function(r) {
+    if (r.status){
+    $('.skills-user-items').append(`
+         <div class="skills-item white_color_bg">
+            <p class="Font-size24 main_color_text">` + tag + `</p>
+         </div>
+    `)
+    $('input[name="tag"]').val('');
+    }
+  })
+});
+$('.information-text-profile').on('change', 'textarea[name="about"]', function() {
+  let text = $(this);
+  $.ajax({
+    url: 'save-about',
+    type: 'POST',
+    dataType: 'JSON',
+    data: {about: text.val()},
+  }).done(function(r) {
+    if (r.status){
+        location.reload();
+    }
+  })
+})
+$('.content-item').on('change', 'textarea[name="information"]', function() {
+  let text = $(this);
+  $.ajax({
+    url: 'save-information',
+    type: 'POST',
+    dataType: 'JSON',
+    data: {information: text.val()},
+  }).done(function(r) {
+    if (r.status){
+        location.reload();
+    }
+  })
+})
 JS;
 $this->registerJs($js);
 ?>
@@ -204,37 +246,28 @@ $this->registerJs($js);
 </section>
 <div class="modalReview">
     <div class="modalReviewContainer">
-        <div class="rewiev-card white_color_bg">
-            <div class="rewiev-card-close">
-                &times;
-            </div>
-            <div class="rewiev-card-top">
+        <?php if (!empty($reviews)): ?>
+            <?php foreach ($reviews as $i): ?>
+                <div class="rewiev-card white_color_bg">
+                    <div class="rewiev-card-close">
+                        &times;
+                    </div>
+                    <div class="rewiev-card-top">
 
-                <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
-                <div class="rewiev-card-title">
-                    <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
-                    <p class="main_color_text">Заказчик</p>
+                        <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
+                        <div class="rewiev-card-title">
+                            <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
+                            <p class="main_color_text">Заказчик</p>
+                        </div>
+                    </div>
+                    <div class="rewiev-card-content">
+                        <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим
+                            сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт...
+                            читать далее</p>
+                    </div>
                 </div>
-            </div>
-            <div class="rewiev-card-content">
-                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
-            </div>
-        </div>
-        <div class="rewiev-card white_color_bg">
-            <div class="rewiev-card-close">
-                &times;
-            </div>
-            <div class="rewiev-card-top">
-                <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
-                <div class="rewiev-card-title">
-                    <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
-                    <p class="main_color_text">Заказчик</p>
-                </div>
-            </div>
-            <div class="rewiev-card-content">
-                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... читать далее</p>
-            </div>
-        </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
     <div class="arrows-slider container-index">
         <img class="prev-review-modal" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
@@ -243,14 +276,15 @@ $this->registerJs($js);
 </div>
 <div class="Profile-container" style="max-width: 1110px; padding:0px 20px;">
     <div class="back-link">
-        <a onclick="history.back()" style="cursor:pointer;" class="Font-size18"><img src="<?= Url::to(['img/profile/private-profile/back-profile.svg']) ?>" alt="">Вернуться назад</a>
+        <a onclick="history.back()" style="cursor:pointer;" class="Font-size18"><img
+                    src="<?= Url::to(['img/profile/private-profile/back-profile.svg']) ?>" alt="">Вернуться назад</a>
     </div>
     <div class="profile-full">
         <div class="profile-left">
             <section class="profile-info">
                 <div class="img-profile-full">
                     <div class="img-profile">
-                        <?php if(!empty($info['photo'])): ?>
+                        <?php if (!empty($info['photo'])): ?>
                             <img src="<?= Url::to([$info['photo']]) ?>" alt="">
                         <?php else: ?>
                             <img src="<?= Url::to(['img/profile/private-profile/profile-img.png']) ?>" alt="">
@@ -261,12 +295,15 @@ $this->registerJs($js);
                     <div class="profile-name">
                         <h2 class="Font-size24 main_color_text"><?= !empty($info['fio']) ? $info['fio'] : 'Имя не указано' ?></h2>
                         <img src="<?= Url::to(['img/profile/private-profile/confirm-icon.svg']) ?>" alt="">
-                        <a href="<?= Url::to(['profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt=""></a>
+                        <a href="<?= Url::to(['profile-seetings']) ?>"><img
+                                    src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt=""></a>
                     </div>
                     <p class="main_color_text">заказчик</p>
                     <div class="performers-card-stars">
-                        <div style="background-image: url(<?= Url::to(['img/index/stars.png']) ?>); height: 20px; background-repeat: no-repeat; max-width:140px; width:100%;" class="stars">
-                            <div style="background-image: url(<?= Url::to(['img/index/yellowStars.png']) ?>); height: 20px; background-repeat: no-repeat; width: <?= !empty($info['rating']) ? $info['rating'] : 0 ?>%" class="yellow_stars"></div>
+                        <div style="background-image: url(<?= Url::to(['img/index/stars.png']) ?>); height: 20px; background-repeat: no-repeat; max-width:140px; width:100%;"
+                             class="stars">
+                            <div style="background-image: url(<?= Url::to(['img/index/yellowStars.png']) ?>); height: 20px; background-repeat: no-repeat; width: <?= !empty($info['rating']) ? $info['rating'] : 0 ?>%"
+                                 class="yellow_stars"></div>
                         </div>
                         <p class="Font-size24 main_color_text"><?= !empty($info['rating']) ? $info['rating'] : 0 ?></p>
                     </div>
@@ -277,7 +314,7 @@ $this->registerJs($js);
             </section>
             <section class="information-text-profile white_color_bg">
                 <div>
-                    <p class="Font-size24 main_color_text"><b>Обо мне:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
+                    <p class="Font-size24 main_color_text"><b>Обо мне:</b> <?= $info['about'] ?></p>
                 </div>
                 <img class="pen-abs" src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt="">
             </section>
@@ -286,20 +323,16 @@ $this->registerJs($js);
             <section class="skills-user">
                 <p class="mobile-title-skills">Категории работы:</p>
                 <div class="skills-user-items">
-                    <div class="skills-item white_color_bg">
-                        <p class="Font-size24 main_color_text">SEO</p>
-                    </div>
-                    <div class="skills-item white_color_bg">
-                        <p class="Font-size24 main_color_text">SEO</p>
-                    </div>
-                    <div class="skills-item white_color_bg">
-                        <p class="Font-size24 main_color_text">SEO</p>
-                    </div>
-                    <div class="skills-item white_color_bg">
-                        <p class="Font-size24 main_color_text">SEO</p>
-                    </div>
+                    <?php if (!empty($info['skils'])): ?>
+                        <?php foreach (json_decode($info['skils'], 1) as $i): ?>
+                            <div class="skills-item white_color_bg">
+                                <p class="Font-size24 main_color_text"><?= $i ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
-                <input type="text" style="display:none;" class="tag-input main_color_text white_color_bg" placeholder="Добавить тег" name="tag">
+                <input type="text" style="display:none;" class="tag-input main_color_text white_color_bg"
+                       placeholder="Добавить тег" name="tag">
                 <a class="white_color tag-button">Добавить
                 </a>
             </section>
@@ -319,47 +352,31 @@ $this->registerJs($js);
         </div>
         <div class="content">
             <div class="content-item content-text">
-                <p class="Font-size24 main_color_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>
+                <p class="Font-size24 main_color_text"><?= !empty($info['information']) ? $info['information'] : '' ?></p>
                 <img class="pen-abs" src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt="">
             </div>
             <section class="rewiev-full">
                 <div class="rewiev-items container-index">
-                    <div class="rewiev-card">
-                        <div class="rewiev-card-top">
-                            <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
-                            <div class="rewiev-card-title">
-                                <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
-                                <p class="main_color_text">Заказчик</p>
+                    <?php if (!empty($reviews)): ?>
+                        <?php foreach ($reviews as $i): ?>
+                            <div class="rewiev-card">
+                                <div class="rewiev-card-top">
+                                    <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
+                                    <div class="rewiev-card-title">
+                                        <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
+                                        <p class="main_color_text">Заказчик</p>
+                                    </div>
+                                </div>
+                                <div class="rewiev-card-content">
+                                    <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею
+                                        юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну
+                                        конкретную задачу. В шт... <span class="load-more-rewiev"
+                                                                         style="color:#F535DA; cursor:pointer;">читать далее</span>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="rewiev-card-content">
-                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
-                        </div>
-                    </div>
-                    <div class="rewiev-card">
-                        <div class="rewiev-card-top">
-                            <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
-                            <div class="rewiev-card-title">
-                                <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
-                                <p class="main_color_text">Заказчик</p>
-                            </div>
-                        </div>
-                        <div class="rewiev-card-content">
-                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
-                        </div>
-                    </div>
-                    <div class="rewiev-card">
-                        <div class="rewiev-card-top">
-                            <img src="<?= Url::to(['img/index/rewievImg.png']) ?>" alt="">
-                            <div class="rewiev-card-title">
-                                <h2 class="Font_size24 main_color_text">Дарья Агапова</h2>
-                                <p class="main_color_text">Заказчик</p>
-                            </div>
-                        </div>
-                        <div class="rewiev-card-content">
-                            <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
-                        </div>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
                 <div class="arrows-slider container-index">
                     <img class="prev" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
@@ -367,76 +384,60 @@ $this->registerJs($js);
                 </div>
             </section>
             <div class="tasks tasks-item">
-                <a data-pjax="0" href="<?= Url::to(['new-task-preview']) ?>">
-                    <div class="task-item">
-                        <div class="filter-task-item">
-                            <div class="filter-task-item-main">
-                                <div class="hi-order">
-                                    <p>Свободен</p>
-                                    <img src="<?= Url::to(['img/tasks/smite.svg']) ?>" alt="">
+                <?php if(!empty($tasks)): ?>
+                    <?php foreach($tasks as $i): ?>
+                        <a data-pjax="0" href="<?= Url::to(['new-task-preview']) ?>">
+                            <div class="task-item">
+                                <div class="filter-task-item">
+                                    <div class="filter-task-item-main">
+                                        <div class="hi-order">
+                                            <p>Свободен</p>
+                                            <img src="<?= Url::to(['img/tasks/smite.svg']) ?>" alt="">
+                                        </div>
+                                        <div class="filters-list">
+                                            <div class="filter-view filter-task-items">
+                                                <img src="<?= Url::to(['img/tasks/view.svg']) ?>" alt="">
+                                                <p><?= !empty($i['views']) ? $i['views'] : 0 ?></p>
+                                            </div>
+                                            <div class="filter-view filter-task-items">
+                                                <img src="<?= Url::to(['img/tasks/human-icon.svg']) ?>" alt="">
+                                                <p><?= !empty($i['responded']) ? $i['responded'] : 0 ?></p>
+                                            </div>
+                                            <div class="filter-view filter-task-items">
+                                                <img src="<?= Url::to(['img/tasks/summ.svg']) ?>" alt="">
+                                                <p><?= !empty($i['price']) ? $i['price'] : 'Договорная' ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right-item-filter">
+                                        <p><?= !empty($i['date_public']) ? date('d.m.Y', strtotime($i['date_public'])) : '' ?></p>
+                                        <img src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt="">
+<!--                                        <img src="--><?//= Url::to(['img/profile/private-profile/close-task.svg']) ?><!--" alt="">-->
+                                    </div>
                                 </div>
-                                <div class="filters-list">
-                                    <div class="filter-view filter-task-items">
-                                        <img src="<?= Url::to(['img/tasks/view.svg']) ?>" alt="">
-                                        <p>0</p>
-                                    </div>
-                                    <div class="filter-view filter-task-items">
-                                        <img src="<?= Url::to(['img/tasks/human-icon.svg']) ?>" alt="">
-                                        <p>12</p>
-                                    </div>
-                                    <div class="filter-view filter-task-items">
-                                        <img src="<?= Url::to(['img/tasks/summ.svg']) ?>" alt="">
-                                        <p>5000</p>
-                                    </div>
+                                <div class="task-title">
+                                    <h2 class="Font-size24 main_color_text"><?= $i['title'] ?></h2>
+                                </div>
+                                <div class="task-text main_color_text">
+                                    <span style="color: #F535DA">... Подробнее</span>
+                                </div>
+                                <div class="task-tag-list">
+                                    <?php $tags = !empty($i['tags']) ? json_decode($i['tags'], 1) : [] ?>
+                                    <?php if(!empty($i['tags'])): ?>
+                                        <?php foreach($tags as $v): ?>
+                                            <div class="task-tag-item">
+                                                <p>#<?= $v ?></p>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </div>
                             </div>
-                            <div class="right-item-filter">
-                                <p>29 сентября</p>
-                                <img src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt="">
-                                <img src="<?= Url::to(['img/profile/private-profile/close-task.svg']) ?>" alt="">
-                            </div>
-                        </div>
-                        <div class="task-title">
-                            <h2 class="Font-size24 main_color_text">вк</h2>
-                        </div>
-                        <div class="task-text main_color_text">
-                            <span style="color: #F535DA">... Подробнее</span>
-                        </div>
-                        <div class="task-tag-list">
-                            <div class="task-tag-item">
-                                <p>#тег</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                        </a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
                 <div class="pagination-links">
-                    <p>Показано 3 из 20</p>
                     <a href="<?= Url::to(['profile-create-task']) ?>" class="add-mobile-task">Добавить</a>
-                    <div class="pagination-items">
-                        <a href="">
-                            <svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.5 1L1 4.5L4.5 8" class="arrow-color" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M9 1L5.5 4.5L9 8" class="arrow-color" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </a>
-                        <ul>
-                            <li>
-                                <a class="active-paginate main_color_text" href="">1</a>
-                            </li>
-                            <li>
-                                <a href="" class="main_color_text">2</a>
-                            </li>
-                            <li>
-                                <a href="" class="main_color_text">3</a>
-                            </li>
-                        </ul>
-                        <a href="">
-                            <svg class="right-arrow-pagination" width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.5 1L1 4.5L4.5 8" class="arrow-color" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M9 1L5.5 4.5L9 8" class="arrow-color" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -445,7 +446,8 @@ $this->registerJs($js);
         <div class="mobile-rewiev">
             <div class="mobile-review-text mobile-nav white_color_bg">
                 <h2 class="Font-size18 main_color_text">ОТЗЫВЫ</h2>
-                <img src="<?= Url::to(['img/profile/private-profile/arrow-mobile.svg']) ?>" style="transform:rotate(-180deg)" alt="">
+                <img src="<?= Url::to(['img/profile/private-profile/arrow-mobile.svg']) ?>"
+                     style="transform:rotate(-180deg)" alt="">
             </div>
             <div class="block-mobile-information-content">
                 <section class="rewiev-full">
@@ -459,7 +461,11 @@ $this->registerJs($js);
                                 </div>
                             </div>
                             <div class="rewiev-card-content">
-                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
+                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею
+                                    юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну
+                                    конкретную задачу. В шт... <span class="load-more-rewiev"
+                                                                     style="color:#F535DA; cursor:pointer;">читать далее</span>
+                                </p>
                             </div>
                         </div>
                         <div class="rewiev-card">
@@ -471,7 +477,11 @@ $this->registerJs($js);
                                 </div>
                             </div>
                             <div class="rewiev-card-content">
-                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
+                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею
+                                    юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну
+                                    конкретную задачу. В шт... <span class="load-more-rewiev"
+                                                                     style="color:#F535DA; cursor:pointer;">читать далее</span>
+                                </p>
                             </div>
                         </div>
                         <div class="rewiev-card">
@@ -483,13 +493,18 @@ $this->registerJs($js);
                                 </div>
                             </div>
                             <div class="rewiev-card-content">
-                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну конкретную задачу. В шт... <span class="load-more-rewiev" style="color:#F535DA; cursor:pointer;">читать далее</span></p>
+                                <p class="main_color_text">ADSFORCE — мой облачный офис с сотрудниками. Я владею
+                                    юридическим сайтом «Автозаконы» и бывает, что мне нужны исполнители на одну
+                                    конкретную задачу. В шт... <span class="load-more-rewiev"
+                                                                     style="color:#F535DA; cursor:pointer;">читать далее</span>
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="arrows-slider container-index">
                         <img class="prev-mobile" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
-                        <img class="arrows-slider-right next-mobile" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+                        <img class="arrows-slider-right next-mobile" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>"
+                             alt="">
                     </div>
                 </section>
             </div>
@@ -501,7 +516,7 @@ $this->registerJs($js);
             </div>
             <div class="block-mobile-information-content mobile-hide-info">
                 <div class="content-item text-information content-text-mobile">
-                    <p class="Font-size24 main_color_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus.</p>
+                    <p class="Font-size24 main_color_text"><?= !empty($info['information']) ? $info['information'] : '' ?></p>
                     <img class="pen-abs" src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt="">
                 </div>
             </div>
@@ -513,78 +528,60 @@ $this->registerJs($js);
             </div>
             <div class="block-mobile-information-content  mobile-hide-info">
                 <div class="tasks tasks-item">
-                    <a data-pjax="0" href="<?= Url::to(['new-task-preview']) ?>">
-                        <div class="task-item white_color_bg">
-                            <div class="filter-task-item">
-                                <div class="filter-task-item-main">
-                                    <div class="hi-order">
-                                        <p>Свободен</p>
-                                        <img src="<?= Url::to(['img/tasks/smite.svg']) ?>" alt="">
+                    <?php if(!empty($tasks)): ?>
+                        <?php foreach($tasks as $i): ?>
+                            <a data-pjax="0" href="<?= Url::to(['new-task-preview']) ?>">
+                                <div class="task-item">
+                                    <div class="filter-task-item">
+                                        <div class="filter-task-item-main">
+                                            <div class="hi-order">
+                                                <p>Свободен</p>
+                                                <img src="<?= Url::to(['img/tasks/smite.svg']) ?>" alt="">
+                                            </div>
+                                            <div class="filters-list">
+                                                <div class="filter-view filter-task-items">
+                                                    <img src="<?= Url::to(['img/tasks/view.svg']) ?>" alt="">
+                                                    <p><?= !empty($i['views']) ? $i['views'] : 0 ?></p>
+                                                </div>
+                                                <div class="filter-view filter-task-items">
+                                                    <img src="<?= Url::to(['img/tasks/human-icon.svg']) ?>" alt="">
+                                                    <p><?= !empty($i['responded']) ? $i['responded'] : 0 ?></p>
+                                                </div>
+                                                <div class="filter-view filter-task-items">
+                                                    <img src="<?= Url::to(['img/tasks/summ.svg']) ?>" alt="">
+                                                    <p><?= !empty($i['price']) ? $i['price'] : 'Договорная' ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right-item-filter">
+                                            <p><?= !empty($i['date_public']) ? date('d.m.Y', strtotime($i['date_public'])) : '' ?></p>
+                                            <img src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt="">
+                                            <!--                                        <img src="--><?//= Url::to(['img/profile/private-profile/close-task.svg']) ?><!--" alt="">-->
+                                        </div>
                                     </div>
-                                    <div class="filters-list">
-                                        <div class="filter-view filter-task-items">
-                                            <img src="<?= Url::to(['img/tasks/view.svg']) ?>" alt="">
-                                            <p>0</p>
-                                        </div>
-                                        <div class="filter-view filter-task-items">
-                                            <img src="<?= Url::to(['img/tasks/human-icon.svg']) ?>" alt="">
-                                            <p>12</p>
-                                        </div>
-                                        <div class="filter-view filter-task-items">
-                                            <img src="<?= Url::to(['img/tasks/summ.svg']) ?>" alt="">
-                                            <p>5000</p>
-                                        </div>
+                                    <div class="task-title">
+                                        <h2 class="Font-size24 main_color_text"><?= $i['title'] ?></h2>
+                                    </div>
+                                    <div class="task-text main_color_text">
+                                        <span style="color: #F535DA">... Подробнее</span>
+                                    </div>
+                                    <div class="task-tag-list">
+                                        <?php $tags = !empty($i['tags']) ? json_decode($i['tags'], 1) : [] ?>
+                                        <?php if(!empty($i['tags'])): ?>
+                                            <?php foreach($tags as $v): ?>
+                                                <div class="task-tag-item">
+                                                    <p>#<?= $v ?></p>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
-                                <div class="right-item-filter">
-                                    <p>29 сентября</p>
-                                    <img src="<?= Url::to(['img/profile/private-profile/pen.svg']) ?>" alt="">
-                                    <img src="<?= Url::to(['img/profile/private-profile/close-task.svg']) ?>" alt="">
-                                </div>
-                            </div>
-                            <div class="task-title">
-                                <h2 class="Font-size24 main_color_text">вк</h2>
-                            </div>
-                            <div class="task-text main_color_text">
-                                dasdas
-                                <span style="color: #F535DA">... Подробнее</span>
-                            </div>
-                            <div class="task-tag-list">
-                                <div class="task-tag-item">
-                                    <p>#тег</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                            </a>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
                 <div class="pagination-links">
-                    <p>Показано 3 из 20</p>
                     <a href="<?= Url::to(['profile-create-task']) ?>" class="add-mobile-task">Добавить</a>
-                    <div class="pagination-items">
-                        <a href="">
-                            <svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.5 1L1 4.5L4.5 8" class="arrow-color" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M9 1L5.5 4.5L9 8" class="arrow-color" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </a>
-                        <ul>
-                            <li>
-                                <a class="active-paginate main_color_text" href="">1</a>
-                            </li>
-                            <li>
-                                <a href="" class="main_color_text">2</a>
-                            </li>
-                            <li>
-                                <a href="" class="main_color_text">3</a>
-                            </li>
-                        </ul>
-                        <a href="">
-                            <svg class="right-arrow-pagination" width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.5 1L1 4.5L4.5 8" class="arrow-color" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M9 1L5.5 4.5L9 8" class="arrow-color" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>

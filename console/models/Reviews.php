@@ -56,8 +56,10 @@ class Reviews extends \yii\db\ActiveRecord
     public function getInfo()
     {
         $info = $this->hasOne(Performers::className(), ['user_id' => 'user_id']);
-        // if(empty($info))
-        // $info = 
+         if(empty($info)){
+             $info = $this->hasOne(Customer::className(), ['user_id' => 'user_id']);
+         }
+
         return $info;
     }
 }

@@ -4,7 +4,7 @@ use yii\web\Controller;
 use console\models\User;
 use Yii;
 
-class ProfilePerformerController extends Controller
+class ProfilePerformerController extends AccessController
 {
     public $layout = 'profilePerformer';
     public function actionIndex()

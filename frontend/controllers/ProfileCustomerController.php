@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use console\models\Customer;
 use console\models\News;
+use console\models\Reviews;
 use console\models\Support;
 use console\models\SupportMessage;
 use console\models\Tasks;
@@ -15,7 +16,7 @@ use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\Response;
 
-class ProfileCustomerController extends Controller
+class ProfileCustomerController extends AccessController
 {
     public $layout = 'profileCustomer';
 
@@ -40,8 +41,74 @@ class ProfileCustomerController extends Controller
             ->asArray()
             ->where(['user_id' => $user_id])
             ->one();
+        $reviews = Reviews::find()
+            ->with('info')
+            ->asArray()
+            ->where(['about_id' => $user_id])
+            ->all();
+        $tasks = Tasks::find()
+            ->asArray()
+            ->where(['author_id' => $user_id])
+            ->andWhere(['status' => Tasks::STATUS_FREE])
+            ->all();
 
-        return $this->render('profile-private', compact('info'));
+        return $this->render('profile-private', compact('info', 'reviews', 'tasks'));
+    }
+
+    public function actionSaveSkills()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $user_id = Yii::$app->getUser()->getId();
+        $info = Customer::find()
+            ->where(['user_id' => $user_id])
+            ->one();
+        if (empty($_POST['skill'])){
+            return ['status' => false, 'message' => 'Укажите ваш навык'];
+        }
+        $skills = !empty($info->skils) ? json_decode($info->skils, 1) : [];
+        $skills[] = $_POST['skill'];
+        $info->skils = json_encode($skills, JSON_UNESCAPED_UNICODE);
+        if ($info->update() !== false){
+            return ['status' => true];
+        } else {
+            return ['status' => false, 'message' => 'Ошибка сохранения данных'];
+        }
+    }
+
+    public function actionSaveAbout()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $user_id = Yii::$app->getUser()->getId();
+        $info = Customer::find()
+            ->where(['user_id' => $user_id])
+            ->one();
+        if (empty($_POST['about'])) {
+            return ['status' => false, 'message' => 'Нельзя указывать пустое значение'];
+        }
+        $info->about = $_POST['about'];
+        if ($info->update() !== false){
+            return ['status' => true];
+        } else {
+            return ['status' => false, 'message' => 'Ошибка сохранения данных'];
+        }
+    }
+
+    public function actionSaveInformation()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $user_id = Yii::$app->getUser()->getId();
+        $info = Customer::find()
+            ->where(['user_id' => $user_id])
+            ->one();
+        if (empty($_POST['information'])) {
+            return ['status' => false, 'message' => 'Нельзя указывать пустое значение'];
+        }
+        $info->information = $_POST['information'];
+        if ($info->update() !== false){
+            return ['status' => true];
+        } else {
+            return ['status' => false, 'message' => 'Ошибка сохранения данных'];
+        }
     }
 
     public function actionProfilePaymentInfo()

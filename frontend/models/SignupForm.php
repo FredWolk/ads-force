@@ -14,6 +14,7 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $role;
 
 
     /**
@@ -35,6 +36,9 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
+
+            ['role', 'required'],
+            ['role', 'integer'],
         ];
     }
 
@@ -56,7 +60,7 @@ class SignupForm extends Model
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
 
-        return $user->save()/*&& $this->sendEmail($user)*/;
+        return $user->save() && $this->sendEmail();
     }
 
     /**
@@ -64,17 +68,14 @@ class SignupForm extends Model
      * @param User $user user model to with email should be send
      * @return bool whether the email was sent
      */
-    protected function sendEmail($user)
+    protected function sendEmail()
     {
-        return Yii::$app
-            ->mailer
-            ->compose(
-                ['html' => 'emailVerify-html', 'text' => 'emailVerify-text'],
-                ['user' => $user]
-            )
-            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
+        Yii::$app->mailer->compose()
+            ->setFrom(['info@myforce.ru' => 'ADS.FORCE - экосистема для бизнеса'])
             ->setTo($this->email)
-            ->setSubject('Account registration at ' . Yii::$app->name)
+            ->setSubject('Регистрация в ADS.FORCE, ваш пароль и ссылка на личный кабине')
+            ->setTextBody('Текст сообщения')
+            ->setHtmlBody("<a href='http://ads-force/register/signup-confirm?email={$this->email}&role={$this->role}'>http://ads-force/register/signup-confirm</a>")
             ->send();
     }
 }

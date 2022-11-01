@@ -364,6 +364,11 @@ AppAsset::register($this);
                     <input type="email" required placeholder="Номер телефона или e-mail" name="email">
                     <div id="email" class="error_register-block"></div>
 
+                    <select name="role">
+                        <option value="1">Исполнитель</option>
+                        <option value="2">Заказчик</option>
+                    </select>
+
                     <input type="password" id="password" required placeholder="Придумайте пароль" name="password">
                     <input type="password" id="second-pass" required placeholder="Повторите пароль" name="second-pass">
                     <div id="password" class="error_register-block">Введеные пароли не совпадают</div>

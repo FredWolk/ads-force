@@ -236,7 +236,7 @@ $this->registerJs($js);
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?= Url::to(['profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/exit-icon.svg']) ?>" alt="">
+                                    <a href="<?= Url::to(['/register/logout']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/exit-icon.svg']) ?>" alt="">
                                         <p class="Font-size18 main_color_text">Выйти</p>
                                     </a>
                                 </li>
