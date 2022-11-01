@@ -271,7 +271,7 @@ $this->registerJs($js);
                         <p class="Font-size24 main_color_text"><?= !empty($info['rating']) ? $info['rating'] : 0 ?></p>
                     </div>
                     <div class="profile-date">
-                        <p>На сайте с <?= date('d.m.Y', strtotime($info['date'])) ?></p>
+                        <p>На сайте с <?= !empty($info['date']) ? date('d.m.Y', strtotime($info['date'])) : '' ?></p>
                     </div>
                 </div>
             </section>
