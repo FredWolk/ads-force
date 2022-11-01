@@ -130,11 +130,11 @@ $this->registerJs($js);
         </div>
         <div class="task-form-title Summ" style="display:none;">
             <p class="Font-size18 main_color_text">Цена</p>
-            <input type="text" class="price" class="white_color_bg main_color_text" placeholder="Цена">
+            <input type="text" class="price white_color_bg main_color_text" placeholder="Цена">
         </div>
         <div class="text-about-project">
             <p class="Font-size18 main_color_text">О проекте</p>
-            <div class="textAreaBlock">
+            <div class="textAreaBlock white_color_bg">
                 <?=
                 CKEditor::widget([
                     'name' => 'about',
@@ -147,7 +147,7 @@ $this->registerJs($js);
         </div>
         <div class="text-about-project">
             <p class="Font-size18 main_color_text">Техническое задание</p>
-            <div class="textAreaBlock">
+            <div class="textAreaBlock white_color_bg">
                 <?=
                 CKEditor::widget([
                     'name' => 'tz',
