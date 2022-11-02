@@ -483,6 +483,9 @@ $this->registerJs($js);
                     <img class="prev-tasks" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
                     <img class="arrows-slider-right next-tasks" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
                 </div>
+                <div class="add-portfol">
+                    <a href="<?= Url::to(['create-portfolio']) ?>" class="add-portfolio">Добавить</a>
+                </div>
             </div>
         </div>
     </section>
@@ -572,6 +575,9 @@ $this->registerJs($js);
                     <div class="arrows-slider container-index">
                         <img class="prev-tasks-mobile" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
                         <img class="arrows-slider-right next-tasks-mobile" src="<?= Url::to(['img/index/arrowSlider.svg']) ?>" alt="">
+                    </div>
+                    <div class="add-portfol">
+                        <a href="<?= Url::to(['create-portfolio']) ?>" class="add-portfolio">Добавить</a>
                     </div>
                 </div>
             </div>
