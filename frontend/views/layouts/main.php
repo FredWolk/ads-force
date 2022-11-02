@@ -1,6 +1,7 @@
 <?php
 
 /** @var \yii\web\View $this */
+
 /** @var string $content */
 
 use console\models\User;
@@ -11,9 +12,12 @@ use frontend\assets\AppAsset;
 
 $user = User::find()->where(['id' => Yii::$app->getUser()->getId()])
     ->with('balance')
+    ->with('role')
     ->asArray()
     ->one();
-
+if (!Yii::$app->getUser()->isGuest) {
+    $user['role']['role'] === \console\models\Role::ROLE_CUSTOMER ? $role = true : $role = false;
+}
 $js = <<< JS
 
 $('.Modal-close').click(function(e) {
@@ -149,21 +153,22 @@ $this->registerJs($js);
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
-<!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>" class="h-100">
+    <!DOCTYPE html>
+    <html lang="<?= Yii::$app->language ?>" class="h-100">
 
-<head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <?php $this->registerCsrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-</head>
+    <head>
+        <meta charset="<?= Yii::$app->charset ?>">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <?php $this->registerCsrfMetaTags() ?>
+        <title><?= Html::encode($this->title) ?></title>
+        <?php $this->head() ?>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+              rel="stylesheet">
+    </head>
 
-<body class="d-flex flex-column h-100">
+    <body class="d-flex flex-column h-100">
     <?php $this->beginBody() ?>
     <div class="wrapper">
         <header>
@@ -201,7 +206,8 @@ AppAsset::register($this);
                         </div>
                         <a href="<?= Url::to(['/']) ?>" class="logo">ADSFORCE</a>
                         <div class="language">
-                            <span>Eng</span> <span>|</span> <img src="<?= Url::to(['img/footer-header/language-en.webp']) ?>" alt="logo">
+                            <span>Eng</span> <span>|</span> <img
+                                    src="<?= Url::to(['img/footer-header/language-en.webp']) ?>" alt="logo">
                         </div>
                     </div>
 
@@ -236,13 +242,13 @@ AppAsset::register($this);
                                         <h2 class="Font-size18"><?= $user['username'] ?></h2>
                                         <img src="<?= Url::to(['img/footer-header/arrow-icon.svg']) ?>" alt="">
                                     </div>
-                                    <p>заказчик</p>
+                                    <p><?= $role ? 'заказчик' : 'исполнитель' ?></p>
                                 </div>
                             </div>
                             <div class="avtorize-modal">
                                 <ul>
                                     <li>
-                                        <a href="">
+                                        <a href="<?= $role ? Url::to(['profile-customer/profile-payment-info']) : Url::to(['profile-performer/profile-payment-info']) ?>">
                                             <img src="<?= Url::to(['img/footer-header/payment-link-icon.svg']) ?>" alt="">
                                             <p>Мой счёт:<?= $user['balance']['balance'] ?> ₽</p>
                                         </a>
@@ -254,51 +260,51 @@ AppAsset::register($this);
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= Url::to(['profile-customer/profile-tasks']) ?>">
+                                        <a href="<?= $role ? Url::to(['profile-customer/profile-tasks']) : Url::to(['profile-performer/profile-tasks']) ?>">
                                             <img src="<?= Url::to(['img/footer-header/doc-link-icon.svg']) ?>" alt="">
                                             <p>Мои задания/ работы</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= Url::to(['profile-customer/profile-message']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/message-link.svg']) ?>" alt="">
+                                        <a href="<?= $role ? Url::to(['profile-customer/profile-message']) : Url::to(['profile-performer/profile-message']) ?>">
+                                            <img src="<?= Url::to(['img/profile/profile-meneger/message-link.svg']) ?>" alt="">
                                             <p>Уведомления</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= Url::to(['profile-customer/index']) ?>">
+                                        <a href="<?= $role ? Url::to(['/profile-customer']) : Url::to(['/profile-performer']) ?>">
                                             <img src="<?= Url::to(['img/footer-header/user-icon.svg']) ?>" alt="">
                                             <p>Мой кабинет</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= Url::to(['profile-customer/profile-chat']) ?>">
+                                        <a href="<?= $role ? Url::to(['/profile-customer/profile-chat']) : Url::to(['/profile-performer/profile-chat']) ?>">
                                             <img src="<?= Url::to(['img/profile/profile-meneger/message-link-icon.svg']) ?>" alt="">
                                             <p>Сообщения</p>
                                         </a>
                                     </li>
+<!--                                    <li>-->
+<!--                                        <a href="--><?//= Url::to(['profile-customer/profile-pro']) ?><!--"><img-->
+<!--                                                    src="--><?//= Url::to(['img/profile/profile-meneger/partners-link-icon.svg']) ?><!--"-->
+<!--                                                    alt="">-->
+<!--                                            <p>Партнерская программа</p>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
                                     <li>
-                                        <a href="<?= Url::to(['profile-customer/profile-payment-info']) ?>">
-                                            <img src="<?= Url::to(['img/footer-header/payment-link-icon.svg']) ?>" alt="">
-                                            <p>Финансы</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="<?= Url::to(['profile-customer/profile-pro']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/partners-link-icon.svg']) ?>" alt="">
-                                            <p>Партнерская программа</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="<?= Url::to(['profile-customer/technical-support']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/help-link-icon.svg']) ?>" alt="">
+                                        <a href="<?= $role ? Url::to(['/profile-customer/technical-support']) : Url::to(['/profile-performer/technical-support']) ?>">
+                                            <img src="<?= Url::to(['img/profile/profile-meneger/help-link-icon.svg']) ?>" alt="">
                                             <p>Служба поддержки</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= Url::to(['profile-customer/profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/seetings-link-icon.svg']) ?>" alt="">
+                                        <a href="<?= $role ? Url::to(['/profile-customer/profile-seetings']) : Url::to(['/profile-performer/profile-seetings']) ?>">
+                                            <img src="<?= Url::to(['img/profile/profile-meneger/seetings-link-icon.svg']) ?>" alt="">
                                             <p>Настройки</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?= Url::to(['profile-customer/profile-seetings']) ?>"><img src="<?= Url::to(['img/profile/profile-meneger/exit-icon.svg']) ?>" alt="">
+                                        <a href="<?= Url::to(['register/logout']) ?>">
+                                            <img src="<?= Url::to(['img/profile/profile-meneger/exit-icon.svg']) ?>" alt="">
                                             <p>Выйти</p>
                                         </a>
                                     </li>
@@ -306,7 +312,6 @@ AppAsset::register($this);
                             </div>
                         </div>
                     <?php endif; ?>
-
 
 
                     <!-- появляется при > 1024px-->
@@ -432,8 +437,11 @@ AppAsset::register($this);
                     <div class="buttonClick Freelancer-content-buttons-main">
                         <a>
                             <button>
-                                <img class="Freelancer-content-buttons-black-img" src="<?= Url::to(['img/index/iconMenegerButton.svg']) ?>" style="display: none;" alt="">
-                                <img class="Freelancer-content-buttons-main-img" src="<?= Url::to(['img/index/iconFreelanceButton.svg']) ?>" alt="">
+                                <img class="Freelancer-content-buttons-black-img"
+                                     src="<?= Url::to(['img/index/iconMenegerButton.svg']) ?>" style="display: none;"
+                                     alt="">
+                                <img class="Freelancer-content-buttons-main-img"
+                                     src="<?= Url::to(['img/index/iconFreelanceButton.svg']) ?>" alt="">
                                 <p>Исполнителю</p>
                             </button>
                         </a>
@@ -648,7 +656,8 @@ AppAsset::register($this);
                         <div class="logo-lang">
                             <div class="logo">ADSFORCE</div>
                             <div class="language">
-                                <span>Eng</span> <span>|</span> <img src="<?= Url::to(['img/footer-header/language-en.webp']) ?>" alt="logo">
+                                <span>Eng</span> <span>|</span> <img
+                                        src="<?= Url::to(['img/footer-header/language-en.webp']) ?>" alt="logo">
                             </div>
                         </div>
                         <div class="contacts-mobile">
@@ -734,7 +743,7 @@ AppAsset::register($this);
 
 
     <?php $this->endBody() ?>
-</body>
+    </body>
 
-</html>
+    </html>
 <?php $this->endPage();

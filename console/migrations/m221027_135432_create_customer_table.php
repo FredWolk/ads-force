@@ -17,11 +17,12 @@ class m221027_135432_create_customer_table extends Migration
             'user_id'           => $this->integer()->notNull(),
             'photo'             => $this->string(1023)->null(),
             'rating'            => $this->integer()->defaultValue(0),
+            'fio'               => $this->string(255)->null(),
             'skils'             => $this->text()->null(),
+
             'about'             => $this->text()->null(),
             'information'       => $this->text()->null(),
             'date_register'     => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
-            'fio'               => $this->string(255)->null(),
             'dob'               => $this->string()->null(),
             'phone'             => $this->string()->null(),
             'email'             => $this->string()->null(),

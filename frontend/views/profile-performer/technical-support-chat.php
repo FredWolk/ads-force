@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\Html;
 use yii\helpers\Url;
 
 $this->title = 'ADS.Force';
@@ -20,29 +21,52 @@ $('.chat-private-show').click(function(){
 $('.container').click(function(){
     $('.select-category-list').fadeOut(300);
 });
+$('.send__message').on('submit', function (e) {
+    e.preventDefault();
+    $.ajax({
+        url: '/profile-performer/send-message',
+        type: 'POST',
+        data: $(this).serialize(),
+        dataType: 'JSON',
+    }).done(function (r) {
+       if(r.status){
+        var mes = $('#message').val(),
+            date = new Date();
+        $('.message-list').append(`
+            <div class="message-text my-message">
+                <p class="main_color_text">`+ mes +`</p>
+                <p class="time-message main_color_text">`+ date.getHours() +`:`+ date.getMinutes() +`</p>
+            </div>
+        `);
+        $('#message').val('');
+       }
+       $(".message-container").scrollTop($(".message-container")[0].scrollHeight);
+    })
+})
 JS;
 $this->registerJs($js);
 ?>
 <div class="rigth-column">
+
     <div class="support-chat-title">
-        <h2 class="main_color_text Font-size24">Данные обращения № 123456</h2>
+        <h2 class="main_color_text Font-size24">Данные обращения № <?= !empty($dialog['id']) ? $dialog['id'] : '' ?></h2>
     </div>
     <div class="support-chat-information">
-        <div class="information-item">
+        <!-- <div class="information-item">
             <p class="Font-size18">Раздел:</p>
             <b class="main_color_text">Статус PRO</b>
-        </div>
+        </div> -->
         <div class="information-item">
             <p class="Font-size18">Тема:</p>
-            <b class="main_color_text">Продление статуса</b>
+            <b class="main_color_text"><?= !empty($dialog['theme']) ? $dialog['theme'] : '' ?></b>
         </div>
         <div class="information-item">
             <p class="Font-size18">Дата:</p>
-            <b class="main_color_text">19.08.2022</b>
+            <b class="main_color_text"><?= !empty($dialog['date']) ? date('d.m.Y', strtotime($dialog['date'])) : '' ?></b>
         </div>
         <div class="information-item">
             <p class="Font-size18">Текст обращения:</p>
-            <b class="main_color_text">Здравствуйте! Не получается повторно продлить вип-статус.</b>
+            <b class="main_color_text"><?= !empty($dialog['message'][0]['text']) ? $dialog['message'][0]['text'] : '' ?></b>
         </div>
     </div>
     <div class="chat-private-show">
@@ -56,7 +80,7 @@ $this->registerJs($js);
             </div>
             <div class="header-chat-content">
                 <div class="header-chat-name">
-                    <h2 class="main_color_text">Дарья Агапова</h2>
+                    <h2 class="main_color_text">Ads.Force</h2>
                     <div class="header-chat-online"></div>
                 </div>
                 <p class="header-chat-status">в сети</p>
@@ -66,6 +90,25 @@ $this->registerJs($js);
             <div class="chat-body-main">
                 <div class="message-container">
                     <div class="message-user">
+                        <!-- <div class="message-user-header">
+                            <div class="header-chat-img bg-chat-img">
+                                <img src="<?= Url::to(['img/profile/profile-chat/profile-chat-private.png']) ?>" alt="">
+                            </div>
+                            <h2 class="main_color_text">Ads.Force</h2>
+                            <p>Тех. поддержка</p>
+                        </div> -->
+                        <div class="message-list">
+                            <?php if (!empty($dialog['message'])) : ?>
+                                <?php foreach ($dialog['message'] as $item) : ?>
+                                    <div class="message-text <?= $item['is_support'] == 0 ? 'bg-chat' : 'my-message' ?>">
+                                        <p class="main_color_text"><?= $item['text'] ?></p>
+                                        <p class="time-message main_color_text"><?= date('H:i', strtotime($item['date'])) ?></p>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <!-- <div class="message-user">
                         <div class="message-user-header">
                             <div class="header-chat-img bg-chat-img">
                                 <img src="<?= Url::to(['img/profile/profile-chat/profile-chat-private.png']) ?>" alt="">
@@ -74,72 +117,28 @@ $this->registerJs($js);
                             <p>исполнитель</p>
                         </div>
                         <div class="message-list">
-                            <div class="message-text bg-chat">
-                                <p class="main_color_text">Текст сообщения</p>
-                                <p class="time-message main_color_text">14:00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="message-user">
-                        <div class="message-user-header">
-                            <div class="header-chat-img bg-chat-img">
-                                <img src="<?= Url::to(['img/profile/profile-chat/profile-chat-private.png']) ?>" alt="">
-                            </div>
-                            <h2 class="main_color_text">Дарья Агапова</h2>
-                            <p>исполнитель</p>
-                        </div>
-                        <div class="message-list">
                             <div class="message-text my-message">
                                 <p>Текст сообщения</p>
-                                <p class="time-message">14:00</p>
-                            </div>
-                            <div class="message-text my-message">
-                                <p>Текст сообщения</p>
-                                <p class="time-message">14:00</p>
-                            </div>
-                            <div class="message-text my-message">
-                                <p>Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения</p>
-                                <p class="time-message">14:00</p>
-                            </div>
-                            <div class="message-text my-message">
-                                <p>Текст сообщения</p>
-                                <p class="time-message">14:00</p>
-                            </div>
-                            <div class="message-text my-message">
-                                <p>Текст сообщения</p>
-                                <p class="time-message">14:00</p>
-                            </div>
-                            <div class="message-text my-message">
-                                <p>Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения</p>
-                                <p class="time-message">14:00</p>
-                            </div>
-                            <div class="message-text my-message">
-                                <p>Текст сообщения</p>
-                                <p class="time-message">14:00</p>
-                            </div>
-                            <div class="message-text my-message">
-                                <p>Текст сообщения</p>
-                                <p class="time-message">14:00</p>
-                            </div>
-                            <div class="message-text my-message">
-                                <p>Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения Текст сообщения</p>
                                 <p class="time-message">14:00</p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="chat-body-input">
-                <input type="text" class="bg-chat main_color_text" placeholder="Сообщение">
+                <?= Html::beginForm('', 'post', ['class' => 'send__message']) ?>
+                <input type="hidden" name="dialog_id" value="<?= !empty($dialog['id']) ? $dialog['id'] : '' ?>">
+                <input id="message" required type="text" name="message" class="bg-chat main_color_text" placeholder="Сообщение">
                 <div class="buttons-message">
-                    <div class="left-buttons">
+                    <!-- <div class="left-buttons">
                         <img src="<?= Url::to(['img/profile/profile-chat/chat-smile.svg']) ?>" alt="">
-                    </div>
+                    </div> -->
                     <div class="right-buttons">
-                        <img src="<?= Url::to(['img/profile/profile-chat/img-send.svg']) ?>" alt="">
-                        <img src="<?= Url::to(['img/profile/profile-chat/send-message.svg']) ?>" alt="">
+                        <!-- <img src="<?= Url::to(['img/profile/profile-chat/img-send.svg']) ?>" alt=""> -->
+                        <button style="background-color: transparent; outline: none; border: none"><img src="<?= Url::to(['img/profile/profile-chat/send-message.svg']) ?>" alt=""></button>
                     </div>
                 </div>
+                <?= Html::endForm(); ?>
             </div>
         </div>
     </div>

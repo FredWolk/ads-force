@@ -17,7 +17,6 @@ return [
         'request' => [
             'baseUrl' => '',
             'csrfParam' => '_csrf-frontend',
-            'baseUrl' => '',
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -58,6 +57,7 @@ return [
                 'performers-page' => 'site/performers-page',
                 'profile-customer/profile-news-private/<link:>' => 'profile-customer/profile-news-private',
                 'profile-customer/technical-support-chat/<link:>' => 'profile-customer/technical-support-chat',
+                'profile-performer/technical-support-chat/<link:>' => 'profile-performer/technical-support-chat',
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
         ],

@@ -206,12 +206,11 @@ $('.content-text img').click(function(e){
     } 
     else {
     $('.content-text').append('<textarea rows="10" cols="45" name="text" class="content-area"> </ textarea>');
-    $('.content-text textarea').text($('.content-text p').text());
-    $('.content-text textarea').removeAttr('id');
-    $('.content-text textarea').addClass('bg-chat');
-    $('.content-text textarea').addClass('main_color_text');
+    $('.content-text textarea').text($('.content-text p').text())
+        .removeAttr('id')
+        .addClass('bg-chat main_color_text')
+        .attr('type', 'text');
     $('.content-text p').css({'display':'none'});
-    $('.content-text textarea').attr('type', 'text');
     }
 }   
     else{

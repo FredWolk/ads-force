@@ -6,6 +6,7 @@ use common\models\LoginForm;
 use common\models\User;
 use console\models\Balance;
 use console\models\Customer;
+use console\models\Performers;
 use console\models\Role;
 use frontend\models\SignupForm;
 use Yii;
@@ -60,7 +61,11 @@ class RegisterController extends Controller
             $model = new Balance();
             $model->user_id = $user->id;
             $model->validate();
-            $info = new Customer();
+            if ($role == Role::ROLE_CUSTOMER){
+                $info = new Customer();
+            } else {
+                $info = new Performers();
+            }
             $info->user_id = $user->id;
             $info->email = $email;
             $info->validate();

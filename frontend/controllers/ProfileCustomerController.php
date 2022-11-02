@@ -277,13 +277,26 @@ class ProfileCustomerController extends AccessController
 
     public function actionTechnicalSupport()
     {
-        $dialogs = Support::find()->asArray()->orderBy('status desc')->all();
+        $dialogs = Support::find()
+            ->asArray()
+            ->where(['user_id' => Yii::$app->getUser()->getId()])
+            ->orderBy('status desc')
+            ->all();
         return $this->render('technical-support', compact('dialogs'));
     }
 
     public function actionTechnicalSupportChat($link)
     {
-        $dialog = Support::find()->asArray()->with('message')->where(['id' => $link])->one();
+        $dialog = Support::find()
+            ->asArray()
+            ->with('message')
+            ->where(['id' => $link])
+            ->andWhere(['user_id' => Yii::$app->getUser()->getId()])
+            ->one();
+
+        if (empty($dialog))
+            return $this->redirect('/profile-customer/technical-support');
+
         return $this->render('technical-support-chat', compact('dialog'));
     }
 

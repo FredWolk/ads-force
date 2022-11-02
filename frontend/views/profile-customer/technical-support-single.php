@@ -8,20 +8,7 @@ $this->title = 'ADS.Force';
 $this->registerCssFile(Url::to(['css/profile-performer/technical-support-single.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
 $this->registerCssFile(Url::to(['css/profile-performer/profile-left-nav.css']), ['depends' => ['frontend\assets\ProfileCustomerAsset']]);
 $js = <<< JS
-$('.select-category-text').click(function(){
-    if($('.select-category-list').css('display') == "none"){
-        $('.select-category-list').fadeIn(300);
-        $(this).find('img').css({'transform':'translate(0%, -50%) rotate(-180deg) '});
-}
-    else{
-        $('.select-category-list').fadeOut(300);
-    }
-})
-$('.container').click(function(){
-    $('.select-category-list').fadeOut(300);
-    $('.select-category-text p').html($(this).text());
-    $('.select-category-text').find('img').css({'transform':'translate(0%, -50%) rotate(0deg)'});
-});
+
 $('.create__tiket').on('submit', function (e) {
     e.preventDefault();
     $.ajax({
